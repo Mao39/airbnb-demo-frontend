@@ -1,17 +1,22 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-
-import { Head, Caption } from "../Explore";
-import { Card, Image, Title, Arrow, Price as Name } from "../Experiences";
-import { Slider, SliderBtn } from "../Homes";
-import star from "../Experiences/star.svg";
+import { Caption } from "../common/Caption";
+import { Head } from "../common/Head";
+import { Card } from "../common/Card";
+import { Image } from "../common/Image";
+import { Title } from "../common/Title";
+import { Arrow } from "../common/Arrow";
+import { Price as Name } from "../common/Price";
+import { Slider } from "../common/Slider";
+import { SliderBtn } from "../common/SliderBtn";
+import star from "../star.svg";
 import paris from "./paris.png";
 import seoul from "./seoul.png";
 import tokyo from "./tokyo.png";
 import miami from "./miami.png";
 import losAngeles from "./losAngeles.png";
 import capeTown from "./capeTown.png";
-import arrow from "../Experiences/arrow.svg";
+import arrow from "../arrow.svg";
 
 export const Featured = styled.section``;
 

@@ -3,15 +3,16 @@ import styled from "styled-components";
 
 export const Nav = styled.nav`
   display: flex;
+  align-items: center;
   justify-content: space-around;
+  height: 80px;
 `;
 
 export const Link = styled.a`
   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-weight: 400;
   font-size: 14px;
   line-height: 24px;
-  line-height: 80px;
+  font-weight: 600;
   color: #383838;
   text-decoration: none;
 `;

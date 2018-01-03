@@ -1,62 +1,43 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-
-import { Head, Caption } from "../Explore";
-import {
-  Card,
-  Image,
-  Title,
-  More,
-  Arrow,
-  Price,
-  Price as Name,
-  Rating,
-  Stars,
-  Star,
-  Reviews
-} from "../Experiences";
-import star from "../Experiences/star.svg";
+import { Caption } from "../common/Caption";
+import { Head } from "../common/Head";
+import { Card } from "../common/Card";
+import { Image } from "../common/Image";
+import { Title } from "../common/Title";
+import { Arrow } from "../common/Arrow";
+import { Price } from "../common/Price";
+import { More } from "../common/More";
+import { Stars } from "../common/Stars";
+import { Star } from "../common/Star";
+import { Name } from "../common/Name";
+import { Rating } from "../common/Rating";
+import { Reviews } from "../common/Reviews";
+import { Slider } from "../common/Slider";
+import { SliderBtn } from "../common/SliderBtn";
+import star from "../star.svg";
 import laSalentina from "./laSalentina.png";
 import privateBed from "./privateBed.png";
 import dreamyTropical from "./dreamyTropical.png";
-import arrow from "../Experiences/arrow.svg";
+import arrow from "../arrow.svg";
 
 export const Homes = styled.section``;
-
-export const Slider = styled.div`
-  position: relative;
-`;
 
 export const Places = styled.div`
   margin-top: 8px;
 `;
+
 export const Type = styled.span`
   margin-right: 8px;
   font-size: 15px;
   line-height: 18px;
-  font-weight: 100;
+  font-weight: lighter;
 `;
 export const Beds = styled.span`
   margin-left: 8px;
   font-size: 15px;
   line-height: 18px;
-  font-weight: 100;
-`;
-
-export const SliderBtn = styled.button`
-  position: absolute;
-  top: 35%;
-  right: -20px;
-  width: 40px;
-  height: 40px;
-  border: 0.5px solid rgba(72, 72, 72, 0.2);
-  box-shadow: 0px 2px 4px rgba(72, 72, 72, 0.16);
-  border-radius: 50%;
-  background: #fff;
-  background-repeat: no-repeat;
-  background-position: center center;
-  transform: translateY(-50%);
-  cursor: pointer;
+  font-weight: lighter;
 `;
 
 export default function() {

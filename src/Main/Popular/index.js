@@ -1,23 +1,29 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-
-import { Head, Caption } from "../Explore";
-import { Card, Image, Title, More, Arrow, Price as Name } from "../Experiences";
-import { Slider, SliderBtn } from "../Homes";
-import star from "../Experiences/star.svg";
+import { Caption } from "../common/Caption";
+import { Head } from "../common/Head";
+import { Card } from "../common/Card";
+import { Image } from "../common/Image";
+import { Title } from "../common/Title";
+import { Arrow } from "../common/Arrow";
+import { Price as Name } from "../common/Price";
+import { More } from "../common/More";
+import { Slider } from "../common/Slider";
+import { SliderBtn } from "../common/SliderBtn";
+import star from "../star.svg";
 import chumley from "./chumley.png";
 import hanjan from "./hanjan.png";
 import primeMeats from "./primeMeats.png";
 import seaprice from "./seaprice.png";
-import arrow from "../Experiences/arrow.svg";
+import arrow from "../arrow.svg";
 
 export const Popular = styled.section``;
 export const Place = styled.span`
   margin-top: 12px;
   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 10px;
-  font-weight: 900;
   line-height: 12px;
+  font-weight: bold;
   color: #383838;
   text-transform: uppercase;
 `;
@@ -25,8 +31,8 @@ export const Price = styled.span`
   margin-top: 6px;
   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 18px;
-  font-weight: 100;
   line-height: 21px;
+  font-weight: lighter;
   color: #383838;
   opacity: 0.9;
 `;
