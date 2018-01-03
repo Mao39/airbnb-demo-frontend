@@ -1,28 +1,28 @@
+* {
+    box-sizing: border-box;
+    outline: none;
+}
+
 body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
 }
 
-* {
-    box-sizing: border-box;
-    outline: none;
+@font-face {
+    font-family: Circular;
+    src: url("./assets/Circular_Air-Bold.woff") format("woff"), url("./assets/Circular_Air-Bold.ttf") format("truetype");
+    font-weight: bold;
 }
 
 @font-face {
     font-family: Circular;
-    src: url("Circular_Air-Bold.woff") format("woff"), url("Circular_Air-Bold.ttf") format("truetype");
-    font-weight: 900;
+    src: url("./assets/Circular_Air-Book.woff") format("woff"), url("./assets/Circular_Air-Book.ttf") format("truetype");
+    font-weight: 600;
 }
 
 @font-face {
     font-family: Circular;
-    src: url("Circular_Air-Book.woff") format("woff"), url("Circular_Air-Book.ttf") format("truetype");
-    font-weight: 400;
-}
-
-@font-face {
-    font-family: Circular;
-    src: url("Circular_Air-Light.woff") format("woff"), url("Circular_Air-Light.ttf") format("truetype");
-    font-weight: 200;
+    src: url("./assets/Circular_Air-Light.woff") format("woff"), url("./assets/Circular_Air-Light.ttf") format("truetype");
+    font-weight: lighter;
 }
