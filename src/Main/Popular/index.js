@@ -10,15 +10,15 @@ import { Price as Name } from "../common/Price";
 import { More } from "../common/More";
 import { Slider } from "../common/Slider";
 import { SliderBtn } from "../common/SliderBtn";
-import star from "../star.svg";
 import chumley from "./chumley.png";
 import hanjan from "./hanjan.png";
 import primeMeats from "./primeMeats.png";
 import seaprice from "./seaprice.png";
 import arrow from "../arrow.svg";
 
-export const Popular = styled.section``;
-export const Place = styled.span`
+const Popular = styled.section``;
+
+const Place = styled.span`
   margin-top: 12px;
   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 10px;
@@ -27,7 +27,7 @@ export const Place = styled.span`
   color: #383838;
   text-transform: uppercase;
 `;
-export const Price = styled.span`
+const Price = styled.span`
   margin-top: 6px;
   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 18px;

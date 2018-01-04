@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import search from "./search.svg";
 
-export const InputSearch = styled.input`
+const InputSearch = styled.input`
   width: 100%;
   height: 48px;
   padding-left: 52px;
@@ -16,7 +16,7 @@ export const InputSearch = styled.input`
   box-shadow: 0px 2px 4px rgba(72, 72, 72, 0.08);
 `;
 
-export const Button = styled.button`
+const Button = styled.button`
   position: absolute;
   top: 50%;
   left: 16.2px;
@@ -29,7 +29,7 @@ export const Button = styled.button`
   cursor: pointer;
 `;
 
-export const SearchBar = styled.form`
+const SearchBar = styled.form`
   position: relative;
   display: flex;
   align-items: center;

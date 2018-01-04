@@ -6,13 +6,13 @@ import twitter from "../assets/twitter.svg";
 import instagram from "../assets/instagram.svg";
 import logo from "./logo.svg";
 
-export const Bottom = styled.div`
+const Bottom = styled.div`
   margin-top: 48px;
   height: 88px;
   border-top: 1px solid rgba(72, 72, 72, 0.08);
 `;
 
-export const Brand = styled.a`
+const Brand = styled.a`
   display: flex;
   align-items: center;
   height: 100%;
@@ -24,9 +24,9 @@ export const Brand = styled.a`
   text-decoration: none;
 `;
 
-export const Logo = styled.img``;
+const Logo = styled.img``;
 
-export const Copyright = styled.span`
+const Copyright = styled.span`
   margin-left: 12px;
   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 15px;
@@ -36,7 +36,7 @@ export const Copyright = styled.span`
   text-decoration: none;
 `;
 
-export const Social = styled.div`
+const Social = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;

@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
-export const Nav = styled.nav`
+const Nav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-around;
   height: 80px;
 `;
 
-export const Link = styled.a`
+const Link = styled.a`
   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 24px;

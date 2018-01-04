@@ -21,19 +21,19 @@ import privateBed from "./privateBed.png";
 import dreamyTropical from "./dreamyTropical.png";
 import arrow from "../arrow.svg";
 
-export const Homes = styled.section``;
+const Homes = styled.section``;
 
-export const Places = styled.div`
+const Places = styled.div`
   margin-top: 8px;
 `;
 
-export const Type = styled.span`
+const Type = styled.span`
   margin-right: 8px;
   font-size: 15px;
   line-height: 18px;
   font-weight: lighter;
 `;
-export const Beds = styled.span`
+const Beds = styled.span`
   margin-left: 8px;
   font-size: 15px;
   line-height: 18px;

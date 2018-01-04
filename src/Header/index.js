@@ -4,7 +4,7 @@ import logo from "./logo.svg";
 import SearchBar from "./SearchBar";
 import Nav from "./Nav";
 
-export const Header = styled.header`
+const Header = styled.header`
   display: flex;
   align-items: center;
   height: 80px;
@@ -12,7 +12,7 @@ export const Header = styled.header`
   box-shadow: 0 0.5px 0 rgba(72, 72, 72, 0.3);
 `;
 
-export const Logo = styled.a`
+const Logo = styled.a`
   display: flex;
   align-items: center;
   height: 100%;

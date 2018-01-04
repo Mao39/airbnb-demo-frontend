@@ -6,7 +6,7 @@ import Homes from "./Homes";
 import Popular from "./Popular";
 import Featured from "./Featured";
 
-export const Main = styled.main``;
+const Main = styled.main``;
 
 export default function() {
   return (

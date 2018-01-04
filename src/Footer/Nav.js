@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
-export const Title = styled.span`
+const Title = styled.span`
   display: block;
   margin-bottom: 16px;
   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;

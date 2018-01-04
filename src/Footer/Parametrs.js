@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import arrow from "../assets/arrow.svg";
 
-export const Parametrs = styled.select`
+const Parametrs = styled.select`
   margin-bottom: 16px;
   width: 100%;
   padding: 12px 16px;
@@ -13,7 +13,7 @@ export const Parametrs = styled.select`
   cursor: pointer;
 `;
 
-export const Select = styled.option`
+const Select = styled.option`
   font-size: 18px;
   line-height: 21px;
   font-weight: 100;
@@ -24,13 +24,11 @@ export default function() {
   return (
     <React.Fragment>
       <Parametrs>
-        <Select value="English" selected>
-          English
-        </Select>
+        <Select defaultValue="English">English</Select>
         <Select value="Русский">Русский</Select>
       </Parametrs>
       <Parametrs>
-        <Select value="United States dollar" selected>
+        <Select defaultValue="United States dollar">
           United States dollar
         </Select>
         <Select value="Русский рубль">Русский рубль</Select>
