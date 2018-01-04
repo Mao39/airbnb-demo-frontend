@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./normalize.css";
+import "normalize.css";
 import "flexboxgrid2";
 import "./index.css";
 
