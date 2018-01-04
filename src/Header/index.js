@@ -24,7 +24,7 @@ export default function() {
       <div className="container">
         <div className="row">
           <div className="col-md-1 col-sm-1 col-xs-2">
-            <Logo href="./">
+            <Logo href="#">
               <img src={logo} alt="Logo" />
             </Logo>
           </div>

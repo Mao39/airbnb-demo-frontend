@@ -18,7 +18,7 @@ import losAngeles from "./losAngeles.png";
 import capeTown from "./capeTown.png";
 import arrow from "../arrow.svg";
 
-export const Featured = styled.section``;
+const Featured = styled.section``;
 
 export default function() {
   return (

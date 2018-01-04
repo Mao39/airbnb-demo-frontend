@@ -30,29 +30,29 @@ export default function() {
     <React.Fragment>
       <div className="col-md-2 col-md-offset-1">
         <Title>Airbnb</Title>
-        <Link href="./">About us</Link>
-        <Link href="./">Careers</Link>
-        <Link href="./">Press</Link>
-        <Link href="./">Policies</Link>
-        <Link href="./">Help</Link>
-        <Link href="./">Diversity & Belonging</Link>
+        <Link href="#">About us</Link>
+        <Link href="#">Careers</Link>
+        <Link href="#">Press</Link>
+        <Link href="#">Policies</Link>
+        <Link href="#">Help</Link>
+        <Link href="#">Diversity & Belonging</Link>
       </div>
       <div className="col-md-2 col-md-offset-1">
         <Title>Discover</Title>
-        <Link href="./">Trust & Safety</Link>
-        <Link href="./">Travel Credit</Link>
-        <Link href="./">Gift Cards</Link>
-        <Link href="./">Airbnb Citizen</Link>
-        <Link href="./">Business Travel</Link>
-        <Link href="./">Guidebooks</Link>
-        <Link href="./">Airbnbmag</Link>
+        <Link href="#">Trust & Safety</Link>
+        <Link href="#">Travel Credit</Link>
+        <Link href="#">Gift Cards</Link>
+        <Link href="#">Airbnb Citizen</Link>
+        <Link href="#">Business Travel</Link>
+        <Link href="#">Guidebooks</Link>
+        <Link href="#">Airbnbmag</Link>
       </div>
       <div className="col-md-2 col-md-offset-1">
         <Title>Hosting</Title>
-        <Link href="./">Why Host</Link>
-        <Link href="./">Hospitality</Link>
-        <Link href="./">Responsible Hosting</Link>
-        <Link href="./">Community Center</Link>
+        <Link href="#">Why Host</Link>
+        <Link href="#">Hospitality</Link>
+        <Link href="#">Responsible Hosting</Link>
+        <Link href="#">Community Center</Link>
       </div>
     </React.Fragment>
   );

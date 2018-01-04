@@ -44,7 +44,7 @@ export default function() {
         <div className="container">
           <Head>
             <Caption>Popular reservations around the world</Caption>
-            <More href="./see-all">
+            <More href="#">
               See all <Arrow style={{ backgroundImage: `url(${arrow})` }} />
             </More>
           </Head>

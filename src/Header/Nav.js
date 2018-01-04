@@ -20,10 +20,10 @@ const Link = styled.a`
 export default function() {
   return (
     <Nav>
-      <Link href="./host">Become a host</Link>
-      <Link href="./help">Help</Link>
-      <Link href="./sign-up">Sign Up</Link>
-      <Link href="./log-in">Log In</Link>
+      <Link href="#host">Become a host</Link>
+      <Link href="#help">Help</Link>
+      <Link href="#sign-up">Sign Up</Link>
+      <Link href="#log-in">Log In</Link>
     </Nav>
   );
 }
