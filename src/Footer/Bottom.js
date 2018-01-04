@@ -57,26 +57,23 @@ export default function() {
         <div className="container">
           <div className="row">
             <div className="col-md-2">
-              <Brand href="./">
+              <Brand href="#">
                 <Logo src={logo} alt="Logo" />
                 <Copyright>© Airbnb Inc.</Copyright>
               </Brand>
             </div>
             <div className="col-md-4 col-md-offset-6">
               <Social>
-                <Link href="./">Terms</Link>
-                <Link href="./">Privacy</Link>
-                <Link href="./">Site map</Link>
+                <Link href="#">Terms</Link>
+                <Link href="#">Privacy</Link>
+                <Link href="#">Site map</Link>
                 <Icon
-                  href="./"
+                  href="#"
                   style={{ backgroundImage: `url(${facebook})` }}
                 />
+                <Icon href="#" style={{ backgroundImage: `url(${twitter})` }} />
                 <Icon
-                  href="./"
-                  style={{ backgroundImage: `url(${twitter})` }}
-                />
-                <Icon
-                  href="./"
+                  href="#"
                   style={{ backgroundImage: `url(${instagram})` }}
                 />
               </Social>

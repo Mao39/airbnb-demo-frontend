@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import Parametrs from "./Parametrs";
+import Selects from "./Selects";
 import Nav from "./Nav";
 import Bottom from "./Bottom";
 
@@ -19,7 +19,7 @@ export default function() {
         <div className="container">
           <div className="row">
             <div className="col-md-3">
-              <Parametrs />
+              <Selects />
             </div>
             <Nav />
           </div>
