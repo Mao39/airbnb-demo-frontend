@@ -45,6 +45,11 @@ const Social = styled.div`
   background-size: 16px 16px;
 `;
 
+const Icon = styled.a`
+  width: 24px;
+  height: 24px;
+`;
+
 export default function() {
   return (
     <React.Fragment>
@@ -62,29 +67,17 @@ export default function() {
                 <Link href="./">Terms</Link>
                 <Link href="./">Privacy</Link>
                 <Link href="./">Site map</Link>
-                <Link
+                <Icon
                   href="./"
-                  style={{
-                    backgroundImage: `url(${facebook})`,
-                    height: `24px`,
-                    width: `24px`
-                  }}
+                  style={{ backgroundImage: `url(${facebook})` }}
                 />
-                <Link
+                <Icon
                   href="./"
-                  style={{
-                    backgroundImage: `url(${twitter})`,
-                    height: `24px`,
-                    width: `24px`
-                  }}
+                  style={{ backgroundImage: `url(${twitter})` }}
                 />
-                <Link
+                <Icon
                   href="./"
-                  style={{
-                    backgroundImage: `url(${instagram})`,
-                    height: `24px`,
-                    width: `24px`
-                  }}
+                  style={{ backgroundImage: `url(${instagram})` }}
                 />
               </Social>
             </div>
