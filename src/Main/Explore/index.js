@@ -6,7 +6,7 @@ import restaurants from "./restaurants.png";
 import { Head } from "../common/Head";
 import { Caption } from "../common/Caption";
 
-export const Card = styled.button`
+const Card = styled.button`
   display: flex;
   justify-content: center;
   width: 100%;
@@ -26,9 +26,11 @@ export const Card = styled.button`
   cursor: pointer;
 `;
 
+const Explore = styled.section``;
+
 export default function() {
   return (
-    <section className="explore">
+    <Explore>
       <div className="container">
         <Head>
           <Caption>Explore Airbnb</Caption>
@@ -49,6 +51,6 @@ export default function() {
           </div>
         </div>
       </div>
-    </section>
+    </Explore>
   );
 }

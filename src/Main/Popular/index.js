@@ -39,62 +39,60 @@ const Price = styled.span`
 
 export default function() {
   return (
-    <React.Fragment>
-      <Popular>
-        <div className="container">
-          <Head>
-            <Caption>Popular reservations around the world</Caption>
-            <More href="#">
-              See all <Arrow style={{ backgroundImage: `url(${arrow})` }} />
-            </More>
-          </Head>
-          <Slider>
-            <div className="row">
-              <div className="col-md-3">
-                <Card>
-                  <Image src={chumley} />
-                  <Place>Speakeasy</Place>
-                  <Title>
-                    <Name>Chumley’s</Name>
-                  </Title>
-                  <Price>About $60 per person</Price>
-                </Card>
-              </div>
-              <div className="col-md-3">
-                <Card>
-                  <Image src={hanjan} />
-                  <Place>Korean gastropub</Place>
-                  <Title>
-                    <Name>Hanjan</Name>
-                  </Title>
-                  <Price>About $50 per person</Price>
-                </Card>
-              </div>
-              <div className="col-md-3">
-                <Card>
-                  <Image src={primeMeats} />
-                  <Place>German american</Place>
-                  <Title>
-                    <Name>Prime Meats</Name>
-                  </Title>
-                  <Price>About $55 per person</Price>
-                </Card>
-              </div>
-              <div className="col-md-3">
-                <Card>
-                  <Image src={seaprice} />
-                  <Place>Fine seafood</Place>
-                  <Title>
-                    <Name>Seaprice</Name>
-                  </Title>
-                  <Price>About $70 per person</Price>
-                </Card>
-              </div>
+    <Popular>
+      <div className="container">
+        <Head>
+          <Caption>Popular reservations around the world</Caption>
+          <More href="#">
+            See all <Arrow style={{ backgroundImage: `url(${arrow})` }} />
+          </More>
+        </Head>
+        <Slider>
+          <div className="row">
+            <div className="col-md-3">
+              <Card>
+                <Image src={chumley} />
+                <Place>Speakeasy</Place>
+                <Title>
+                  <Name>Chumley’s</Name>
+                </Title>
+                <Price>About $60 per person</Price>
+              </Card>
             </div>
-            <SliderBtn style={{ backgroundImage: `url(${arrow})` }} />
-          </Slider>
-        </div>
-      </Popular>
-    </React.Fragment>
+            <div className="col-md-3">
+              <Card>
+                <Image src={hanjan} />
+                <Place>Korean gastropub</Place>
+                <Title>
+                  <Name>Hanjan</Name>
+                </Title>
+                <Price>About $50 per person</Price>
+              </Card>
+            </div>
+            <div className="col-md-3">
+              <Card>
+                <Image src={primeMeats} />
+                <Place>German american</Place>
+                <Title>
+                  <Name>Prime Meats</Name>
+                </Title>
+                <Price>About $55 per person</Price>
+              </Card>
+            </div>
+            <div className="col-md-3">
+              <Card>
+                <Image src={seaprice} />
+                <Place>Fine seafood</Place>
+                <Title>
+                  <Name>Seaprice</Name>
+                </Title>
+                <Price>About $70 per person</Price>
+              </Card>
+            </div>
+          </div>
+          <SliderBtn style={{ backgroundImage: `url(${arrow})` }} />
+        </Slider>
+      </div>
+    </Popular>
   );
 }

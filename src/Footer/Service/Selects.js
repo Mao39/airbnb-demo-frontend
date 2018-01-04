@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import arrow from "../assets/arrow.svg";
+import arrow from "../../assets/arrow.svg";
 
 const Parametrs = styled.select`
   margin-bottom: 16px;

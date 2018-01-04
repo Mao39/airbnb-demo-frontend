@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Link } from "./Nav";
+import { Link } from "./Service/Nav.js";
 import facebook from "../assets/facebook.svg";
 import twitter from "../assets/twitter.svg";
 import instagram from "../assets/instagram.svg";
@@ -52,35 +52,27 @@ const Icon = styled.a`
 
 export default function() {
   return (
-    <React.Fragment>
-      <Bottom>
-        <div className="container">
-          <div className="row">
-            <div className="col-md-2">
-              <Brand href="#">
-                <Logo src={logo} alt="Logo" />
-                <Copyright>© Airbnb Inc.</Copyright>
-              </Brand>
-            </div>
-            <div className="col-md-4 col-md-offset-6">
-              <Social>
-                <Link href="#">Terms</Link>
-                <Link href="#">Privacy</Link>
-                <Link href="#">Site map</Link>
-                <Icon
-                  href="#"
-                  style={{ backgroundImage: `url(${facebook})` }}
-                />
-                <Icon href="#" style={{ backgroundImage: `url(${twitter})` }} />
-                <Icon
-                  href="#"
-                  style={{ backgroundImage: `url(${instagram})` }}
-                />
-              </Social>
-            </div>
+    <Bottom>
+      <div className="container">
+        <div className="row">
+          <div className="col-md-2">
+            <Brand href="#">
+              <Logo src={logo} alt="Logo" />
+              <Copyright>© Airbnb Inc.</Copyright>
+            </Brand>
+          </div>
+          <div className="col-md-4 col-md-offset-6">
+            <Social>
+              <Link href="#">Terms</Link>
+              <Link href="#">Privacy</Link>
+              <Link href="#">Site map</Link>
+              <Icon href="#" style={{ backgroundImage: `url(${facebook})` }} />
+              <Icon href="#" style={{ backgroundImage: `url(${twitter})` }} />
+              <Icon href="#" style={{ backgroundImage: `url(${instagram})` }} />
+            </Social>
           </div>
         </div>
-      </Bottom>;
-    </React.Fragment>
+      </div>
+    </Bottom>
   );
 }
