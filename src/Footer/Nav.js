@@ -11,7 +11,7 @@ export const Title = styled.span`
   font-weight: bold;
 `;
 
-export const Item = styled.a`
+export const Link = styled.a`
   display: block;
   margin-bottom: 8px;
   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
@@ -30,29 +30,29 @@ export default function() {
     <React.Fragment>
       <div className="col-md-2 col-md-offset-1">
         <Title>Airbnb</Title>
-        <Item href="./">About us</Item>
-        <Item href="./">Careers</Item>
-        <Item href="./">Press</Item>
-        <Item href="./">Policies</Item>
-        <Item href="./">Help</Item>
-        <Item href="./">Diversity & Belonging</Item>
+        <Link href="./">About us</Link>
+        <Link href="./">Careers</Link>
+        <Link href="./">Press</Link>
+        <Link href="./">Policies</Link>
+        <Link href="./">Help</Link>
+        <Link href="./">Diversity & Belonging</Link>
       </div>
       <div className="col-md-2 col-md-offset-1">
         <Title>Discover</Title>
-        <Item href="./">Trust & Safety</Item>
-        <Item href="./">Travel Credit</Item>
-        <Item href="./">Gift Cards</Item>
-        <Item href="./">Airbnb Citizen</Item>
-        <Item href="./">Business Travel</Item>
-        <Item href="./">Guidebooks</Item>
-        <Item href="./">Airbnbmag</Item>
+        <Link href="./">Trust & Safety</Link>
+        <Link href="./">Travel Credit</Link>
+        <Link href="./">Gift Cards</Link>
+        <Link href="./">Airbnb Citizen</Link>
+        <Link href="./">Business Travel</Link>
+        <Link href="./">Guidebooks</Link>
+        <Link href="./">Airbnbmag</Link>
       </div>
       <div className="col-md-2 col-md-offset-1">
         <Title>Hosting</Title>
-        <Item href="./">Why Host</Item>
-        <Item href="./">Hospitality</Item>
-        <Item href="./">Responsible Hosting</Item>
-        <Item href="./">Community Center</Item>
+        <Link href="./">Why Host</Link>
+        <Link href="./">Hospitality</Link>
+        <Link href="./">Responsible Hosting</Link>
+        <Link href="./">Community Center</Link>
       </div>
     </React.Fragment>
   );

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Item } from "./Nav";
+import { Link } from "./Nav";
 import facebook from "../assets/facebook.svg";
 import twitter from "../assets/twitter.svg";
 import instagram from "../assets/instagram.svg";
@@ -12,7 +12,7 @@ export const Bottom = styled.div`
   border-top: 1px solid rgba(72, 72, 72, 0.08);
 `;
 
-export const Link = styled.a`
+export const Brand = styled.a`
   display: flex;
   align-items: center;
   height: 100%;
@@ -52,17 +52,17 @@ export default function() {
         <div className="container">
           <div className="row">
             <div className="col-md-2">
-              <Link href="./">
+              <Brand href="./">
                 <Logo src={logo} alt="Logo" />
                 <Copyright>© Airbnb Inc.</Copyright>
-              </Link>
+              </Brand>
             </div>
             <div className="col-md-4 col-md-offset-6">
               <Social>
-                <Item href="./">Terms</Item>
-                <Item href="./">Privacy</Item>
-                <Item href="./">Site map</Item>
-                <Item
+                <Link href="./">Terms</Link>
+                <Link href="./">Privacy</Link>
+                <Link href="./">Site map</Link>
+                <Link
                   href="./"
                   style={{
                     backgroundImage: `url(${facebook})`,
@@ -70,7 +70,7 @@ export default function() {
                     width: `24px`
                   }}
                 />
-                <Item
+                <Link
                   href="./"
                   style={{
                     backgroundImage: `url(${twitter})`,
@@ -78,7 +78,7 @@ export default function() {
                     width: `24px`
                   }}
                 />
-                <Item
+                <Link
                   href="./"
                   style={{
                     backgroundImage: `url(${instagram})`,
