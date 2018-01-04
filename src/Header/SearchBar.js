@@ -16,7 +16,7 @@ const InputSearch = styled.input`
   box-shadow: 0px 2px 4px rgba(72, 72, 72, 0.08);
 `;
 
-const Button = styled.button`
+const Button = styled.span`
   position: absolute;
   top: 50%;
   left: 16.2px;
@@ -29,7 +29,7 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-const SearchBar = styled.form`
+const SearchBar = styled.div`
   position: relative;
   display: flex;
   align-items: center;
@@ -39,8 +39,8 @@ const SearchBar = styled.form`
 
 export default function() {
   return (
-    <SearchBar method="POST">
-      <Button type="submit" />
+    <SearchBar>
+      <Button />
       <InputSearch type="text" defaultValue="Try &quot;Miami&quot;" />
     </SearchBar>
   );
