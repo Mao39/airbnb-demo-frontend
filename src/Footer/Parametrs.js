@@ -31,7 +31,7 @@ export default function() {
         <Select defaultValue="United States dollar">
           United States dollar
         </Select>
-        <Select value="Русский рубль">Русский рубль</Select>
+        <Select value="Российский рубль">Российский рубль</Select>
       </Parametrs>
     </React.Fragment>
   );
