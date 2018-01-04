@@ -1,15 +1,9 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Caption } from "../common/Caption";
-import { Head } from "../common/Head";
-import { Card } from "../common/Card";
-import { Image } from "../common/Image";
-import { Title } from "../common/Title";
-import { Arrow } from "../common/Arrow";
-import { Price as Name } from "../common/Price";
-import { More } from "../common/More";
-import { Slider } from "../common/Slider";
-import { SliderBtn } from "../common/SliderBtn";
+
+import { Slider, SliderBtn, Card, Image, Title, Name } from "../Slider.js";
+import { Head, Caption, More, Arrow } from "../Head.js";
+
 import chumley from "./chumley.png";
 import hanjan from "./hanjan.png";
 import primeMeats from "./primeMeats.png";

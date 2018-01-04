@@ -3,8 +3,7 @@ import styled from "styled-components";
 import homes from "./homes.png";
 import experiences from "./experiences.png";
 import restaurants from "./restaurants.png";
-import { Head } from "../common/Head";
-import { Caption } from "../common/Caption";
+import { Head, Caption } from "../Head.js";
 
 const Card = styled.button`
   display: flex;

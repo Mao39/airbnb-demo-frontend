@@ -1,20 +1,21 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Caption } from "../common/Caption";
-import { Head } from "../common/Head";
-import { More } from "../common/More";
-import { Image } from "../common/Image";
-import { Title } from "../common/Title";
-import { Arrow } from "../common/Arrow";
-import { Price } from "../common/Price";
-import { Name } from "../common/Name";
-import { Rating } from "../common/Rating";
-import { Stars } from "../common/Stars";
-import { Star } from "../common/Star";
-import { Reviews } from "../common/Reviews";
-import { Card } from "../common/Card";
-import { Slider } from "../common/Slider";
-import { SliderBtn } from "../common/SliderBtn";
+
+import {
+  Slider,
+  SliderBtn,
+  Card,
+  Image,
+  Title,
+  Price,
+  Name,
+  Rating,
+  Stars,
+  Star,
+  Reviews
+} from "../Slider.js";
+import { Head, Caption, More, Arrow } from "../Head.js";
+
 import forestTherapy from "./forestTherapy.png";
 import whaleWatching from "./whaleWatching.png";
 import tableMountain from "./tableMountain.png";

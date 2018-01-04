@@ -1,14 +1,16 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Caption } from "../common/Caption";
-import { Head } from "../common/Head";
-import { Card } from "../common/Card";
-import { Image } from "../common/Image";
-import { Title } from "../common/Title";
-import { Arrow } from "../common/Arrow";
-import { Price as Name } from "../common/Price";
-import { Slider } from "../common/Slider";
-import { SliderBtn } from "../common/SliderBtn";
+
+import {
+  Slider,
+  SliderBtn,
+  Card,
+  Image,
+  Title,
+  Price as Name
+} from "../Slider.js";
+import { Head, Caption } from "../Head.js";
+
 import star from "../star.svg";
 import paris from "./paris.png";
 import seoul from "./seoul.png";
