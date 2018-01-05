@@ -4,6 +4,8 @@ import styled from "styled-components";
 import {
   Slider,
   SliderBtn,
+  SliderImg,
+  Wrap,
   Card,
   Image,
   Title,
@@ -26,6 +28,10 @@ const Homes = styled.section``;
 
 const Places = styled.div`
   margin-top: 8px;
+`;
+
+const Description = Name.extend`
+  font-weight: bold;
 `;
 
 const Type = styled.span`
@@ -52,81 +58,86 @@ export default function() {
           </More>
         </Head>
         <Slider>
-          <div className="row">
-            <div className="col-md-4">
-              <Card>
-                <Image src={laSalentina} />
-                <Title>
-                  <Price>$82</Price>
-                  <Name> La Salentina, see, nature & relax</Name>
-                </Title>
-                <Places>
-                  <Type>Entire house</Type>
-                  ·
-                  <Beds>9 beds</Beds>
-                </Places>
-                <Rating>
-                  <Stars>
-                    <Star src={star} alt="Star" />
-                    <Star src={star} alt="Star" />
-                    <Star src={star} alt="Star" />
-                    <Star src={star} alt="Star" />
-                    <Star src={star} alt="Star" />
-                  </Stars>
-                  <Reviews>97 · Superhost</Reviews>
-                </Rating>
-              </Card>
-            </div>
-            <div className="col-md-4">
-              <Card>
-                <Image src={privateBed} />
-                <Title>
-                  <Price>$82</Price>
-                  <Name> Your private 3 bedr. riad and exclusi...</Name>
-                </Title>
-                <Places>
-                  <Type>Entire house</Type>
-                  ·
-                  <Beds>5 beds</Beds>
-                </Places>
-                <Rating>
-                  <Stars>
-                    <Star src={star} alt="Star" />
-                    <Star src={star} alt="Star" />
-                    <Star src={star} alt="Star" />
-                    <Star src={star} alt="Star" />
-                    <Star src={star} alt="Star" />
-                  </Stars>
-                  <Reviews>161 · Superhost</Reviews>
-                </Rating>
-              </Card>
-            </div>
-            <div className="col-md-4">
-              <Card>
-                <Image src={dreamyTropical} />
-                <Title>
-                  <Price>$200</Price>
-                  <Name> Dreamy Tropical Tree House</Name>
-                </Title>
-                <Places>
-                  <Type>Entire treehouse</Type>
-                  ·
-                  <Beds>1 bed</Beds>
-                </Places>
-                <Rating>
-                  <Stars>
-                    <Star src={star} alt="Star" />
-                    <Star src={star} alt="Star" />
-                    <Star src={star} alt="Star" />
-                    <Star src={star} alt="Star" />
-                    <Star src={star} alt="Star" />
-                  </Stars>
-                  <Reviews>364 · Superhost</Reviews>
-                </Rating>
-              </Card>
-            </div>
+          <div className="col-md-4 col-sm-5 col-xs-8">
+            <Card>
+              <Image src={laSalentina} />
+              <Title>
+                <Price>$82</Price>
+                <Description> La Salentina, see, nature & relax</Description>
+              </Title>
+              <Places>
+                <Type>Entire house</Type>
+                ·
+                <Beds>9 beds</Beds>
+              </Places>
+              <Rating>
+                <Stars>
+                  <Star src={star} alt="Star" />
+                  <Star src={star} alt="Star" />
+                  <Star src={star} alt="Star" />
+                  <Star src={star} alt="Star" />
+                  <Star src={star} alt="Star" />
+                </Stars>
+                <Reviews>97 · Superhost</Reviews>
+              </Rating>
+            </Card>
           </div>
-          <SliderBtn style={{ backgroundImage: `url(${arrow})` }} />
+          <div className="col-md-4 col-sm-5 col-xs-8">
+            <Card>
+              <Image src={privateBed} />
+              <Title>
+                <Price>$82</Price>
+                <Description>
+                  {" "}
+                  Your private 3 bedr. riad and exclusi...
+                </Description>
+              </Title>
+              <Places>
+                <Type>Entire house</Type>
+                ·
+                <Beds>5 beds</Beds>
+              </Places>
+              <Rating>
+                <Stars>
+                  <Star src={star} alt="Star" />
+                  <Star src={star} alt="Star" />
+                  <Star src={star} alt="Star" />
+                  <Star src={star} alt="Star" />
+                  <Star src={star} alt="Star" />
+                </Stars>
+                <Reviews>161 · Superhost</Reviews>
+              </Rating>
+            </Card>
+          </div>
+          <div className="col-md-4 col-sm-5 col-xs-8">
+            <Card>
+              <Image src={dreamyTropical} />
+              <Title>
+                <Price>$200</Price>
+                <Description> Dreamy Tropical Tree House</Description>
+              </Title>
+              <Places>
+                <Type>Entire treehouse</Type>
+                ·
+                <Beds>1 bed</Beds>
+              </Places>
+              <Rating>
+                <Stars>
+                  <Star src={star} alt="Star" />
+                  <Star src={star} alt="Star" />
+                  <Star src={star} alt="Star" />
+                  <Star src={star} alt="Star" />
+                  <Star src={star} alt="Star" />
+                </Stars>
+                <Reviews>364 · Superhost</Reviews>
+              </Rating>
+            </Card>
+          </div>
+          {/* <Wrap>
+            <SliderBtn>
+              <SliderImg src={arrow} />
+            </SliderBtn>
+          </Wrap> */}
         </Slider>
       </div>
     </Homes>

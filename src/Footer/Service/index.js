@@ -10,9 +10,7 @@ export default function() {
     <Service>
       <div className="container">
         <div className="row">
-          <div className="col-md-3">
-            <Selects />
-          </div>
+          <Selects />
           <Nav />
         </div>
       </div>

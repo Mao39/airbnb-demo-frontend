@@ -9,6 +9,11 @@ const Title = styled.span`
   line-height: 18px;
   color: #383838;
   font-weight: bold;
+
+  @media (max-width: 992px) {
+    font-size: 12px;
+    line-height: 14px;
+  }
 `;
 
 export const Link = styled.a`
@@ -23,12 +28,17 @@ export const Link = styled.a`
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
+
+  @media (max-width: 992px) {
+    font-size: 12px;
+    line-height: 14px;
+  }
 `;
 
 export default function() {
   return (
     <React.Fragment>
-      <div className="col-md-2 col-md-offset-1">
+      <div className="col-md-2 col-md-offset-1 col-sm-2 col-sm-offset-1 hidden-xs">
         <Title>Airbnb</Title>
         <Link href="#">About us</Link>
         <Link href="#">Careers</Link>
@@ -37,7 +47,7 @@ export default function() {
         <Link href="#">Help</Link>
         <Link href="#">Diversity & Belonging</Link>
       </div>
-      <div className="col-md-2 col-md-offset-1">
+      <div className="col-md-2 col-md-offset-1 col-sm-2 col-sm-offset-1 hidden-xs">
         <Title>Discover</Title>
         <Link href="#">Trust & Safety</Link>
         <Link href="#">Travel Credit</Link>
@@ -47,7 +57,7 @@ export default function() {
         <Link href="#">Guidebooks</Link>
         <Link href="#">Airbnbmag</Link>
       </div>
-      <div className="col-md-2 col-md-offset-1">
+      <div className="col-md-2 col-md-offset-1 col-sm-2 col-sm-offset-1 hidden-xs">
         <Title>Hosting</Title>
         <Link href="#">Why Host</Link>
         <Link href="#">Hospitality</Link>

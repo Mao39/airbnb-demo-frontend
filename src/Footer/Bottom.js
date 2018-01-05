@@ -10,6 +10,10 @@ const Bottom = styled.div`
   margin-top: 48px;
   height: 88px;
   border-top: 1px solid rgba(72, 72, 72, 0.08);
+
+  @media (max-width: 576px) {
+    padding-top: 16px;
+  }
 `;
 
 const Brand = styled.a`
@@ -34,6 +38,11 @@ const Copyright = styled.span`
   font-weight: 600;
   color: #636363;
   text-decoration: none;
+
+  @media (max-width: 992px) {
+    font-size: 12px;
+    line-height: 14px;
+  }
 `;
 
 const Social = styled.div`
@@ -46,8 +55,9 @@ const Social = styled.div`
 `;
 
 const Icon = styled.a`
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 32px;
+  background-repeat: no-repeat;
 `;
 
 export default function() {
@@ -55,13 +65,13 @@ export default function() {
     <Bottom>
       <div className="container">
         <div className="row">
-          <div className="col-md-2">
+          <div className="col-md-2 col-sm-3 col-xs-5">
             <Brand href="#">
               <Logo src={logo} alt="Logo" />
               <Copyright>© Airbnb Inc.</Copyright>
             </Brand>
           </div>
-          <div className="col-md-4 col-md-offset-6">
+          <div className="col-md-4 col-md-offset-6 col-sm-6 col-sm-offset-3 col-xs-9">
             <Social>
               <Link href="#">Terms</Link>
               <Link href="#">Privacy</Link>

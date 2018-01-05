@@ -1,7 +1,16 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
-import { Slider, SliderBtn, Card, Image, Title, Name } from "../Slider.js";
+import {
+  Slider,
+  SliderBtn,
+  SliderImg,
+  Wrap,
+  Card,
+  Image,
+  Title,
+  Price
+} from "../Slider.js";
 import { Head, Caption, More, Arrow } from "../Head.js";
 
 import chumley from "./chumley.png";
@@ -21,8 +30,14 @@ const Place = styled.span`
   color: #383838;
   text-transform: uppercase;
 `;
-const Price = styled.span`
-  margin-top: 6px;
+
+const Name = Price.extend`
+  font-size: 18px;
+  line-height: 21px;
+`;
+
+const Rate = styled.span`
+  margin-top: 4px;
   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 18px;
   line-height: 21px;
@@ -42,49 +57,51 @@ export default function() {
           </More>
         </Head>
         <Slider>
-          <div className="row">
-            <div className="col-md-3">
-              <Card>
-                <Image src={chumley} />
-                <Place>Speakeasy</Place>
-                <Title>
-                  <Name>Chumley’s</Name>
-                </Title>
-                <Price>About $60 per person</Price>
-              </Card>
-            </div>
-            <div className="col-md-3">
-              <Card>
-                <Image src={hanjan} />
-                <Place>Korean gastropub</Place>
-                <Title>
-                  <Name>Hanjan</Name>
-                </Title>
-                <Price>About $50 per person</Price>
-              </Card>
-            </div>
-            <div className="col-md-3">
-              <Card>
-                <Image src={primeMeats} />
-                <Place>German american</Place>
-                <Title>
-                  <Name>Prime Meats</Name>
-                </Title>
-                <Price>About $55 per person</Price>
-              </Card>
-            </div>
-            <div className="col-md-3">
-              <Card>
-                <Image src={seaprice} />
-                <Place>Fine seafood</Place>
-                <Title>
-                  <Name>Seaprice</Name>
-                </Title>
-                <Price>About $70 per person</Price>
-              </Card>
-            </div>
+          <div className="col-md-3 col-sm-4 col-xs-6">
+            <Card>
+              <Image src={chumley} />
+              <Place>Speakeasy</Place>
+              <Title>
+                <Name>Chumley’s</Name>
+              </Title>
+              <Rate>About $60 per person</Rate>
+            </Card>
           </div>
-          <SliderBtn style={{ backgroundImage: `url(${arrow})` }} />
+          <div className="col-md-3 col-sm-4 col-xs-6">
+            <Card>
+              <Image src={hanjan} />
+              <Place>Korean gastropub</Place>
+              <Title>
+                <Name>Hanjan</Name>
+              </Title>
+              <Rate>About $50 per person</Rate>
+            </Card>
+          </div>
+          <div className="col-md-3 col-sm-4 col-xs-6">
+            <Card>
+              <Image src={primeMeats} />
+              <Place>German american</Place>
+              <Title>
+                <Name>Prime Meats</Name>
+              </Title>
+              <Rate>About $55 per person</Rate>
+            </Card>
+          </div>
+          <div className="col-md-3 col-sm-4 col-xs-6">
+            <Card>
+              <Image src={seaprice} />
+              <Place>Fine seafood</Place>
+              <Title>
+                <Name>Seaprice</Name>
+              </Title>
+              <Rate>About $70 per person</Rate>
+            </Card>
+          </div>
+          {/* <Wrap>
+            <SliderBtn>
+              <SliderImg src={arrow} />
+            </SliderBtn>
+          </Wrap> */}
         </Slider>
       </div>
     </Popular>
