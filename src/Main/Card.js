@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import arrow from "./arrow.svg";
 
 export const Card = styled.a`
   display: flex;
@@ -10,6 +11,7 @@ export const Card = styled.a`
 `;
 
 export const Image = styled.img`
+  position: relative;
   width: 100%;
   max-height: 346px;
   object-fit: cover;

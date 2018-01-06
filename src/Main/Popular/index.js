@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Slider, SliderBtn, SliderImg, Wrap } from "../Slider";
+import { Slider, SliderBtn } from "../Slider";
 import { Card, Image, Title, Price } from "../Card";
-import { Head, Caption, More, Arrow } from "../Head";
+import { Head, Caption, More } from "../Head";
 import chumley from "./chumley.png";
 import hanjan from "./hanjan.png";
 import primeMeats from "./primeMeats.png";
 import seaprice from "./seaprice.png";
-import arrow from "../arrow.svg";
 
 const Popular = styled.section``;
 
@@ -34,6 +33,10 @@ const Rate = styled.span`
   font-weight: lighter;
   color: #383838;
   opacity: 0.9;
+`;
+
+const Arrow = SliderBtn.extend`
+  margin-top: 4rem;
 `;
 
 export default function() {
@@ -92,11 +95,7 @@ export default function() {
                 <Rate>About $70 per person</Rate>
               </Card>
             </div>
-            {/* <Wrap>
-            <SliderBtn>
-              <SliderImg src={arrow} />
-            </SliderBtn>
-          </Wrap> */}
+            <Arrow />
           </div>
         </Slider>
       </div>

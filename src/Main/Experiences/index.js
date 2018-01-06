@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Slider, SliderBtn, SliderImg, Wrap } from "../Slider";
+import { Slider, SliderBtn } from "../Slider";
 import {
   Card,
   Image,
@@ -12,15 +12,18 @@ import {
   Star,
   Reviews
 } from "../Card";
-import { Head, Caption, More, Arrow } from "../Head";
+import { Head, Caption, More } from "../Head";
 import forestTherapy from "./forestTherapy.png";
 import whaleWatching from "./whaleWatching.png";
 import tableMountain from "./tableMountain.png";
 import salsaNight from "./salsaNight.png";
 import star from "../star.svg";
-import arrow from "../arrow.svg";
 
 const Experiences = styled.section``;
+
+const Arrow = SliderBtn.extend`
+  margin-top: 9.6rem;
+`;
 
 export default function() {
   return (
@@ -114,11 +117,7 @@ export default function() {
                 </Rating>
               </Card>
             </div>
-            {/* <Wrap>
-            <SliderBtn>
-              <SliderImg src={arrow} />
-            </SliderBtn>
-          </Wrap> */}
+            <Arrow />
           </div>
         </Slider>
       </div>

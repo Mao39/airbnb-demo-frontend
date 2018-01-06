@@ -3,20 +3,6 @@
   outline: none;
 }
 
-/* @media only screen and (max-width: 768px) {
-    .container {
-        width: 752px !important;
-        max-width: 100% !important;
-    }
-} */
-
-/* @media only screen and (max-width: 576px) {
-    .container {
-        width: 560px;
-        max-width: 100%;
-    }
-} */
-
 @font-face {
   font-family: Circular;
   src: url("./assets/Circular_Air-Bold.woff") format("woff"),

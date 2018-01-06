@@ -58,5 +58,3 @@ export const More = styled.a`
     font-size: 12px;
   }
 `;
-
-export const Arrow = styled.span``;

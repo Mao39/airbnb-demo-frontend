@@ -1,20 +1,22 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Slider, SliderBtn, SliderImg, Wrap } from "../Slider";
+import { Slider, SliderBtn } from "../Slider";
 import { Card, Image, Title, Price } from "../Card";
 import { Head, Caption } from "../Head";
-import star from "../star.svg";
 import paris from "./paris.png";
 import seoul from "./seoul.png";
 import tokyo from "./tokyo.png";
 import miami from "./miami.png";
 import losAngeles from "./losAngeles.png";
 import capeTown from "./capeTown.png";
-import arrow from "../arrow.svg";
 
 const Name = Price.extend``;
 
 const Featured = styled.section``;
+
+const Arrow = SliderBtn.extend`
+  margin-top: 5.1rem;
+`;
 
 export default function() {
   return (
@@ -73,11 +75,7 @@ export default function() {
                 </Title>
               </Card>
             </div>
-            {/* <Wrap>
-            <SliderBtn>
-              <SliderImg src={arrow} />
-            </SliderBtn>
-          </Wrap> */}
+            <Arrow />
           </div>
         </Slider>
       </div>

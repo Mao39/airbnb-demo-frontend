@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Slider, SliderBtn, SliderImg, Wrap } from "../Slider";
+import { Slider, SliderBtn } from "../Slider";
 import {
   Card,
   Image,
@@ -12,12 +12,11 @@ import {
   Star,
   Reviews
 } from "../Card";
-import { Head, Caption, More, Arrow } from "../Head";
+import { Head, Caption, More } from "../Head";
 import star from "../star.svg";
 import laSalentina from "./laSalentina.png";
 import privateBed from "./privateBed.png";
 import dreamyTropical from "./dreamyTropical.png";
-import arrow from "../arrow.svg";
 
 const Homes = styled.section``;
 
@@ -40,6 +39,10 @@ const Beds = styled.span`
   font-size: 15px;
   line-height: 18px;
   font-weight: lighter;
+`;
+
+const Arrow = SliderBtn.extend`
+  margin-top: 5.1rem;
 `;
 
 export default function() {
@@ -133,11 +136,7 @@ export default function() {
                 </Rating>
               </Card>
             </div>
-            {/* <Wrap>
-            <SliderBtn>
-              <SliderImg src={arrow} />
-            </SliderBtn>
-          </Wrap> */}
+            <Arrow />
           </div>
         </Slider>
       </div>
