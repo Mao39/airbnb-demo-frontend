@@ -8,9 +8,11 @@ import { Slider } from "../Slider";
 
 const Card = styled.a`
   display: flex;
+  flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   padding: 0;
+  padding-bottom: 11px;
   border: 1px solid rgba(72, 72, 72, 0.2);
   border-radius: 4px;
   background-repeat: no-repeat;
@@ -19,26 +21,27 @@ const Card = styled.a`
   box-shadow: 0px 2px 4px rgba(72, 72, 72, 0.08);
   cursor: pointer;
 
-  @media only screen and (max-width: 320px) {
-    flex-direction: column;
-    align-items: flex-start;
-    padding-bottom: 11px;
+  @media (min-width: 320px) {
+    flex-direction: row;
+    align-items: center;
+    padding: 0;
   }
 `;
 
 const Name = styled.span`
-  padding-left: 24px;
+  padding-top: 14px;
+  padding-left: 12px;
   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 17px;
-  line-height: 20px;
+  font-size: 12px;
+  line-height: 14px;
   font-weight: bold;
   color: #383838;
 
-  @media only screen and (max-width: 320px) {
-    font-size: 12px;
-    line-height: 14px;
-    padding-top: 14px;
-    paddint-left: 12px;
+  @media (min-width: 320px) {
+    font-size: 17px;
+    line-height: 20px;
+    padding-top: 0;
+    paddint-left: 24px;
   }
 `;
 
@@ -47,15 +50,16 @@ const Explore = styled.section`
 `;
 
 const Image = styled.img`
-  width: 96px;
-  height: 72px;
-  border-radius: 4px 0 0 4px;
+  width: 100%;
+  height: 78px;
+  border-radius: 4px 4px 0 0;
+  object-fit: cover;
 
-  @media only screen and (max-width: 320px) {
-    width: 100%;
-    height: 78px;
-    border-radius: 4px 4px 0 0;
-    object-fit: cover;
+  @media (min-width: 320px) {
+    width: 96px;
+    height: 72px;
+    border-radius: 4px 0 0 4px;
+    object-fit: auto;
   }
 `;
 
