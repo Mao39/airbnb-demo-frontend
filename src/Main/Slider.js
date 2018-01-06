@@ -18,6 +18,7 @@ export const Slider = styled.div`
 export const SliderBtn = styled.button`
   position: absolute;
   right: -16px;
+  display: none;
   width: 40px;
   height: 40px;
   box-sizing: border-box;
@@ -31,11 +32,7 @@ export const SliderBtn = styled.button`
   border-radius: 1.3rem;
   cursor: pointer;
 
-  @media (max-width: 768px) {
-    display: none;
-  }
-
-  @media (max-width: 575px) {
-    display: none;
+  @media (min-width: 768px) {
+    display: inline-block;
   }
 `;
