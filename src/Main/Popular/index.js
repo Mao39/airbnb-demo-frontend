@@ -38,15 +38,20 @@ const Name = Price.extend`
 const Rate = styled.span`
   margin-top: 4px;
   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  line-height: 16px;
+  font-size: 12px;
+  line-height: 14px;
   font-weight: lighter;
   color: #383838;
   opacity: 0.9;
 
-  @media (min-width: 320px) {
+  @media (min-width: 768px) {
     font-size: 18px;
     line-height: 21px;
+  }
+  
+  @media (min-width: 320px) {
+    font-size: 14px;
+    line-height: 16px;
   }
 `;
 
