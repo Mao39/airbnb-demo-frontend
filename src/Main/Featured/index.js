@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { Slider, SliderBtn, SliderImg, Wrap } from "../Slider";
-import { Card, Image, Title, Price as Name } from "../Card";
+import { Card, Image, Title, Price } from "../Card";
 import { Head, Caption } from "../Head";
 import star from "../star.svg";
 import paris from "./paris.png";
@@ -11,6 +11,8 @@ import miami from "./miami.png";
 import losAngeles from "./losAngeles.png";
 import capeTown from "./capeTown.png";
 import arrow from "../arrow.svg";
+
+const Name = Price.extend``;
 
 const Featured = styled.section``;
 
