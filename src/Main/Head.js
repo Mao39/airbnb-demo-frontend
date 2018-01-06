@@ -15,16 +15,17 @@ export const Caption = styled.h3`
   margin: 0;
   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 32px;
-  line-height: 34px;
+  font-size: 20px;
+  line-height: 28px;
   color: #383838;
 
-  @media (max-width: 768px) {
-    font-size: 24px;
+  @media (min-width: 768px) {
+    font-size: 32px;
     line-height: 28px;
   }
 
-  @media (max-width: 320px) {
-    font-size: 20px;
+  @media (min-width: 320px) {
+    font-size: 24px;
   }
 `;
 
@@ -33,7 +34,7 @@ export const More = styled.a`
   display: block;
   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 24px;
   color: #383838;
   text-decoration: none;
@@ -54,7 +55,7 @@ export const More = styled.a`
     background-size: cover;
   }
 
-  @media (max-width: 320px) {
-    font-size: 12px;
+  @media (min-width: 320px) {
+    font-size: 14px;
   }
 `;
