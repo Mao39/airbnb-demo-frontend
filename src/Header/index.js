@@ -21,11 +21,17 @@ const Link = styled.a`
 
 const Logo = styled.img``;
 
-const Dropdown = styled.img`
+const Dropdown = styled.a`
   display: inline-block;
   margin-left: 4px;
   width: 8.6px;
   height: 10px;
+  background: url(${arrow}) no-repeat center center;
+  background-size: contain;
+
+  @media (min-width: 992px) {
+    display: none;
+  }
 `;
 
 export default function() {
@@ -36,9 +42,7 @@ export default function() {
           <div className="col-md-1 col-sm-1 col-xs-2">
             <Link href="#">
               <Logo src={logo} alt="Logo" />
-              <div className="hidden-md">
-                <Dropdown src={arrow} alt="Arrow" />
-              </div>
+              <Dropdown />
             </Link>
           </div>
           <div className="col-md-5 col-sm-7 col-xs-10">
