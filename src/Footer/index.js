@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import Service from "./Service";
-import Bottom from "./Bottom";
+import Primary from "./Primary";
+import Secondary from "./Secondary";
 
 const Footer = styled.footer`
   margin-top: 64px;
@@ -12,8 +12,8 @@ const Footer = styled.footer`
 export default function() {
   return (
     <Footer>
-      <Service />
-      <Bottom />
+      <Primary />
+      <Secondary />
     </Footer>
   );
 }

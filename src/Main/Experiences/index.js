@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-
 import {
   Slider,
   SliderBtn,
@@ -15,9 +14,8 @@ import {
   Stars,
   Star,
   Reviews
-} from "../Slider.js";
-import { Head, Caption, More, Arrow } from "../Head.js";
-
+} from "../Slider";
+import { Head, Caption, More, Arrow } from "../Head";
 import forestTherapy from "./forestTherapy.png";
 import whaleWatching from "./whaleWatching.png";
 import tableMountain from "./tableMountain.png";
