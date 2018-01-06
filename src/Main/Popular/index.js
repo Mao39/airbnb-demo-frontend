@@ -41,54 +41,60 @@ export default function() {
     <Popular>
       <div className="container">
         <Head>
-          <Caption>Popular reservations around the world</Caption>
-          <More href="#">
-            See all <Arrow style={{ backgroundImage: `url(${arrow})` }} />
-          </More>
+          <div className="row">
+            <div className="col-md-11 col-sm-10 col-xs-9">
+              <Caption>Popular reservations around the world</Caption>
+            </div>
+            <div className="col-md-1 col-sm-2 col-xs-3">
+              <More href="#">
+                See all <Arrow style={{ backgroundImage: `url(${arrow})` }} />
+              </More>
+            </div>
+          </div>
         </Head>
         <Slider>
-        <div className="row">
-          <div className="col-md-3 col-sm-4 col-xs-6">
-            <Card>
-              <Image src={chumley} />
-              <Place>Speakeasy</Place>
-              <Title>
-                <Name>Chumley’s</Name>
-              </Title>
-              <Rate>About $60 per person</Rate>
-            </Card>
-          </div>
-          <div className="col-md-3 col-sm-4 col-xs-6">
-            <Card>
-              <Image src={hanjan} />
-              <Place>Korean gastropub</Place>
-              <Title>
-                <Name>Hanjan</Name>
-              </Title>
-              <Rate>About $50 per person</Rate>
-            </Card>
-          </div>
-          <div className="col-md-3 col-sm-4 col-xs-6">
-            <Card>
-              <Image src={primeMeats} />
-              <Place>German american</Place>
-              <Title>
-                <Name>Prime Meats</Name>
-              </Title>
-              <Rate>About $55 per person</Rate>
-            </Card>
-          </div>
-          <div className="col-md-3 col-sm-4 col-xs-6">
-            <Card>
-              <Image src={seaprice} />
-              <Place>Fine seafood</Place>
-              <Title>
-                <Name>Seaprice</Name>
-              </Title>
-              <Rate>About $70 per person</Rate>
-            </Card>
-          </div>
-          {/* <Wrap>
+          <div className="row">
+            <div className="col-md-3 col-sm-4 col-xs-6">
+              <Card>
+                <Image src={chumley} />
+                <Place>Speakeasy</Place>
+                <Title>
+                  <Name>Chumley’s</Name>
+                </Title>
+                <Rate>About $60 per person</Rate>
+              </Card>
+            </div>
+            <div className="col-md-3 col-sm-4 col-xs-6">
+              <Card>
+                <Image src={hanjan} />
+                <Place>Korean gastropub</Place>
+                <Title>
+                  <Name>Hanjan</Name>
+                </Title>
+                <Rate>About $50 per person</Rate>
+              </Card>
+            </div>
+            <div className="col-md-3 col-sm-4 col-xs-6">
+              <Card>
+                <Image src={primeMeats} />
+                <Place>German american</Place>
+                <Title>
+                  <Name>Prime Meats</Name>
+                </Title>
+                <Rate>About $55 per person</Rate>
+              </Card>
+            </div>
+            <div className="col-md-3 col-sm-4 col-xs-6">
+              <Card>
+                <Image src={seaprice} />
+                <Place>Fine seafood</Place>
+                <Title>
+                  <Name>Seaprice</Name>
+                </Title>
+                <Rate>About $70 per person</Rate>
+              </Card>
+            </div>
+            {/* <Wrap>
             <SliderBtn>
               <SliderImg src={arrow} />
             </SliderBtn>

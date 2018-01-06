@@ -47,10 +47,16 @@ export default function() {
     <Homes>
       <div className="container">
         <Head>
-          <Caption>Homes</Caption>
-          <More href="#">
-            See all <Arrow style={{ backgroundImage: `url(${arrow})` }} />
-          </More>
+          <div className="row">
+            <div className="col-md-11 col-sm-10 col-xs-9">
+              <Caption>Homes</Caption>
+            </div>
+            <div className="col-md-1 col-sm-2 col-xs-3">
+              <More href="#">
+                See all <Arrow style={{ backgroundImage: `url(${arrow})` }} />
+              </More>
+            </div>
+          </div>
         </Head>
         <Slider>
           <div className="row">
