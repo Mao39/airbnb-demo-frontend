@@ -25,6 +25,7 @@ const Option = styled.option`
   line-height: 21px;
   font-weight: lighter;
   color: #383838;
+
   @media (min-width: 576px) {
     font-size: 18px;
   }

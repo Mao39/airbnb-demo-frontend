@@ -1,18 +1,17 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
-const Title = styled.span`
-  display: block;
+const Title = styled.p`
   margin-bottom: 16px;
   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 15px;
-  line-height: 18px;
+  font-size: 12px;
+  line-height: 14px;
   color: #383838;
   font-weight: bold;
 
-  @media (max-width: 992px) {
-    font-size: 12px;
-    line-height: 14px;
+  @media (min-width: 992px) {
+    font-size: 15px;
+    line-height: 18px;
   }
 `;
 
@@ -20,8 +19,8 @@ export const Link = styled.a`
   display: block;
   margin-bottom: 8px;
   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 15px;
-  line-height: 18px;
+  font-size: 12px;
+  line-height: 14px;
   font-weight: 600;
   color: #636363;
   text-decoration: none;
@@ -29,9 +28,9 @@ export const Link = styled.a`
   background-position: center center;
   background-size: cover;
 
-  @media (max-width: 992px) {
-    font-size: 12px;
-    line-height: 14px;
+  @media (min-width: 992px) {
+    font-size: 15px;
+    line-height: 18px;
   }
 `;
 

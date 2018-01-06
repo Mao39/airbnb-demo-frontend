@@ -22,11 +22,16 @@ const Brand = styled.a`
   align-items: center;
   height: 100%;
   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 15px;
-  line-height: 18px;
+  font-size: 12px;
+  line-height: 14px;
   font-weight: 600;
   color: #636363;
   text-decoration: none;
+
+  @media (min-width: 320px) {
+    font-size: 15px;
+    line-height: 18px;
+  }
 `;
 
 const Logo = styled.img``;
@@ -72,7 +77,7 @@ export default function() {
               <Copyright>© Airbnb Inc.</Copyright>
             </Brand>
           </div>
-          <div className="col-md-4 col-md-offset-6 col-sm-6 col-sm-offset-3 col-xs-9">
+          <div className="col-md-4 col-md-offset-6 col-sm-6 col-sm-offset-3 col-xs-10">
             <Social>
               <Link href="#">Terms</Link>
               <Link href="#">Privacy</Link>
