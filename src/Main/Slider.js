@@ -2,14 +2,14 @@ import React, { Component } from "react";
 import styled from "styled-components";
 
 export const Slider = styled.div`
-  display: flex;
-  flex-wrap: nowrap;
-  flex-direction: row;
-  margin-right: -8px;
-  margin-left: -8px;
-  flex: 0 1 auto;
-  overflow-y: hidden;
-  overflow-x: auto;
+  @media (max-width: 768px) {
+    overflow-y: hidden;
+    overflow-x: auto;
+
+    & .row {
+      flex-wrap: nowrap;
+    }
+  }
 `;
 
 export const Wrap = styled.div`

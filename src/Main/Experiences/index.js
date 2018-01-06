@@ -33,87 +33,89 @@ export default function() {
           </More>
         </Head>
         <Slider>
-          <div className="col-md-3 col-sm-4 col-xs-6">
-            <Card>
-              <Image src={forestTherapy} />
-              <Title>
-                <Price>$29</Price>
-                <Name> Forest therapy</Name>
-              </Title>
-              <Rating>
-                <Stars>
-                  <Star src={star} alt="Star" />
-                  <Star src={star} alt="Star" />
-                  <Star src={star} alt="Star" />
-                  <Star src={star} alt="Star" />
-                  <Star src={star} alt="Star" />
-                </Stars>
-                <Reviews>44 reviews</Reviews>
-              </Rating>
-            </Card>
-          </div>
-          <div className="col-md-3 col-sm-4 col-xs-6">
-            <Card>
-              <Image src={whaleWatching} />
-              <Title>
-                <Price>$69</Price>
-                <Name> Whale watching</Name>
-              </Title>
-              <Rating>
-                <Stars>
-                  <Star src={star} alt="Star" />
-                  <Star src={star} alt="Star" />
-                  <Star src={star} alt="Star" />
-                  <Star src={star} alt="Star" />
-                  <Star src={star} alt="Star" />
-                </Stars>
-                <Reviews>46 reviews</Reviews>
-              </Rating>
-            </Card>
-          </div>
-          <div className="col-md-3 col-sm-4 col-xs-6">
-            <Card>
-              <Image src={tableMountain} />
-              <Title>
-                <Price>$69</Price>
-                <Name> Table Mountain Summit, Cable Car Down</Name>
-              </Title>
-              <Rating>
-                <Stars>
-                  <Star src={star} alt="Star" />
-                  <Star src={star} alt="Star" />
-                  <Star src={star} alt="Star" />
-                  <Star src={star} alt="Star" />
-                  <Star src={star} alt="Star" />
-                </Stars>
-                <Reviews>44 reviews</Reviews>
-              </Rating>
-            </Card>
-          </div>
-          <div className="col-md-3 col-sm-4 col-xs-6">
-            <Card>
-              <Image src={salsaNight} />
-              <Title>
-                <Price>$50</Price>
-                <Name> Salsa Night</Name>
-              </Title>
-              <Rating>
-                <Stars>
-                  <Star src={star} alt="Star" />
-                  <Star src={star} alt="Star" />
-                  <Star src={star} alt="Star" />
-                  <Star src={star} alt="Star" />
-                  <Star src={star} alt="Star" />
-                </Stars>
-                <Reviews>44 reviews</Reviews>
-              </Rating>
-            </Card>
-          </div>
-          {/* <Wrap>
+          <div className="row">
+            <div className="col-md-3 col-sm-4 col-xs-6">
+              <Card>
+                <Image src={forestTherapy} />
+                <Title>
+                  <Price>$29</Price>
+                  <Name> Forest therapy</Name>
+                </Title>
+                <Rating>
+                  <Stars>
+                    <Star src={star} alt="Star" />
+                    <Star src={star} alt="Star" />
+                    <Star src={star} alt="Star" />
+                    <Star src={star} alt="Star" />
+                    <Star src={star} alt="Star" />
+                  </Stars>
+                  <Reviews>44 reviews</Reviews>
+                </Rating>
+              </Card>
+            </div>
+            <div className="col-md-3 col-sm-4 col-xs-6">
+              <Card>
+                <Image src={whaleWatching} />
+                <Title>
+                  <Price>$69</Price>
+                  <Name> Whale watching</Name>
+                </Title>
+                <Rating>
+                  <Stars>
+                    <Star src={star} alt="Star" />
+                    <Star src={star} alt="Star" />
+                    <Star src={star} alt="Star" />
+                    <Star src={star} alt="Star" />
+                    <Star src={star} alt="Star" />
+                  </Stars>
+                  <Reviews>46 reviews</Reviews>
+                </Rating>
+              </Card>
+            </div>
+            <div className="col-md-3 col-sm-4 col-xs-6">
+              <Card>
+                <Image src={tableMountain} />
+                <Title>
+                  <Price>$69</Price>
+                  <Name> Table Mountain Summit, Cable Car Down</Name>
+                </Title>
+                <Rating>
+                  <Stars>
+                    <Star src={star} alt="Star" />
+                    <Star src={star} alt="Star" />
+                    <Star src={star} alt="Star" />
+                    <Star src={star} alt="Star" />
+                    <Star src={star} alt="Star" />
+                  </Stars>
+                  <Reviews>44 reviews</Reviews>
+                </Rating>
+              </Card>
+            </div>
+            <div className="col-md-3 col-sm-4 col-xs-6">
+              <Card>
+                <Image src={salsaNight} />
+                <Title>
+                  <Price>$50</Price>
+                  <Name> Salsa Night</Name>
+                </Title>
+                <Rating>
+                  <Stars>
+                    <Star src={star} alt="Star" />
+                    <Star src={star} alt="Star" />
+                    <Star src={star} alt="Star" />
+                    <Star src={star} alt="Star" />
+                    <Star src={star} alt="Star" />
+                  </Stars>
+                  <Reviews>44 reviews</Reviews>
+                </Rating>
+              </Card>
+            </div>
+            {/* <Wrap>
             <SliderBtn>
               <SliderImg src={arrow} />
             </SliderBtn>
           </Wrap> */}
+          </div>
         </Slider>
       </div>
     </Experiences>

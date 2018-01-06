@@ -47,6 +47,7 @@ export default function() {
           </More>
         </Head>
         <Slider>
+        <div className="row">
           <div className="col-md-3 col-sm-4 col-xs-6">
             <Card>
               <Image src={chumley} />
@@ -92,6 +93,7 @@ export default function() {
               <SliderImg src={arrow} />
             </SliderBtn>
           </Wrap> */}
+          </div>
         </Slider>
       </div>
     </Popular>

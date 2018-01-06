@@ -53,86 +53,88 @@ export default function() {
           </More>
         </Head>
         <Slider>
-          <div className="col-md-4 col-sm-5 col-xs-8">
-            <Card>
-              <Image src={laSalentina} />
-              <Title>
-                <Price>$82</Price>
-                <Description> La Salentina, see, nature & relax</Description>
-              </Title>
-              <Places>
-                <Type>Entire house</Type>
-                ·
-                <Beds>9 beds</Beds>
-              </Places>
-              <Rating>
-                <Stars>
-                  <Star src={star} alt="Star" />
-                  <Star src={star} alt="Star" />
-                  <Star src={star} alt="Star" />
-                  <Star src={star} alt="Star" />
-                  <Star src={star} alt="Star" />
-                </Stars>
-                <Reviews>97 · Superhost</Reviews>
-              </Rating>
-            </Card>
-          </div>
-          <div className="col-md-4 col-sm-5 col-xs-8">
-            <Card>
-              <Image src={privateBed} />
-              <Title>
-                <Price>$82</Price>
-                <Description>
-                  {" "}
-                  Your private 3 bedr. riad and exclusi...
-                </Description>
-              </Title>
-              <Places>
-                <Type>Entire house</Type>
-                ·
-                <Beds>5 beds</Beds>
-              </Places>
-              <Rating>
-                <Stars>
-                  <Star src={star} alt="Star" />
-                  <Star src={star} alt="Star" />
-                  <Star src={star} alt="Star" />
-                  <Star src={star} alt="Star" />
-                  <Star src={star} alt="Star" />
-                </Stars>
-                <Reviews>161 · Superhost</Reviews>
-              </Rating>
-            </Card>
-          </div>
-          <div className="col-md-4 col-sm-5 col-xs-8">
-            <Card>
-              <Image src={dreamyTropical} />
-              <Title>
-                <Price>$200</Price>
-                <Description> Dreamy Tropical Tree House</Description>
-              </Title>
-              <Places>
-                <Type>Entire treehouse</Type>
-                ·
-                <Beds>1 bed</Beds>
-              </Places>
-              <Rating>
-                <Stars>
-                  <Star src={star} alt="Star" />
-                  <Star src={star} alt="Star" />
-                  <Star src={star} alt="Star" />
-                  <Star src={star} alt="Star" />
-                  <Star src={star} alt="Star" />
-                </Stars>
-                <Reviews>364 · Superhost</Reviews>
-              </Rating>
-            </Card>
-          </div>
-          {/* <Wrap>
+          <div className="row">
+            <div className="col-md-4 col-sm-5 col-xs-8">
+              <Card>
+                <Image src={laSalentina} />
+                <Title>
+                  <Price>$82</Price>
+                  <Description> La Salentina, see, nature & relax</Description>
+                </Title>
+                <Places>
+                  <Type>Entire house</Type>
+                  ·
+                  <Beds>9 beds</Beds>
+                </Places>
+                <Rating>
+                  <Stars>
+                    <Star src={star} alt="Star" />
+                    <Star src={star} alt="Star" />
+                    <Star src={star} alt="Star" />
+                    <Star src={star} alt="Star" />
+                    <Star src={star} alt="Star" />
+                  </Stars>
+                  <Reviews>97 · Superhost</Reviews>
+                </Rating>
+              </Card>
+            </div>
+            <div className="col-md-4 col-sm-5 col-xs-8">
+              <Card>
+                <Image src={privateBed} />
+                <Title>
+                  <Price>$82</Price>
+                  <Description>
+                    {" "}
+                    Your private 3 bedr. riad and exclusi...
+                  </Description>
+                </Title>
+                <Places>
+                  <Type>Entire house</Type>
+                  ·
+                  <Beds>5 beds</Beds>
+                </Places>
+                <Rating>
+                  <Stars>
+                    <Star src={star} alt="Star" />
+                    <Star src={star} alt="Star" />
+                    <Star src={star} alt="Star" />
+                    <Star src={star} alt="Star" />
+                    <Star src={star} alt="Star" />
+                  </Stars>
+                  <Reviews>161 · Superhost</Reviews>
+                </Rating>
+              </Card>
+            </div>
+            <div className="col-md-4 col-sm-5 col-xs-8">
+              <Card>
+                <Image src={dreamyTropical} />
+                <Title>
+                  <Price>$200</Price>
+                  <Description> Dreamy Tropical Tree House</Description>
+                </Title>
+                <Places>
+                  <Type>Entire treehouse</Type>
+                  ·
+                  <Beds>1 bed</Beds>
+                </Places>
+                <Rating>
+                  <Stars>
+                    <Star src={star} alt="Star" />
+                    <Star src={star} alt="Star" />
+                    <Star src={star} alt="Star" />
+                    <Star src={star} alt="Star" />
+                    <Star src={star} alt="Star" />
+                  </Stars>
+                  <Reviews>364 · Superhost</Reviews>
+                </Rating>
+              </Card>
+            </div>
+            {/* <Wrap>
             <SliderBtn>
               <SliderImg src={arrow} />
             </SliderBtn>
           </Wrap> */}
+          </div>
         </Slider>
       </div>
     </Homes>

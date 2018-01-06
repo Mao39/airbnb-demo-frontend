@@ -33,6 +33,7 @@ const Name = styled.span`
   line-height: 20px;
   font-weight: bold;
   color: #383838;
+
   @media only screen and (max-width: 320px) {
     font-size: 12px;
     line-height: 14px;
@@ -66,23 +67,25 @@ export default function() {
           <Caption>Explore Airbnb</Caption>
         </Head>
         <Slider>
-          <div className="col-md-4 col-sm-5 col-xs-6">
-            <Card>
-              <Image src={homes} alt="Homes" />
-              <Name>Homes</Name>
-            </Card>
-          </div>
-          <div className="col-md-4 col-sm-5 col-xs-6">
-            <Card>
-              <Image src={experiences} alt="Experiences" />
-              <Name>Experiences</Name>
-            </Card>
-          </div>
-          <div className="col-md-4 col-sm-5 col-xs-6">
-            <Card>
-              <Image src={restaurants} alt="Restaurants" />
-              <Name>Restaurants</Name>
-            </Card>
+          <div className="row">
+            <div className="col-md-4 col-sm-5 col-xs-6">
+              <Card>
+                <Image src={homes} alt="Homes" />
+                <Name>Homes</Name>
+              </Card>
+            </div>
+            <div className="col-md-4 col-sm-5 col-xs-6">
+              <Card>
+                <Image src={experiences} alt="Experiences" />
+                <Name>Experiences</Name>
+              </Card>
+            </div>
+            <div className="col-md-4 col-sm-5 col-xs-6">
+              <Card>
+                <Image src={restaurants} alt="Restaurants" />
+                <Name>Restaurants</Name>
+              </Card>
+            </div>
           </div>
         </Slider>
       </div>
