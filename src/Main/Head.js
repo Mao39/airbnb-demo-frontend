@@ -36,5 +36,3 @@ export const Arrow = styled.span`
   background-repeat: no-repeat;
   background-size: cover;
 `;
-
-export default { Head, Caption, More, Arrow };
