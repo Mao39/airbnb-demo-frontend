@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import arrow from "./arrow.svg";
 
 export const Card = styled.a`
   display: flex;
@@ -17,7 +16,7 @@ export const Image = styled.img`
   object-fit: cover;
 `;
 
-export const Title = styled.div`
+export const Title = styled.p`
   margin-top: 8px;
   font-size: 15px;
   line-height: 18px;
