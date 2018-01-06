@@ -10,7 +10,15 @@ import miami from "./miami.png";
 import losAngeles from "./losAngeles.png";
 import capeTown from "./capeTown.png";
 
-const Name = Price.extend``;
+const Name = Price.extend`
+  font-size: 12px;
+  line-height: 14px;
+
+  @media (min-width: 320px) {
+    font-size: 15px;
+    line-height: 18px;
+  }
+`;
 
 const Featured = styled.section``;
 
