@@ -46,7 +46,7 @@ export default function() {
         <Link href="#">Help</Link>
         <Link href="#">Diversity & Belonging</Link>
       </div>
-      <div className="col-md-2 col-md-offset-1 col-sm-2 col-sm-offset-1 hidden-xs">
+      <div className="col-md-2 col-md-offset-1 col-sm-2 col-sm-offset-2 hidden-xs">
         <Title>Discover</Title>
         <Link href="#">Trust & Safety</Link>
         <Link href="#">Travel Credit</Link>
@@ -56,7 +56,7 @@ export default function() {
         <Link href="#">Guidebooks</Link>
         <Link href="#">Airbnbmag</Link>
       </div>
-      <div className="col-md-2 col-md-offset-1 col-sm-2 col-sm-offset-1 hidden-xs">
+      <div className="col-md-2 col-md-offset-1 col-sm-2 col-sm-offset-2 hidden-xs">
         <Title>Hosting</Title>
         <Link href="#">Why Host</Link>
         <Link href="#">Hospitality</Link>

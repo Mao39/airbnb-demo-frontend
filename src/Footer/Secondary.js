@@ -56,8 +56,12 @@ const Social = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  height: 88px;
+  height: 44px;
   background-size: 16px 16px;
+
+  @media (min-width: 576px) {
+    height: 88px;
+  }
 `;
 
 const Icon = styled.a`
