@@ -8,11 +8,12 @@ import logo from "./logo.svg";
 
 const Bottom = styled.div`
   margin-top: 48px;
+  padding-top: 16px;
   height: 88px;
   border-top: 1px solid rgba(72, 72, 72, 0.08);
 
-  @media (max-width: 576px) {
-    padding-top: 16px;
+  @media (min-width: 576px) {
+    padding-top: 0;
   }
 `;
 
@@ -33,15 +34,15 @@ const Logo = styled.img``;
 const Copyright = styled.span`
   margin-left: 12px;
   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 15px;
-  line-height: 18px;
+  font-size: 12px;
+  line-height: 14px;
   font-weight: 600;
   color: #636363;
   text-decoration: none;
 
-  @media (max-width: 992px) {
-    font-size: 12px;
-    line-height: 14px;
+  @media (min-width: 992px) {
+    font-size: 15px;
+    line-height: 18px;
   }
 `;
 
