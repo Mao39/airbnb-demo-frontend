@@ -30,15 +30,26 @@ const Description = Name.extend`
 
 const Type = styled.span`
   margin-right: 8px;
-  font-size: 15px;
-  line-height: 18px;
+  font-size: 12px;
+  line-height: 14px;
   font-weight: lighter;
+
+  @media (min-width: 320px) {
+    font-size: 15px;
+    line-height: 18px;
+  }
 `;
+
 const Beds = styled.span`
-  margin-left: 8px;
-  font-size: 15px;
-  line-height: 18px;
+  margin-right: 8px;
+  font-size: 12px;
+  line-height: 14px;
   font-weight: lighter;
+
+  @media (min-width: 320px) {
+    font-size: 15px;
+    line-height: 18px;
+  }
 `;
 
 const Arrow = SliderBtn.extend`
