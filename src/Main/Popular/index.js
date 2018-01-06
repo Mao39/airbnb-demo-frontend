@@ -60,8 +60,18 @@ export default function() {
       <div className="container">
         <Head>
           <div className="row">
-            <div className="col-md-11 col-sm-10 col-xs-9">
+            <div className="col-md-10 col-sm-10 col-xs-9">
               <Caption>Popular reservations around the world</Caption>
+            </div>
+            <div className="col-md-2 col-sm-2 col-xs-3">
+              <More href="#">See all</More>
+            </div>
+          </div>
+        </Head>
+        <Head>
+          <div className="row">
+            <div className="col-md-11 col-sm-10 col-xs-9">
+              <Caption>Experiences</Caption>
             </div>
             <div className="col-md-1 col-sm-2 col-xs-3">
               <More href="#">See all</More>
