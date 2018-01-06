@@ -19,7 +19,7 @@ export const Image = styled.img`
 export const Title = styled.p`
   margin-top: 8px;
   margin-bottom: 0;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 15px;
   color: #383838;
 
