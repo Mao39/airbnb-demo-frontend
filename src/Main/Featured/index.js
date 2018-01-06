@@ -1,18 +1,8 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-
-import {
-  Slider,
-  SliderBtn,
-  SliderImg,
-  Wrap,
-  Card,
-  Image,
-  Title,
-  Price as Name
-} from "../Slider.js";
-import { Head, Caption } from "../Head.js";
-
+import { Slider, SliderBtn, SliderImg, Wrap } from "../Slider";
+import { Card, Image, Title, Price as Name } from "../Card";
+import { Head, Caption } from "../Head";
 import star from "../star.svg";
 import paris from "./paris.png";
 import seoul from "./seoul.png";

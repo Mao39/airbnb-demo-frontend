@@ -1,15 +1,14 @@
 * {
-    box-sizing: border-box;
-    outline: none;
+  box-sizing: border-box;
+  outline: none;
 }
 
-@media only screen and (max-width: 768px) {
+/* @media only screen and (max-width: 768px) {
     .container {
         width: 752px !important;
         max-width: 100% !important;
     }
-}
-
+} */
 
 /* @media only screen and (max-width: 576px) {
     .container {
@@ -19,19 +18,22 @@
 } */
 
 @font-face {
-    font-family: Circular;
-    src: url("./assets/Circular_Air-Bold.woff") format("woff"), url("./assets/Circular_Air-Bold.ttf") format("truetype");
-    font-weight: bold;
+  font-family: Circular;
+  src: url("./assets/Circular_Air-Bold.woff") format("woff"),
+    url("./assets/Circular_Air-Bold.ttf") format("truetype");
+  font-weight: bold;
 }
 
 @font-face {
-    font-family: Circular;
-    src: url("./assets/Circular_Air-Book.woff") format("woff"), url("./assets/Circular_Air-Book.ttf") format("truetype");
-    font-weight: 600;
+  font-family: Circular;
+  src: url("./assets/Circular_Air-Book.woff") format("woff"),
+    url("./assets/Circular_Air-Book.ttf") format("truetype");
+  font-weight: 600;
 }
 
 @font-face {
-    font-family: Circular;
-    src: url("./assets/Circular_Air-Light.woff") format("woff"), url("./assets/Circular_Air-Light.ttf") format("truetype");
-    font-weight: lighter;
+  font-family: Circular;
+  src: url("./assets/Circular_Air-Light.woff") format("woff"),
+    url("./assets/Circular_Air-Light.ttf") format("truetype");
+  font-weight: lighter;
 }

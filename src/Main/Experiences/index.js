@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { Slider, SliderBtn, SliderImg, Wrap } from "../Slider";
 import {
-  Slider,
-  SliderBtn,
-  SliderImg,
-  Wrap,
   Card,
   Image,
   Title,
@@ -14,7 +11,7 @@ import {
   Stars,
   Star,
   Reviews
-} from "../Slider";
+} from "../Card";
 import { Head, Caption, More, Arrow } from "../Head";
 import forestTherapy from "./forestTherapy.png";
 import whaleWatching from "./whaleWatching.png";

@@ -1,11 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-
+import { Slider, SliderBtn, SliderImg, Wrap } from "../Slider";
 import {
-  Slider,
-  SliderBtn,
-  SliderImg,
-  Wrap,
   Card,
   Image,
   Title,
@@ -15,9 +11,8 @@ import {
   Stars,
   Star,
   Reviews
-} from "../Slider.js";
-import { Head, Caption, More, Arrow } from "../Head.js";
-
+} from "../Card";
+import { Head, Caption, More, Arrow } from "../Head";
 import star from "../star.svg";
 import laSalentina from "./laSalentina.png";
 import privateBed from "./privateBed.png";

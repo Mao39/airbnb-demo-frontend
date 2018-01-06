@@ -3,15 +3,13 @@ import styled from "styled-components";
 import homes from "./homes.png";
 import experiences from "./experiences.png";
 import restaurants from "./restaurants.png";
-import { Head, Caption } from "../Head.js";
-import { Slider } from "../Slider.js";
+import { Head, Caption } from "../Head";
+import { Slider } from "../Slider";
 
-const Card = styled.button`
+const Card = styled.a`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  width: 100%;
-  height: 72px;
   padding: 0;
   border: 1px solid rgba(72, 72, 72, 0.2);
   border-radius: 4px;
@@ -24,7 +22,7 @@ const Card = styled.button`
   @media only screen and (max-width: 320px) {
     flex-direction: column;
     align-items: flex-start;
-    height: 118px;
+    padding-bottom: 11px;
   }
 `;
 

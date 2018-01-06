@@ -1,18 +1,8 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-
-import {
-  Slider,
-  SliderBtn,
-  SliderImg,
-  Wrap,
-  Card,
-  Image,
-  Title,
-  Price
-} from "../Slider.js";
-import { Head, Caption, More, Arrow } from "../Head.js";
-
+import { Slider, SliderBtn, SliderImg, Wrap } from "../Slider";
+import { Card, Image, Title, Price } from "../Card";
+import { Head, Caption, More, Arrow } from "../Head";
 import chumley from "./chumley.png";
 import hanjan from "./hanjan.png";
 import primeMeats from "./primeMeats.png";
