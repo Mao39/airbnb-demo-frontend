@@ -45,9 +45,7 @@ const Name = styled.span`
   }
 `;
 
-const Explore = styled.section`
-  display: flex;
-`;
+const Explore = styled.section``;
 
 const Image = styled.img`
   width: 100%;

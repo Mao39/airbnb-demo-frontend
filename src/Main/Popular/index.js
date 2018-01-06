@@ -48,7 +48,7 @@ const Rate = styled.span`
     font-size: 18px;
     line-height: 21px;
   }
-  
+
   @media (min-width: 320px) {
     font-size: 14px;
     line-height: 16px;
@@ -69,16 +69,6 @@ export default function() {
               <Caption>Popular reservations around the world</Caption>
             </div>
             <div className="col-md-2 col-sm-2 col-xs-3">
-              <More href="#">See all</More>
-            </div>
-          </div>
-        </Head>
-        <Head>
-          <div className="row">
-            <div className="col-md-11 col-sm-10 col-xs-9">
-              <Caption>Experiences</Caption>
-            </div>
-            <div className="col-md-1 col-sm-2 col-xs-3">
               <More href="#">See all</More>
             </div>
           </div>

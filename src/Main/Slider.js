@@ -4,14 +4,15 @@ import arrow from "./arrow.svg";
 
 export const Slider = styled.div`
   position: relative;
+  overflow-y: hidden;
+  overflow-x: auto;
 
-  @media (max-width: 768px) {
-    overflow-y: hidden;
-    overflow-x: auto;
+  & .row {
+    flex-wrap: nowrap;
+  }
 
-    & .row {
-      flex-wrap: nowrap;
-    }
+  @media (min-width: 768px) {
+    overflow: visible;
   }
 `;
 

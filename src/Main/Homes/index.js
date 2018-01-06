@@ -41,7 +41,7 @@ const Type = styled.span`
 `;
 
 const Beds = styled.span`
-  margin-right: 8px;
+  margin-left: 8px;
   font-size: 12px;
   line-height: 14px;
   font-weight: lighter;
