@@ -19,9 +19,14 @@ export const Image = styled.img`
 export const Title = styled.p`
   margin-top: 8px;
   margin-bottom: 0;
-  font-size: 15px;
-  line-height: 18px;
+  font-size: 14px;
+  line-height: 15px;
   color: #383838;
+
+  @media (min-width: 320px) {
+    font-size: 15px;
+    line-height: 18px;
+  }
 `;
 
 export const Price = styled.span`

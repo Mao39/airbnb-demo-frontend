@@ -13,26 +13,41 @@ const Popular = styled.section``;
 const Place = styled.span`
   margin-top: 12px;
   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 10px;
-  line-height: 12px;
+  font-size: 8px;
+  line-height: 9px;
   font-weight: bold;
   color: #383838;
   text-transform: uppercase;
+
+  @media (min-width: 320px) {
+    font-size: 10px;
+    line-height: 12px;
+  }
 `;
 
 const Name = Price.extend`
-  font-size: 18px;
-  line-height: 21px;
+  font-size: 14px;
+  line-height: 16px;
+
+  @media (min-width: 320px) {
+    font-size: 18px;
+    line-height: 21px;
+  }
 `;
 
 const Rate = styled.span`
   margin-top: 4px;
   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 18px;
-  line-height: 21px;
+  font-size: 14px;
+  line-height: 16px;
   font-weight: lighter;
   color: #383838;
   opacity: 0.9;
+
+  @media (min-width: 320px) {
+    font-size: 18px;
+    line-height: 21px;
+  }
 `;
 
 const Arrow = SliderBtn.extend`
