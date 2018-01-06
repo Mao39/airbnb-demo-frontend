@@ -6,6 +6,7 @@ export const Card = styled.a`
   flex-direction: column;
   flex-wrap: wrap;
   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
+  cursor: pointer;
 `;
 
 export const Image = styled.img`

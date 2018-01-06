@@ -52,9 +52,7 @@ export default function() {
               <Caption>Homes</Caption>
             </div>
             <div className="col-md-1 col-sm-2 col-xs-3">
-              <More href="#">
-                See all <Arrow style={{ backgroundImage: `url(${arrow})` }} />
-              </More>
+              <More href="#">See all</More>
             </div>
           </div>
         </Head>

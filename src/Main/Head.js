@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import arrow from "./arrow.svg";
 
 export const Head = styled.div`
   margin-top: 48px;
@@ -38,15 +39,24 @@ export const More = styled.a`
   text-decoration: none;
   text-align: right;
 
+  &::after {
+    position: relative;
+    top: 0;
+    right: 0;
+    content: "";
+    display: inline-block;
+    margin-left: 6px;
+    width: 6px;
+    height: 10px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background: url(${arrow}) no-repeat center center;
+    background-size: cover;
+  }
+
   @media (max-width: 320px) {
     font-size: 12px;
   }
 `;
 
-export const Arrow = styled.span`
-  display: inline-block;
-  width: 6px;
-  height: 10px;
-  background-repeat: no-repeat;
-  background-size: cover;
-`;
+export const Arrow = styled.span``;
