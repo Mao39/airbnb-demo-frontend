@@ -1,0 +1,19 @@
+<svg width="24" height="24" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>instagram</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(1042 -1280)">
+<g id="ic/24/social/instagram">
+<g id="Combined Shape">
+<use xlink:href="#path0_fill" transform="translate(-1033.84 1285.6)" fill="#484848"/>
+</g>
+<mask id="mask0_outline" mask-type="alpha">
+<g id="Combined Shape">
+<use xlink:href="#path0_fill" transform="translate(-1033.84 1285.6)" fill="#FFFFFF"/>
+</g>
+</mask>
+</g>
+</g>
+<defs>
+<path id="path0_fill" fill-rule="evenodd" d="M 8.27478 0.234131C 8.42322 0.085083 8.62976 0 8.83997 0C 9.05078 0 9.25732 0.085083 9.40576 0.234131C 9.55481 0.382568 9.63989 0.589111 9.63989 0.800049C 9.63989 1.01013 9.55481 1.21667 9.40576 1.36584C 9.25659 1.51416 9.05078 1.59998 8.83997 1.59998C 8.62976 1.59998 8.42322 1.51416 8.27478 1.36584C 8.12573 1.21667 8.03992 1.01025 8.03992 0.800049C 8.03992 0.589111 8.12561 0.382568 8.27478 0.234131ZM 0 6.40002C 0 8.51733 1.72266 10.2397 3.83997 10.2397C 5.95728 10.2397 7.68005 8.51733 7.68005 6.40002C 7.68005 4.28259 5.9574 2.56006 3.83997 2.56006C 1.72253 2.56006 0 4.28259 0 6.40002Z"/>
+</defs>
+</svg>
