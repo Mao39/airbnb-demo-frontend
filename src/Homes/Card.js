@@ -8,6 +8,7 @@ const Card = styled.a`
   flex-wrap: wrap;
   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
   cursor: pointer;
+  margin-top: 24px;
 `;
 
 const Image = styled.img`
@@ -20,14 +21,9 @@ const Image = styled.img`
 const Title = styled.p`
   margin-top: 8px;
   margin-bottom: 0;
-  font-size: 13px;
-  line-height: 15px;
+  font-size: 15px;
+  line-height: 18px;
   color: #383838;
-
-  @media (min-width: 576px) {
-    font-size: 15px;
-    line-height: 18px;
-  }
 `;
 
 const Price = styled.span`
@@ -40,7 +36,7 @@ const Name = styled.span`
 `;
 
 const Rating = styled.div`
-  margin-top: 8px;
+  margin-top: 2px;
 `;
 
 const Stars = styled.div`
@@ -60,7 +56,7 @@ const Reviews = styled.span`
 `;
 
 const Places = styled.div`
-  margin-top: 8px;
+  margin-top: 2px;
 `;
 
 const Description = Name.extend`
@@ -69,26 +65,16 @@ const Description = Name.extend`
 
 const Type = styled.span`
   margin-right: 8px;
-  font-size: 12px;
-  line-height: 14px;
+  font-size: 15px;
+  line-height: 18px;
   font-weight: lighter;
-
-  @media (min-width: 576px) {
-    font-size: 15px;
-    line-height: 18px;
-  }
 `;
 
 const Beds = styled.span`
   margin-left: 8px;
-  font-size: 12px;
-  line-height: 14px;
+  font-size: 15px;
+  line-height: 18px;
   font-weight: lighter;
-
-  @media (min-width: 576px) {
-    font-size: 15px;
-    line-height: 18px;
-  }
 `;
 
 export default props => {
@@ -113,7 +99,7 @@ export default props => {
           <Star src={star} alt="Star" />
         </Stars>
         <Reviews>
-          {props.numberReviews} · {props.hostType}
+          {props.reviews} · {props.hostType}
         </Reviews>
       </Rating>
     </Card>
