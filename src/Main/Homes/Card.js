@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import star from "../star.svg";
 
-export const Card = styled.a`
+const Card = styled.a`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -10,14 +10,14 @@ export const Card = styled.a`
   cursor: pointer;
 `;
 
-export const Image = styled.img`
+const Image = styled.img`
   position: relative;
   width: 100%;
   max-height: 346px;
   object-fit: cover;
 `;
 
-export const Title = styled.p`
+const Title = styled.p`
   margin-top: 8px;
   margin-bottom: 0;
   font-size: 13px;
@@ -30,28 +30,28 @@ export const Title = styled.p`
   }
 `;
 
-export const Price = styled.span`
+const Price = styled.span`
   font-weight: bold;
 `;
 
-export const Name = styled.span`
+const Name = styled.span`
   font-weight: 600;
 `;
 
-export const Rating = styled.div`
+const Rating = styled.div`
   margin-top: 8px;
 `;
 
-export const Stars = styled.div`
+const Stars = styled.div`
   display: inline-block;
   margin-right: 8px;
 `;
 
-export const Star = styled.img`
+const Star = styled.img`
   margin-right: 4px;
 `;
 
-export const Reviews = styled.span`
+const Reviews = styled.span`
   font-weight: 600;
   font-size: 12px;
   line-height: 14px;
