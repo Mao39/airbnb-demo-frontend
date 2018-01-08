@@ -1,59 +1,14 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Slider, SliderBtn } from "../Slider";
-import { Card, Image, Title, Price } from "../Card";
 import { Head, Caption, More } from "../Head";
+import { Slider, SliderBtn } from "../Slider";
+import Card from "./Card";
 import chumley from "./chumley.png";
 import hanjan from "./hanjan.png";
 import primeMeats from "./primeMeats.png";
 import seaprice from "./seaprice.png";
 
 const Popular = styled.section``;
-
-const Place = styled.span`
-  margin-top: 12px;
-  font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 8px;
-  line-height: 9px;
-  font-weight: bold;
-  color: #383838;
-  text-transform: uppercase;
-
-  @media (min-width: 320px) {
-    font-size: 10px;
-    line-height: 12px;
-  }
-`;
-
-const Name = Price.extend`
-  font-size: 14px;
-  line-height: 16px;
-
-  @media (min-width: 320px) {
-    font-size: 18px;
-    line-height: 21px;
-  }
-`;
-
-const Rate = styled.span`
-  margin-top: 4px;
-  font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 12px;
-  line-height: 14px;
-  font-weight: lighter;
-  color: #383838;
-  opacity: 0.9;
-
-  @media (min-width: 768px) {
-    font-size: 18px;
-    line-height: 21px;
-  }
-
-  @media (min-width: 320px) {
-    font-size: 14px;
-    line-height: 16px;
-  }
-`;
 
 const Arrow = SliderBtn.extend`
   margin-top: 4rem;
@@ -65,54 +20,34 @@ export default function() {
       <div className="container">
         <Head>
           <div className="row">
-            <div className="col-md-10 col-sm-10 col-xs-9">
+            <div className="col-xs-9 col-sm-10 col-md-10">
               <Caption>Popular reservations around the world</Caption>
             </div>
-            <div className="col-md-2 col-sm-2 col-xs-3">
+            <div className="col-xs-3 col-sm-2 col-md-2">
               <More href="#">See all</More>
             </div>
           </div>
         </Head>
         <Slider>
           <div className="row">
-            <div className="col-md-3 col-sm-4 col-xs-6">
-              <Card>
-                <Image src={chumley} />
-                <Place>Speakeasy</Place>
-                <Title>
-                  <Name>Chumley’s</Name>
-                </Title>
-                <Rate>About $60 per person</Rate>
+            <div className="col-xs-6 col-sm-4 col-md-3">
+              <Card imgSrc={chumley} place="Speakeasy" rate="60">
+                Chumley’s
               </Card>
             </div>
-            <div className="col-md-3 col-sm-4 col-xs-6">
-              <Card>
-                <Image src={hanjan} />
-                <Place>Korean gastropub</Place>
-                <Title>
-                  <Name>Hanjan</Name>
-                </Title>
-                <Rate>About $50 per person</Rate>
+            <div className="col-xs-6 col-sm-4 col-md-3">
+              <Card imgSrc={hanjan} place="Korean gastropub" rate="60">
+                Hanjan
               </Card>
             </div>
-            <div className="col-md-3 col-sm-4 col-xs-6">
-              <Card>
-                <Image src={primeMeats} />
-                <Place>German american</Place>
-                <Title>
-                  <Name>Prime Meats</Name>
-                </Title>
-                <Rate>About $55 per person</Rate>
+            <div className="col-xs-6 col-sm-4 col-md-3">
+              <Card imgSrc={primeMeats} place="German american" rate="55">
+                Prime Meats
               </Card>
             </div>
-            <div className="col-md-3 col-sm-4 col-xs-6">
-              <Card>
-                <Image src={seaprice} />
-                <Place>Fine seafood</Place>
-                <Title>
-                  <Name>Seaprice</Name>
-                </Title>
-                <Rate>About $70 per person</Rate>
+            <div className="col-xs-6 col-sm-4 col-md-3">
+              <Card imgSrc={seaprice} place="Fine seafood" rate="70">
+                Seaprice
               </Card>
             </div>
             <Arrow />
