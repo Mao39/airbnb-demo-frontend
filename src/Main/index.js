@@ -5,17 +5,21 @@ import Experiences from "./Experiences";
 import Homes from "./Homes";
 import Popular from "./Popular";
 import Featured from "./Featured";
+import Footer from "../Footer";
 
 const Main = styled.main``;
 
 export default function() {
   return (
-    <Main>
-      <Explore />
-      <Experiences />
-      <Homes />
-      <Popular />
-      <Featured />
-    </Main>
+    <React.Fragment>
+      <Main>
+        <Explore />
+        <Experiences />
+        <Homes />
+        <Popular />
+        <Featured />
+      </Main>
+      <Footer />
+    </React.Fragment>
   );
 }

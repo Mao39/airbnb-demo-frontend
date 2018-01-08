@@ -16,7 +16,6 @@ class App extends Component {
           <Header />
           <Route path="/" exact component={Main} />
           <Route path="/homes" component={Homes} />
-          <Footer />
         </React.Fragment>
       </BrowserRouter>
     );
