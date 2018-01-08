@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import homes from "./homes.png";
 
 const Card = styled.a`
   display: flex;
