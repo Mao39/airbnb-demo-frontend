@@ -59,30 +59,32 @@ const Invite = styled.p`
   color: #636363;
 `;
 
-export default props => {
+export default function() {
   return (
     <Pagination>
       <div className="container">
-        <div className="col-xs-12">
-          <Pages>
-            <Page href="" active>
-              1
-            </Page>
-            <Page href="">2</Page>
-            <Page href="">3</Page>
-            <Page>...</Page>
-            <Page href="">17</Page>
-            <Next href="" />
-          </Pages>
-          <Total>1 – 18 of 300+ Rentals</Total>
-        </div>
-        <div className="col-xs-12">
-          <Invite>
-            Enter dates to see full pricing. Additional fees apply. Taxes may be
-            added.
-          </Invite>
+        <div className="row">
+          <div className="col-xs-12">
+            <Pages>
+              <Page href="" active>
+                1
+              </Page>
+              <Page href="">2</Page>
+              <Page href="">3</Page>
+              <Page>...</Page>
+              <Page href="">17</Page>
+              <Next href="" />
+            </Pages>
+            <Total>1 – 18 of 300+ Rentals</Total>
+          </div>
+          <div className="col-xs-12">
+            <Invite>
+              Enter dates to see full pricing. Additional fees apply. Taxes may
+              be added.
+            </Invite>
+          </div>
         </div>
       </div>
     </Pagination>
   );
-};
+}
