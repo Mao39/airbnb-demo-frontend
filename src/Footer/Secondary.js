@@ -70,6 +70,18 @@ const Icon = styled.a`
   background-repeat: no-repeat;
 `;
 
+const FacebookIcon = Icon.extend`
+  background-image: url(${facebook});
+`;
+
+const TwitterIcon = Icon.extend`
+  background-image: url(${twitter});
+`;
+
+const InstagramIcon = Icon.extend`
+  background-image: url(${instagram});
+`;
+
 export default function() {
   return (
     <Bottom>
@@ -86,9 +98,9 @@ export default function() {
               <Link href="#">Terms</Link>
               <Link href="#">Privacy</Link>
               <Link href="#">Site map</Link>
-              <Icon href="#" style={{ backgroundImage: `url(${facebook})` }} />
-              <Icon href="#" style={{ backgroundImage: `url(${twitter})` }} />
-              <Icon href="#" style={{ backgroundImage: `url(${instagram})` }} />
+              <FacebookIcon href="#" />
+              <TwitterIcon href="#" />
+              <InstagramIcon href="#" />
             </Social>
           </div>
         </div>
