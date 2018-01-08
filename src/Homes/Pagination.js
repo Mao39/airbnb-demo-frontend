@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import arrow from "./arrow.svg";
+import iconMap from "./location.svg";
 
 const Pagination = styled.div`
+  position: relative;
   margin-top: 40px;
   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 16px;
@@ -59,6 +61,19 @@ const Invite = styled.p`
   color: #636363;
 `;
 
+const IconMap = styled.button`
+  position: absolute;
+  right: 8px;
+  bottom: 24px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: url(${iconMap}) no-repeat center;
+  background-size: 16px 20px;
+  border: 1px solid rgba(72, 72, 72, 0.16);
+  box-shadow: 0px 2px 4px rgba(72, 72, 72, 0.16);
+`;
+
 export default function() {
   return (
     <Pagination>
@@ -82,6 +97,7 @@ export default function() {
               Enter dates to see full pricing. Additional fees apply. Taxes may
               be added.
             </Invite>
+            <IconMap />
           </div>
         </div>
       </div>

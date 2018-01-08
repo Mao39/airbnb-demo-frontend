@@ -19,7 +19,7 @@ export default function() {
       <Main>
         <div className="container">
           <div className="row">
-            <div className="col-xs-12">
+            <div className="col-xs-12 col-sm-6">
               <Card
                 imgSrc={salentina}
                 price={82}
@@ -31,7 +31,7 @@ export default function() {
                 La Salentina, see, nature & relax
               </Card>
             </div>
-            <div className="col-xs-12">
+            <div className="col-xs-12 col-sm-6">
               <Card
                 imgSrc={privateBed}
                 price={82}
@@ -43,7 +43,7 @@ export default function() {
                 Your private 3 bedr. riad and exclusi…
               </Card>
             </div>
-            <div className="col-xs-12">
+            <div className="col-xs-12 col-sm-6">
               <Card
                 imgSrc={tropical}
                 price={200}
@@ -55,7 +55,7 @@ export default function() {
                 Dreamy Tropical Tree House
               </Card>
             </div>
-            <div className="col-xs-12">
+            <div className="col-xs-12 col-sm-6">
               <Card
                 imgSrc={oldTown}
                 price={110}
@@ -67,7 +67,7 @@ export default function() {
                 La Salentina, see, nature & relax
               </Card>
             </div>
-            <div className="col-xs-12">
+            <div className="col-xs-12 col-sm-6">
               <Card
                 imgSrc={lussuoso}
                 price={83}
@@ -79,7 +79,7 @@ export default function() {
                 Lussuoso. Vista incantevole.
               </Card>
             </div>
-            <div className="col-xs-12">
+            <div className="col-xs-12 col-sm-6">
               <Card
                 imgSrc={historical}
                 price={72}
