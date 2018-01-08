@@ -17,7 +17,7 @@ const Card = styled.a`
   box-shadow: 0px 2px 4px rgba(72, 72, 72, 0.08);
   cursor: pointer;
 
-  @media (min-width: 320px) {
+  @media (min-width: 490px) {
     flex-direction: row;
     align-items: center;
     padding: 0;
@@ -33,7 +33,7 @@ const Name = styled.span`
   font-weight: bold;
   color: #383838;
 
-  @media (min-width: 320px) {
+  @media (min-width: 490px) {
     font-size: 17px;
     line-height: 20px;
     padding-top: 0;
@@ -47,7 +47,7 @@ const Image = styled.img`
   border-radius: 4px 4px 0 0;
   object-fit: cover;
 
-  @media (min-width: 320px) {
+  @media (min-width: 490px) {
     width: 96px;
     height: 72px;
     border-radius: 4px 0 0 4px;
