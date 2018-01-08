@@ -8,6 +8,7 @@ import oldTown from "./oldTown.png";
 import lussuoso from "./lussuoso.png";
 import historical from "./historical.png";
 import tropical from "./tropical.png";
+import Pagination from "./Pagination";
 
 const Main = styled.main``;
 
@@ -93,6 +94,7 @@ export default function() {
           </div>
         </div>
       </Main>
+      <Pagination />
     </React.Fragment>
   );
 }
