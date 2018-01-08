@@ -6,6 +6,7 @@ const Filters = styled.div`
   align-items: center;
   align-content: flex-start;
   height: 56px;
+  background: #fff;
   box-shadow: 0 0 0.5px rgba(72, 72, 72, 0.3);
 `;
 

@@ -31,6 +31,7 @@ const Title = styled.p`
 `;
 
 const Price = styled.span`
+  margin-right: 8px;
   font-weight: bold;
 `;
 
@@ -96,7 +97,7 @@ export default props => {
       <Image src={props.imgSrc} />
       <Title>
         <Price>${props.price}</Price>
-        <Description> {props.children}</Description>
+        <Description>{props.children}</Description>
       </Title>
       <Places>
         <Type>{props.homeType}</Type>
