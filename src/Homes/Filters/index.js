@@ -2,6 +2,11 @@ import React, { Component } from "react";
 import styled from "styled-components";
 
 const Filters = styled.div`
+  position: fixed;
+  top: 80px;
+  right: 0;
+  left: 0;
+  z-index: 3;
   display: flex;
   align-items: center;
   align-content: flex-start;
