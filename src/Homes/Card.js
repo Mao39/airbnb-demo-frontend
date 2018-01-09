@@ -64,14 +64,12 @@ const Description = Name.extend`
 `;
 
 const Type = styled.span`
-  margin-right: 8px;
   font-size: 15px;
   line-height: 18px;
   font-weight: lighter;
 `;
 
 const Beds = styled.span`
-  margin-left: 8px;
   font-size: 15px;
   line-height: 18px;
   font-weight: lighter;
@@ -87,7 +85,7 @@ export default props => {
       </Title>
       <Places>
         <Type>{props.homeType}</Type>
-        ·
+        <span> · </span>
         <Beds>{props.numberBeds}</Beds>
       </Places>
       <Rating>

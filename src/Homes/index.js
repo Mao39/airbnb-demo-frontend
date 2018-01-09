@@ -2,13 +2,14 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import Filters from "./Filters";
 import Card from "./Card";
+import Pagination from "./Pagination";
+import Location from "./Location";
 import salentina from "./salentina.png";
 import privateBed from "./privateBed.png";
 import oldTown from "./oldTown.png";
 import lussuoso from "./lussuoso.png";
 import historical from "./historical.png";
 import tropical from "./tropical.png";
-import Pagination from "./Pagination";
 
 const Main = styled.main``;
 
@@ -19,7 +20,7 @@ export default function() {
       <Main>
         <div className="container">
           <div className="row">
-            <div className="col-xs-12 col-sm-6">
+            <div className="col-xs-12 col-sm-6 col-md-4">
               <Card
                 imgSrc={salentina}
                 price={82}
@@ -31,7 +32,7 @@ export default function() {
                 La Salentina, see, nature & relax
               </Card>
             </div>
-            <div className="col-xs-12 col-sm-6">
+            <div className="col-xs-12 col-sm-6 col-md-4">
               <Card
                 imgSrc={privateBed}
                 price={82}
@@ -43,7 +44,7 @@ export default function() {
                 Your private 3 bedr. riad and exclusi…
               </Card>
             </div>
-            <div className="col-xs-12 col-sm-6">
+            <div className="col-xs-12 col-sm-6 col-md-4">
               <Card
                 imgSrc={tropical}
                 price={200}
@@ -55,7 +56,7 @@ export default function() {
                 Dreamy Tropical Tree House
               </Card>
             </div>
-            <div className="col-xs-12 col-sm-6">
+            <div className="col-xs-12 col-sm-6 col-md-4">
               <Card
                 imgSrc={oldTown}
                 price={110}
@@ -67,7 +68,7 @@ export default function() {
                 La Salentina, see, nature & relax
               </Card>
             </div>
-            <div className="col-xs-12 col-sm-6">
+            <div className="col-xs-12 col-sm-6 col-md-4">
               <Card
                 imgSrc={lussuoso}
                 price={83}
@@ -79,7 +80,7 @@ export default function() {
                 Lussuoso. Vista incantevole.
               </Card>
             </div>
-            <div className="col-xs-12 col-sm-6">
+            <div className="col-xs-12 col-sm-6 col-md-4">
               <Card
                 imgSrc={historical}
                 price={72}
@@ -94,6 +95,7 @@ export default function() {
           </div>
         </div>
       </Main>
+      <Location />
       <Pagination />
     </React.Fragment>
   );
