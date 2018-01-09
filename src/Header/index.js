@@ -6,10 +6,15 @@ import Nav from "./Nav";
 import arrow from "./arrow.svg";
 
 const Header = styled.header`
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 3;
   display: flex;
   align-items: center;
   height: 80px;
-  border-bottom: 1px solid rgba(72, 72, 72, 0.3);
+  background: #fff;
   box-shadow: 0 0.5px 0 rgba(72, 72, 72, 0.3);
 `;
 
