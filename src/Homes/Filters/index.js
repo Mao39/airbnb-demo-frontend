@@ -31,9 +31,11 @@ const Btn = styled.button`
 export default function() {
   return (
     <Filters>
-      <Btn>Dates</Btn>
-      <Btn>Guests</Btn>
-      <Btn>More filters</Btn>
+      <div className="container">
+        <Btn>Dates</Btn>
+        <Btn>Guests</Btn>
+        <Btn>More filters</Btn>
+      </div>
     </Filters>
   );
 }
