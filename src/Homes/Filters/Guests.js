@@ -5,6 +5,8 @@ import minus from "./minus.svg";
 import plus from "./plus.svg";
 
 const Guests = styled.aside`
+  ${"" /* NONE */};
+  display: none;
   position: fixed;
   top: 0;
   right: 0;
@@ -14,9 +16,17 @@ const Guests = styled.aside`
 
   @media (min-width: 576px) {
     position: absolute;
-    top: 132px;
-    left: 5%;
+    top: 40px;
+    left: 0;
+    display: inline-block;
+    height: 290px;
     width: 326px;
+    padding: 32px 24px;
+    border: 1px solid rgba(72, 72, 72, 0.2);
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(72, 72, 72, 0.08);
+    ${"" /* NONE */};
+    display: none;
   }
 `;
 
@@ -142,12 +152,15 @@ const Bottom = styled.div`
   right: 0;
   bottom: 0;
   left: 0;
+  display: flex;
+  justify-content: space-between;
   height: 64px;
   padding: 8px;
   box-shadow: 0 -1px #d5d5d5;
 
   @media (min-width: 576px) {
-    display: none;
+    padding: 0;
+    box-shadow: none;
   }
 `;
 
@@ -162,6 +175,36 @@ const Save = styled.button`
   font-weight: Bold;
   color: #fff;
   background: #ff5a5f;
+  cursor: pointer;
+
+  @media (min-width: 576px) {
+    display: none;
+  }
+`;
+
+const Cancel = styled.button`
+  width: 110px;
+  height: 64px;
+  border: none;
+  font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 19px;
+  font-weight: 600;
+  color: #636363;
+  background: transparent;
+  cursor: pointer;
+`;
+
+const Apply = styled.button`
+  width: 110px;
+  height: 64px;
+  border: none;
+  font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 19px;
+  font-weight: 600;
+  color: #008489;
+  background: transparent;
   cursor: pointer;
 `;
 
@@ -194,6 +237,8 @@ export default function() {
       <HumanCoast type="Infants" age="Under 2" amount={0} />
       <Bottom>
         <Save>Save</Save>
+        <Cancel>Cancel</Cancel>
+        <Apply>Apply</Apply>
       </Bottom>
     </Guests>
   );

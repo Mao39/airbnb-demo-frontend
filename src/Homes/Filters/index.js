@@ -17,6 +17,7 @@ const Filters = styled.div`
 `;
 
 const Btn = styled.button`
+  position: relative;
   margin-left: 8px;
   padding: 7px 16px;
   border: 1px solid rgba(72, 72, 72, 0.2);
@@ -34,9 +35,10 @@ export default function() {
     <Filters>
       <div className="container">
         <Btn>Dates</Btn>
-        <Btn>Guests</Btn>
+        <Btn>
+          Guests<Guests />
+        </Btn>
         <Btn>More filters</Btn>
-        <Guests />
       </div>
     </Filters>
   );
