@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled, { css } from "styled-components";
+import privateRoom from "./private.svg";
 
 const Room = styled.aside`
   position: absolute;
@@ -52,13 +53,48 @@ const Apply = styled.button`
   cursor: pointer;
 `;
 
-function HumanCoast(props) {
-  return <h1>s</h1>;
+const RoomType = styled.div`
+  ${props => css`
+    background: url(${props.imgSrc}) no-repeat center;
+    background-size: 32px;
+  `};
+`;
+
+const Type = styled.span``;
+
+const Title = styled.span``;
+
+const Desc = styled.span``;
+
+const Checkbox = styled.span`
+  background: url() no-repeat center;
+  background-size: 32px;
+`;
+
+const Input = styled.input``;
+
+function CheckRoom(props) {
+  return (
+    <RoomType>
+      <Checkbox>
+        <Input type="checkbox" />
+      </Checkbox>
+      <Type>
+        <Title>{props.type}</Title>
+        <Desc>{props.desc}</Desc>
+      </Type>
+    </RoomType>
+  );
 }
 
 export default function() {
   return (
     <Room>
+      <CheckRoom
+        type="Private room"
+        desc="Have your own room and share some common spaces"
+        imgSrc={privateRoom}
+      />
       <Bottom>
         <Cancel>Cancel</Cancel>
         <Apply>Apply</Apply>
