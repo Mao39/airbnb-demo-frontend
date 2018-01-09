@@ -6,6 +6,7 @@ const Card = styled.a`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  margin-top: 24px;
   padding: 0;
   padding-bottom: 11px;
   border: 1px solid rgba(72, 72, 72, 0.2);

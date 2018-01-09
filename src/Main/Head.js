@@ -4,7 +4,6 @@ import arrow from "./arrow.svg";
 
 export const Head = styled.div`
   margin-top: 48px;
-  margin-bottom: 24px;
 
   & .row {
     align-items: center;

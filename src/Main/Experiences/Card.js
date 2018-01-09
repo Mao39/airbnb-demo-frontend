@@ -6,6 +6,7 @@ const Card = styled.a`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  margin-top: 24px;
   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
   cursor: pointer;
 `;

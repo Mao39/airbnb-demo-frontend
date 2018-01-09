@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { Slider, SliderBtn } from "../Slider";
-import Card from "./Card";
+import Card from "../../Homes/Card";
 import { Head, Caption, More } from "../Head";
 import laSalentina from "./laSalentina.png";
 import privateBed from "./privateBed.png";
