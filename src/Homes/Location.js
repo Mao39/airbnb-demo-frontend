@@ -1,15 +1,34 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import GoogleMap from "google-map-react";
+import GoogleMapReact from "google-map-react";
 
 const Location = styled.div`
+  display: none;
   position: fixed;
+  top: 137px;
+  right: 0;
+  height: 100vh;
+
+  @media (min-width: 768px) {
+    display: block;
+    width: 34%;
+  }
 `;
 
-const Google = props => (
-  <GoogleMap defaultCenter={props.center} defaultZoom={props.zoom} />
-);
+export default class GoogleMap extends Component {
+  static = {
+    center: { lat: 59.95, lng: 30.33 },
+    zoom: 11
+  };
 
-export default props => {
-  return <Google center={{ lat: 54.707424, lng: 20.500578 }} zoom={3} />;
-};
+  render() {
+    return (
+      <Location>
+        <GoogleMapReact
+          defaultCenter={this.static.center}
+          defaultZoom={this.static.zoom}
+        />
+      </Location>
+    );
+  }
+}
