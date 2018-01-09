@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import arrow from "./arrow.svg";
-import iconMap from "./location.svg";
+import arrow from "../arrow.svg";
+import iconMap from "../location.svg";
 
 const Pagination = styled.div`
   position: relative;
