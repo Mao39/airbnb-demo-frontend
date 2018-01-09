@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import Guests from "./Guests";
 
 const Filters = styled.div`
   position: fixed;
@@ -35,6 +36,7 @@ export default function() {
         <Btn>Dates</Btn>
         <Btn>Guests</Btn>
         <Btn>More filters</Btn>
+        <Guests />
       </div>
     </Filters>
   );
