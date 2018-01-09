@@ -37,7 +37,7 @@ export const Link = styled.a`
 export default function() {
   return (
     <React.Fragment>
-      <div className="col-md-2 col-md-offset-1 col-sm-2 col-sm-offset-1 hidden-xs">
+      <div className="hidden-xs hidden-sm col-md-offset-1 col-md-2">
         <Title>Airbnb</Title>
         <Link href="#">About us</Link>
         <Link href="#">Careers</Link>
@@ -46,7 +46,7 @@ export default function() {
         <Link href="#">Help</Link>
         <Link href="#">Diversity & Belonging</Link>
       </div>
-      <div className="col-md-2 col-md-offset-1 col-sm-2 col-sm-offset-2 hidden-xs">
+      <div className="hidden-xs hidden-sm col-md-offset-1 col-md-2">
         <Title>Discover</Title>
         <Link href="#">Trust & Safety</Link>
         <Link href="#">Travel Credit</Link>
@@ -56,7 +56,7 @@ export default function() {
         <Link href="#">Guidebooks</Link>
         <Link href="#">Airbnbmag</Link>
       </div>
-      <div className="col-md-2 col-md-offset-1 col-sm-2 col-sm-offset-2 hidden-xs">
+      <div className="hidden-xs hidden-sm col-md-offset-1 col-md-2">
         <Title>Hosting</Title>
         <Link href="#">Why Host</Link>
         <Link href="#">Hospitality</Link>
