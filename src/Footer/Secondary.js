@@ -56,7 +56,7 @@ const Social = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  height: 44px;
+  height: 54px;
   background-size: 16px 16px;
 
   @media (min-width: 576px) {
