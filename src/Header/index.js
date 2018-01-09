@@ -19,13 +19,17 @@ const Link = styled.a`
   height: 100%;
 `;
 
-const Logo = styled.img``;
+const Logo = styled.img`
+  width: 30px;
+  height: 32px;
+`;
 
-const Dropdown = styled.a`
+const Dropdown = styled.button`
   display: inline-block;
-  margin-left: 4px;
-  width: 8.6px;
+  margin-left: 5px;
+  width: 5.5px;
   height: 10px;
+  border: none;
   background: url(${arrow}) no-repeat center center;
   background-size: contain;
 
@@ -39,16 +43,16 @@ export default function() {
     <Header>
       <div className="container">
         <div className="row">
-          <div className="col-md-1 col-sm-1 col-xs-2">
+          <div className="col-xs-2 col-sm-1 col-md-1">
             <Link href="#">
               <Logo src={logo} alt="Logo" />
               <Dropdown />
             </Link>
           </div>
-          <div className="col-md-5 col-sm-7 col-xs-10">
+          <div className="col-xs-10 col-sm-7 col-md-5">
             <SearchBar />
           </div>
-          <div className="col-md-offset-2 col-md-4 hidden-sm hidden-xs">
+          <div className="col-md-offset-2 col-md-4">
             <Nav />
           </div>
         </div>
