@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import Guests from "./Guests";
 import Room from "./Room";
+import Dates from "./Dates";
 
 const Filters = styled.div`
   position: fixed;
@@ -29,6 +30,7 @@ const Btn = styled.button`
   line-height: 16px;
   color: #383838;
   background: transparent;
+  cursor: pointer;
 `;
 
 export default function() {
@@ -39,8 +41,11 @@ export default function() {
         <Btn>
           Guests<Guests />
         </Btn>
-        <Btn>
+        {/* <Btn>
           Room type<Room />
+        </Btn> */}
+        <Btn>
+          Dates<Dates />
         </Btn>
         <Btn>More filters</Btn>
       </div>
