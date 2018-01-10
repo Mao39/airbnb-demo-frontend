@@ -133,7 +133,15 @@ export default function() {
         <Caption>Dates</Caption>
         <Reset>Reset</Reset>
       </Header>
-      <DayPicker startDate={this.state.startDate}>
+      <DayPicker
+        startDate={this.state.startDate}
+        endDate={this.state.endDate}
+        onDatesChange={({ startDate, endDate }) =>
+          this.setState({ startDate, endDate })
+        }
+        focusedInput={this.state.focusedInput}
+        onFocusChange={focusedInput => this.setState({ focusedInput })}
+      >
         <Bottom>
           <Cancel>Cancel</Cancel>
           <Apply>Apply</Apply>
