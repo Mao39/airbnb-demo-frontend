@@ -3,10 +3,10 @@ import styled from "styled-components";
 import { Slider, SliderBtn } from "../Slider";
 import Card from "./Card";
 import { Head, Caption, More } from "../Head";
-import forestTherapy from "./forestTherapy.png";
-import whaleWatching from "./whaleWatching.png";
-import tableMountain from "./tableMountain.png";
-import salsaNight from "./salsaNight.png";
+import forestTherapy from "../../UI/forestTherapy.png";
+import whaleWatching from "../../UI/whaleWatching.png";
+import tableMountain from "../../UI/tableMountain.png";
+import salsaNight from "../../UI/salsaNight.png";
 
 const Experiences = styled.section``;
 

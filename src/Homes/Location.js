@@ -27,10 +27,10 @@ export default class GoogleMap extends Component {
         <GoogleMapReact
           defaultCenter={this.static.center}
           defaultZoom={this.static.zoom}
-          bootstrapURLKeys={{
-            key: process.env.REACT_APP_GOOGLE_API_KEY,
-            language: "ru"
-          }}
+          // bootstrapURLKeys={{
+          //   key: process.env.REACT_APP_GOOGLE_API_KEY,
+          //   language: "ru"
+          // }}
         />
       </Location>
     );

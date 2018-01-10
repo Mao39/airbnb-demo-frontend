@@ -7,7 +7,7 @@ import {
   SingleDatePicker,
   DayPickerRangeController
 } from "react-dates";
-import cross from "./cross.svg";
+import cross from "../../UI/cross.svg";
 
 const DayPicker = styled(DayPickerRangeController)``;
 

@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import Card from "../Card";
 import Pagination from "./Pagination";
-import salentina from "../salentina.png";
-import privateBed from "../privateBed.png";
-import oldTown from "../oldTown.png";
-import lussuoso from "../lussuoso.png";
-import historical from "../historical.png";
-import tropical from "../tropical.png";
+import salentina from "../../UI/salentina.png";
+import privateBed from "../../UI//privateBed.png";
+import oldTown from "../../UI/oldTown.png";
+import lussuoso from "../../UI/lussuoso.png";
+import historical from "../../UI/historical.png";
+import tropical from "../../UI/tropical.png";
 
 const Main = styled.main`
   padding-top: 137px;

@@ -3,12 +3,12 @@ import styled from "styled-components";
 import { Head, Caption } from "../Head";
 import { Slider, SliderBtn } from "../Slider";
 import Card from "./Card";
-import paris from "./paris.png";
-import seoul from "./seoul.png";
-import tokyo from "./tokyo.png";
-import miami from "./miami.png";
-import losAngeles from "./losAngeles.png";
-import capeTown from "./capeTown.png";
+import paris from "../../UI/paris.png";
+import seoul from "../../UI/seoul.png";
+import tokyo from "../../UI/tokyo.png";
+import miami from "../../UI/miami.png";
+import losAngeles from "../../UI/losAngeles.png";
+import capeTown from "../../UI/capeTown.png";
 
 const Featured = styled.section``;
 

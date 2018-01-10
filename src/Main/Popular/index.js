@@ -3,10 +3,10 @@ import styled from "styled-components";
 import { Head, Caption, More } from "../Head";
 import { Slider, SliderBtn } from "../Slider";
 import Card from "./Card";
-import chumley from "./chumley.png";
-import hanjan from "./hanjan.png";
-import primeMeats from "./primeMeats.png";
-import seaprice from "./seaprice.png";
+import chumley from "../../UI/chumley.png";
+import hanjan from "../../UI/hanjan.png";
+import primeMeats from "../../UI/primeMeats.png";
+import seaprice from "../../UI/seaprice.png";
 
 const Popular = styled.section``;
 

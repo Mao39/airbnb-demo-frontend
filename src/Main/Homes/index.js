@@ -3,9 +3,9 @@ import styled from "styled-components";
 import { Slider, SliderBtn } from "../Slider";
 import Card from "../../Homes/Card";
 import { Head, Caption, More } from "../Head";
-import laSalentina from "./laSalentina.png";
-import privateBed from "./privateBed.png";
-import dreamyTropical from "./dreamyTropical.png";
+import salentina from "../../UI/salentina.png";
+import privateBed from "../../UI/privateBed.png";
+import dreamyTropical from "../../UI/dreamyTropical.png";
 
 const Homes = styled.section``;
 
@@ -31,7 +31,7 @@ export default function() {
           <div className="row">
             <div className="col-xs-8 col-sm-5 col-md-4">
               <Card
-                imgSrc={laSalentina}
+                imgSrc={salentina}
                 price="82"
                 homeType="Entire house"
                 numberBeds="9 beds"

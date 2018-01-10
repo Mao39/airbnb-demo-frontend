@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import styled, { css } from "styled-components";
-import cross from "./cross.svg";
-import minus from "./minus.svg";
-import plus from "./plus.svg";
+import cross from "../../UI/cross.svg";
+import minus from "../../UI/minus.svg";
+import plus from "../../UI/plus.svg";
 
 const Guests = styled.aside`
   ${"" /* NONE */};

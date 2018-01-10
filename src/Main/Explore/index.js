@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import homes from "./homes.png";
-import experiences from "./experiences.png";
-import restaurants from "./restaurants.png";
 import { Head, Caption } from "../Head";
 import { Slider } from "../Slider";
 import Card from "./Card";
+import homes from "../../UI/homes.png";
+import experiences from "../../UI/experiences.png";
+import restaurants from "../../UI/restaurants.png";
 
 const Explore = styled.section``;
 

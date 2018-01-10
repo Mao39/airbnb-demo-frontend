@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import styled, { css } from "styled-components";
-import privateRoom from "./private.svg";
-import check from "./check.svg";
-import entire from "./entire.svg";
-import shared from "./shared.svg";
+import privateRoom from "../../UI/private.svg";
+import check from "../../UI/check.svg";
+import entire from "../../UI/entire.svg";
+import shared from "../../UI/shared.svg";
 
 const Room = styled.aside`
   position: absolute;

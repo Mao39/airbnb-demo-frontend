@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import star from "../assets/star.svg";
+import star from "../UI/star.svg";
 
 const Card = styled.a`
   display: flex;

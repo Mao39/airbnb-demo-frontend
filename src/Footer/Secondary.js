@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { Link } from "./Primary/Nav";
-import facebook from "../assets/facebook.svg";
-import twitter from "../assets/twitter.svg";
-import instagram from "../assets/instagram.svg";
-import logo from "./logo.svg";
+import facebook from "../UI/facebook.svg";
+import twitter from "../UI/twitter.svg";
+import instagram from "../UI/instagram.svg";
+import logo from "../UI/footerLogo.svg";
 
 const Bottom = styled.div`
   margin-top: 48px;

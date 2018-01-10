@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import logo from "./logo.svg";
 import SearchBar from "./SearchBar";
 import Nav from "./Nav";
-import arrow from "./arrow.svg";
+import arrow from "../UI/dropdownArrow.svg";
+import logo from "../UI/headerLogo.svg";
 
 const Header = styled.header`
   position: fixed;
