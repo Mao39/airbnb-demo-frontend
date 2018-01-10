@@ -34,7 +34,7 @@ export const Link = styled.a`
   }
 `;
 
-export default function() {
+export default () => {
   return (
     <React.Fragment>
       <div className="hidden-xs hidden-sm col-md-offset-1 col-md-2">
@@ -65,4 +65,4 @@ export default function() {
       </div>
     </React.Fragment>
   );
-}
+};

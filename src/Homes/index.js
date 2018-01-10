@@ -4,7 +4,7 @@ import Filters from "./Filters";
 import List from "./List";
 import GoogleMap from "./Location";
 
-export default function() {
+export default () => {
   return (
     <React.Fragment>
       <Filters />
@@ -12,4 +12,4 @@ export default function() {
       <GoogleMap />
     </React.Fragment>
   );
-}
+};

@@ -14,7 +14,7 @@ const Arrow = SliderBtn.extend`
   margin-top: 9.6rem;
 `;
 
-export default function() {
+export default () => {
   return (
     <Experiences>
       <div className="container">
@@ -56,4 +56,4 @@ export default function() {
       </div>
     </Experiences>
   );
-}
+};

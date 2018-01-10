@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Selects from "./Selects";
 import Nav from "./Nav";
 
-export default function() {
+export default () => {
   return (
     <div className="container">
       <div className="row">
@@ -12,4 +12,4 @@ export default function() {
       </div>
     </div>
   );
-}
+};

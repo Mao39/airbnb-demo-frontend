@@ -33,7 +33,7 @@ const Btn = styled.button`
   cursor: pointer;
 `;
 
-export default function() {
+export default () => {
   return (
     <Filters>
       <div className="container">
@@ -50,4 +50,4 @@ export default function() {
       </div>
     </Filters>
   );
-}
+};

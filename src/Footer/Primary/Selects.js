@@ -38,7 +38,7 @@ const Option = styled.option`
   color: #383838;
 `;
 
-export default function() {
+export default () => {
   return (
     <div className="col-xs-12 col-sm-12 col-md-3">
       <div className="row">
@@ -57,4 +57,4 @@ export default function() {
       </div>
     </div>
   );
-}
+};

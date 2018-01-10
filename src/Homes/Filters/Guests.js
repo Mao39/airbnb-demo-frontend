@@ -224,7 +224,7 @@ function HumanCoast(props) {
   );
 }
 
-export default function() {
+export default () => {
   return (
     <Guests>
       <Header>
@@ -242,4 +242,4 @@ export default function() {
       </Bottom>
     </Guests>
   );
-}
+};

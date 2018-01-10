@@ -149,7 +149,7 @@ class DayPick extends React.Component {
   }
 }
 
-export default function() {
+export default () => {
   return (
     <Dates>
       <Header>
@@ -164,4 +164,4 @@ export default function() {
       </Bottom>
     </Dates>
   );
-}
+};

@@ -74,7 +74,7 @@ const IconMap = styled.button`
   box-shadow: 0px 2px 4px rgba(72, 72, 72, 0.16);
 `;
 
-export default function() {
+export default () => {
   return (
     <Pagination>
       <div className="container">
@@ -103,4 +103,4 @@ export default function() {
       </div>
     </Pagination>
   );
-}
+};

@@ -13,7 +13,7 @@ const Main = styled.main`
   padding-top: 137px;
 `;
 
-export default function() {
+export default () => {
   return (
     <Main>
       <div className="container">
@@ -101,4 +101,4 @@ export default function() {
       </div>
     </Main>
   );
-}
+};

@@ -82,7 +82,7 @@ const InstagramIcon = Icon.extend`
   background-image: url(${instagram});
 `;
 
-export default function() {
+export default () => {
   return (
     <Bottom>
       <div className="container">
@@ -107,4 +107,4 @@ export default function() {
       </div>
     </Bottom>
   );
-}
+};

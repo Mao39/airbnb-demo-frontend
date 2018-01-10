@@ -16,7 +16,7 @@ const Arrow = SliderBtn.extend`
   margin-top: 5.1rem;
 `;
 
-export default function() {
+export default () => {
   return (
     <Featured>
       <div className="container">
@@ -49,4 +49,4 @@ export default function() {
       </div>
     </Featured>
   );
-}
+};

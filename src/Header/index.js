@@ -43,7 +43,7 @@ const Dropdown = styled.button`
   }
 `;
 
-export default function() {
+export default () => {
   return (
     <Header>
       <div className="container">
@@ -64,4 +64,4 @@ export default function() {
       </div>
     </Header>
   );
-}
+};

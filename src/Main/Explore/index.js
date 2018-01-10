@@ -9,7 +9,7 @@ import restaurants from "../../UI/restaurants.png";
 
 const Explore = styled.section``;
 
-export default function() {
+export default () => {
   return (
     <Explore>
       <div className="container">
@@ -32,4 +32,4 @@ export default function() {
       </div>
     </Explore>
   );
-}
+};

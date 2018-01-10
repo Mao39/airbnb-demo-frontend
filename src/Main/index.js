@@ -9,7 +9,7 @@ import Footer from "../Footer";
 
 const Main = styled.main``;
 
-export default function() {
+export default () => {
   return (
     <React.Fragment>
       <Main>
@@ -22,4 +22,4 @@ export default function() {
       <Footer />
     </React.Fragment>
   );
-}
+};

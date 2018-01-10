@@ -49,11 +49,11 @@ const Input = styled.input`
   }
 `;
 
-export default function() {
+export default () => {
   return (
     <SearchBar>
       <Button />
       <Input type="text" defaultValue="Try &quot;Miami&quot;" />
     </SearchBar>
   );
-}
+};
