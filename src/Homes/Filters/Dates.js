@@ -13,7 +13,7 @@ const DayPicker = styled(DayPickerRangeController)``;
 
 const Dates = styled.aside`
   ${"" /* NONE */};
-  display: inline-block;
+  display: none;
   position: fixed;
   top: 0;
   right: 0;
@@ -25,9 +25,8 @@ const Dates = styled.aside`
     position: absolute;
     top: 40px;
     left: 0;
-    display: inline-block;
     ${"" /* NONE */};
-    ${"" /* display: inline-block; */};
+    display: inline-block;
   }
 `;
 
@@ -130,7 +129,7 @@ class DayPick extends React.Component {
     super(props);
     this.state = {
       startDate: "10.01.2018",
-      endDate: "20.01.2018",
+      endDate: "25.01.2018",
       focusedInput: false
     };
   }
