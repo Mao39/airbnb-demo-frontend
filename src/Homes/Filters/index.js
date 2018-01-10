@@ -46,7 +46,6 @@ export default function() {
         {/* <Btn>
           Room type<Room />
         </Btn> */}
-
         <Btn>More filters</Btn>
       </div>
     </Filters>
