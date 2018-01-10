@@ -125,14 +125,18 @@ const Apply = styled.button`
   }
 `;
 
-export default function() {
-  return (
-    <Dates>
-      <Header>
-        <Exit />
-        <Caption>Dates</Caption>
-        <Reset>Reset</Reset>
-      </Header>
+class DayPick extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      startDate: "10.01.2018",
+      endDate: "20.01.2018",
+      focusedInput: false
+    };
+  }
+
+  render() {
+    return (
       <DayPicker
         startDate={this.state.startDate}
         endDate={this.state.endDate}
@@ -141,12 +145,24 @@ export default function() {
         }
         focusedInput={this.state.focusedInput}
         onFocusChange={focusedInput => this.setState({ focusedInput })}
-      >
-        <Bottom>
-          <Cancel>Cancel</Cancel>
-          <Apply>Apply</Apply>
-        </Bottom>
-      </DayPicker>
+      />
+    );
+  }
+}
+
+export default function() {
+  return (
+    <Dates>
+      <Header>
+        <Exit />
+        <Caption>Dates</Caption>
+        <Reset>Reset</Reset>
+      </Header>
+      <DayPick />
+      <Bottom>
+        <Cancel>Cancel</Cancel>
+        <Apply>Apply</Apply>
+      </Bottom>
     </Dates>
   );
 }

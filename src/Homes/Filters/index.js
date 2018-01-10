@@ -37,16 +37,16 @@ export default function() {
   return (
     <Filters>
       <div className="container">
-        <Btn>Dates</Btn>
+        <Btn>
+          Dates<Dates />
+        </Btn>
         <Btn>
           Guests<Guests />
         </Btn>
         {/* <Btn>
           Room type<Room />
         </Btn> */}
-        <Btn>
-          Dates<Dates />
-        </Btn>
+
         <Btn>More filters</Btn>
       </div>
     </Filters>
