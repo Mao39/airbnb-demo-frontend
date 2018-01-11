@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
-const Card = styled.a`
+const Card = styled(Link)`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -58,7 +59,7 @@ const Image = styled.img`
 
 export default props => {
   return (
-    <Card href="#">
+    <Card to={props.to}>
       <Image src={props.imgSrc} alt={props.children} />
       <Name>{props.children}</Name>
     </Card>

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { Link as RouteLink } from "react-router-dom";
 import { Link } from "./Primary/Nav";
 import facebook from "../UI/facebook.svg";
 import twitter from "../UI/twitter.svg";
@@ -17,7 +18,7 @@ const Bottom = styled.div`
   }
 `;
 
-const Brand = styled.a`
+const Brand = styled(RouteLink)`
   display: flex;
   align-items: center;
   height: 100%;
@@ -88,7 +89,7 @@ export default () => {
       <div className="container">
         <div className="row">
           <div className="col-md-2 col-sm-3 col-xs-5">
-            <Brand href="#">
+            <Brand to="/">
               <Logo src={logo} alt="Logo" />
               <Copyright>© Airbnb Inc.</Copyright>
             </Brand>

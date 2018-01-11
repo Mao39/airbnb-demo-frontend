@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import Nav from "./Nav";
 import arrow from "../UI/dropdownArrow.svg";
@@ -29,7 +30,7 @@ const Header = styled.header`
   }
 `;
 
-const Link = styled.a`
+const LogoLink = styled(Link)`
   display: flex;
   align-items: center;
   height: 100%;
@@ -60,10 +61,10 @@ export default () => {
       <div className="container">
         <div className="row">
           <div className="col-xs-2 col-sm-1 col-md-1">
-            <Link href="#">
+            <LogoLink to="/">
               <Logo src={logo} alt="Logo" />
               <Dropdown />
-            </Link>
+            </LogoLink>
           </div>
           <div className="col-xs-10 col-sm-7 col-md-5">
             <SearchBar />
