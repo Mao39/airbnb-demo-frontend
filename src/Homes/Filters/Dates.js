@@ -3,7 +3,6 @@ import styled, { css } from "styled-components";
 import "react-dates/initialize";
 import "react-dates/lib/css/_datepicker.css";
 import { DayPickerRangeController } from "react-dates";
-import onClickOutside from "react-onclickoutside";
 import omit from "lodash/omit";
 
 import cross from "../../UI/cross.svg";
@@ -93,15 +92,17 @@ const Reset = styled.button`
 `;
 
 const Bottom = styled.div`
-  position: absolute;
+  position: relative;
   right: 0;
   bottom: 0;
   left: 0;
   display: flex;
   justify-content: space-between;
   height: 64px;
+  width: 100%;
   padding: 8px;
   box-shadow: 0 -1px #d5d5d5;
+  z-index: 4;
 
   @media (min-width: 576px) {
     padding: 0;
@@ -120,10 +121,6 @@ const Cancel = styled.button`
   color: #636363;
   background: transparent;
   cursor: pointer;
-
-  @media (min-width: 576px) {
-    display: none;
-  }
 `;
 
 const Apply = styled.button`
@@ -137,10 +134,16 @@ const Apply = styled.button`
   color: #008489;
   background: transparent;
   cursor: pointer;
+`;
 
-  @media (min-width: 576px) {
-    display: none;
-  }
+const Overlay = styled.div`
+  position: fixed;
+  top: 137px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.8);
 `;
 
 export default class Dates extends React.Component {
@@ -182,41 +185,52 @@ export default class Dates extends React.Component {
         isTouchDevice={isTouchDevice}
         hideKeyboardShortcutsPanel
         isOpen={isOpen}
-        // onDatesChange={({ startDate, endDate }) =>
-        //   this.setState({ startDate, endDate })
-        // }
-        // focusedInput={this.state.focusedInput}
-        // onFocusChange={focusedInput => this.setState({ focusedInput })}
         renderCalendarInfo={this.renderCalendarInfo}
         onDatesChange={this.onDatesChange}
         onFocusChange={this.onFocusChange}
         focusedInput={focusedInput}
         startDate={startDate}
         endDate={endDate}
-      >
-        <Bottom>
-          <Cancel>Cancel</Cancel>
-          <Apply>Apply</Apply>
-        </Bottom>
-      </DayPicker>
+      />
     );
 
     return (
-      <Btn isOpen={this.state.isOpen} onClick={this.toggle}>
-        {startDate && endDate
-          ? `${startDateString} — ${endDateString}`
-          : isOpen ? "Check in — Check out" : "Dates"}
-        <Filter isOpen={isOpen}>
-          <Header>
-            <Exit />
-            <Caption>Dates</Caption>
-            <Reset>Reset</Reset>
-          </Header>
-          {isOpen ? calendar : null}
-        </Filter>
-      </Btn>
+      <React.Fragment>
+        <Btn isOpen={this.state.isOpen} onClick={this.toggle}>
+          {startDate && endDate
+            ? `${startDateString} — ${endDateString}`
+            : isOpen ? "Check in — Check out" : "Dates"}
+          <Filter isOpen={isOpen}>
+            <Header>
+              <Exit />
+              <Caption>Dates</Caption>
+              <Reset>Reset</Reset>
+            </Header>
+            {isOpen ? calendar : null}
+          </Filter>
+        </Btn>
+        {isOpen ? <Overlay onClick={this.toggle} /> : null}
+      </React.Fragment>
     );
   }
+
+  renderCalendarInfo = () => {
+    return (
+      <Bottom>
+        <Cancel onClick={this.Reset}>
+          {this.state.startDate && this.state.endDate ? "Reset" : "Cancel"}
+        </Cancel>
+        <Apply>Apply</Apply>
+      </Bottom>
+    );
+  };
+
+  // onReset = ({ startDate, endDate }) => {
+  //   this.setState({
+  //     startDate: !this.state.startDate,
+  //     endDate: !this.state.endDate
+  //   });
+  // };
 
   onDatesChange({ startDate, endDate }) {
     this.setState({ startDate, endDate });
