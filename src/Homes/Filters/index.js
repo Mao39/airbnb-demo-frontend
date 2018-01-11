@@ -45,29 +45,11 @@ const Btn = styled.button`
 `;
 
 export default class Filters extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      dropdown: false
-    };
-  }
-
-  onDropdownToggled = () => {
-    this.setState({ dropdown: !this.props.dropDown });
-    console.log(this.state.dropdown);
-  };
-
   render() {
     return (
       <FiltersWrap>
         <div className="container">
-          <Dates
-            onOpen={enabled => {
-              this.onDropdownToggled("dates", enabled);
-            }}
-            dropDown={this.state.isOpen}
-          />
+          <Dates />
           <Btn>
             Guests<Guests />
           </Btn>

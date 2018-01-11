@@ -153,10 +153,19 @@ export default class Dates extends React.Component {
       startDate: props.initialStartDate,
       endDate: props.initialEndDate
     };
+
+    this.onDatesChange = this.onDatesChange.bind(this);
+    this.onFocusChange = this.onFocusChange.bind(this);
   }
 
   render() {
-    const { isOpen, startDate, endDate, isTouchDevice } = this.state;
+    const {
+      isOpen,
+      startDate,
+      endDate,
+      isTouchDevice,
+      focusedInput
+    } = this.state;
     const props = omit(this.props, [
       "autoFocus",
       "autoFocusEndDate",
@@ -173,14 +182,17 @@ export default class Dates extends React.Component {
         isTouchDevice={isTouchDevice}
         hideKeyboardShortcutsPanel
         isOpen={isOpen}
-        startDate={this.state.startDate}
-        endDate={this.state.endDate}
-        onDatesChange={({ startDate, endDate }) =>
-          this.setState({ startDate, endDate })
-        }
-        focusedInput={this.state.focusedInput}
-        onFocusChange={focusedInput => this.setState({ focusedInput })}
+        // onDatesChange={({ startDate, endDate }) =>
+        //   this.setState({ startDate, endDate })
+        // }
+        // focusedInput={this.state.focusedInput}
+        // onFocusChange={focusedInput => this.setState({ focusedInput })}
         renderCalendarInfo={this.renderCalendarInfo}
+        onDatesChange={this.onDatesChange}
+        onFocusChange={this.onFocusChange}
+        focusedInput={focusedInput}
+        startDate={startDate}
+        endDate={endDate}
       >
         <Bottom>
           <Cancel>Cancel</Cancel>
