@@ -72,6 +72,10 @@ const IconMap = styled.button`
   background-size: 16px 20px;
   border: 1px solid rgba(72, 72, 72, 0.16);
   box-shadow: 0px 2px 4px rgba(72, 72, 72, 0.16);
+
+  @media (min-width: 768px) {
+    display: none;
+  }
 `;
 
 export default () => {
