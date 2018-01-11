@@ -2,17 +2,37 @@ import React, { Component } from "react";
 import styled, { css } from "styled-components";
 import "react-dates/initialize";
 import "react-dates/lib/css/_datepicker.css";
-import {
-  DateRangePicker,
-  SingleDatePicker,
-  DayPickerRangeController
-} from "react-dates";
+import { DayPickerRangeController } from "react-dates";
+import onClickOutside from "react-onclickoutside";
+import omit from "lodash/omit";
+
 import cross from "../../UI/cross.svg";
 
-const DayPicker = styled(DayPickerRangeController)``;
+const DayPicker = styled(DayPickerRangeController)`
+  position: relative;
+  padding-bottom: 72px;
+`;
 
-const Dates = styled.aside`
-  ${"" /* NONE */};
+const Btn = styled.button`
+  position: relative;
+  margin-right: 8px;
+  padding: 7px 16px;
+  border: 1px solid rgba(72, 72, 72, 0.2);
+  border-radius: 4px;
+  font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 16px;
+  color: #383838;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  color: ${props => (props.isOpen ? "#fff" : "#383838")};
+  background: ${props => (props.isOpen ? "#008489" : "transparent")};
+`;
+
+const Filter = styled.aside`
   display: none;
   position: fixed;
   top: 0;
@@ -25,7 +45,6 @@ const Dates = styled.aside`
     position: absolute;
     top: 40px;
     left: 0;
-    ${"" /* NONE */};
     display: inline-block;
   }
 `;
@@ -124,19 +143,36 @@ const Apply = styled.button`
   }
 `;
 
-class DayPick extends React.Component {
+export default class Dates extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      startDate: "10.01.2018",
-      endDate: "25.01.2018",
-      focusedInput: false
+      isOpen: false,
+      isTouchDevice: true,
+      focusedInput: props.autoFocusEndDate ? "startDate" : "endDate",
+      startDate: props.initialStartDate,
+      endDate: props.initialEndDate
     };
   }
 
   render() {
-    return (
+    const { isOpen, startDate, endDate, isTouchDevice } = this.state;
+    const props = omit(this.props, [
+      "autoFocus",
+      "autoFocusEndDate",
+      "initialStartDate",
+      "initialEndDate"
+    ]);
+
+    const startDateString = startDate && startDate.format("YYYY-MM-DD");
+    const endDateString = endDate && endDate.format("YYYY-MM-DD");
+
+    const calendar = (
       <DayPicker
+        numberOfMonths={matchMedia("(min-width: 992px)").matches ? 2 : 1}
+        isTouchDevice={isTouchDevice}
+        hideKeyboardShortcutsPanel
+        isOpen={isOpen}
         startDate={this.state.startDate}
         endDate={this.state.endDate}
         onDatesChange={({ startDate, endDate }) =>
@@ -144,24 +180,43 @@ class DayPick extends React.Component {
         }
         focusedInput={this.state.focusedInput}
         onFocusChange={focusedInput => this.setState({ focusedInput })}
-      />
+        renderCalendarInfo={this.renderCalendarInfo}
+      >
+        <Bottom>
+          <Cancel>Cancel</Cancel>
+          <Apply>Apply</Apply>
+        </Bottom>
+      </DayPicker>
+    );
+
+    return (
+      <Btn isOpen={this.state.isOpen} onClick={this.toggle}>
+        {startDate && endDate
+          ? `${startDateString} — ${endDateString}`
+          : isOpen ? "Check in — Check out" : "Dates"}
+        <Filter isOpen={isOpen}>
+          <Header>
+            <Exit />
+            <Caption>Dates</Caption>
+            <Reset>Reset</Reset>
+          </Header>
+          {isOpen ? calendar : null}
+        </Filter>
+      </Btn>
     );
   }
-}
 
-export default () => {
-  return (
-    <Dates>
-      <Header>
-        <Exit />
-        <Caption>Dates</Caption>
-        <Reset>Reset</Reset>
-      </Header>
-      <DayPick />
-      <Bottom>
-        <Cancel>Cancel</Cancel>
-        <Apply>Apply</Apply>
-      </Bottom>
-    </Dates>
-  );
-};
+  onDatesChange({ startDate, endDate }) {
+    this.setState({ startDate, endDate });
+  }
+
+  onFocusChange(focusedInput) {
+    this.setState({
+      focusedInput: !focusedInput ? "startDate" : focusedInput
+    });
+  }
+
+  toggle = () => {
+    this.setState({ isOpen: !this.state.isOpen });
+  };
+}

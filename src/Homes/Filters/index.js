@@ -4,7 +4,7 @@ import Guests from "./Guests";
 import Room from "./Room";
 import Dates from "./Dates";
 
-const Filters = styled.div`
+const FiltersWrap = styled.div`
   position: fixed;
   top: 80px;
   right: 0;
@@ -16,11 +16,22 @@ const Filters = styled.div`
   height: 56px;
   background: #fff;
   box-shadow: 0 0 0.5px rgba(72, 72, 72, 0.3);
+
+  & > .container {
+    margin: 0;
+  }
+
+  @media (min-width: 576px) {
+    & > .container {
+      margin-right: auto;
+      margin-left: auto;
+    }
+  }
 `;
 
 const Btn = styled.button`
   position: relative;
-  margin-left: 8px;
+  margin-right: 8px;
   padding: 7px 16px;
   border: 1px solid rgba(72, 72, 72, 0.2);
   border-radius: 4px;
@@ -33,21 +44,36 @@ const Btn = styled.button`
   cursor: pointer;
 `;
 
-export default () => {
-  return (
-    <Filters>
-      <div className="container">
-        <Btn>
-          Dates<Dates />
-        </Btn>
-        <Btn>
-          Guests<Guests />
-        </Btn>
-        {/* <Btn>
-          Room type<Room />
-        </Btn> */}
-        <Btn>More filters</Btn>
-      </div>
-    </Filters>
-  );
-};
+export default class Filters extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      dropdown: false
+    };
+  }
+
+  onDropdownToggled = () => {
+    this.setState({ dropdown: !this.props.dropDown });
+    console.log(this.state.dropdown);
+  };
+
+  render() {
+    return (
+      <FiltersWrap>
+        <div className="container">
+          <Dates
+            onOpen={enabled => {
+              this.onDropdownToggled("dates", enabled);
+            }}
+            dropDown={this.state.isOpen}
+          />
+          <Btn>
+            Guests<Guests />
+          </Btn>
+          <Btn>More filters</Btn>
+        </div>
+      </FiltersWrap>
+    );
+  }
+}
