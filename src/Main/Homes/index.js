@@ -10,7 +10,7 @@ import dreamyTropical from "../../UI/dreamyTropical.png";
 const Homes = styled.section``;
 
 const Arrow = SliderBtn.extend`
-  margin-top: 5.1rem;
+  margin-top: 10%;
 `;
 
 export default () => {

@@ -11,7 +11,7 @@ import salsaNight from "../../UI/salsaNight.png";
 const Experiences = styled.section``;
 
 const Arrow = SliderBtn.extend`
-  margin-top: 9.6rem;
+  margin-top: 15%;
 `;
 
 export default () => {

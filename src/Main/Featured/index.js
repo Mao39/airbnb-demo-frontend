@@ -13,7 +13,7 @@ import capeTown from "../../UI/capeTown.png";
 const Featured = styled.section``;
 
 const Arrow = SliderBtn.extend`
-  margin-top: 5.1rem;
+  margin-top: 12.5%;
 `;
 
 export default () => {

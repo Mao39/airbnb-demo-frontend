@@ -11,7 +11,7 @@ import seaprice from "../../UI/seaprice.png";
 const Popular = styled.section``;
 
 const Arrow = SliderBtn.extend`
-  margin-top: 4rem;
+  margin-top: 8.5%;
 `;
 
 export default () => {
