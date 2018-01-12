@@ -24,7 +24,7 @@ export default () => {
               <Caption>Experiences</Caption>
             </div>
             <div className="col-xs-3 col-sm-2 col-md-2">
-              <More href="#">See all</More>
+              <More to="/">See all</More>
             </div>
           </div>
         </Head>

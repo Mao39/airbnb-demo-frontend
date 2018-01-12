@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import arrow from "../UI/rightArrow.svg";
 
 export const Head = styled.div`
@@ -23,7 +24,7 @@ export const Caption = styled.h3`
   }
 `;
 
-export const More = styled.a`
+export const More = styled(Link)`
   position: relative;
   display: block;
   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
