@@ -1,27 +1,25 @@
 {
-  "name": "airbnb-demo-frontend",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "flexboxgrid2": "^7.0.0-alpha12",
-    "google-map-react": "^0.27.0",
-    "normalize.css": "^7.0.0",
-    "omit": "^1.0.1",
-    "react": "^16.2.0",
-    "react-dates": "^16.0.2",
-    "react-dom": "^16.2.0",
-    "react-router-dom": "^4.2.2",
-    "react-scripts": "1.0.17",
-    "react-svg-loader": "^2.1.0",
-    "styled-components": "^2.4.0"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  },
-  "devDependencies": {
-    "moment": "^2.20.1"
-  }
+    "name": "airbnb-demo-frontend",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "flexboxgrid2": "^7.0.0-alpha12",
+        "google-map-react": "^0.27.0",
+        "lodash": "^4.17.4",
+        "moment": "^2.20.1",
+        "normalize.css": "^7.0.0",
+        "react": "^16.2.0",
+        "react-dates": "^16.0.2",
+        "react-dom": "^16.2.0",
+        "react-router-dom": "^4.2.2",
+        "react-scripts": "1.0.17",
+        "react-svg-loader": "^2.1.0",
+        "styled-components": "^2.4.0"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test --env=jsdom",
+        "eject": "react-scripts eject"
+    }
 }

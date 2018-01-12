@@ -201,7 +201,7 @@ export default class Dates extends React.Component {
   }
 
   changeOpen = () => {
-    this.setState({ isOpen: !this.state.isOpen });
+    this.setState(() => ({ isOpen: !this.state.isOpen }));
   };
 
   render() {
