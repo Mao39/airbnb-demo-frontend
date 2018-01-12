@@ -13,18 +13,13 @@ export const Head = styled.div`
 export const Caption = styled.h3`
   margin: 0;
   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 32px;
-  font-size: 20px;
+  font-size: 24px;
   line-height: 28px;
   color: #383838;
 
-  @media (min-width: 768px) {
+  @media (min-width: 576px) {
     font-size: 32px;
-    line-height: 28px;
-  }
-
-  @media (min-width: 320px) {
-    font-size: 24px;
+    line-height: 34px;
   }
 `;
 
