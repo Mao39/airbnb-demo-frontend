@@ -16,7 +16,7 @@ const Btn = styled.button`
   position: relative;
   margin-right: 8px;
   padding: 7px 16px;
-  border: 1px solid rgba(72, 72, 72, 0.2);
+  border: 1px solid rgba(72, 72, 72, 0.3);
   border-radius: 4px;
   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
   font-weight: 600;
@@ -154,7 +154,8 @@ export default class Dates extends React.Component {
       isTouchDevice: true,
       focusedInput: props.autoFocusEndDate ? "startDate" : "endDate",
       startDate: props.initialStartDate,
-      endDate: props.initialEndDate
+      endDate: props.initialEndDate,
+      isLog: null
     };
 
     this.onDatesChange = this.onDatesChange.bind(this);
@@ -196,7 +197,7 @@ export default class Dates extends React.Component {
 
     return (
       <React.Fragment>
-        <Btn isOpen={this.state.isOpen} onClick={this.toggle}>
+        <Btn isOpen={this.state.isOpen} onClick={this.changeOpen}>
           {startDate && endDate
             ? `${startDateString} — ${endDateString}`
             : isOpen ? "Check in — Check out" : "Dates"}
@@ -209,7 +210,7 @@ export default class Dates extends React.Component {
             {isOpen ? calendar : null}
           </Filter>
         </Btn>
-        {isOpen ? <Overlay onClick={this.toggle} /> : null}
+        {isOpen ? <Overlay onClick={this.changeOpen} /> : null}
       </React.Fragment>
     );
   }
@@ -217,20 +218,20 @@ export default class Dates extends React.Component {
   renderCalendarInfo = () => {
     return (
       <Bottom>
-        <Cancel onClick={this.Reset}>
-          {this.state.startDate && this.state.endDate ? "Reset" : "Cancel"}
-        </Cancel>
-        <Apply>Apply</Apply>
+        {this.state.startDate && this.state.endDate ? (
+          <Cancel onClick={this.onReset}>Reset</Cancel>
+        ) : (
+          <Cancel onClick={this.changeOpen}>Cancel</Cancel>
+        )}
+        <Apply onClick={this.changeOpen}>Apply</Apply>
       </Bottom>
     );
   };
 
-  // onReset = ({ startDate, endDate }) => {
-  //   this.setState({
-  //     startDate: !this.state.startDate,
-  //     endDate: !this.state.endDate
-  //   });
-  // };
+  onReset = () => {
+    this.setState({ startDate: null, endDate: null });
+    this.changeOpen();
+  };
 
   onDatesChange({ startDate, endDate }) {
     this.setState({ startDate, endDate });
@@ -242,7 +243,7 @@ export default class Dates extends React.Component {
     });
   }
 
-  toggle = () => {
+  changeOpen = () => {
     this.setState({ isOpen: !this.state.isOpen });
   };
 }

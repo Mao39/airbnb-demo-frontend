@@ -33,7 +33,7 @@ const Btn = styled.button`
   position: relative;
   margin-right: 8px;
   padding: 7px 16px;
-  border: 1px solid rgba(72, 72, 72, 0.2);
+  border: 1px solid rgba(72, 72, 72, 0.3);
   border-radius: 4px;
   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
   font-weight: 600;
