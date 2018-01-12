@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import arrow from "../../UI/rightGreenArrow.svg";
 import iconMap from "./location.svg";
 
@@ -13,9 +14,14 @@ const Pagination = styled.div`
   text-align: center;
 `;
 
-const Pages = styled.div``;
+const Pages = styled.div`
+  line-height: 32px;
+  color: #0f7276;
+  text-decoration: none;
+  vertical-align: middle;
+`;
 
-const Page = styled.a`
+const Page = styled(Link)`
   display: inline-block;
   margin-right: 8px;
   margin-left: 8px;
@@ -27,15 +33,19 @@ const Page = styled.a`
   text-decoration: none;
   vertical-align: middle;
 
-  ${props =>
-    props.active &&
-    `
-      background: #008489;
-      color: #fff;
-    `};
+  background: ${props => (props.active ? "#008489" : "transparent")};
+  color: ${props => (props.active ? "#fff" : "#0f7276")};
 `;
 
-const Next = styled.span`
+const Reduction = styled.span`
+  display: inline-block;
+  margin-right: 8px;
+  margin-left: 8px;
+  width: 32px;
+  height: 32px;
+`;
+
+const Next = styled.button`
   display: inline-block;
   margin-right: 8px;
   margin-left: 8px;
@@ -47,11 +57,12 @@ const Next = styled.span`
   background: url(${arrow}) no-repeat;
   background-position: 12.5px 10px;
   vertical-align: middle;
+  cursor: pointer;
 `;
 
 const Total = styled.p`
   margin-top: 20px;
-  font-weight: 600;
+  font-weight: bold;
   color: #383838;
 `;
 
@@ -79,33 +90,41 @@ const IconMap = styled.button`
   }
 `;
 
-export default () => {
-  return (
-    <Pagination>
-      <div className="container">
-        <div className="row">
-          <div className="col-xs-12">
-            <Pages>
-              <Page href="" active>
-                1
-              </Page>
-              <Page href="">2</Page>
-              <Page href="">3</Page>
-              <Page>...</Page>
-              <Page href="">17</Page>
-              <Next href="" />
-            </Pages>
-            <Total>1 – 18 of 300+ Rentals</Total>
-          </div>
-          <div className="col-xs-12">
-            <Invite>
-              Enter dates to see full pricing. Additional fees apply. Taxes may
-              be added.
-            </Invite>
-            <IconMap />
+export default class PaginatePages extends React.Component {
+  state = {
+    onActive: false
+  };
+
+  changePage = () => {};
+
+  render() {
+    return (
+      <Pagination>
+        <div className="container">
+          <div className="row">
+            <div className="col-xs-12">
+              <Pages>
+                <Page to="/homes" active="active">
+                  1
+                </Page>
+                <Page to="/homes">2</Page>
+                <Page to="/homes">3</Page>
+                <Reduction>...</Reduction>
+                <Page to="/homes">17</Page>
+                <Next />
+              </Pages>
+              <Total>1 – 18 of 300+ Rentals</Total>
+            </div>
+            <div className="col-xs-12">
+              <Invite>
+                Enter dates to see full pricing. Additional fees apply. Taxes
+                may be added.
+              </Invite>
+              <IconMap />
+            </div>
           </div>
         </div>
-      </div>
-    </Pagination>
-  );
-};
+      </Pagination>
+    );
+  }
+}
