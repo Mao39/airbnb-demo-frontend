@@ -49,6 +49,7 @@ const Dropdown = styled.button`
   border: none;
   background: url(${arrow}) no-repeat center center;
   background-size: contain;
+  cursor: pointer;
 
   @media (min-width: 992px) {
     display: none;
