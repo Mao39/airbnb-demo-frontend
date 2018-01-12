@@ -162,6 +162,16 @@ export default class Dates extends React.Component {
     this.onFocusChange = this.onFocusChange.bind(this);
   }
 
+  renderBtnInfo = (startDateString, endDateString) => {
+    if (this.state.startDate && this.state.endDate) {
+      return `${startDateString} — ${endDateString}`;
+    } else if (this.state.isOpen) {
+      return "Check in — Check out";
+    } else {
+      return "Dates";
+    }
+  };
+
   renderCalendarInfo = () => {
     return (
       <Bottom>
@@ -230,10 +240,7 @@ export default class Dates extends React.Component {
     return (
       <React.Fragment>
         <Btn isOpen={this.state.isOpen} onClick={this.changeOpen}>
-          {startDate && endDate
-            ? `${startDateString} — ${endDateString}`
-            : isOpen ? "Check in — Check out" : "Dates"}
-          <btnContent />
+          {this.renderBtnInfo(startDateString, endDateString)}
           <Filter isOpen={isOpen}>
             <Header>
               <Exit />
