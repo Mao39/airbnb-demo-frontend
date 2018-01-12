@@ -7,7 +7,7 @@ const Location = styled.div`
   position: fixed;
   top: 137px;
   right: 0;
-  height: 100vh;
+  bottom: 0;
 
   @media (min-width: 768px) {
     display: block;
