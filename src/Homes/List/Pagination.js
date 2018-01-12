@@ -9,7 +9,7 @@ const Pagination = styled.div`
   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 19px;
-  font-weight: 600;
+  font-weight: bold;
   text-align: center;
 `;
 
@@ -45,19 +45,20 @@ const Next = styled.span`
   border-radius: 50%;
   color: #fff;
   background: url(${arrow}) no-repeat;
-  backgrouns-size: cover;
   background-position: 12.5px 10px;
   vertical-align: middle;
 `;
 
 const Total = styled.p`
   margin-top: 20px;
+  font-weight: 600;
   color: #383838;
 `;
 
 const Invite = styled.p`
   margin-top: 24px;
   margin-bottom: 88px;
+  font-weight: 600;
   color: #636363;
 `;
 
