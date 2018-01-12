@@ -21,7 +21,6 @@ const Btn = styled.button`
   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
   font-weight: 600;
   font-size: 14px;
-  line-height: 16px;
   color: #383838;
   background: transparent;
   cursor: pointer;
