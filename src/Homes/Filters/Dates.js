@@ -4,6 +4,8 @@ import "react-dates/initialize";
 import "react-dates/lib/css/_datepicker.css";
 import { DayPickerRangeController } from "react-dates";
 import omit from "lodash/omit";
+import moment from "moment";
+import { isInclusivelyAfterDay } from "./helper";
 
 import cross from "../../UI/cross.svg";
 
@@ -203,6 +205,11 @@ export default class Dates extends React.Component {
     this.setState(() => ({ isOpen: !this.state.isOpen }));
   };
 
+  isDayBlocked = day => {
+    const BLOCKED_DAYS = [moment()];
+    return BLOCKED_DAYS.filter(day => day.isSame(day, "day")).length > 0;
+  };
+
   render() {
     const {
       isOpen,
@@ -211,6 +218,7 @@ export default class Dates extends React.Component {
       isTouchDevice,
       focusedInput
     } = this.state;
+
     const props = omit(this.props, [
       "autoFocus",
       "autoFocusEndDate",
@@ -225,6 +233,7 @@ export default class Dates extends React.Component {
       <DayPicker
         numberOfMonths={matchMedia("(min-width: 992px)").matches ? 2 : 1}
         isTouchDevice={isTouchDevice}
+        isOutsideRange={day => !isInclusivelyAfterDay(day, moment())}
         hideKeyboardShortcutsPanel
         isOpen={isOpen}
         renderCalendarInfo={this.renderCalendarInfo}
