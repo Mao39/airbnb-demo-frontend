@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import search from "../UI/search.svg";
+import search from "./search.svg";
 
 const SearchBar = styled.div`
   position: relative;

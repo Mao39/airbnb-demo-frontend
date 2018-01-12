@@ -93,7 +93,6 @@ export default () => {
                 </Card>
               </div>
             </div>
-
             <Pagination />
           </div>
         </div>

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import Nav from "./Nav";
 import arrow from "../UI/dropdownArrow.svg";
-import logo from "../UI/headerLogo.svg";
+import logo from "./headerLogo.svg";
 
 const Header = styled.header`
   position: fixed;
