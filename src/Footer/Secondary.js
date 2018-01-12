@@ -65,22 +65,10 @@ const Social = styled.div`
   }
 `;
 
-const Icon = styled.a`
+const Icon = styled.img`
   width: 22px;
   height: 32px;
   background-repeat: no-repeat;
-`;
-
-const FacebookIcon = Icon.extend`
-  background-image: url(${facebook});
-`;
-
-const TwitterIcon = Icon.extend`
-  background-image: url(${twitter});
-`;
-
-const InstagramIcon = Icon.extend`
-  background-image: url(${instagram});
 `;
 
 export default () => {
@@ -99,9 +87,15 @@ export default () => {
               <Link href="#">Terms</Link>
               <Link href="#">Privacy</Link>
               <Link href="#">Site map</Link>
-              <FacebookIcon href="#" />
-              <TwitterIcon href="#" />
-              <InstagramIcon href="#" />
+              <Link href="#">
+                <Icon src={facebook} />
+              </Link>
+              <Link href="#">
+                <Icon src={twitter} />
+              </Link>
+              <Link href="#">
+                <Icon src={instagram} />
+              </Link>
             </Social>
           </div>
         </div>
