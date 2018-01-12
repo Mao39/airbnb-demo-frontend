@@ -24,7 +24,7 @@ export default () => {
                 <Card
                   imgSrc={salentina}
                   price={82}
-                  numberBeds="9 beds"
+                  numberBeds={9}
                   homeType="Entrie house"
                   reviews={97}
                   hostType="Superhost"
@@ -36,7 +36,7 @@ export default () => {
                 <Card
                   imgSrc={privateBed}
                   price={82}
-                  numberBeds="5 beds"
+                  numberBeds={5}
                   homeType="Entrie house"
                   reviews={161}
                   hostType="Superhost"
@@ -48,7 +48,7 @@ export default () => {
                 <Card
                   imgSrc={tropical}
                   price={200}
-                  numberBeds="1 bed"
+                  numberBeds={1}
                   homeType="Entrie house"
                   reviews={364}
                   hostType="Superhost"
@@ -60,7 +60,7 @@ export default () => {
                 <Card
                   imgSrc={oldTown}
                   price={110}
-                  numberBeds="1 bed"
+                  numberBeds={1}
                   homeType="Entrie apartament"
                   reviews={369}
                   hostType="Superhost"
@@ -72,7 +72,7 @@ export default () => {
                 <Card
                   imgSrc={lussuoso}
                   price={83}
-                  numberBeds="6 bed"
+                  numberBeds={6}
                   homeType="Entrie apartament"
                   reviews={105}
                   hostType="Superhost"
@@ -84,7 +84,7 @@ export default () => {
                 <Card
                   imgSrc={historical}
                   price={72}
-                  numberBeds="3 bed"
+                  numberBeds={3}
                   homeType="Entrie house"
                   reviews={221}
                   hostType="Superhost"

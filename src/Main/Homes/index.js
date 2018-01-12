@@ -32,10 +32,10 @@ export default () => {
             <div className="col-xs-8 col-sm-5 col-md-4">
               <Card
                 imgSrc={salentina}
-                price="82"
+                price={82}
                 homeType="Entire house"
-                numberBeds="9 beds"
-                numberReviews="97"
+                numberBeds={9}
+                numberReviews={97}
                 hostType="Superhost"
               >
                 La Salentina, see, nature & relax
@@ -44,10 +44,10 @@ export default () => {
             <div className="col-xs-8 col-sm-5 col-md-4">
               <Card
                 imgSrc={privateBed}
-                price="82"
+                price={82}
                 homeType="Entire house"
-                numberBeds="5 beds"
-                numberReviews="161"
+                numberBeds={5}
+                numberReviews={161}
                 hostType="Superhost"
               >
                 Your private 3 bedr. riad and exclusi...
@@ -56,10 +56,10 @@ export default () => {
             <div className="col-xs-8 col-sm-5 col-md-4">
               <Card
                 imgSrc={dreamyTropical}
-                price="200"
+                price={200}
                 homeType="Entire treehouse"
-                numberBeds="1 bed"
-                numberReviews="364"
+                numberBeds={1}
+                numberReviews={364}
                 hostType="Superhost"
               >
                 Dreamy Tropical Tree House

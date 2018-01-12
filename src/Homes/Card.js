@@ -86,7 +86,9 @@ export default props => {
       <Places>
         <Type>{props.homeType}</Type>
         <span> · </span>
-        <Beds>{props.numberBeds}</Beds>
+        <Beds>
+          {props.numberBeds} {props.numberBeds > 1 ? "beds" : "bed"}
+        </Beds>
       </Places>
       <Rating>
         <Stars>
