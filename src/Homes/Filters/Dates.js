@@ -162,6 +162,38 @@ export default class Dates extends React.Component {
     this.onFocusChange = this.onFocusChange.bind(this);
   }
 
+  renderCalendarInfo = () => {
+    return (
+      <Bottom>
+        {this.state.startDate && this.state.endDate ? (
+          <Cancel onClick={this.onReset}>Reset</Cancel>
+        ) : (
+          <Cancel onClick={this.changeOpen}>Cancel</Cancel>
+        )}
+        <Apply onClick={this.changeOpen}>Apply</Apply>
+      </Bottom>
+    );
+  };
+
+  onReset = () => {
+    this.setState({ startDate: null, endDate: null });
+    this.changeOpen();
+  };
+
+  onDatesChange({ startDate, endDate }) {
+    this.setState({ startDate, endDate });
+  }
+
+  onFocusChange(focusedInput) {
+    this.setState({
+      focusedInput: !focusedInput ? "startDate" : focusedInput
+    });
+  }
+
+  changeOpen = () => {
+    this.setState({ isOpen: !this.state.isOpen });
+  };
+
   render() {
     const {
       isOpen,
@@ -201,6 +233,7 @@ export default class Dates extends React.Component {
           {startDate && endDate
             ? `${startDateString} — ${endDateString}`
             : isOpen ? "Check in — Check out" : "Dates"}
+          <btnContent />
           <Filter isOpen={isOpen}>
             <Header>
               <Exit />
@@ -214,36 +247,4 @@ export default class Dates extends React.Component {
       </React.Fragment>
     );
   }
-
-  renderCalendarInfo = () => {
-    return (
-      <Bottom>
-        {this.state.startDate && this.state.endDate ? (
-          <Cancel onClick={this.onReset}>Reset</Cancel>
-        ) : (
-          <Cancel onClick={this.changeOpen}>Cancel</Cancel>
-        )}
-        <Apply onClick={this.changeOpen}>Apply</Apply>
-      </Bottom>
-    );
-  };
-
-  onReset = () => {
-    this.setState({ startDate: null, endDate: null });
-    this.changeOpen();
-  };
-
-  onDatesChange({ startDate, endDate }) {
-    this.setState({ startDate, endDate });
-  }
-
-  onFocusChange(focusedInput) {
-    this.setState({
-      focusedInput: !focusedInput ? "startDate" : focusedInput
-    });
-  }
-
-  changeOpen = () => {
-    this.setState({ isOpen: !this.state.isOpen });
-  };
 }
