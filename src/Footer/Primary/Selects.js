@@ -40,15 +40,15 @@ const Option = styled.option`
 
 export default () => {
   return (
-    <div className="col-xs-12 col-sm-12 col-md-3">
+    <div className="col-xs-12 col-md-3">
       <div className="row">
-        <div className="col-xs-6 col-sm-6 col-md-12">
+        <div className="col-xs-6 col-md-12">
           <Select defaultValue="English">
             <Option value="English">English</Option>
             <Option value="Русский">Русский</Option>
           </Select>
         </div>
-        <div className="col-xs-6 col-sm-6 col-md-12">
+        <div className="col-xs-6 col-md-12">
           <Select defaultValue="United States dollar">
             <Option value="United States dollar">United States dollar</Option>
             <Option value="Российский рубль">Российский рубль</Option>
