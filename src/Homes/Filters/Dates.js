@@ -9,6 +9,7 @@ import { isInclusivelyAfterDay } from "./helpers";
 import "./react_dates_overrides.css";
 import arrow from "./arrowRight.svg";
 import { START_DATE } from "react-dates/constants";
+import ScrollLock from "react-scrolllock";
 
 import cross from "../../UI/cross.svg";
 
@@ -271,6 +272,11 @@ const changeOrientation = () => {
     : "verticalScrollable";
 };
 
+const scrollLock = isOpen => {
+  if (!matchMedia("(min-width: 576px)").matches)
+    if (isOpen) return <ScrollLock />;
+};
+
 const lastDays = day => !isInclusivelyAfterDay(day, moment());
 
 export default class Dates extends React.Component {
@@ -368,6 +374,12 @@ export default class Dates extends React.Component {
             </Filter>
           ) : null}
           {isOpen ? <Overlay onClick={this.toggleOpening} /> : null}
+          {scrollLock(isOpen)}
+          {!matchMedia("(min-width: 576px)").matches ? (
+            isOpen ? (
+              <ScrollLock />
+            ) : null
+          ) : null}
         </Wrap>
       </React.Fragment>
     );
