@@ -222,21 +222,13 @@ export default class Dates extends React.Component {
     isTouchDevice: true,
     focusedInput: this.props.autoFocusEndDate ? "startDate" : "endDate",
     startDate: this.props.initialStartDate,
-    endDate: this.props.initialEndDate
+    endDate: this.props.initialEndDate,
+    startDateString: null,
+    endDateString: null
   };
 
   onDatesChange = this.onDatesChange.bind(this);
   onFocusChange = this.onFocusChange.bind(this);
-
-  renderBtnInfo = (startDateString, endDateString) => {
-    if (startDateString && endDateString) {
-      return `${startDateString} — ${endDateString}`;
-    } else if (this.state.isOpen) {
-      return "Check in — Check out";
-    } else {
-      return "Dates";
-    }
-  };
 
   renderCalendarInfo = () => {
     return (
@@ -244,7 +236,7 @@ export default class Dates extends React.Component {
         {this.state.startDate && this.state.endDate ? (
           <Cancel onClick={this.onReset}>Reset</Cancel>
         ) : (
-          <Cancel onClick={this.changeOpen}>Cancel</Cancel>
+          <Cancel onClick={this.toggleOpening}>Cancel</Cancel>
         )}
         <Apply onClick={this.props.onSave}>Apply</Apply>
       </CalendarRow>
@@ -265,12 +257,37 @@ export default class Dates extends React.Component {
     });
   }
 
-  changeOpen = () => {
-    this.setState(() => ({ isOpen: !this.state.isOpen }));
+  toggleOpening = ({ isOpen }) => {
+    this.setState(prevState => ({ isOpen: !prevState.isOpen }));
   };
 
   numberOfMonths() {
     return matchMedia("(min-width: 992px)").matches ? 2 : 1;
+  }
+
+  // DATE CONVERSION
+
+  startDateToString(startDate) {
+    return startDate && moment(startDate).format("Do MMM");
+  }
+
+  endDateToString(endDate) {
+    return endDate && moment(endDate).format("Do MMM");
+  }
+
+  formatButtonDate(startDate, endDate) {
+    const startDateString = this.startDateToString(startDate);
+    const endDateString = this.endDateToString(endDate);
+
+    return `${startDateString} — ${endDateString}`;
+  }
+
+  renderBtnInfo() {
+    const { startDate, endDate, isOpen } = this.state;
+
+    if (startDate && endDate) return this.formatButtonDate(startDate, endDate);
+    if (isOpen) return "Check in — Check out";
+    return "Dates";
   }
 
   render() {
@@ -282,14 +299,10 @@ export default class Dates extends React.Component {
       focusedInput
     } = this.state;
 
-    const startDateString = startDate && moment(startDate).format("Do MMM");
-    const endDateString = endDate && moment(endDate).format("Do MMM");
-
     return (
       <React.Fragment>
-        <Btn isOpen={isOpen} onClick={this.changeOpen}>
-          {this.renderBtnInfo(startDateString, endDateString)}
-          {isOpen ? this.filter : null}
+        <Btn isOpen={isOpen} onClick={this.toggleOpening}>
+          {this.renderBtnInfo()}
           {isOpen ? (
             <Filter isOpen={isOpen}>
               <Header>
@@ -299,11 +312,11 @@ export default class Dates extends React.Component {
               </Header>
               <DatesRange>
                 <StartDate startDate={startDate}>
-                  {startDate ? startDateString : "Check-in"}
+                  {startDate ? this.startDateToString : "Check-in"}
                 </StartDate>
                 <Arrow />
                 <EndDate endDate={endDate} startDate={startDate}>
-                  {endDate ? endDateString : "Check-out"}
+                  {endDate ? this.endDateToString : "Check-out"}
                 </EndDate>
               </DatesRange>
               <DayPicker
@@ -339,7 +352,7 @@ export default class Dates extends React.Component {
             </Filter>
           ) : null}
         </Btn>
-        {isOpen ? <Overlay onClick={this.changeOpen} /> : null}
+        {isOpen ? <Overlay onClick={this.toggleOpening} /> : null}
       </React.Fragment>
     );
   }
