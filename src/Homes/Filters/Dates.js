@@ -191,11 +191,15 @@ const CalendarRow = styled.div`
   right: 0;
   bottom: 0;
   left: 0;
-  display: flex;
+  display: none;
   justify-content: space-between;
   padding-top: 40px;
   height: 48px;
   padding: 8px;
+
+  @media (min-width: 576px) {
+    display: flex;
+  }
 `;
 
 const Save = styled.button`
@@ -248,6 +252,8 @@ const changeOrientation = () => {
     ? "horizontal"
     : "verticalScrollable";
 };
+
+const lastDays = day => !isInclusivelyAfterDay(day, moment());
 
 export default class Dates extends React.Component {
   state = {
@@ -315,17 +321,17 @@ export default class Dates extends React.Component {
               </Header>
               <DatesRange>
                 <StartDate startDate={startDate}>
-                  {startDate ? this.startDateToString : "Check-in"}
+                  {startDate ? startDateToString(startDate) : "Check-in"}
                 </StartDate>
                 <Arrow />
                 <EndDate endDate={endDate} startDate={startDate}>
-                  {endDate ? this.endDateToString : "Check-out"}
+                  {endDate ? endDateToString(endDate) : "Check-out"}
                 </EndDate>
               </DatesRange>
               <DayPicker
                 numberOfMonths={numberOfMonths()}
                 isTouchDevice={isTouchDevice}
-                isOutsideRange={day => !isInclusivelyAfterDay(day, moment())}
+                isOutsideRange={lastDays}
                 hideKeyboardShortcutsPanel
                 isOpen={isOpen}
                 renderCalendarInfo={this.renderCalendarInfo}
