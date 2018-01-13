@@ -20,10 +20,10 @@ export default () => {
       <div className="container">
         <Head>
           <div className="row">
-            <div className="col-xs-9 col-sm-10 col-md-10">
+            <div className="col-xs-9 col-sm-10">
               <Caption>Popular reservations around the world</Caption>
             </div>
-            <div className="col-xs-3 col-sm-2 col-md-2">
+            <div className="col-xs-3 col-sm-2">
               <More to="/">See all</More>
             </div>
           </div>

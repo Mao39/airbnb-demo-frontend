@@ -22,7 +22,7 @@ export default () => {
             <div className="col-xs-9 col-sm-10 col-md-10">
               <Caption>Homes</Caption>
             </div>
-            <div className="col-xs-3 col-sm-2 col-md-2">
+            <div className="col-xs-3 col-sm-2">
               <More to="/homes">See all</More>
             </div>
           </div>
