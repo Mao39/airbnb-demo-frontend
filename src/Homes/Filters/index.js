@@ -38,17 +38,31 @@ const Btn = styled.button`
   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
   font-weight: 600;
   font-size: 14px;
+  line-height: 16px;
   color: #383838;
   background: transparent;
   cursor: pointer;
 `;
 
 export default class Filters extends React.Component {
+  state = {
+    droppedFilter: null,
+    startDate: null,
+    endDate: null
+  };
+
+  onSave = () => {
+    this.setState({
+      startDate: this.props.startDate,
+      endDate: this.props.endDate
+    });
+  };
+
   render() {
     return (
       <FiltersWrap>
         <div className="container">
-          <Dates />
+          <Dates onSave={this.onSave} />
           <Btn>
             Guests<Guests />
           </Btn>

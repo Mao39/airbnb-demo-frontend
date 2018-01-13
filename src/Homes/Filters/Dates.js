@@ -95,7 +95,6 @@ const Reset = styled.button`
 
 const Cancel = styled.button`
   width: 110px;
-  height: 64px;
   border: none;
   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 16px;
@@ -108,7 +107,6 @@ const Cancel = styled.button`
 
 const Apply = styled.button`
   width: 110px;
-  height: 64px;
   border: none;
   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 16px;
@@ -176,13 +174,28 @@ const Bottom = styled.div`
   height: 64px;
   padding: 8px;
   box-shadow: 0 -1px #d5d5d5;
-  z-index: 3;
+  z-index: 2;
   background: #fff;
 
   @media (min-width: 576px) {
     padding: 0;
     box-shadow: none;
+    z-index: 1;
+    background: transparent;
   }
+`;
+
+const CalendarRow = styled.div`
+  position: relative;
+  top: -12px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 40px;
+  height: 48px;
+  padding: 8px;
 `;
 
 const Save = styled.button`
@@ -204,19 +217,16 @@ const Save = styled.button`
 `;
 
 export default class Dates extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isOpen: false,
-      isTouchDevice: true,
-      focusedInput: props.autoFocusEndDate ? "startDate" : "endDate",
-      startDate: props.initialStartDate,
-      endDate: props.initialEndDate
-    };
+  state = {
+    isOpen: false,
+    isTouchDevice: true,
+    focusedInput: this.props.autoFocusEndDate ? "startDate" : "endDate",
+    startDate: this.props.initialStartDate,
+    endDate: this.props.initialEndDate
+  };
 
-    this.onDatesChange = this.onDatesChange.bind(this);
-    this.onFocusChange = this.onFocusChange.bind(this);
-  }
+  onDatesChange = this.onDatesChange.bind(this);
+  onFocusChange = this.onFocusChange.bind(this);
 
   renderBtnInfo = (startDateString, endDateString) => {
     if (startDateString && endDateString) {
@@ -230,14 +240,14 @@ export default class Dates extends React.Component {
 
   renderCalendarInfo = () => {
     return (
-      <Bottom>
+      <CalendarRow>
         {this.state.startDate && this.state.endDate ? (
           <Cancel onClick={this.onReset}>Reset</Cancel>
         ) : (
           <Cancel onClick={this.changeOpen}>Cancel</Cancel>
         )}
-        <Apply onClick={this.changeOpen}>Apply</Apply>
-      </Bottom>
+        <Apply onClick={this.props.onSave}>Apply</Apply>
+      </CalendarRow>
     );
   };
 
@@ -274,36 +284,6 @@ export default class Dates extends React.Component {
 
     const startDateString = startDate && startDate.format("YYYY-MM-DD");
     const endDateString = endDate && endDate.format("YYYY-MM-DD");
-
-    const Calendar = (
-      <DayPicker
-        numberOfMonths={
-          matchMedia("(min-width: 992px)").matches
-            ? 2
-            : matchMedia("(min-width: 576px)").matches ? 1 : 12
-        }
-        isTouchDevice={isTouchDevice}
-        isOutsideRange={day => !isInclusivelyAfterDay(day, moment())}
-        hideKeyboardShortcutsPanel
-        isOpen={isOpen}
-        renderCalendarInfo={
-          matchMedia("(min-width: 576px)").matches
-            ? this.renderCalendarInfo
-            : null
-        }
-        onDatesChange={this.onDatesChange}
-        onFocusChange={this.onFocusChange}
-        focusedInput={focusedInput}
-        startDate={startDate}
-        endDate={endDate}
-        onClickOutside={null}
-        orientation={
-          matchMedia("(min-width: 576px)").matches
-            ? "horizontal"
-            : "verticalScrollable"
-        }
-      />
-    );
 
     return (
       <React.Fragment>
@@ -346,7 +326,7 @@ export default class Dates extends React.Component {
                 focusedInput={focusedInput}
                 startDate={startDate}
                 endDate={endDate}
-                onClickOutside={null}
+                onClickOutside="false"
                 orientation={
                   matchMedia("(min-width: 576px)").matches
                     ? "horizontal"
@@ -354,7 +334,7 @@ export default class Dates extends React.Component {
                 }
               />
               <Bottom>
-                <Save>Save</Save>
+                <Save onClick={this.props.onSave}>Save</Save>
               </Bottom>
             </Filter>
           ) : null}
