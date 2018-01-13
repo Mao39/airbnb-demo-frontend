@@ -35,7 +35,7 @@ export default () => {
                 price={82}
                 homeType="Entire house"
                 numberBeds={9}
-                numberReviews={97}
+                reviews={97}
                 hostType="Superhost"
               >
                 La Salentina, see, nature & relax
@@ -47,7 +47,7 @@ export default () => {
                 price={82}
                 homeType="Entire house"
                 numberBeds={5}
-                numberReviews={161}
+                reviews={161}
                 hostType="Superhost"
               >
                 Your private 3 bedr. riad and exclusi...
@@ -59,7 +59,7 @@ export default () => {
                 price={200}
                 homeType="Entire treehouse"
                 numberBeds={1}
-                numberReviews={364}
+                reviews={364}
                 hostType="Superhost"
               >
                 Dreamy Tropical Tree House
