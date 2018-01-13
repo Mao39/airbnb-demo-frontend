@@ -41,8 +41,11 @@ const Filter = styled.aside`
   bottom: 0;
   left: 0;
   z-index: 3;
+  font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #383838;
   background: #fff;
-  z-index: 5;
 
   @media (min-width: 576px) {
     position: absolute;
@@ -312,42 +315,42 @@ export default class Dates extends React.Component {
             this.state.endDate,
             this.state.isOpen
           )}
-          {isOpen ? (
-            <Filter isOpen={isOpen}>
-              <Header>
-                <Exit />
-                <Caption>Dates</Caption>
-                <Reset onClick={this.onReset}>Reset</Reset>
-              </Header>
-              <DatesRange>
-                <StartDate startDate={startDate}>
-                  {startDate ? startDateToString(startDate) : "Check-in"}
-                </StartDate>
-                <Arrow />
-                <EndDate endDate={endDate} startDate={startDate}>
-                  {endDate ? endDateToString(endDate) : "Check-out"}
-                </EndDate>
-              </DatesRange>
-              <DayPicker
-                numberOfMonths={numberOfMonths()}
-                isTouchDevice={isTouchDevice}
-                isOutsideRange={lastDays}
-                hideKeyboardShortcutsPanel
-                isOpen={isOpen}
-                renderCalendarInfo={this.renderCalendarInfo}
-                onDatesChange={this.onDatesChange}
-                onFocusChange={this.onFocusChange}
-                focusedInput={focusedInput}
-                startDate={startDate}
-                endDate={endDate}
-                orientation={changeOrientation()}
-              />
-              <Bottom>
-                <Save onClick={this.props.onSave}>Save</Save>
-              </Bottom>
-            </Filter>
-          ) : null}
         </Btn>
+        {isOpen ? (
+          <Filter isOpen={isOpen}>
+            <Header>
+              <Exit onClick={this.toggleOpening} />
+              <Caption>Dates</Caption>
+              <Reset onClick={this.onReset}>Reset</Reset>
+            </Header>
+            <DatesRange>
+              <StartDate startDate={startDate}>
+                {startDate ? startDateToString(startDate) : "Check-in"}
+              </StartDate>
+              <Arrow />
+              <EndDate endDate={endDate} startDate={startDate}>
+                {endDate ? endDateToString(endDate) : "Check-out"}
+              </EndDate>
+            </DatesRange>
+            <DayPicker
+              numberOfMonths={numberOfMonths()}
+              isTouchDevice={isTouchDevice}
+              isOutsideRange={lastDays}
+              hideKeyboardShortcutsPanel
+              isOpen={isOpen}
+              renderCalendarInfo={this.renderCalendarInfo}
+              onDatesChange={this.onDatesChange}
+              onFocusChange={this.onFocusChange}
+              focusedInput={focusedInput}
+              startDate={startDate}
+              endDate={endDate}
+              orientation={changeOrientation()}
+            />
+            <Bottom>
+              <Save onClick={this.props.onSave}>Save</Save>
+            </Bottom>
+          </Filter>
+        ) : null}
         {isOpen ? <Overlay onClick={this.toggleOpening} /> : null}
       </React.Fragment>
     );
