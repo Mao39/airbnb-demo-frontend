@@ -55,7 +55,6 @@ const endDateToString = endDate => {
 
 export default class Filters extends React.Component {
   state = {
-    droppedFilter: null,
     startDateString: null,
     endDateString: null
   };
@@ -65,7 +64,6 @@ export default class Filters extends React.Component {
       startDateString: startDateToString(this.state.startDate),
       endDateString: endDateToString(this.state.endDate)
     });
-    alert(this.state.endDateString);
   };
 
   render() {

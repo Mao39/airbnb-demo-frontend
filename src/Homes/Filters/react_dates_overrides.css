@@ -14,6 +14,10 @@
   top: 58px;
 }
 
+.CalendarMonthGrid__vertical_scrollable {
+  overflow: hidden;
+}
+
 @media screen and (max-width: 567px) {
   .DayPicker__withBorder {
     box-shadow: none;
