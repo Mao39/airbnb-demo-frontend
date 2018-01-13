@@ -15,6 +15,7 @@ const Pagination = styled.div`
 `;
 
 const Pages = styled.div`
+  width: 100%;
   line-height: 32px;
   color: #0f7276;
   text-decoration: none;
@@ -62,6 +63,7 @@ const Next = styled.button`
 
 const Total = styled.p`
   margin-top: 20px;
+  width: 100%;
   font-weight: 600;
   color: #383838;
 `;
@@ -102,19 +104,17 @@ export default class PaginatePages extends React.Component {
       <Pagination>
         <div className="container">
           <div className="row">
-            <div className="col-xs-12">
-              <Pages>
-                <Page to="/homes" active="active">
-                  1
-                </Page>
-                <Page to="/homes">2</Page>
-                <Page to="/homes">3</Page>
-                <Reduction>...</Reduction>
-                <Page to="/homes">17</Page>
-                <Next />
-              </Pages>
-              <Total>1 – 18 of 300+ Rentals</Total>
-            </div>
+            <Pages>
+              <Page to="/homes" active="active">
+                1
+              </Page>
+              <Page to="/homes">2</Page>
+              <Page to="/homes">3</Page>
+              <Reduction>...</Reduction>
+              <Page to="/homes">17</Page>
+              <Next />
+            </Pages>
+            <Total>1 – 18 of 300+ Rentals</Total>
             <div className="col-xs-12">
               <Invite>
                 Enter dates to see full pricing. Additional fees apply. Taxes
