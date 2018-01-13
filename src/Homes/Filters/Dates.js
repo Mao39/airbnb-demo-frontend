@@ -8,7 +8,7 @@ import moment from "moment";
 import { isInclusivelyAfterDay } from "./helpers";
 import "./react_dates_overrides.css";
 import arrow from "./arrowRight.svg";
-import { START_DATE, END_DATE } from "react-dates/constants";
+import { START_DATE } from "react-dates/constants";
 
 import cross from "../../UI/cross.svg";
 
@@ -186,6 +186,7 @@ const Bottom = styled.div`
   background: #fff;
 
   @media (min-width: 576px) {
+    display: none;
     padding: 0;
     box-shadow: none;
     z-index: 1;
@@ -298,7 +299,7 @@ export default class Dates extends React.Component {
         ) : (
           <Cancel onClick={this.toggleOpening}>Cancel</Cancel>
         )}
-        <Apply onClick={this.onSave}>Apply</Apply>
+        <Apply onClick={this.props.onSave}>Apply</Apply>
       </CalendarRow>
     );
   };
@@ -353,7 +354,7 @@ export default class Dates extends React.Component {
                 orientation={changeOrientation()}
               />
               <Bottom>
-                <Save onClick={this.props.onSave}>Save</Save>
+                <Save onClick={this.onSave}>Save</Save>
               </Bottom>
             </Filter>
           ) : null}
