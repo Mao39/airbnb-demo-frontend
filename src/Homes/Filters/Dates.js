@@ -1,17 +1,16 @@
 import React, { Component } from "react";
 import styled, { css } from "styled-components";
-import "react-dates/initialize";
-import "react-dates/lib/css/_datepicker.css";
-import { DayPickerRangeController } from "react-dates";
 import omit from "lodash/omit";
 import moment from "moment";
-import { isInclusivelyAfterDay } from "./helpers";
-import "./react_dates_overrides.css";
-import arrow from "./arrowRight.svg";
-import { START_DATE } from "react-dates/constants";
 import ScrollLock from "react-scrolllock";
-
+import "react-dates/initialize";
+import "./react_dates_overrides.css";
+import "react-dates/lib/css/_datepicker.css";
+import { DayPickerRangeController } from "react-dates";
+import { START_DATE } from "react-dates/constants";
+import { isInclusivelyAfterDay } from "./helpers";
 import cross from "../../UI/cross.svg";
+import arrow from "./arrowRight.svg";
 
 const DayPicker = styled(DayPickerRangeController)`
   position: relative;
