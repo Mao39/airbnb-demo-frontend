@@ -10,7 +10,7 @@ const Pagination = styled.div`
   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 19px;
-  font-weight: bold;
+  font-weight: 600;
   text-align: center;
 `;
 
@@ -62,7 +62,7 @@ const Next = styled.button`
 
 const Total = styled.p`
   margin-top: 20px;
-  font-weight: bold;
+  font-weight: 600;
   color: #383838;
 `;
 
