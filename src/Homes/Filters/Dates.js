@@ -224,6 +224,15 @@ const Save = styled.button`
   background: #ff5a5f;
   cursor: pointer;
 
+  &:hover {
+    background: #f53d43;
+  }
+
+  &:active,
+  &:focus {
+    background: #ed262c;
+  }
+
   @media (min-width: 576px) {
     display: none;
   }
