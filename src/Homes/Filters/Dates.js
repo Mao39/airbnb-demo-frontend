@@ -5,7 +5,7 @@ import "react-dates/lib/css/_datepicker.css";
 import { DayPickerRangeController } from "react-dates";
 import omit from "lodash/omit";
 import moment from "moment";
-import { isInclusivelyAfterDay } from "./helper";
+import { isInclusivelyAfterDay } from "./helpers";
 import "./react_dates_overrides.css";
 import arrow from "./arrowRight.svg";
 
@@ -243,6 +243,12 @@ const numberOfMonths = () => {
   return 12;
 };
 
+const changeOrientation = () => {
+  return matchMedia("(min-width: 576px)").matches
+    ? "horizontal"
+    : "verticalScrollable";
+};
+
 export default class Dates extends React.Component {
   state = {
     isOpen: false,
@@ -250,19 +256,6 @@ export default class Dates extends React.Component {
     focusedInput: this.props.autoFocusEndDate ? "startDate" : "endDate",
     startDate: this.props.initialStartDate,
     endDate: this.props.initialEndDate
-  };
-
-  renderCalendarInfo = () => {
-    return (
-      <CalendarRow>
-        {this.state.startDate && this.state.endDate ? (
-          <Cancel onClick={this.onReset}>Reset</Cancel>
-        ) : (
-          <Cancel onClick={this.toggleOpening}>Cancel</Cancel>
-        )}
-        <Apply onClick={this.props.onSave}>Apply</Apply>
-      </CalendarRow>
-    );
   };
 
   onReset = () => {
@@ -281,6 +274,19 @@ export default class Dates extends React.Component {
 
   toggleOpening = ({ isOpen }) => {
     this.setState(prevState => ({ isOpen: !prevState.isOpen }));
+  };
+
+  renderCalendarInfo = () => {
+    return (
+      <CalendarRow>
+        {this.state.startDate && this.state.endDate ? (
+          <Cancel onClick={this.onReset}>Reset</Cancel>
+        ) : (
+          <Cancel onClick={this.toggleOpening}>Cancel</Cancel>
+        )}
+        <Apply onClick={this.onSave}>Apply</Apply>
+      </CalendarRow>
+    );
   };
 
   render() {
@@ -322,22 +328,13 @@ export default class Dates extends React.Component {
                 isOutsideRange={day => !isInclusivelyAfterDay(day, moment())}
                 hideKeyboardShortcutsPanel
                 isOpen={isOpen}
-                renderCalendarInfo={
-                  matchMedia("(min-width: 576px)").matches
-                    ? this.renderCalendarInfo
-                    : null
-                }
+                renderCalendarInfo={this.renderCalendarInfo}
                 onDatesChange={this.onDatesChange}
                 onFocusChange={this.onFocusChange}
                 focusedInput={focusedInput}
                 startDate={startDate}
                 endDate={endDate}
-                onClickOutside="false"
-                orientation={
-                  matchMedia("(min-width: 576px)").matches
-                    ? "horizontal"
-                    : "verticalScrollable"
-                }
+                orientation={changeOrientation()}
               />
               <Bottom>
                 <Save onClick={this.props.onSave}>Save</Save>
