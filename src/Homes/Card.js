@@ -21,22 +21,24 @@ const Image = styled.img`
 const Title = styled.p`
   margin-top: 8px;
   margin-bottom: 0;
-  font-size: 15px;
-  line-height: 18px;
   color: #383838;
 `;
 
 const Price = styled.span`
   margin-right: 8px;
   font-weight: bold;
+  font-size: 15px;
+  line-height: 18px;
 `;
 
 const Name = styled.span`
   font-weight: 600;
+  font-size: 15px;
+  line-height: 18px;
 `;
 
 const Rating = styled.div`
-  margin-top: 2px;
+  margin-top: 1px;
 `;
 
 const Stars = styled.div`
