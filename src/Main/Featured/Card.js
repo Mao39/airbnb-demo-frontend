@@ -18,7 +18,7 @@ const Image = styled.img`
 `;
 
 const Title = styled.p`
-  margin-top: 8px;
+  margin-top: 9px;
   margin-bottom: 0;
   font-size: 13px;
   line-height: 15px;

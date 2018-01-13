@@ -18,7 +18,7 @@ const Image = styled.img`
 `;
 
 const Title = styled.p`
-  margin-top: 8px;
+  margin-top: 4px;
   margin-bottom: 0;
   font-size: 13px;
   line-height: 15px;
@@ -31,7 +31,7 @@ const Title = styled.p`
 `;
 
 const Place = styled.span`
-  margin-top: 12px;
+  margin-top: 13px;
   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 8px;
   line-height: 9px;
@@ -57,7 +57,7 @@ const Name = styled.span`
 `;
 
 const Rate = styled.span`
-  margin-top: 4px;
+  margin-top: 6px;
   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 12px;
   line-height: 14px;

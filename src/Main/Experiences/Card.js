@@ -40,7 +40,7 @@ const Name = styled.span`
 `;
 
 const Rating = styled.div`
-  margin-top: 8px;
+  margin-top: 1px;
 `;
 
 const Stars = styled.div`
