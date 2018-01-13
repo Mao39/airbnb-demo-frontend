@@ -1,0 +1,17 @@
+.CalendarMonthGrid__vertical_scrollable {
+  overflow-y: hidden;
+}
+
+.DayPicker_transitionContainer__verticalScrollable {
+  padding-bottom: 172px;
+}
+
+.CalendarMonth {
+  padding-bottom: 10px;
+}
+
+@media screen and (max-width: 567px) {
+  .DayPicker__withBorder {
+    box-shadow: none;
+  }
+}

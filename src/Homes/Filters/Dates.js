@@ -6,6 +6,8 @@ import { DayPickerRangeController } from "react-dates";
 import omit from "lodash/omit";
 import moment from "moment";
 import { isInclusivelyAfterDay } from "./helper";
+import "./react_dates_overrides.css";
+import arrow from "./arrowRight.svg";
 
 import cross from "../../UI/cross.svg";
 
@@ -33,13 +35,14 @@ const Btn = styled.button`
 `;
 
 const Filter = styled.aside`
-  display: none;
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   z-index: 3;
+  background: #fff;
+  z-index: 5;
 
   @media (min-width: 576px) {
     position: absolute;
@@ -53,10 +56,8 @@ const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 40px;
   height: 48px;
   padding: 0 8px;
-  box-shadow: 0 0.5px rgba(72, 72, 72, 0.3);
 
   @media (min-width: 576px) {
     display: none;
@@ -90,25 +91,6 @@ const Reset = styled.button`
   border: none;
   background: transparent;
   cursor: pointer;
-`;
-
-const Bottom = styled.div`
-  position: relative;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  justify-content: space-between;
-  height: 64px;
-  width: 100%;
-  padding: 8px;
-  box-shadow: 0 -1px #d5d5d5;
-  z-index: 4;
-
-  @media (min-width: 576px) {
-    padding: 0;
-    box-shadow: none;
-  }
 `;
 
 const Cancel = styled.button`
@@ -147,6 +129,80 @@ const Overlay = styled.div`
   background: rgba(255, 255, 255, 0.8);
 `;
 
+const DatesRange = styled.div`
+  padding: 8px;
+  padding-top: 30px;
+  text-align: left;
+
+  @media (min-width: 576px) {
+    display: none;
+  }
+`;
+
+const Arrow = styled.span`
+  display: inline-block;
+  margin: 0 16px;
+  width: 18px;
+  height: 11px;
+  background: url(${arrow}) no-repeat center;
+  background-size: contain;
+`;
+
+const StartDate = styled.span`
+  font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  line-height: 21px;
+
+  color: ${props => (props.startDate ? "#636363" : "#0f7276")};
+  border-bottom: ${props => (props.startDate ? "none" : "1px solid #008489")};
+`;
+
+const EndDate = styled.span`
+  font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  line-height: 21px;
+
+  color: ${props => (props.startDate ? "#0f7276" : "#636363")};
+  border-bottom: ${props => (props.startDate ? "1px solid #008489" : "none")};
+`;
+
+const Bottom = styled.div`
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  height: 64px;
+  padding: 8px;
+  box-shadow: 0 -1px #d5d5d5;
+  z-index: 3;
+  background: #fff;
+
+  @media (min-width: 576px) {
+    padding: 0;
+    box-shadow: none;
+  }
+`;
+
+const Save = styled.button`
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  line-height: 21px;
+  font-weight: Bold;
+  color: #fff;
+  background: #ff5a5f;
+  cursor: pointer;
+
+  @media (min-width: 576px) {
+    display: none;
+  }
+`;
+
 export default class Dates extends React.Component {
   constructor(props) {
     super(props);
@@ -155,8 +211,7 @@ export default class Dates extends React.Component {
       isTouchDevice: true,
       focusedInput: props.autoFocusEndDate ? "startDate" : "endDate",
       startDate: props.initialStartDate,
-      endDate: props.initialEndDate,
-      isLog: null
+      endDate: props.initialEndDate
     };
 
     this.onDatesChange = this.onDatesChange.bind(this);
@@ -164,7 +219,7 @@ export default class Dates extends React.Component {
   }
 
   renderBtnInfo = (startDateString, endDateString) => {
-    if (this.state.startDate && this.state.endDate) {
+    if (startDateString && endDateString) {
       return `${startDateString} — ${endDateString}`;
     } else if (this.state.isOpen) {
       return "Check in — Check out";
@@ -188,7 +243,6 @@ export default class Dates extends React.Component {
 
   onReset = () => {
     this.setState({ startDate: null, endDate: null });
-    this.changeOpen();
   };
 
   onDatesChange({ startDate, endDate }) {
@@ -205,10 +259,9 @@ export default class Dates extends React.Component {
     this.setState(() => ({ isOpen: !this.state.isOpen }));
   };
 
-  isDayBlocked = day => {
-    const BLOCKED_DAYS = [moment()];
-    return BLOCKED_DAYS.filter(day => day.isSame(day, "day")).length > 0;
-  };
+  numberOfMonths() {
+    return matchMedia("(min-width: 992px)").matches ? 2 : 1;
+  }
 
   render() {
     const {
@@ -219,44 +272,92 @@ export default class Dates extends React.Component {
       focusedInput
     } = this.state;
 
-    const props = omit(this.props, [
-      "autoFocus",
-      "autoFocusEndDate",
-      "initialStartDate",
-      "initialEndDate"
-    ]);
-
     const startDateString = startDate && startDate.format("YYYY-MM-DD");
     const endDateString = endDate && endDate.format("YYYY-MM-DD");
 
-    const calendar = (
+    const Calendar = (
       <DayPicker
-        numberOfMonths={matchMedia("(min-width: 992px)").matches ? 2 : 1}
+        numberOfMonths={
+          matchMedia("(min-width: 992px)").matches
+            ? 2
+            : matchMedia("(min-width: 576px)").matches ? 1 : 12
+        }
         isTouchDevice={isTouchDevice}
         isOutsideRange={day => !isInclusivelyAfterDay(day, moment())}
         hideKeyboardShortcutsPanel
         isOpen={isOpen}
-        renderCalendarInfo={this.renderCalendarInfo}
+        renderCalendarInfo={
+          matchMedia("(min-width: 576px)").matches
+            ? this.renderCalendarInfo
+            : null
+        }
         onDatesChange={this.onDatesChange}
         onFocusChange={this.onFocusChange}
         focusedInput={focusedInput}
         startDate={startDate}
         endDate={endDate}
+        onClickOutside={null}
+        orientation={
+          matchMedia("(min-width: 576px)").matches
+            ? "horizontal"
+            : "verticalScrollable"
+        }
       />
     );
 
     return (
       <React.Fragment>
-        <Btn isOpen={this.state.isOpen} onClick={this.changeOpen}>
+        <Btn isOpen={isOpen} onClick={this.changeOpen}>
           {this.renderBtnInfo(startDateString, endDateString)}
-          <Filter isOpen={isOpen}>
-            <Header>
-              <Exit />
-              <Caption>Dates</Caption>
-              <Reset>Reset</Reset>
-            </Header>
-            {isOpen ? calendar : null}
-          </Filter>
+          {isOpen ? this.filter : null}
+          {isOpen ? (
+            <Filter isOpen={isOpen}>
+              <Header>
+                <Exit />
+                <Caption>Dates</Caption>
+                <Reset onClick={this.onReset}>Reset</Reset>
+              </Header>
+              <DatesRange>
+                <StartDate startDate={startDate}>
+                  {startDate ? startDateString : "Check-in"}
+                </StartDate>
+                <Arrow />
+                <EndDate endDate={endDate} startDate={startDate}>
+                  {endDate ? endDateString : "Check-out"}
+                </EndDate>
+              </DatesRange>
+              <DayPicker
+                numberOfMonths={
+                  matchMedia("(min-width: 992px)").matches
+                    ? 2
+                    : matchMedia("(min-width: 576px)").matches ? 1 : 12
+                }
+                isTouchDevice={isTouchDevice}
+                isOutsideRange={day => !isInclusivelyAfterDay(day, moment())}
+                hideKeyboardShortcutsPanel
+                isOpen={isOpen}
+                renderCalendarInfo={
+                  matchMedia("(min-width: 576px)").matches
+                    ? this.renderCalendarInfo
+                    : null
+                }
+                onDatesChange={this.onDatesChange}
+                onFocusChange={this.onFocusChange}
+                focusedInput={focusedInput}
+                startDate={startDate}
+                endDate={endDate}
+                onClickOutside={null}
+                orientation={
+                  matchMedia("(min-width: 576px)").matches
+                    ? "horizontal"
+                    : "verticalScrollable"
+                }
+              />
+              <Bottom>
+                <Save>Save</Save>
+              </Bottom>
+            </Filter>
+          ) : null}
         </Btn>
         {isOpen ? <Overlay onClick={this.changeOpen} /> : null}
       </React.Fragment>
