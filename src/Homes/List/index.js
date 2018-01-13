@@ -18,9 +18,9 @@ export default () => {
     <Main>
       <div className="container">
         <div className="row">
-          <div className="col-xs-12 col-sm-12 col-md-8">
+          <div className="col-xs-12 col-md-8">
             <div className="row">
-              <div className="col-xs-12 col-sm-6 col-md-6">
+              <div className="col-xs-12 col-sm-6">
                 <Card
                   imgSrc={salentina}
                   price={82}
@@ -32,7 +32,7 @@ export default () => {
                   La Salentina, see, nature & relax
                 </Card>
               </div>
-              <div className="col-xs-12 col-sm-6 col-md-6">
+              <div className="col-xs-12 col-sm-6">
                 <Card
                   imgSrc={privateBed}
                   price={82}
@@ -44,7 +44,7 @@ export default () => {
                   Your private 3 bedr. riad and exclusi…
                 </Card>
               </div>
-              <div className="col-xs-12 col-sm-6 col-md-6">
+              <div className="col-xs-12 col-sm-6">
                 <Card
                   imgSrc={tropical}
                   price={200}
@@ -56,7 +56,7 @@ export default () => {
                   Dreamy Tropical Tree House
                 </Card>
               </div>
-              <div className="col-xs-12 col-sm-6 col-md-6">
+              <div className="col-xs-12 col-sm-6">
                 <Card
                   imgSrc={oldTown}
                   price={110}
@@ -68,7 +68,7 @@ export default () => {
                   La Salentina, see, nature & relax
                 </Card>
               </div>
-              <div className="col-xs-12 col-sm-6 col-md-6">
+              <div className="col-xs-12 col-sm-6">
                 <Card
                   imgSrc={lussuoso}
                   price={83}
@@ -80,7 +80,7 @@ export default () => {
                   Lussuoso. Vista incantevole.
                 </Card>
               </div>
-              <div className="col-xs-12 col-sm-6 col-md-6">
+              <div className="col-xs-12 col-sm-6">
                 <Card
                   imgSrc={historical}
                   price={72}
