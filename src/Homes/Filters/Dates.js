@@ -282,8 +282,8 @@ export default class Dates extends React.Component {
       focusedInput
     } = this.state;
 
-    const startDateString = startDate && startDate.format("YYYY-MM-DD");
-    const endDateString = endDate && endDate.format("YYYY-MM-DD");
+    const startDateString = startDate && moment(startDate).format("Do MMM");
+    const endDateString = endDate && moment(endDate).format("Do MMM");
 
     return (
       <React.Fragment>
