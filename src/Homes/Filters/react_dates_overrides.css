@@ -10,6 +10,10 @@
   padding-bottom: 10px;
 }
 
+.DayPicker_weekHeader {
+  top: 58px;
+}
+
 @media screen and (max-width: 567px) {
   .DayPicker__withBorder {
     box-shadow: none;
