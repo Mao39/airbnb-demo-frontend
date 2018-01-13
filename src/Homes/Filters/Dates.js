@@ -8,6 +8,7 @@ import moment from "moment";
 import { isInclusivelyAfterDay } from "./helpers";
 import "./react_dates_overrides.css";
 import arrow from "./arrowRight.svg";
+import { START_DATE, END_DATE } from "react-dates/constants";
 
 import cross from "../../UI/cross.svg";
 
@@ -266,7 +267,7 @@ export default class Dates extends React.Component {
   state = {
     isOpen: false,
     isTouchDevice: true,
-    focusedInput: this.props.autoFocusEndDate ? "startDate" : "endDate",
+    focusedInput: START_DATE,
     startDate: this.props.initialStartDate,
     endDate: this.props.initialEndDate
   };
@@ -281,7 +282,7 @@ export default class Dates extends React.Component {
 
   onFocusChange = focusedInput => {
     this.setState({
-      focusedInput: !focusedInput ? "startDate" : focusedInput
+      focusedInput: !focusedInput ? START_DATE : focusedInput
     });
   };
 
