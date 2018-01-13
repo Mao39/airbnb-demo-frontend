@@ -14,8 +14,6 @@ const Card = styled.a`
 const Image = styled.img`
   position: relative;
   width: 100%;
-  max-height: 346px;
-  object-fit: cover;
 `;
 
 const Title = styled.p`
