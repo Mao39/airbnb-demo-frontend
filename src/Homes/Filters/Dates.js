@@ -280,7 +280,6 @@ const lastDays = day => !isInclusivelyAfterDay(day, moment());
 
 export default class Dates extends React.Component {
   state = {
-    isOpen: false,
     isTouchDevice: true,
     focusedInput: START_DATE,
     startDate: this.props.initialStartDate,
@@ -301,12 +300,15 @@ export default class Dates extends React.Component {
     });
   };
 
-  toggleOpening = ({ isOpen }) => {
-    this.setState(prevState => ({ isOpen: !prevState.isOpen }));
+  toggleOpening = () => {
+    this.props.toggleDropdown(!this.props.isOpen);
   };
 
   onSave = () => {
     this.props.onSave(this.state.startDate, this.state.endDate);
+    if (this.state.startDate && this.state.endDate) {
+      this.props.toggleDropdown();
+    }
   };
 
   renderCalendarInfo = () => {
@@ -324,7 +326,6 @@ export default class Dates extends React.Component {
 
   render() {
     const {
-      isOpen,
       startDate,
       endDate,
       isTouchDevice,
@@ -334,15 +335,15 @@ export default class Dates extends React.Component {
     return (
       <React.Fragment>
         <Wrap>
-          <Btn isOpen={isOpen} onClick={this.toggleOpening}>
+          <Btn isOpen={this.props.isOpen} onClick={this.toggleOpening}>
             {formatDateLabel(
               this.state.startDate,
               this.state.endDate,
               this.state.isOpen
             )}
           </Btn>
-          {isOpen ? (
-            <Filter isOpen={isOpen}>
+          {this.props.isOpen ? (
+            <Filter isOpen={this.props.isOpen}>
               <Header>
                 <Exit onClick={this.toggleOpening} />
                 <Caption>Dates</Caption>
@@ -362,7 +363,7 @@ export default class Dates extends React.Component {
                 isTouchDevice={isTouchDevice}
                 isOutsideRange={lastDays}
                 hideKeyboardShortcutsPanel
-                isOpen={isOpen}
+                isOpen={this.props.isOpen}
                 renderCalendarInfo={this.renderCalendarInfo}
                 onDatesChange={this.onDatesChange}
                 onFocusChange={this.onFocusChange}
@@ -376,10 +377,10 @@ export default class Dates extends React.Component {
               </Bottom>
             </Filter>
           ) : null}
-          {isOpen ? <Overlay onClick={this.toggleOpening} /> : null}
-          {scrollLock(isOpen)}
+          {this.props.isOpen ? <Overlay onClick={this.toggleOpening} /> : null}
+          {scrollLock(this.props.isOpen)}
           {!matchMedia("(min-width: 576px)").matches ? (
-            isOpen ? (
+            this.props.isOpen ? (
               <ScrollLock />
             ) : null
           ) : null}

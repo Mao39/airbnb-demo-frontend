@@ -46,6 +46,7 @@ const Btn = styled.button`
 
 export default class Filters extends React.Component {
   state = {
+    isOpen: false,
     startDate: null,
     endDate: null
   };
@@ -55,18 +56,22 @@ export default class Filters extends React.Component {
       startDate: startDate,
       endDate: endDate
     });
+  };
 
-    console.log(this.state.startDate, this.state.endDate);
+  toggleDropdown = () => {
+    this.setState( (prevState) => ({ isOpen: !prevState.isOpen }) );  
+  };
+
+  closeDropdown = () => {
+    
   };
   
   render() {
     return (
       <FiltersWrap>
         <div className="container">
-          <Dates onSave={this.onSave} />
-          <Btn>
-            Guests<Guests />
-          </Btn>
+          <Dates toggleDropdown={this.toggleDropdown} isOpen={this.state.isOpen} onSave={this.onSave} />
+          <Guests />
           <Btn>More filters</Btn>
         </div>
       </FiltersWrap>
