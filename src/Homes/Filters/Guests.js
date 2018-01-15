@@ -1,33 +1,63 @@
 import React, { Component } from "react";
 import styled, { css } from "styled-components";
+import ScrollLock from "react-scrolllock";
 import cross from "../../UI/cross.svg";
 import minus from "../../UI/minus.svg";
 import plus from "../../UI/plus.svg";
 
-const Guests = styled.aside`
-  ${"" /* NONE */};
-  display: none;
+const Filter = styled.aside`
+  display: inline-block;
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   background-color: #fff;
+  z-index: 3;
 
   @media (min-width: 576px) {
     position: absolute;
     top: 40px;
     left: 0;
-    display: inline-block;
     height: 290px;
     width: 326px;
     padding: 32px 24px;
     border: 1px solid rgba(72, 72, 72, 0.2);
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(72, 72, 72, 0.08);
-    ${"" /* NONE */};
-    display: none;
   }
+`;
+
+const Wrap = styled.div`
+  position: relative;
+  display: inline-block;
+`;
+
+const Overlay = styled.div`
+  position: fixed;
+  top: 137px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.8);
+`;
+
+const Btn = styled.button`
+  margin-right: 8px;
+  padding: 7px 16px;
+  border: 1px solid rgba(72, 72, 72, 0.3);
+  border-radius: 4px;
+  font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #383838;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  color: ${props => (props.isOpen ? "#fff" : "#383838")};
+  background: ${props => (props.isOpen ? "#008489" : "transparent")};
 `;
 
 const Header = styled.div`
@@ -183,6 +213,7 @@ const Save = styled.button`
 `;
 
 const Cancel = styled.button`
+  display: none;
   width: 110px;
   height: 64px;
   border: none;
@@ -193,9 +224,14 @@ const Cancel = styled.button`
   color: #636363;
   background: transparent;
   cursor: pointer;
+
+  @media(min-width: 576px) {
+    display: inline-block;
+  }
 `;
 
 const Apply = styled.button`
+  display: none;
   width: 110px;
   height: 64px;
   border: none;
@@ -206,9 +242,13 @@ const Apply = styled.button`
   color: #008489;
   background: transparent;
   cursor: pointer;
+
+  @media(min-width: 576px) {
+    display: inline-block;
+  }
 `;
 
-function HumanCoast(props) {
+const HumanCoast = (props) => {
   return (
     <People>
       <Type>
@@ -224,9 +264,36 @@ function HumanCoast(props) {
   );
 }
 
-export default () => {
+const formatGuestsLabel = (isOpen) => {
+  return "Guests";
+};
+
+const scrollLock = isOpen => {
+  if (!matchMedia("(min-width: 576px)").matches)
+    if (isOpen) return <ScrollLock />;
+};
+
+
+export default class Guests extends React.Component {
+  state = {
+    
+  };
+
+   toggleOpening = () => {
+    this.props.toggleDropdown(!this.props.isOpen);
+  };
+
+  render () {
   return (
-    <Guests>
+    <React.Fragment>
+      <Wrap>
+      <Btn isOpen={this.props.isOpen} onClick={this.toggleOpening}>
+            {formatGuestsLabel(
+              this.state.isOpen
+            )}
+      </Btn>
+    {this.props.isOpen ? (
+      <Filter>
       <Header>
         <Exit />
         <Caption>Guests</Caption>
@@ -240,6 +307,12 @@ export default () => {
         <Cancel>Cancel</Cancel>
         <Apply>Apply</Apply>
       </Bottom>
-    </Guests>
+    </Filter>
+          ) : null}
+          {this.props.isOpen ? <Overlay onClick={this.toggleOpening} /> : null}
+          {scrollLock(this.props.isOpen)}
+        </Wrap>
+      </React.Fragment>
   );
+  };
 };

@@ -70,8 +70,8 @@ export default class Filters extends React.Component {
     return (
       <FiltersWrap>
         <div className="container">
-          <Dates toggleDropdown={this.toggleDropdown} isOpen={this.state.isOpen} onSave={this.onSave} />
-          <Guests />
+          {/* <Dates toggleDropdown={this.toggleDropdown} isOpen={this.state.isOpen} onSave={this.onSave} /> */}
+          <Guests isOpen={this.state.isOpen} toggleDropdown={this.toggleDropdown} />
           <Btn>More filters</Btn>
         </div>
       </FiltersWrap>
