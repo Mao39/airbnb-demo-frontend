@@ -291,9 +291,9 @@ export default class Dates extends React.Component {
     this.setState({ startDate: null, endDate: null });
   };
 
-  onDatesChange = ({ startDate, endDate }) => {
-    this.setState({ startDate, endDate });
-  };
+  onDatesChange = ({startDate, endDate}) => {
+   this.setState({startDate, endDate});
+ };
 
   onFocusChange = focusedInput => {
     this.setState({
@@ -305,6 +305,10 @@ export default class Dates extends React.Component {
     this.setState(prevState => ({ isOpen: !prevState.isOpen }));
   };
 
+  onSave = () => {
+    this.props.onSave(this.state.startDate, this.state.endDate);
+  };
+
   renderCalendarInfo = () => {
     return (
       <CalendarRow>
@@ -313,7 +317,7 @@ export default class Dates extends React.Component {
         ) : (
           <Cancel onClick={this.toggleOpening}>Cancel</Cancel>
         )}
-        <Apply onClick={this.props.onSave}>Apply</Apply>
+        <Apply onClick={this.onSave}>Apply</Apply>
       </CalendarRow>
     );
   };

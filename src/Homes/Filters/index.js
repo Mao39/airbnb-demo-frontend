@@ -3,7 +3,6 @@ import styled from "styled-components";
 import Guests from "./Guests";
 import Room from "./Room";
 import Dates from "./Dates";
-import moment from "moment";
 
 const FiltersWrap = styled.div`
   position: fixed;
@@ -45,27 +44,21 @@ const Btn = styled.button`
   cursor: pointer;
 `;
 
-const startDateToString = startDate => {
-  return startDate && moment(startDate).format("Do MMM");
-};
-
-const endDateToString = endDate => {
-  return endDate && moment(endDate).format("Do MMM");
-};
-
 export default class Filters extends React.Component {
   state = {
-    startDateString: null,
-    endDateString: null
+    startDate: null,
+    endDate: null
   };
 
-  onSave = () => {
+  onSave = (startDate, endDate) => {
     this.setState({
-      startDateString: startDateToString(this.state.startDate),
-      endDateString: endDateToString(this.state.endDate)
+      startDate: startDate,
+      endDate: endDate
     });
-  };
 
+    console.log(this.state.startDate, this.state.endDate);
+  };
+  
   render() {
     return (
       <FiltersWrap>
