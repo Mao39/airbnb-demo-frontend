@@ -122,6 +122,7 @@ const Man = styled.span`
   line-height: 21px;
   font-weight: 600;
   color: #383838;
+  text-transform: capitalize;
 `;
 
 const Age = styled.span`
@@ -146,14 +147,10 @@ const Remove = styled.button`
   border-radius: 50%;
   background: url(${minus}) no-repeat center;
   background-size: 10px 2px;
-  opacity: 0.5;
 
-  ${props =>
-    props.removeActive &&
-    css`
-      opacity: 1;
-      cursor: pointer;
-    `};
+  opacity: ${props =>
+    props.type !== "adult" && props.removeActive > 0 ? "1" : ".5"};
+  cursor: ${props => (props.removeActive > 0 ? "pointer" : "default")};
 `;
 
 const Add = styled.button`
@@ -225,7 +222,7 @@ const Cancel = styled.button`
   background: transparent;
   cursor: pointer;
 
-  @media(min-width: 576px) {
+  @media (min-width: 576px) {
     display: inline-block;
   }
 `;
@@ -243,12 +240,12 @@ const Apply = styled.button`
   background: transparent;
   cursor: pointer;
 
-  @media(min-width: 576px) {
+  @media (min-width: 576px) {
     display: inline-block;
   }
 `;
 
-const HumanCoast = (props) => {
+const HumanCoast = props => {
   return (
     <People>
       <Type>
@@ -256,15 +253,18 @@ const HumanCoast = (props) => {
         <Age>{props.age}</Age>
       </Type>
       <Coast>
-        <Remove />
+        <Remove
+          onClick={() => props.removeGuest(props.type)}
+          removeActive={(props.amount, props.type)}
+        />
         <Amount>{props.amount}</Amount>
-        <Add />
+        <Add onClick={() => props.addGuest(props.type)} />
       </Coast>
     </People>
   );
-}
+};
 
-const formatGuestsLabel = (isOpen) => {
+const formatGuestsLabel = isOpen => {
   return "Guests";
 };
 
@@ -273,46 +273,90 @@ const scrollLock = isOpen => {
     if (isOpen) return <ScrollLock />;
 };
 
-
 export default class Guests extends React.Component {
   state = {
-    
+    guest_adult: 1,
+    guest_children: 0,
+    guest_infants: 0
   };
 
-   toggleOpening = () => {
-    this.props.toggleDropdown(!this.props.isOpen);
+  removeGuest = type => {
+    if (this.state[`guest_${type}`] > 1) {
+      this.setState(prevState => ({
+        [`guest_${type}`]: prevState[`guest_${type}`] - 1
+      }));
+      return true;
+    } else if (
+      `guest_${type}` !== `guest_adult` &&
+      this.state[`guest_${type}`] > 0
+    ) {
+      this.setState(prevState => ({
+        [`guest_${type}`]: prevState[`guest_${type}`] - 1
+      }));
+      return true;
+    }
   };
 
-  render () {
-  return (
-    <React.Fragment>
-      <Wrap>
-      <Btn isOpen={this.props.isOpen} onClick={this.toggleOpening}>
-            {formatGuestsLabel(
-              this.state.isOpen
-            )}
-      </Btn>
-    {this.props.isOpen ? (
-      <Filter>
-      <Header>
-        <Exit />
-        <Caption>Guests</Caption>
-        <Reset>Reset</Reset>
-      </Header>
-      <HumanCoast type="Adult" amount={0} />
-      <HumanCoast type="Children" age="Ages 2 — 12" amount={0} />
-      <HumanCoast type="Infants" age="Under 2" amount={0} />
-      <Bottom>
-        <Save>Save</Save>
-        <Cancel>Cancel</Cancel>
-        <Apply>Apply</Apply>
-      </Bottom>
-    </Filter>
+  addGuest = type => {
+    this.setState(prevState => ({
+      [`guest_${type}`]: prevState[`guest_${type}`] + 1
+    }));
+  };
+
+  activeRemoveButton = () => {};
+
+  toggleOpening = () => {
+    this.props.toggleDropdown(this.props.isOpen);
+  };
+
+  render() {
+    return (
+      <React.Fragment>
+        <Wrap>
+          <Btn isOpen={this.props.isOpen} onClick={this.toggleOpening}>
+            {formatGuestsLabel(this.state.isOpen)}
+          </Btn>
+          {this.props.isOpen ? (
+            <Filter>
+              <Header>
+                <Exit onClick={this.toggleOpening} />
+                <Caption>Guests</Caption>
+                <Reset>Reset</Reset>
+              </Header>
+              <HumanCoast
+                type="adult"
+                amount={this.state.guest_adult}
+                addGuest={this.addGuest}
+                removeGuest={this.removeGuest}
+                removeActive={this.removeGuest}
+              />
+              <HumanCoast
+                type="children"
+                age="Ages 2 — 12"
+                amount={this.state.guest_children}
+                addGuest={this.addGuest}
+                removeGuest={this.removeGuest}
+                removeActive={this.removeGuest}
+              />
+              <HumanCoast
+                type="infants"
+                age="Under 2"
+                amount={this.state.guest_infants}
+                addGuest={this.addGuest}
+                removeGuest={this.removeGuest}
+                removeActive={this.removeGuest}
+              />
+              <Bottom>
+                <Save>Save</Save>
+                <Cancel>Cancel</Cancel>
+                <Apply>Apply</Apply>
+              </Bottom>
+            </Filter>
           ) : null}
           {this.props.isOpen ? <Overlay onClick={this.toggleOpening} /> : null}
           {scrollLock(this.props.isOpen)}
         </Wrap>
       </React.Fragment>
-  );
-  };
-};
+    );
+  }
+}

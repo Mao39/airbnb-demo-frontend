@@ -290,9 +290,9 @@ export default class Dates extends React.Component {
     this.setState({ startDate: null, endDate: null });
   };
 
-  onDatesChange = ({startDate, endDate}) => {
-   this.setState({startDate, endDate});
- };
+  onDatesChange = ({ startDate, endDate }) => {
+    this.setState({ startDate, endDate });
+  };
 
   onFocusChange = focusedInput => {
     this.setState({
@@ -301,13 +301,14 @@ export default class Dates extends React.Component {
   };
 
   toggleOpening = () => {
-    this.props.toggleDropdown(!this.props.isOpen);
+    this.props.toggleDropdown(this.props.isOpen);
   };
 
   onSave = () => {
     this.props.onSave(this.state.startDate, this.state.endDate);
+
     if (this.state.startDate && this.state.endDate) {
-      this.props.toggleDropdown();
+      this.toggleOpening();
     }
   };
 
@@ -325,12 +326,7 @@ export default class Dates extends React.Component {
   };
 
   render() {
-    const {
-      startDate,
-      endDate,
-      isTouchDevice,
-      focusedInput
-    } = this.state;
+    const { startDate, endDate, isTouchDevice, focusedInput } = this.state;
 
     return (
       <React.Fragment>

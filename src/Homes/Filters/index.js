@@ -58,20 +58,25 @@ export default class Filters extends React.Component {
     });
   };
 
-  toggleDropdown = () => {
-    this.setState( (prevState) => ({ isOpen: !prevState.isOpen }) );  
+  toggleDropdown = isOpen => {
+    this.setState({ isOpen: !isOpen });
   };
 
-  closeDropdown = () => {
-    
-  };
-  
+  closeDropdown = () => {};
+
   render() {
     return (
       <FiltersWrap>
         <div className="container">
-          {/* <Dates toggleDropdown={this.toggleDropdown} isOpen={this.state.isOpen} onSave={this.onSave} /> */}
-          <Guests isOpen={this.state.isOpen} toggleDropdown={this.toggleDropdown} />
+          <Dates
+            toggleDropdown={this.toggleDropdown}
+            isOpen={this.state.isOpen}
+            onSave={this.onSave}
+          />
+          {/* <Guests
+            isOpen={this.state.isOpen}
+            toggleDropdown={this.toggleDropdown}
+          /> */}
           <Btn>More filters</Btn>
         </div>
       </FiltersWrap>
