@@ -70,7 +70,7 @@ export default () => {
           <div className="col-xs-10 col-sm-7 col-md-5">
             <SearchBar />
           </div>
-          <div className="col-md-offset-2 col-md-4">
+          <div className="hidden-xs hidden-sm hidden-md col-lg-offset-2 col-lg-4">
             <Nav />
           </div>
         </div>

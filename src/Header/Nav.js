@@ -2,14 +2,10 @@ import React, { Component } from "react";
 import styled from "styled-components";
 
 const Nav = styled.nav`
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: flex-end;
   height: 80px;
-
-  @media (min-width: 992px) {
-    display: flex;
-  }
 `;
 
 const Link = styled.a`
