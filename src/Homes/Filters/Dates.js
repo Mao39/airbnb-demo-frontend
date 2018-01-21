@@ -300,7 +300,7 @@ export default class Dates extends React.Component {
     });
   };
 
-  toggleOpening = () => {
+  switchOpeningFilter = () => {
     this.props.toggleDropdown(this.props.isOpen);
   };
 
@@ -308,7 +308,7 @@ export default class Dates extends React.Component {
     this.props.onSave(this.state.startDate, this.state.endDate);
 
     if (this.state.startDate && this.state.endDate) {
-      this.toggleOpening();
+      this.switchOpeningFilter();
     }
   };
 
@@ -318,7 +318,7 @@ export default class Dates extends React.Component {
         {this.state.startDate && this.state.endDate ? (
           <Cancel onClick={this.onReset}>Reset</Cancel>
         ) : (
-          <Cancel onClick={this.toggleOpening}>Cancel</Cancel>
+          <Cancel onClick={this.switchOpeningFilter}>Cancel</Cancel>
         )}
         <Apply onClick={this.onSave}>Apply</Apply>
       </CalendarRow>
@@ -331,7 +331,7 @@ export default class Dates extends React.Component {
     return (
       <React.Fragment>
         <Wrap>
-          <Btn isOpen={this.props.isOpen} onClick={this.toggleOpening}>
+          <Btn isOpen={this.props.isOpen} onClick={this.switchOpeningFilter}>
             {formatDateLabel(
               this.state.startDate,
               this.state.endDate,
@@ -341,7 +341,7 @@ export default class Dates extends React.Component {
           {this.props.isOpen ? (
             <Filter isOpen={this.props.isOpen}>
               <Header>
-                <Exit onClick={this.toggleOpening} />
+                <Exit onClick={this.switchOpeningFilter} />
                 <Caption>Dates</Caption>
                 <Reset onClick={this.onReset}>Reset</Reset>
               </Header>
@@ -373,7 +373,9 @@ export default class Dates extends React.Component {
               </Bottom>
             </Filter>
           ) : null}
-          {this.props.isOpen ? <Overlay onClick={this.toggleOpening} /> : null}
+          {this.props.isOpen ? (
+            <Overlay onClick={this.switchOpeningFilter} />
+          ) : null}
           {showScrollLock(this.props.isOpen)}
           {!matchMedia("(min-width: 576px)").matches ? (
             this.props.isOpen ? (
