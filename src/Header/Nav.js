@@ -5,7 +5,7 @@ const Nav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  height: 80px;
+  padding: 12px 0;
 `;
 
 const Link = styled.a`
