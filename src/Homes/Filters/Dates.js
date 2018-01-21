@@ -275,7 +275,8 @@ const showScrollLock = isOpen => {
   return !matchMedia("(min-width: 576px)").matches && isOpen && <ScrollLock />;
 };
 
-const lastDays = day => !isInclusivelyAfterDay(day, moment());
+const getUnavailableReservationDays = day =>
+  !isInclusivelyAfterDay(day, moment());
 
 export default class Dates extends React.Component {
   state = {
@@ -356,7 +357,7 @@ export default class Dates extends React.Component {
               <DayPicker
                 numberOfMonths={numberOfMonths()}
                 isTouchDevice={isTouchDevice}
-                isOutsideRange={lastDays}
+                isOutsideRange={getUnavailableReservationDays}
                 hideKeyboardShortcutsPanel
                 isOpen={this.props.isOpen}
                 renderCalendarInfo={this.renderCalendarInfo}
