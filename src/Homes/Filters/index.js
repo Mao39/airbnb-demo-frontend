@@ -37,7 +37,7 @@ export default class Filters extends React.Component {
     endDate: null
   };
 
-  onSave = (startDate, endDate) => {
+  saveChoice = (startDate, endDate) => {
     this.setState({
       startDate: startDate,
       endDate: endDate
@@ -57,12 +57,12 @@ export default class Filters extends React.Component {
           <Dates
             toggleDropdown={this.toggleDropdown}
             isOpen={this.state.isOpen}
-            onSave={this.onSave}
+            saveChoice={this.saveChoice}
           />
-          {/* <Guests
+          <Guests
             isOpen={this.state.isOpen}
             toggleDropdown={this.toggleDropdown}
-          /> */}
+          />
           <Btn>More filters</Btn>
         </div>
       </FiltersWrap>

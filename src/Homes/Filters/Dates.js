@@ -238,17 +238,17 @@ const Save = styled.button`
   }
 `;
 
-const startDateToString = startDate => {
+const formatStartDate = startDate => {
   return startDate && moment(startDate).format("Do MMM");
 };
 
-const endDateToString = endDate => {
+const formatEndDate = endDate => {
   return endDate && moment(endDate).format("Do MMM");
 };
 
 const formatButtonDate = (startDate, endDate) => {
-  const startDateString = startDateToString(startDate);
-  const endDateString = endDateToString(endDate);
+  const startDateString = formatStartDate(startDate);
+  const endDateString = formatEndDate(endDate);
 
   return `${startDateString} — ${endDateString}`;
 };
@@ -259,7 +259,7 @@ const formatDateLabel = (startDate, endDate, isOpen) => {
   return "Dates";
 };
 
-const numberOfMonths = () => {
+const showNumberMonths = () => {
   if (matchMedia("(min-width: 992px)").matches) return 2;
   if (matchMedia("(min-width: 576px)").matches) return 1;
   return 12;
@@ -275,8 +275,9 @@ const showScrollLock = isOpen => {
   return !matchMedia("(min-width: 576px)").matches && isOpen && <ScrollLock />;
 };
 
-const getUnavailableReservationDays = day =>
-  !isInclusivelyAfterDay(day, moment());
+const getUnavailableDaysReservation = day => {
+  return !isInclusivelyAfterDay(day, moment());
+};
 
 export default class Dates extends React.Component {
   state = {
@@ -286,7 +287,7 @@ export default class Dates extends React.Component {
     endDate: this.props.initialEndDate
   };
 
-  onReset = () => {
+  resetSelection = () => {
     this.setState({ startDate: null, endDate: null });
   };
 
@@ -304,23 +305,21 @@ export default class Dates extends React.Component {
     this.props.toggleDropdown(this.props.isOpen);
   };
 
-  onSave = () => {
-    this.props.onSave(this.state.startDate, this.state.endDate);
+  saveChoice = () => {
+    this.props.saveChoice(this.state.startDate, this.state.endDate);
 
-    if (this.state.startDate && this.state.endDate) {
-      this.switchOpeningFilter();
-    }
+    this.state.startDate && this.state.endDate && this.switchOpeningFilter();
   };
 
   renderCalendarInfo = () => {
     return (
       <CalendarRow>
         {this.state.startDate && this.state.endDate ? (
-          <Cancel onClick={this.onReset}>Reset</Cancel>
+          <Cancel onClick={this.resetSelection}>Reset</Cancel>
         ) : (
           <Cancel onClick={this.switchOpeningFilter}>Cancel</Cancel>
         )}
-        <Apply onClick={this.onSave}>Apply</Apply>
+        <Apply onClick={this.saveChoice}>Apply</Apply>
       </CalendarRow>
     );
   };
@@ -343,23 +342,22 @@ export default class Dates extends React.Component {
               <Header>
                 <Exit onClick={this.switchOpeningFilter} />
                 <Caption>Dates</Caption>
-                <Reset onClick={this.onReset}>Reset</Reset>
+                <Reset onClick={this.resetSelection}>Reset</Reset>
               </Header>
               <DatesRange>
                 <StartDate startDate={startDate}>
-                  {startDate ? startDateToString(startDate) : "Check-in"}
+                  {startDate ? formatStartDate(startDate) : "Check-in"}
                 </StartDate>
                 <Arrow />
                 <EndDate endDate={endDate} startDate={startDate}>
-                  {endDate ? endDateToString(endDate) : "Check-out"}
+                  {endDate ? formatEndDate(endDate) : "Check-out"}
                 </EndDate>
               </DatesRange>
               <DayPicker
-                numberOfMonths={numberOfMonths()}
+                numberOfMonths={showNumberMonths()}
                 isTouchDevice={isTouchDevice}
-                isOutsideRange={getUnavailableReservationDays}
+                isOutsideRange={getUnavailableDaysReservation}
                 hideKeyboardShortcutsPanel
-                isOpen={this.props.isOpen}
                 renderCalendarInfo={this.renderCalendarInfo}
                 onDatesChange={this.onDatesChange}
                 onFocusChange={this.onFocusChange}
@@ -369,7 +367,7 @@ export default class Dates extends React.Component {
                 orientation={changeOrientation()}
               />
               <Bottom>
-                <Save onClick={this.onSave}>Save</Save>
+                <Save onClick={this.saveChoice}>Save</Save>
               </Bottom>
             </Filter>
           ) : null}
