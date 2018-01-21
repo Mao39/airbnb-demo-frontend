@@ -272,8 +272,7 @@ const changeOrientation = () => {
 };
 
 const showScrollLock = isOpen => {
-  if (!matchMedia("(min-width: 576px)").matches)
-    if (isOpen) return <ScrollLock />;
+  return !matchMedia("(min-width: 576px)").matches && isOpen && <ScrollLock />;
 };
 
 const lastDays = day => !isInclusivelyAfterDay(day, moment());
