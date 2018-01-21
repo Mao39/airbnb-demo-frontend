@@ -271,6 +271,10 @@ const changeOrientation = () => {
     : "verticalScrollable";
 };
 
+const showOverlay = isOpen => {
+  return isOpen && <Overlay onClick={this.switchOpeningFilter} />;
+};
+
 const showScrollLock = isOpen => {
   return !matchMedia("(min-width: 576px)").matches && isOpen && <ScrollLock />;
 };
@@ -337,7 +341,7 @@ export default class Dates extends React.Component {
               this.state.isOpen
             )}
           </Btn>
-          {this.props.isOpen ? (
+          {this.props.isOpen && (
             <Filter isOpen={this.props.isOpen}>
               <Header>
                 <Exit onClick={this.switchOpeningFilter} />
@@ -370,10 +374,8 @@ export default class Dates extends React.Component {
                 <Save onClick={this.saveChoice}>Save</Save>
               </Bottom>
             </Filter>
-          ) : null}
-          {this.props.isOpen ? (
-            <Overlay onClick={this.switchOpeningFilter} />
-          ) : null}
+          )}
+          {showOverlay(this.props.isOpen)}
           {showScrollLock(this.props.isOpen)}
         </Wrap>
       </React.Fragment>
