@@ -264,8 +264,8 @@ const HumanCoast = props => {
   );
 };
 
-const formatGuestsLabel = isOpen => {
-  return "Guests";
+const formatGuestsLabel = (isOpen, filterLabel) => {
+  return filterLabel;
 };
 
 const scrollLock = isOpen => {
@@ -305,21 +305,24 @@ export default class Guests extends React.Component {
 
   activeRemoveButton = () => {};
 
-  toggleOpening = () => {
-    this.props.toggleDropdown(this.props.isOpen);
+  switchOpeningFilter = () => {
+    this.props.switchOpeningFilter();
   };
 
   render() {
+    const { isOpen } = this.props;
+    const filterLabel = this.props.children;
+
     return (
       <React.Fragment>
         <Wrap>
-          <Btn isOpen={this.props.isOpen} onClick={this.toggleOpening}>
-            {formatGuestsLabel(this.state.isOpen)}
+          <Btn isOpen={isOpen} onClick={this.switchOpeningFilter}>
+            {formatGuestsLabel(isOpen, filterLabel)}
           </Btn>
-          {this.props.isOpen ? (
+          {isOpen ? (
             <Filter>
               <Header>
-                <Exit onClick={this.toggleOpening} />
+                <Exit onClick={this.switchOpeningFilter} />
                 <Caption>Guests</Caption>
                 <Reset>Reset</Reset>
               </Header>
@@ -353,8 +356,8 @@ export default class Guests extends React.Component {
               </Bottom>
             </Filter>
           ) : null}
-          {this.props.isOpen ? <Overlay onClick={this.toggleOpening} /> : null}
-          {scrollLock(this.props.isOpen)}
+          {isOpen && <Overlay onClick={this.switchOpeningFilter} />}
+          {scrollLock(isOpen)}
         </Wrap>
       </React.Fragment>
     );

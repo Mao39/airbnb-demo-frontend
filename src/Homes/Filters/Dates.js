@@ -253,10 +253,10 @@ const formatButtonDate = (startDate, endDate) => {
   return `${startDateString} — ${endDateString}`;
 };
 
-const formatDateLabel = (startDate, endDate, isOpen) => {
+const formatDateLabel = (startDate, endDate, isOpen, filterLabel) => {
   if (startDate && endDate) return formatButtonDate(startDate, endDate);
   if (isOpen) return "Check in — Check out";
-  return "Dates";
+  return filterLabel;
 };
 
 const showNumberMonths = () => {
@@ -271,8 +271,8 @@ const changeOrientation = () => {
     : "verticalScrollable";
 };
 
-const showOverlay = isOpen => {
-  return isOpen && <Overlay onClick={this.switchOpeningFilter} />;
+const showOverlay = (isOpen, switchOpeningFilter) => {
+  return isOpen && <Overlay onClick={switchOpeningFilter} />;
 };
 
 const showScrollLock = isOpen => {
@@ -285,7 +285,6 @@ const getUnavailableDaysReservation = day => {
 
 export default class Dates extends React.Component {
   state = {
-    isTouchDevice: true,
     focusedInput: START_DATE,
     startDate: this.props.initialStartDate,
     endDate: this.props.initialEndDate
@@ -305,14 +304,12 @@ export default class Dates extends React.Component {
     });
   };
 
-  switchOpeningFilter = () => {
-    this.props.toggleDropdown(this.props.isOpen);
-  };
-
   saveChoice = () => {
     this.props.saveChoice(this.state.startDate, this.state.endDate);
 
-    this.state.startDate && this.state.endDate && this.switchOpeningFilter();
+    this.state.startDate &&
+      this.state.endDate &&
+      this.props.switchOpeningFilter();
   };
 
   renderCalendarInfo = () => {
@@ -321,7 +318,7 @@ export default class Dates extends React.Component {
         {this.state.startDate && this.state.endDate ? (
           <Cancel onClick={this.resetSelection}>Reset</Cancel>
         ) : (
-          <Cancel onClick={this.switchOpeningFilter}>Cancel</Cancel>
+          <Cancel onClick={this.props.switchOpeningFilter}>Cancel</Cancel>
         )}
         <Apply onClick={this.saveChoice}>Apply</Apply>
       </CalendarRow>
@@ -329,22 +326,20 @@ export default class Dates extends React.Component {
   };
 
   render() {
-    const { startDate, endDate, isTouchDevice, focusedInput } = this.state;
+    const { startDate, endDate, focusedInput } = this.state;
+    const { isOpen, switchOpeningFilter } = this.props;
+    const filterLabel = this.props.children;
 
     return (
       <React.Fragment>
         <Wrap>
-          <Btn isOpen={this.props.isOpen} onClick={this.switchOpeningFilter}>
-            {formatDateLabel(
-              this.state.startDate,
-              this.state.endDate,
-              this.state.isOpen
-            )}
+          <Btn isOpen={isOpen} onClick={switchOpeningFilter}>
+            {formatDateLabel(startDate, endDate, isOpen, filterLabel)}
           </Btn>
-          {this.props.isOpen && (
-            <Filter isOpen={this.props.isOpen}>
+          {isOpen && (
+            <Filter isOpen={isOpen}>
               <Header>
-                <Exit onClick={this.switchOpeningFilter} />
+                <Exit onClick={switchOpeningFilter} />
                 <Caption>Dates</Caption>
                 <Reset onClick={this.resetSelection}>Reset</Reset>
               </Header>
@@ -359,7 +354,6 @@ export default class Dates extends React.Component {
               </DatesRange>
               <DayPicker
                 numberOfMonths={showNumberMonths()}
-                isTouchDevice={isTouchDevice}
                 isOutsideRange={getUnavailableDaysReservation}
                 hideKeyboardShortcutsPanel
                 renderCalendarInfo={this.renderCalendarInfo}
@@ -375,8 +369,8 @@ export default class Dates extends React.Component {
               </Bottom>
             </Filter>
           )}
-          {showOverlay(this.props.isOpen)}
-          {showScrollLock(this.props.isOpen)}
+          {showOverlay(isOpen, switchOpeningFilter)}
+          {showScrollLock(isOpen)}
         </Wrap>
       </React.Fragment>
     );

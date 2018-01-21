@@ -37,32 +37,34 @@ export default class Filters extends React.Component {
     endDate: null
   };
 
-  saveChoice = (startDate, endDate) => {
+  saveSelectedDates = (startDate, endDate) => {
     this.setState({
       startDate: startDate,
       endDate: endDate
     });
   };
 
-  toggleDropdown = isOpen => {
-    this.setState({ isOpen: !isOpen });
+  switchOpeningFilter = () => {
+    this.setState({ isOpen: !this.state.isOpen });
   };
-
-  closeDropdown = () => {};
 
   render() {
     return (
       <FiltersWrap>
         <div className="container">
           <Dates
-            toggleDropdown={this.toggleDropdown}
             isOpen={this.state.isOpen}
-            saveChoice={this.saveChoice}
-          />
-          <Guests
+            switchOpeningFilter={this.switchOpeningFilter}
+            saveChoice={this.saveSelectedDates}
+          >
+            Dates
+          </Dates>
+          {/* <Guests
             isOpen={this.state.isOpen}
-            toggleDropdown={this.toggleDropdown}
-          />
+            switchOpeningFilter={this.switchOpeningFilter}
+          >
+            Guests
+          </Guests> */}
           <Btn>More filters</Btn>
         </div>
       </FiltersWrap>
