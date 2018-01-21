@@ -4,10 +4,7 @@ import search from "./search.svg";
 
 const SearchBar = styled.div`
   position: relative;
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: 100%;
+  padding-left: 8px;
 `;
 
 const Button = styled.button`
@@ -23,16 +20,15 @@ const Button = styled.button`
   background-size: cover;
   cursor: pointer;
 
-  @media (min-width: 576px) {
+  @media (min-width: 575px) {
     width: 22px;
     height: 24px;
   }
 `;
 
 const Input = styled.input`
-  margin-left: 8px;
   width: 100%;
-  height: 48px;
+  padding: 12px 0;
   padding-left: 35px;
   border: 1px solid rgba(72, 72, 72, 0.2);
   border-radius: 4px;
