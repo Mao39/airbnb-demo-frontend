@@ -10,23 +10,9 @@ const FiltersWrap = styled.div`
   right: 0;
   left: 0;
   z-index: 3;
-  display: flex;
-  align-items: center;
-  align-content: flex-start;
-  height: 56px;
+  padding: 12px 0;
   background: #fff;
   box-shadow: 0 0 0.5px rgba(72, 72, 72, 0.3);
-
-  & > .container {
-    margin: 0;
-  }
-
-  @media (min-width: 576px) {
-    & > .container {
-      margin-right: auto;
-      margin-left: auto;
-    }
-  }
 `;
 
 const Btn = styled.button`
