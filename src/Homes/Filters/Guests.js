@@ -134,7 +134,7 @@ const Age = styled.span`
   color: #383838;
 `;
 
-const Coast = styled.div`
+const Control = styled.div`
   display: flex;
   align-items: center;
 `;
@@ -245,21 +245,21 @@ const Apply = styled.button`
   }
 `;
 
-const HumanCoast = props => {
+const Guest = props => {
   return (
     <People>
       <Type>
         <Man>{props.type}</Man>
         <Age>{props.age}</Age>
       </Type>
-      <Coast>
+      <Control>
         <Remove
           onClick={() => props.removeGuest(props.type)}
           removeActive={(props.amount, props.type)}
         />
         <Amount>{props.amount}</Amount>
         <Add onClick={() => props.addGuest(props.type)} />
-      </Coast>
+      </Control>
     </People>
   );
 };
@@ -319,14 +319,14 @@ export default class Guests extends React.Component {
                 <Caption>Guests</Caption>
                 <Reset>Reset</Reset>
               </Header>
-              <HumanCoast
+              <Guest
                 type="adult"
                 amount={this.state.adult}
                 addGuest={this.addGuest}
                 removeGuest={this.removeGuest}
                 removeActive={this.removeGuest}
               />
-              <HumanCoast
+              <Guest
                 type="children"
                 age="Ages 2 — 12"
                 amount={this.state.children}
@@ -334,7 +334,7 @@ export default class Guests extends React.Component {
                 removeGuest={this.removeGuest}
                 removeActive={this.removeGuest}
               />
-              <HumanCoast
+              <Guest
                 type="infants"
                 age="Under 2"
                 amount={this.state.infants}
