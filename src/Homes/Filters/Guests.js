@@ -275,23 +275,20 @@ const scrollLock = isOpen => {
 
 export default class Guests extends React.Component {
   state = {
-    guest_adult: 1,
-    guest_children: 0,
-    guest_infants: 0
+    adult: 1,
+    children: 0,
+    infants: 0
   };
 
   removeGuest = type => {
-    if (this.state[`guest_${type}`] > 1) {
+    if (this.state[type] > 1) {
       this.setState(prevState => ({
-        [`guest_${type}`]: prevState[`guest_${type}`] - 1
+        [type]: prevState[type] - 1
       }));
       return true;
-    } else if (
-      `guest_${type}` !== `guest_adult` &&
-      this.state[`guest_${type}`] > 0
-    ) {
+    } else if (type !== `adult` && this.state[type] > 0) {
       this.setState(prevState => ({
-        [`guest_${type}`]: prevState[`guest_${type}`] - 1
+        [type]: prevState[type] - 1
       }));
       return true;
     }
@@ -299,36 +296,32 @@ export default class Guests extends React.Component {
 
   addGuest = type => {
     this.setState(prevState => ({
-      [`guest_${type}`]: prevState[`guest_${type}`] + 1
+      [type]: prevState[type] + 1
     }));
   };
 
   activeRemoveButton = () => {};
 
-  switchOpeningFilter = () => {
-    this.props.switchOpeningFilter();
-  };
-
   render() {
-    const { isOpen } = this.props;
+    const { isOpen, switchOpeningFilter } = this.props;
     const filterLabel = this.props.children;
 
     return (
       <React.Fragment>
         <Wrap>
-          <Btn isOpen={isOpen} onClick={this.switchOpeningFilter}>
+          <Btn isOpen={isOpen} onClick={switchOpeningFilter}>
             {formatGuestsLabel(isOpen, filterLabel)}
           </Btn>
-          {isOpen ? (
+          {isOpen && (
             <Filter>
               <Header>
-                <Exit onClick={this.switchOpeningFilter} />
+                <Exit onClick={switchOpeningFilter} />
                 <Caption>Guests</Caption>
                 <Reset>Reset</Reset>
               </Header>
               <HumanCoast
                 type="adult"
-                amount={this.state.guest_adult}
+                amount={this.state.adult}
                 addGuest={this.addGuest}
                 removeGuest={this.removeGuest}
                 removeActive={this.removeGuest}
@@ -336,7 +329,7 @@ export default class Guests extends React.Component {
               <HumanCoast
                 type="children"
                 age="Ages 2 — 12"
-                amount={this.state.guest_children}
+                amount={this.state.children}
                 addGuest={this.addGuest}
                 removeGuest={this.removeGuest}
                 removeActive={this.removeGuest}
@@ -344,19 +337,19 @@ export default class Guests extends React.Component {
               <HumanCoast
                 type="infants"
                 age="Under 2"
-                amount={this.state.guest_infants}
+                amount={this.state.infants}
                 addGuest={this.addGuest}
                 removeGuest={this.removeGuest}
                 removeActive={this.removeGuest}
               />
               <Bottom>
                 <Save>Save</Save>
-                <Cancel>Cancel</Cancel>
+                <Cancel onClick={switchOpeningFilter}>Cancel</Cancel>
                 <Apply>Apply</Apply>
               </Bottom>
             </Filter>
-          ) : null}
-          {isOpen && <Overlay onClick={this.switchOpeningFilter} />}
+          )}
+          {isOpen && <Overlay onClick={switchOpeningFilter} />}
           {scrollLock(isOpen)}
         </Wrap>
       </React.Fragment>
