@@ -377,11 +377,6 @@ export default class Dates extends React.Component {
             <Overlay onClick={this.switchOpeningFilter} />
           ) : null}
           {showScrollLock(this.props.isOpen)}
-          {!matchMedia("(min-width: 576px)").matches ? (
-            this.props.isOpen ? (
-              <ScrollLock />
-            ) : null
-          ) : null}
         </Wrap>
       </React.Fragment>
     );
