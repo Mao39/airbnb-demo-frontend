@@ -148,9 +148,13 @@ const Remove = styled.button`
   background: url(${minus}) no-repeat center;
   background-size: 10px 2px;
 
-  opacity: ${props =>
-    props.type !== "adult" && props.removeActive > 0 ? "1" : ".5"};
-  cursor: ${props => (props.removeActive > 0 ? "pointer" : "default")};
+  opacity: ${props => (props.active.amount > 0 ? "1" : ".5")};
+  cursor: ${props => (props.active.amount > 0 ? "pointer" : "default")};
+
+  &:first-child {
+    opacity: ${props => (props.active.amount > 1 ? "1" : ".5")};
+    cursor: ${props => (props.active.amount > 1 ? "pointer" : "default")};
+  }
 `;
 
 const Add = styled.button`
@@ -255,7 +259,7 @@ const Guest = props => {
       <Control>
         <Remove
           onClick={() => props.reduceNumberGuests(props.type)}
-          removeActive={(props.amount, props.type)}
+          active={props}
         />
         <Amount>{props.amount}</Amount>
         <Add onClick={() => props.addNumberGuests(props.type)} />
@@ -269,8 +273,7 @@ const formatGuestsLabel = (isOpen, filterLabel) => {
 };
 
 const scrollLock = isOpen => {
-  if (!matchMedia("(min-width: 576px)").matches)
-    if (isOpen) return <ScrollLock />;
+  return !matchMedia("(min-width: 576px)").matches && isOpen && <ScrollLock />;
 };
 
 export default class Guests extends React.Component {
@@ -282,24 +285,22 @@ export default class Guests extends React.Component {
 
   reduceNumberGuests = type => {
     this.state[type] > 1 &&
-      this.setState(prevState => ({
-        [type]: prevState[type] - 1
-      }));
+      this.setState({
+        [type]: this.state[type] - 1
+      });
 
     this.state[type] > 0 &&
       type !== `adult` &&
-      this.setState(prevState => ({
-        [type]: prevState[type] - 1
-      }));
+      this.setState({
+        [type]: this.state[type] - 1
+      });
   };
 
   addNumberGuests = type => {
-    this.setState(prevState => ({
-      [type]: prevState[type] + 1
-    }));
+    this.setState({
+      [type]: this.state[type] + 1
+    });
   };
-
-  activeRemoveButton = () => {};
 
   render() {
     const { isOpen, switchOpeningFilter } = this.props;
