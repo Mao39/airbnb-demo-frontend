@@ -254,11 +254,11 @@ const Guest = props => {
       </Type>
       <Control>
         <Remove
-          onClick={() => props.removeGuest(props.type)}
+          onClick={() => props.reduceNumberGuests(props.type)}
           removeActive={(props.amount, props.type)}
         />
         <Amount>{props.amount}</Amount>
-        <Add onClick={() => props.addGuest(props.type)} />
+        <Add onClick={() => props.addNumberGuests(props.type)} />
       </Control>
     </People>
   );
@@ -280,21 +280,20 @@ export default class Guests extends React.Component {
     infants: 0
   };
 
-  removeGuest = type => {
-    if (this.state[type] > 1) {
+  reduceNumberGuests = type => {
+    this.state[type] > 1 &&
       this.setState(prevState => ({
         [type]: prevState[type] - 1
       }));
-      return true;
-    } else if (type !== `adult` && this.state[type] > 0) {
+
+    this.state[type] > 0 &&
+      type !== `adult` &&
       this.setState(prevState => ({
         [type]: prevState[type] - 1
       }));
-      return true;
-    }
   };
 
-  addGuest = type => {
+  addNumberGuests = type => {
     this.setState(prevState => ({
       [type]: prevState[type] + 1
     }));
@@ -322,24 +321,24 @@ export default class Guests extends React.Component {
               <Guest
                 type="adult"
                 amount={this.state.adult}
-                addGuest={this.addGuest}
-                removeGuest={this.removeGuest}
+                addNumberGuests={this.addNumberGuests}
+                reduceNumberGuests={this.reduceNumberGuests}
                 removeActive={this.removeGuest}
               />
               <Guest
                 type="children"
                 age="Ages 2 — 12"
                 amount={this.state.children}
-                addGuest={this.addGuest}
-                removeGuest={this.removeGuest}
+                addNumberGuests={this.addNumberGuests}
+                reduceNumberGuests={this.reduceNumberGuests}
                 removeActive={this.removeGuest}
               />
               <Guest
                 type="infants"
                 age="Under 2"
                 amount={this.state.infants}
-                addGuest={this.addGuest}
-                removeGuest={this.removeGuest}
+                addNumberGuests={this.addNumberGuests}
+                reduceNumberGuests={this.reduceNumberGuests}
                 removeActive={this.removeGuest}
               />
               <Bottom>
