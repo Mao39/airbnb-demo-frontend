@@ -148,13 +148,8 @@ const Remove = styled.button`
   background: url(${minus}) no-repeat center;
   background-size: 10px 2px;
 
-  opacity: ${props => (props.active.amount > 0 ? "1" : ".5")};
-  cursor: ${props => (props.active.amount > 0 ? "pointer" : "default")};
-
-  &:first-child {
-    opacity: ${props => (props.active.amount > 1 ? "1" : ".5")};
-    cursor: ${props => (props.active.amount > 1 ? "pointer" : "default")};
-  }
+  opacity: ${props => (props.disabled ? ".5" : "1")};
+  cursor: ${props => (props.disabled ? "default" : "pointer")};
 `;
 
 const Add = styled.button`
@@ -249,6 +244,14 @@ const Apply = styled.button`
   }
 `;
 
+const formatGuestsLabel = (isOpen, filterLabel) => {
+  return filterLabel;
+};
+
+const scrollLock = isOpen => {
+  return !matchMedia("(min-width: 576px)").matches && isOpen && <ScrollLock />;
+};
+
 const Guest = props => {
   return (
     <People>
@@ -259,7 +262,7 @@ const Guest = props => {
       <Control>
         <Remove
           onClick={() => props.reduceNumberGuests(props.type)}
-          active={props}
+          disabled={props.switchDisableButton(props.type)}
         />
         <Amount>{props.amount}</Amount>
         <Add onClick={() => props.addNumberGuests(props.type)} />
@@ -268,19 +271,17 @@ const Guest = props => {
   );
 };
 
-const formatGuestsLabel = (isOpen, filterLabel) => {
-  return filterLabel;
-};
-
-const scrollLock = isOpen => {
-  return !matchMedia("(min-width: 576px)").matches && isOpen && <ScrollLock />;
-};
-
 export default class Guests extends React.Component {
   state = {
     adult: 1,
     children: 0,
     infants: 0
+  };
+
+  switchDisableButton = type => {
+    if (this.state[type] > 1) return false;
+    if (this.state[type] > 0 && type !== `adult`) return false;
+    return true;
   };
 
   reduceNumberGuests = type => {
@@ -325,6 +326,7 @@ export default class Guests extends React.Component {
                 addNumberGuests={this.addNumberGuests}
                 reduceNumberGuests={this.reduceNumberGuests}
                 removeActive={this.removeGuest}
+                switchDisableButton={this.switchDisableButton}
               />
               <Guest
                 type="children"
@@ -333,6 +335,7 @@ export default class Guests extends React.Component {
                 addNumberGuests={this.addNumberGuests}
                 reduceNumberGuests={this.reduceNumberGuests}
                 removeActive={this.removeGuest}
+                switchDisableButton={this.switchDisableButton}
               />
               <Guest
                 type="infants"
@@ -341,6 +344,7 @@ export default class Guests extends React.Component {
                 addNumberGuests={this.addNumberGuests}
                 reduceNumberGuests={this.reduceNumberGuests}
                 removeActive={this.removeGuest}
+                switchDisableButton={this.switchDisableButton}
               />
               <Bottom>
                 <Save>Save</Save>
