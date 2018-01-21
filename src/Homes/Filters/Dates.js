@@ -271,7 +271,7 @@ const changeOrientation = () => {
     : "verticalScrollable";
 };
 
-const scrollLock = isOpen => {
+const showScrollLock = isOpen => {
   if (!matchMedia("(min-width: 576px)").matches)
     if (isOpen) return <ScrollLock />;
 };
@@ -374,7 +374,7 @@ export default class Dates extends React.Component {
             </Filter>
           ) : null}
           {this.props.isOpen ? <Overlay onClick={this.toggleOpening} /> : null}
-          {scrollLock(this.props.isOpen)}
+          {showScrollLock(this.props.isOpen)}
           {!matchMedia("(min-width: 576px)").matches ? (
             this.props.isOpen ? (
               <ScrollLock />
