@@ -247,10 +247,7 @@ const formatEndDate = endDate => {
 };
 
 const formatButtonDate = (startDate, endDate) => {
-  const startDateString = formatStartDate(startDate);
-  const endDateString = formatEndDate(endDate);
-
-  return `${startDateString} — ${endDateString}`;
+  return `${formatStartDate(startDate)} — ${formatEndDate(endDate)}`;
 };
 
 const formatDateLabel = (startDate, endDate, isOpen, filterLabel) => {
