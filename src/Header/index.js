@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import Nav from "./Nav";
 import logo from "./headerLogo.svg";
+import dropdownArrow from "../UI/dropdownArrow.svg";
 
 const Header = styled.header`
   position: fixed;
@@ -34,7 +35,7 @@ const Logo = styled(Link)`
     width: 10px;
     height: 10px;
     border: none;
-    background: url(/static/media/dropdownArrow.b2745bbd.svg) no-repeat center;
+    background: url(${dropdownArrow}) no-repeat center;
     background-size: contain;
     cursor: pointer;
 
