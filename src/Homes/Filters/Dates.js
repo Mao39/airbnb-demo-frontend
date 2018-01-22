@@ -268,11 +268,11 @@ const changeOrientation = () => {
     : "verticalScrollable";
 };
 
-const showOverlay = (isOpen, switchOpeningFilter) => {
+const ShowOverlay = (isOpen, switchOpeningFilter) => {
   return isOpen && <Overlay onClick={switchOpeningFilter} />;
 };
 
-const showScrollLock = isOpen => {
+const ShowScrollLock = isOpen => {
   return !matchMedia("(min-width: 576px)").matches && isOpen && <ScrollLock />;
 };
 
@@ -366,8 +366,8 @@ export default class Dates extends React.Component {
               </Bottom>
             </Filter>
           )}
-          {showOverlay(isOpen, switchOpeningFilter)}
-          {showScrollLock(isOpen)}
+          {ShowOverlay(isOpen, switchOpeningFilter)}
+          {ShowScrollLock(isOpen)}
         </Wrap>
       </React.Fragment>
     );

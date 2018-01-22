@@ -248,7 +248,11 @@ const formatGuestsLabel = (isOpen, filterLabel) => {
   return filterLabel;
 };
 
-const scrollLock = isOpen => {
+const ShowOverlay = (isOpen, switchOpeningFilter) => {
+  return isOpen && <Overlay onClick={switchOpeningFilter} />;
+};
+
+const ShowScrollLock = isOpen => {
   return !matchMedia("(min-width: 576px)").matches && isOpen && <ScrollLock />;
 };
 
@@ -353,8 +357,8 @@ export default class Guests extends React.Component {
               </Bottom>
             </Filter>
           )}
-          {isOpen && <Overlay onClick={switchOpeningFilter} />}
-          {scrollLock(isOpen)}
+          {ShowOverlay(isOpen, switchOpeningFilter)}
+          {ShowScrollLock(isOpen)}
         </Wrap>
       </React.Fragment>
     );
