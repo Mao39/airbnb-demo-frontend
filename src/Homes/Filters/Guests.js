@@ -265,11 +265,11 @@ const Guest = props => {
       </Type>
       <Control>
         <Remove
-          onClick={() => props.reduceNumberGuests(props.type)}
+          onClick={() => props.reduce(props.type)}
           disabled={props.switchDisableButton(props.type)}
         />
         <Amount>{props.amount}</Amount>
-        <Add onClick={() => props.addNumberGuests(props.type)} />
+        <Add onClick={() => props.add(props.type)} />
       </Control>
     </People>
   );
@@ -288,7 +288,7 @@ export default class Guests extends React.Component {
     return true;
   };
 
-  reduceNumberGuests = type => {
+  reduce = type => {
     if (this.state[type] > 1) {
       this.setState({ [type]: this.state[type] - 1 });
     } else if (this.state[type] > 0 && type !== `adult`) {
@@ -296,7 +296,7 @@ export default class Guests extends React.Component {
     }
   };
 
-  addNumberGuests = type => {
+  add = type => {
     this.setState({
       [type]: this.state[type] + 1
     });
@@ -322,27 +322,24 @@ export default class Guests extends React.Component {
               <Guest
                 type="adult"
                 amount={this.state.adult}
-                addNumberGuests={this.addNumberGuests}
-                reduceNumberGuests={this.reduceNumberGuests}
-                removeActive={this.removeGuest}
+                add={this.add}
+                reduce={this.reduce}
                 switchDisableButton={this.switchDisableButton}
               />
               <Guest
                 type="children"
                 age="Ages 2 — 12"
                 amount={this.state.children}
-                addNumberGuests={this.addNumberGuests}
-                reduceNumberGuests={this.reduceNumberGuests}
-                removeActive={this.removeGuest}
+                add={this.add}
+                reduce={this.reduce}
                 switchDisableButton={this.switchDisableButton}
               />
               <Guest
                 type="infants"
                 age="Under 2"
                 amount={this.state.infants}
-                addNumberGuests={this.addNumberGuests}
-                reduceNumberGuests={this.reduceNumberGuests}
-                removeActive={this.removeGuest}
+                add={this.add}
+                reduce={this.reduce}
                 switchDisableButton={this.switchDisableButton}
               />
               <Bottom>
