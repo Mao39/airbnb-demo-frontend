@@ -290,16 +290,16 @@ export default class Guests extends React.Component {
 
   reduce = type => {
     if (this.state[type] > 1) {
-      this.setState({ [type]: this.state[type] - 1 });
+      this.setState(prevState => ({ [type]: prevState[type] - 1 }));
     } else if (this.state[type] > 0 && type !== `adult`) {
-      this.setState({ [type]: this.state[type] - 1 });
+      this.setState(prevState => ({ [type]: prevState[type] - 1 }));
     }
   };
 
   add = type => {
-    this.setState({
-      [type]: this.state[type] + 1
-    });
+    this.setState(prevState => ({
+      [type]: prevState[type] + 1
+    }));
   };
 
   render() {
