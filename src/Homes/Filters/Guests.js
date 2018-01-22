@@ -289,16 +289,11 @@ export default class Guests extends React.Component {
   };
 
   reduceNumberGuests = type => {
-    this.state[type] > 1 &&
-      this.setState({
-        [type]: this.state[type] - 1
-      });
-
-    this.state[type] > 0 &&
-      type !== `adult` &&
-      this.setState({
-        [type]: this.state[type] - 1
-      });
+    if (this.state[type] > 1) {
+      this.setState({ [type]: this.state[type] - 1 });
+    } else if (this.state[type] > 0 && type !== `adult`) {
+      this.setState({ [type]: this.state[type] - 1 });
+    }
   };
 
   addNumberGuests = type => {
