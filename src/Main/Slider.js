@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import arrow from "./arrow.svg";
+import arrow from "../UI/rightArrow.svg";
 
 export const Slider = styled.div`
   position: relative;

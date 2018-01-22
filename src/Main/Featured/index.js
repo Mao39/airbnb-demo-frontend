@@ -1,32 +1,22 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Slider, SliderBtn } from "../Slider";
-import { Card, Image, Title, Price } from "../Card";
 import { Head, Caption } from "../Head";
-import paris from "./paris.png";
-import seoul from "./seoul.png";
-import tokyo from "./tokyo.png";
-import miami from "./miami.png";
-import losAngeles from "./losAngeles.png";
-import capeTown from "./capeTown.png";
-
-const Name = Price.extend`
-  font-size: 12px;
-  line-height: 14px;
-
-  @media (min-width: 320px) {
-    font-size: 15px;
-    line-height: 18px;
-  }
-`;
+import { Slider, SliderBtn } from "../Slider";
+import Card from "./Card";
+import paris from "../../UI/paris.png";
+import seoul from "../../UI/seoul.png";
+import tokyo from "../../UI/tokyo.png";
+import miami from "../../UI/miami.png";
+import losAngeles from "../../UI/losAngeles.png";
+import capeTown from "../../UI/capeTown.png";
 
 const Featured = styled.section``;
 
 const Arrow = SliderBtn.extend`
-  margin-top: 5.1rem;
+  margin-top: 12.5%;
 `;
 
-export default function() {
+export default () => {
   return (
     <Featured>
       <div className="container">
@@ -35,53 +25,23 @@ export default function() {
         </Head>
         <Slider>
           <div className="row">
-            <div className="col-md-2 col-sm-3 col-xs-4">
-              <Card>
-                <Image src={paris} />
-                <Title>
-                  <Name>Paris</Name>
-                </Title>
-              </Card>
+            <div className="col-xs-4 col-sm-3 col-md-2">
+              <Card imgSrc={paris}>Paris</Card>
             </div>
-            <div className="col-md-2 col-sm-3 col-xs-4">
-              <Card>
-                <Image src={miami} />
-                <Title>
-                  <Name>Miami</Name>
-                </Title>
-              </Card>
+            <div className="col-xs-4 col-sm-3 col-md-2">
+              <Card imgSrc={miami}>Miami</Card>
             </div>
-            <div className="col-md-2 col-sm-3 col-xs-4">
-              <Card>
-                <Image src={tokyo} />
-                <Title>
-                  <Name>Tokyo</Name>
-                </Title>
-              </Card>
+            <div className="col-xs-4 col-sm-3 col-md-2">
+              <Card imgSrc={tokyo}>Tokyo</Card>
             </div>
-            <div className="col-md-2 col-sm-3 col-xs-4">
-              <Card>
-                <Image src={capeTown} />
-                <Title>
-                  <Name>Cape town</Name>
-                </Title>
-              </Card>
+            <div className="col-xs-4 col-sm-3 col-md-2">
+              <Card imgSrc={capeTown}>Cape town</Card>
             </div>
-            <div className="col-md-2 col-sm-3 col-xs-4">
-              <Card>
-                <Image src={seoul} />
-                <Title>
-                  <Name>Seoul</Name>
-                </Title>
-              </Card>
+            <div className="col-xs-4 col-sm-3 col-md-2">
+              <Card imgSrc={seoul}>Seoul</Card>
             </div>
-            <div className="col-md-2 col-sm-3 col-xs-4">
-              <Card>
-                <Image src={losAngeles} />
-                <Title>
-                  <Name>Los Angeles</Name>
-                </Title>
-              </Card>
+            <div className="col-xs-4 col-sm-3 col-md-2">
+              <Card imgSrc={losAngeles}>Los Angeles</Card>
             </div>
             <Arrow />
           </div>
@@ -89,4 +49,4 @@ export default function() {
       </div>
     </Featured>
   );
-}
+};

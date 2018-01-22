@@ -4,16 +4,13 @@ import search from "./search.svg";
 
 const SearchBar = styled.div`
   position: relative;
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: 100%;
+  padding-left: 8px;
 `;
 
-const Button = styled.span`
+const Button = styled.button`
   position: absolute;
   top: 50%;
-  left: 14px;
+  left: 22px;
   transform: translateY(-50%);
   display: inline-block;
   width: 15px;
@@ -23,15 +20,15 @@ const Button = styled.span`
   background-size: cover;
   cursor: pointer;
 
-  @media (min-width: 320px) {
+  @media (min-width: 575px) {
     width: 22px;
-    height: 22px;
+    height: 24px;
   }
 `;
 
 const Input = styled.input`
   width: 100%;
-  height: 48px;
+  padding: 12px 0;
   padding-left: 35px;
   border: 1px solid rgba(72, 72, 72, 0.2);
   border-radius: 4px;
@@ -42,17 +39,17 @@ const Input = styled.input`
   color: #383838;
   box-shadow: 0px 2px 4px rgba(72, 72, 72, 0.08);
 
-  @media (min-width: 320px) {
+  @media (min-width: 576px) {
     padding-left: 52px;
     font-size: 16px;
   }
 `;
 
-export default function() {
+export default () => {
   return (
     <SearchBar>
       <Button />
       <Input type="text" defaultValue="Try &quot;Miami&quot;" />
     </SearchBar>
   );
-}
+};

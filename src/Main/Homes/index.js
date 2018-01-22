@@ -1,150 +1,68 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { Slider, SliderBtn } from "../Slider";
-import {
-  Card,
-  Image,
-  Title,
-  Price,
-  Name,
-  Rating,
-  Stars,
-  Star,
-  Reviews
-} from "../Card";
+import Card from "../../Homes/Card";
 import { Head, Caption, More } from "../Head";
-import star from "../star.svg";
-import laSalentina from "./laSalentina.png";
-import privateBed from "./privateBed.png";
-import dreamyTropical from "./dreamyTropical.png";
+import salentina from "../../UI/salentina.png";
+import privateBed from "../../UI/privateBed.png";
+import dreamyTropical from "../../UI/dreamyTropical.png";
 
 const Homes = styled.section``;
 
-const Places = styled.div`
-  margin-top: 8px;
-`;
-
-const Description = Name.extend`
-  font-weight: bold;
-`;
-
-const Type = styled.span`
-  margin-right: 8px;
-  font-size: 12px;
-  line-height: 14px;
-  font-weight: lighter;
-
-  @media (min-width: 320px) {
-    font-size: 15px;
-    line-height: 18px;
-  }
-`;
-
-const Beds = styled.span`
-  margin-left: 8px;
-  font-size: 12px;
-  line-height: 14px;
-  font-weight: lighter;
-
-  @media (min-width: 320px) {
-    font-size: 15px;
-    line-height: 18px;
-  }
-`;
-
 const Arrow = SliderBtn.extend`
-  margin-top: 5.1rem;
+  margin-top: 10%;
 `;
 
-export default function() {
+export default () => {
   return (
     <Homes>
       <div className="container">
         <Head>
           <div className="row">
-            <div className="col-md-10 col-sm-10 col-xs-9">
+            <div className="col-xs-9 col-sm-10 col-md-10">
               <Caption>Homes</Caption>
             </div>
-            <div className="col-md-2 col-sm-2 col-xs-3">
-              <More href="#">See all</More>
+            <div className="col-xs-3 col-sm-2">
+              <More to="/homes">See all</More>
             </div>
           </div>
         </Head>
         <Slider>
           <div className="row">
-            <div className="col-md-4 col-sm-5 col-xs-8">
-              <Card>
-                <Image src={laSalentina} />
-                <Title>
-                  <Price>$82</Price>
-                  <Description> La Salentina, see, nature & relax</Description>
-                </Title>
-                <Places>
-                  <Type>Entire house</Type>
-                  ·
-                  <Beds>9 beds</Beds>
-                </Places>
-                <Rating>
-                  <Stars>
-                    <Star src={star} alt="Star" />
-                    <Star src={star} alt="Star" />
-                    <Star src={star} alt="Star" />
-                    <Star src={star} alt="Star" />
-                    <Star src={star} alt="Star" />
-                  </Stars>
-                  <Reviews>97 · Superhost</Reviews>
-                </Rating>
+            <div className="col-xs-8 col-sm-5 col-md-4">
+              <Card
+                imgSrc={salentina}
+                price={82}
+                homeType="Entire house"
+                numberBeds={9}
+                reviews={97}
+                hostType="Superhost"
+              >
+                La Salentina, see, nature & relax
               </Card>
             </div>
-            <div className="col-md-4 col-sm-5 col-xs-8">
-              <Card>
-                <Image src={privateBed} />
-                <Title>
-                  <Price>$82</Price>
-                  <Description>
-                    {" "}
-                    Your private 3 bedr. riad and exclusi...
-                  </Description>
-                </Title>
-                <Places>
-                  <Type>Entire house</Type>
-                  ·
-                  <Beds>5 beds</Beds>
-                </Places>
-                <Rating>
-                  <Stars>
-                    <Star src={star} alt="Star" />
-                    <Star src={star} alt="Star" />
-                    <Star src={star} alt="Star" />
-                    <Star src={star} alt="Star" />
-                    <Star src={star} alt="Star" />
-                  </Stars>
-                  <Reviews>161 · Superhost</Reviews>
-                </Rating>
+            <div className="col-xs-8 col-sm-5 col-md-4">
+              <Card
+                imgSrc={privateBed}
+                price={82}
+                homeType="Entire house"
+                numberBeds={5}
+                reviews={161}
+                hostType="Superhost"
+              >
+                Your private 3 bedr. riad and exclusi...
               </Card>
             </div>
-            <div className="col-md-4 col-sm-5 col-xs-8">
-              <Card>
-                <Image src={dreamyTropical} />
-                <Title>
-                  <Price>$200</Price>
-                  <Description> Dreamy Tropical Tree House</Description>
-                </Title>
-                <Places>
-                  <Type>Entire treehouse</Type>
-                  ·
-                  <Beds>1 bed</Beds>
-                </Places>
-                <Rating>
-                  <Stars>
-                    <Star src={star} alt="Star" />
-                    <Star src={star} alt="Star" />
-                    <Star src={star} alt="Star" />
-                    <Star src={star} alt="Star" />
-                    <Star src={star} alt="Star" />
-                  </Stars>
-                  <Reviews>364 · Superhost</Reviews>
-                </Rating>
+            <div className="col-xs-8 col-sm-5 col-md-4">
+              <Card
+                imgSrc={dreamyTropical}
+                price={200}
+                homeType="Entire treehouse"
+                numberBeds={1}
+                reviews={364}
+                hostType="Superhost"
+              >
+                Dreamy Tropical Tree House
               </Card>
             </div>
             <Arrow />
@@ -153,4 +71,4 @@ export default function() {
       </div>
     </Homes>
   );
-}
+};

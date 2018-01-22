@@ -1,19 +1,19 @@
 import React, { Component } from "react";
-import "normalize.css";
-import "flexboxgrid2";
-import "./index.css";
+import { BrowserRouter, Route } from "react-router-dom";
 import Header from "./Header";
 import Main from "./Main";
-import Footer from "./Footer";
+import Homes from "./Homes";
 
 class App extends Component {
   render() {
     return (
-      <React.Fragment>
-        <Header />
-        <Main />
-        <Footer />
-      </React.Fragment>
+      <BrowserRouter>
+        <React.Fragment>
+          <Header />
+          <Route path="/" exact component={Main} />
+          <Route path="/homes" component={Homes} />
+        </React.Fragment>
+      </BrowserRouter>
     );
   }
 }

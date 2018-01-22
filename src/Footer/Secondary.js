@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { Link as RouteLink } from "react-router-dom";
 import { Link } from "./Primary/Nav";
-import facebook from "../assets/facebook.svg";
-import twitter from "../assets/twitter.svg";
-import instagram from "../assets/instagram.svg";
-import logo from "./logo.svg";
+import facebook from "./facebook.svg";
+import twitter from "./twitter.svg";
+import instagram from "./instagram.svg";
+import logo from "./footerLogo.svg";
 
 const Bottom = styled.div`
   margin-top: 48px;
@@ -17,7 +18,7 @@ const Bottom = styled.div`
   }
 `;
 
-const Brand = styled.a`
+const Brand = styled(RouteLink)`
   display: flex;
   align-items: center;
   height: 100%;
@@ -56,7 +57,7 @@ const Social = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  height: 44px;
+  height: 54px;
   background-size: 16px 16px;
 
   @media (min-width: 576px) {
@@ -64,19 +65,19 @@ const Social = styled.div`
   }
 `;
 
-const Icon = styled.a`
+const Icon = styled.img`
   width: 22px;
   height: 32px;
   background-repeat: no-repeat;
 `;
 
-export default function() {
+export default () => {
   return (
     <Bottom>
       <div className="container">
         <div className="row">
           <div className="col-md-2 col-sm-3 col-xs-5">
-            <Brand href="#">
+            <Brand to="/">
               <Logo src={logo} alt="Logo" />
               <Copyright>© Airbnb Inc.</Copyright>
             </Brand>
@@ -86,13 +87,19 @@ export default function() {
               <Link href="#">Terms</Link>
               <Link href="#">Privacy</Link>
               <Link href="#">Site map</Link>
-              <Icon href="#" style={{ backgroundImage: `url(${facebook})` }} />
-              <Icon href="#" style={{ backgroundImage: `url(${twitter})` }} />
-              <Icon href="#" style={{ backgroundImage: `url(${instagram})` }} />
+              <Link href="#">
+                <Icon src={facebook} />
+              </Link>
+              <Link href="#">
+                <Icon src={twitter} />
+              </Link>
+              <Link href="#">
+                <Icon src={instagram} />
+              </Link>
             </Social>
           </div>
         </div>
       </div>
     </Bottom>
   );
-}
+};
