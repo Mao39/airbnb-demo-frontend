@@ -1,3 +1,14 @@
 {
-    "extends": "react-app"
+    "parser": "babel-eslint",
+    "plugins": ["react"],
+    "extends": ["eslint:recommended", "plugin:react/recommended", "airbnb"],
+    "rules": {
+        "no-var": "error",
+        "react/jsx-filename-extension": "off",
+        "no-undef": "warn",
+        "jsx-a11y/anchor-is-valid": "warn",
+        "react/prop-types": "warn",
+        "react/no-unused-state": "warn",
+        "no-unused-vars": "warn"
+    }
 }

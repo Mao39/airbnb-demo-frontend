@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import styled from "styled-components";
-import search from "./search.svg";
+import React from 'react';
+import styled from 'styled-components';
+import search from './search.svg';
 
 const SearchBar = styled.div`
   position: relative;
@@ -45,11 +45,9 @@ const Input = styled.input`
   }
 `;
 
-export default () => {
-  return (
-    <SearchBar>
-      <Button />
-      <Input type="text" defaultValue="Try &quot;Miami&quot;" />
-    </SearchBar>
-  );
-};
+export default () => (
+  <SearchBar>
+    <Button />
+    <Input type="text" defaultValue="Try &quot;Miami&quot;" />
+  </SearchBar>
+);

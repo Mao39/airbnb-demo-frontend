@@ -1,15 +1,12 @@
-import React, { Component } from "react";
-import styled from "styled-components";
-import Selects from "./Selects";
-import Nav from "./Nav";
+import React from 'react';
+import Selects from './Selects';
+import Nav from './Nav';
 
-export default () => {
-  return (
-    <div className="container">
-      <div className="row">
-        <Selects />
-        <Nav />
-      </div>
+export default () => (
+  <div className="container">
+    <div className="row">
+      <Selects />
+      <Nav />
     </div>
-  );
-};
+  </div>
+);

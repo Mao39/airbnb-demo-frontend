@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import styled from "styled-components";
-import GoogleMapReact from "google-map-react";
+import React, { Component } from 'react';
+import styled from 'styled-components';
+import GoogleMapReact from 'google-map-react';
 
 const Location = styled.div`
   display: none;
@@ -18,7 +18,7 @@ const Location = styled.div`
 export default class GoogleMap extends Component {
   static = {
     center: { lat: 59.95, lng: 30.33 },
-    zoom: 11
+    zoom: 11,
   };
 
   render() {
@@ -29,7 +29,7 @@ export default class GoogleMap extends Component {
           defaultZoom={this.static.zoom}
           bootstrapURLKeys={{
             key: process.env.REACT_APP_GOOGLE_API_KEY,
-            language: "ru"
+            language: 'ru',
           }}
         />
       </Location>

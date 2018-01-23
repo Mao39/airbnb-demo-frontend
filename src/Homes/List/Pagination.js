@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import arrow from "../../UI/rightGreenArrow.svg";
-import iconMap from "./location.svg";
+import React, { Component } from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import arrow from '../../UI/rightGreenArrow.svg';
+import iconMap from './location.svg';
 
 const Pagination = styled.div`
   position: relative;
@@ -34,8 +34,8 @@ const Page = styled(Link)`
   text-decoration: none;
   vertical-align: middle;
 
-  background: ${props => (props.active ? "#008489" : "transparent")};
-  color: ${props => (props.active ? "#fff" : "#0f7276")};
+  background: ${props => (props.active ? '#008489' : 'transparent')};
+  color: ${props => (props.active ? '#fff' : '#0f7276')};
 `;
 
 const Reduction = styled.span`
@@ -94,7 +94,7 @@ const IconMap = styled.button`
 
 export default class PaginatePages extends React.Component {
   state = {
-    onActive: false
+    onActive: false,
   };
 
   changePage = () => {};

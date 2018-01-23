@@ -1,7 +1,6 @@
-import React, { Component } from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import arrow from "../UI/rightArrow.svg";
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import arrow from '../UI/rightArrow.svg';
 
 export const Head = styled.div`
   margin-top: 48px;
@@ -39,7 +38,7 @@ export const More = styled(Link)`
     position: relative;
     top: 0;
     right: 0;
-    content: "";
+    content: '';
     display: inline-block;
     margin-left: 6px;
     width: 6px;

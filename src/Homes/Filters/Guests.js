@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import styled, { css } from "styled-components";
-import ScrollLock from "react-scrolllock";
-import cross from "../../UI/cross.svg";
-import minus from "../../UI/minus.svg";
-import plus from "../../UI/plus.svg";
+import React from 'react';
+import styled from 'styled-components';
+import ScrollLock from 'react-scrolllock';
+import cross from '../../UI/cross.svg';
+import minus from '../../UI/minus.svg';
+import plus from '../../UI/plus.svg';
 
 const Filter = styled.aside`
   display: inline-block;
@@ -56,8 +56,8 @@ const Btn = styled.button`
   cursor: pointer;
   transition: all 0.3s;
 
-  color: ${props => (props.isOpen ? "#fff" : "#383838")};
-  background: ${props => (props.isOpen ? "#008489" : "transparent")};
+  color: ${props => (props.isOpen ? '#fff' : '#383838')};
+  background: ${props => (props.isOpen ? '#008489' : 'transparent')};
 `;
 
 const Header = styled.div`
@@ -148,8 +148,8 @@ const Remove = styled.button`
   background: url(${minus}) no-repeat center;
   background-size: 10px 2px;
 
-  opacity: ${props => (props.disabled ? ".5" : "1")};
-  cursor: ${props => (props.disabled ? "default" : "pointer")};
+  opacity: ${props => (props.disabled ? '.5' : '1')};
+  cursor: ${props => (props.disabled ? 'default' : 'pointer')};
 `;
 
 const Add = styled.button`
@@ -244,61 +244,55 @@ const Apply = styled.button`
   }
 `;
 
-const formatGuestsLabel = (isOpen, filterLabel) => {
-  return filterLabel;
-};
+const formatGuestsLabel = (isOpen, filterLabel) => filterLabel;
 
-const ShowOverlay = (isOpen, switchOpeningFilter) => {
-  return isOpen && <Overlay onClick={switchOpeningFilter} />;
-};
+const ShowOverlay = (isOpen, switchOpeningFilter) =>
+  isOpen && <Overlay onClick={switchOpeningFilter} />;
 
-const ShowScrollLock = isOpen => {
-  return !matchMedia("(min-width: 576px)").matches && isOpen && <ScrollLock />;
-};
+const ShowScrollLock = isOpen =>
+  !matchMedia('(min-width: 576px)').matches && isOpen && <ScrollLock />;
 
-const Guest = props => {
-  return (
-    <People>
-      <Type>
-        <Man>{props.type}</Man>
-        <Age>{props.age}</Age>
-      </Type>
-      <Control>
-        <Remove
-          onClick={() => props.reduce(props.type)}
-          disabled={props.switchDisableButton(props.type)}
-        />
-        <Amount>{props.amount}</Amount>
-        <Add onClick={() => props.add(props.type)} />
-      </Control>
-    </People>
-  );
-};
+const Guest = props => (
+  <People>
+    <Type>
+      <Man>{props.type}</Man>
+      <Age>{props.age}</Age>
+    </Type>
+    <Control>
+      <Remove
+        onClick={() => props.reduce(props.type)}
+        disabled={props.switchDisableButton(props.type)}
+      />
+      <Amount>{props.amount}</Amount>
+      <Add onClick={() => props.add(props.type)} />
+    </Control>
+  </People>
+);
 
 export default class Guests extends React.Component {
   state = {
     adult: 1,
     children: 0,
-    infants: 0
+    infants: 0,
   };
 
-  switchDisableButton = type => {
+  switchDisableButton = (type) => {
     if (this.state[type] > 1) return false;
-    if (this.state[type] > 0 && type !== `adult`) return false;
+    if (this.state[type] > 0 && type !== 'adult') return false;
     return true;
   };
 
-  reduce = type => {
+  reduce = (type) => {
     if (this.state[type] > 1) {
       this.setState(prevState => ({ [type]: prevState[type] - 1 }));
-    } else if (this.state[type] > 0 && type !== `adult`) {
+    } else if (this.state[type] > 0 && type !== 'adult') {
       this.setState(prevState => ({ [type]: prevState[type] - 1 }));
     }
   };
 
-  add = type => {
+  add = (type) => {
     this.setState(prevState => ({
-      [type]: prevState[type] + 1
+      [type]: prevState[type] + 1,
     }));
   };
 

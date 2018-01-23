@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import SearchBar from "./SearchBar";
-import Nav from "./Nav";
-import logo from "./headerLogo.svg";
-import dropdownArrow from "../UI/dropdownArrow.svg";
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import SearchBar from './SearchBar';
+import Nav from './Nav';
+import logo from './headerLogo.svg';
+import dropdownArrow from '../UI/dropdownArrow.svg';
 
 const Header = styled.header`
   position: fixed;
@@ -27,7 +27,7 @@ const Logo = styled(Link)`
   background-size: cover;
 
   &:after {
-    content: "";
+    content: '';
     position: absolute;
     top: 16px;
     right: -17px;
@@ -45,22 +45,20 @@ const Logo = styled(Link)`
   }
 `;
 
-export default () => {
-  return (
-    <Header>
-      <div className="container">
-        <div className="row">
-          <div className="col-xs-2 col-sm-1">
-            <Logo to="/" />
-          </div>
-          <div className="col-xs-10 col-sm-7 col-md-5">
-            <SearchBar />
-          </div>
-          <div className="hidden-xs hidden-sm hidden-md col-lg-offset-2 col-lg-4">
-            <Nav />
-          </div>
+export default () => (
+  <Header>
+    <div className="container">
+      <div className="row">
+        <div className="col-xs-2 col-sm-1">
+          <Logo to="/" />
+        </div>
+        <div className="col-xs-10 col-sm-7 col-md-5">
+          <SearchBar />
+        </div>
+        <div className="hidden-xs hidden-sm hidden-md col-lg-offset-2 col-lg-4">
+          <Nav />
         </div>
       </div>
-    </Header>
-  );
-};
+    </div>
+  </Header>
+);

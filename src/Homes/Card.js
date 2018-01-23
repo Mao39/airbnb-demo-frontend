@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import styled from "styled-components";
-import star from "../UI/star.svg";
+import React from 'react';
+import styled from 'styled-components';
+import star from '../UI/star.svg';
 
 const Card = styled.a`
   display: flex;
@@ -75,33 +75,31 @@ const Beds = styled.span`
   font-weight: lighter;
 `;
 
-export default props => {
-  return (
-    <Card>
-      <Image src={props.imgSrc} />
-      <Title>
-        <Price>${props.price}</Price>
-        <Description>{props.children}</Description>
-      </Title>
-      <Places>
-        <Type>{props.homeType}</Type>
-        <span> · </span>
-        <Beds>
-          {props.numberBeds} {props.numberBeds > 1 ? "beds" : "bed"}
-        </Beds>
-      </Places>
-      <Rating>
-        <Stars>
-          <Star src={star} alt="Star" />
-          <Star src={star} alt="Star" />
-          <Star src={star} alt="Star" />
-          <Star src={star} alt="Star" />
-          <Star src={star} alt="Star" />
-        </Stars>
-        <Reviews>
-          {props.reviews} · {props.hostType}
-        </Reviews>
-      </Rating>
-    </Card>
-  );
-};
+export default props => (
+  <Card>
+    <Image src={props.imgSrc} />
+    <Title>
+      <Price>${props.price}</Price>
+      <Description>{props.children}</Description>
+    </Title>
+    <Places>
+      <Type>{props.homeType}</Type>
+      <span> · </span>
+      <Beds>
+        {props.numberBeds} {props.numberBeds > 1 ? 'beds' : 'bed'}
+      </Beds>
+    </Places>
+    <Rating>
+      <Stars>
+        <Star src={star} alt="Star" />
+        <Star src={star} alt="Star" />
+        <Star src={star} alt="Star" />
+        <Star src={star} alt="Star" />
+        <Star src={star} alt="Star" />
+      </Stars>
+      <Reviews>
+        {props.reviews} · {props.hostType}
+      </Reviews>
+    </Rating>
+  </Card>
+);

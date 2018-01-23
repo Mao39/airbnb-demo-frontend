@@ -1,8 +1,7 @@
-import React, { Component } from "react";
-import styled from "styled-components";
-import Guests from "./Guests";
-import Room from "./Room";
-import Dates from "./Dates";
+import React from 'react';
+import styled from 'styled-components';
+import Guests from './Guests';
+import Dates from './Dates';
 
 const FiltersWrap = styled.div`
   position: fixed;
@@ -34,13 +33,13 @@ export default class Filters extends React.Component {
   state = {
     isOpen: false,
     startDate: null,
-    endDate: null
+    endDate: null,
   };
 
   saveSelectedDates = (startDate, endDate) => {
     this.setState({
-      startDate: startDate,
-      endDate: endDate
+      startDate,
+      endDate,
     });
   };
 

@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const Nav = styled.nav`
   display: flex;
@@ -18,7 +18,7 @@ const Link = styled.a`
   text-decoration: none;
 `;
 
-export default function() {
+export default function () {
   return (
     <Nav>
       <Link href="#">Become a host</Link>
