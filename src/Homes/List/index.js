@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Card from '../Card';
 import Pagination from './Pagination';
@@ -28,7 +28,7 @@ export default () => (
                 reviews={97}
                 hostType="Superhost"
               >
-                  La Salentina, see, nature & relax
+                La Salentina, see, nature & relax
               </Card>
             </div>
             <div className="col-xs-12 col-sm-6">
@@ -40,7 +40,7 @@ export default () => (
                 reviews={161}
                 hostType="Superhost"
               >
-                  Your private 3 bedr. riad and exclusi…
+                Your private 3 bedr. riad and exclusi…
               </Card>
             </div>
             <div className="col-xs-12 col-sm-6">
@@ -52,7 +52,7 @@ export default () => (
                 reviews={364}
                 hostType="Superhost"
               >
-                  Dreamy Tropical Tree House
+                Dreamy Tropical Tree House
               </Card>
             </div>
             <div className="col-xs-12 col-sm-6">
@@ -64,7 +64,7 @@ export default () => (
                 reviews={369}
                 hostType="Superhost"
               >
-                  La Salentina, see, nature & relax
+                La Salentina, see, nature & relax
               </Card>
             </div>
             <div className="col-xs-12 col-sm-6">
@@ -76,7 +76,7 @@ export default () => (
                 reviews={105}
                 hostType="Superhost"
               >
-                  Lussuoso. Vista incantevole.
+                Lussuoso. Vista incantevole.
               </Card>
             </div>
             <div className="col-xs-12 col-sm-6">
@@ -88,7 +88,7 @@ export default () => (
                 reviews={221}
                 hostType="Superhost"
               >
-                  In the historical center of Lecce
+                In the historical center of Lecce
               </Card>
             </div>
           </div>

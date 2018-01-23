@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import arrow from '../../UI/rightGreenArrow.svg';
@@ -117,8 +117,7 @@ export default class PaginatePages extends React.Component {
             <Total>1 – 18 of 300+ Rentals</Total>
             <div className="col-xs-12">
               <Invite>
-                Enter dates to see full pricing. Additional fees apply. Taxes
-                may be added.
+                Enter dates to see full pricing. Additional fees apply. Taxes may be added.
               </Invite>
               <IconMap />
             </div>
