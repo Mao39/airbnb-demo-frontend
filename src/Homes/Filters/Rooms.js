@@ -152,7 +152,7 @@ const RoomType = styled.div`
   background-size: 32px;
 `;
 
-const Checkbox = styled.button`
+const Checkbox = styled.label`
   width: 24px;
   height: 24px;
   padding: 0;
@@ -180,8 +180,8 @@ const ShowOverlay = (isOpen, onCloseFilter) => isOpen && <Overlay onClick={onClo
 
 const CheckRoom = props => (
   <RoomType imgSrc={props.imgSrc}>
-    <Checkbox onClick={() => props.onCheck(props.type)} check={props.check}>
-      <Input type="checkbox" value={props.check} />
+    <Checkbox for={props.type} onClick={() => props.onCheck(props.type)} check={props.check}>
+      <Input id={props.type} type="checkbox" value={props.type} />
     </Checkbox>
     <Type>
       <Title>{props.title}</Title>
