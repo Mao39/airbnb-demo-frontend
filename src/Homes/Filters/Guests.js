@@ -58,6 +58,11 @@ const Btn = styled.button`
 
   color: ${props => (props.isOpen ? '#fff' : '#383838')};
   background: ${props => (props.isOpen ? '#008489' : 'transparent')};
+
+  &:hover {
+    border-color: ${props => (props.isOpen ? 'rgba(72, 72, 72, 0.3)' : '#f2f2f2')};
+    background: ${props => (props.isOpen ? '#008489' : '#f2f2f2')};
+  }
 `;
 
 const Header = styled.div`
@@ -244,10 +249,20 @@ const Apply = styled.button`
   }
 `;
 
-const formatGuestsLabel = (isOpen, filterLabel) => filterLabel;
+const formatGuestsLabel = (isOpen, filterLabel, adults, children, infants) => {
+  const commonNumber = adults + children;
+  const formatInfants = infants > 1 ? `${infants} infants` : `${infants} infant`;
+  const formatAdults = commonNumber > 1 ? `${commonNumber} guests` : `${commonNumber} guest`;
 
-const ShowOverlay = (isOpen, switchOpeningFilter) =>
-  isOpen && <Overlay onClick={switchOpeningFilter} />;
+  if (commonNumber + infants > 1) {
+    if (infants > 0) return `${formatAdults}, ${formatInfants}`;
+    return `${formatAdults}`;
+  }
+
+  return filterLabel;
+};
+
+const ShowOverlay = (isOpen, onCloseFilter) => isOpen && <Overlay onClick={onCloseFilter} />;
 
 const ShowScrollLock = isOpen =>
   !matchMedia('(min-width: 576px)').matches && isOpen && <ScrollLock />;
@@ -271,21 +286,34 @@ const Guest = props => (
 
 export default class Guests extends React.Component {
   state = {
-    adult: 1,
+    adults: 1,
     children: 0,
     infants: 0,
   };
 
+  onCloseFilter = () => {
+    this.resetSelection();
+    this.props.onCloseFilter();
+  };
+
+  resetSelection = () => {
+    this.setState({ adults: 1, children: 0, infants: 0 });
+  };
+
+  switchOpeningFilter = () => {
+    this.props.switchOpeningFilter(this.props.children);
+  };
+
   switchDisableButton = (type) => {
     if (this.state[type] > 1) return false;
-    if (this.state[type] > 0 && type !== 'adult') return false;
+    if (this.state[type] > 0 && type !== 'adults') return false;
     return true;
   };
 
   reduce = (type) => {
     if (this.state[type] > 1) {
       this.setState(prevState => ({ [type]: prevState[type] - 1 }));
-    } else if (this.state[type] > 0 && type !== 'adult') {
+    } else if (this.state[type] > 0 && type !== 'adults') {
       this.setState(prevState => ({ [type]: prevState[type] - 1 }));
     }
   };
@@ -297,25 +325,26 @@ export default class Guests extends React.Component {
   };
 
   render() {
-    const { isOpen, switchOpeningFilter } = this.props;
+    const { adults, children, infants } = this.state;
     const filterLabel = this.props.children;
+    const isOpen = this.props.openedFilter === filterLabel;
 
     return (
       <React.Fragment>
         <Wrap>
-          <Btn isOpen={isOpen} onClick={switchOpeningFilter}>
-            {formatGuestsLabel(isOpen, filterLabel)}
+          <Btn isOpen={isOpen} onClick={this.switchOpeningFilter}>
+            {formatGuestsLabel(isOpen, filterLabel, adults, children, infants)}
           </Btn>
           {isOpen && (
             <Filter>
               <Header>
-                <Exit onClick={switchOpeningFilter} />
+                <Exit onClick={this.onCloseFilter} />
                 <Caption>Guests</Caption>
-                <Reset>Reset</Reset>
+                <Reset onClick={this.resetSelection}>Reset</Reset>
               </Header>
               <Guest
-                type="adult"
-                amount={this.state.adult}
+                type="adults"
+                amount={adults}
                 add={this.add}
                 reduce={this.reduce}
                 switchDisableButton={this.switchDisableButton}
@@ -323,7 +352,7 @@ export default class Guests extends React.Component {
               <Guest
                 type="children"
                 age="Ages 2 — 12"
-                amount={this.state.children}
+                amount={children}
                 add={this.add}
                 reduce={this.reduce}
                 switchDisableButton={this.switchDisableButton}
@@ -331,19 +360,19 @@ export default class Guests extends React.Component {
               <Guest
                 type="infants"
                 age="Under 2"
-                amount={this.state.infants}
+                amount={infants}
                 add={this.add}
                 reduce={this.reduce}
                 switchDisableButton={this.switchDisableButton}
               />
               <Bottom>
-                <Save>Save</Save>
-                <Cancel onClick={switchOpeningFilter}>Cancel</Cancel>
-                <Apply>Apply</Apply>
+                <Save onClick={this.switchOpeningFilter}>Save</Save>
+                <Cancel onClick={this.onCloseFilter}>Cancel</Cancel>
+                <Apply onClick={this.switchOpeningFilter}>Apply</Apply>
               </Bottom>
             </Filter>
           )}
-          {ShowOverlay(isOpen, switchOpeningFilter)}
+          {ShowOverlay(isOpen, this.onCloseFilter)}
           {ShowScrollLock(isOpen)}
         </Wrap>
       </React.Fragment>
