@@ -256,7 +256,11 @@ export default class Rooms extends React.Component {
                 imgSrc={sharedRoom}
               />
               <Bottom>
-                <Cancel onClick={this.onCloseFilter}>Cancel</Cancel>
+                {entire || full || shared ? (
+                  <Cancel onClick={this.resetSelection}>Reset</Cancel>
+                ) : (
+                  <Cancel onClick={this.onCloseFilter}>Cancel</Cancel>
+                )}
                 <Apply onClick={this.switchOpeningFilter}>Apply</Apply>
               </Bottom>
             </Filter>
