@@ -244,7 +244,7 @@ const Apply = styled.button`
   }
 `;
 
-const formatGuestsLabel = (isOpen, filterLabel, adults, children, infants) => {
+const formatGuestsLabel = (filterLabel, adults, children, infants) => {
   const commonNumber = adults + children;
   const formatInfants = infants > 1 ? `${infants} infants` : `${infants} infant`;
   const formatAdults = commonNumber > 1 ? `${commonNumber} guests` : `${commonNumber} guest`;
@@ -328,7 +328,7 @@ export default class Guests extends React.Component {
       <React.Fragment>
         <Wrap>
           <Btn isOpen={isOpen} onClick={this.switchOpeningFilter}>
-            {formatGuestsLabel(isOpen, filterLabel, adults, children, infants)}
+            {formatGuestsLabel(filterLabel, adults, children, infants)}
           </Btn>
           {isOpen && (
             <Filter>
