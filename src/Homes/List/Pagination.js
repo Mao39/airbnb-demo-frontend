@@ -93,9 +93,7 @@ const IconMap = styled.button`
 `;
 
 export default class PaginatePages extends React.Component {
-  state = {
-    onActive: false,
-  };
+  state = {};
 
   changePage = () => {};
 

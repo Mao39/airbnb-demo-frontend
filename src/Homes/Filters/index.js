@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import Guests from './Guests';
 import Dates from './Dates';
 
 const FiltersWrap = styled.div`
@@ -32,30 +31,17 @@ const Btn = styled.button`
 export default class Filters extends React.Component {
   state = {
     isOpen: false,
-    startDate: null,
-    endDate: null,
-  };
-
-  saveSelectedDates = (startDate, endDate) => {
-    this.setState({
-      startDate,
-      endDate,
-    });
   };
 
   switchOpeningFilter = () => {
-    this.setState({ isOpen: !this.state.isOpen });
+    this.setState(prevState => ({ isOpen: !prevState.isOpen }));
   };
 
   render() {
     return (
       <FiltersWrap>
         <div className="container">
-          <Dates
-            isOpen={this.state.isOpen}
-            switchOpeningFilter={this.switchOpeningFilter}
-            saveChoice={this.saveSelectedDates}
-          >
+          <Dates isOpen={this.state.isOpen} switchOpeningFilter={this.switchOpeningFilter}>
             Dates
           </Dates>
           {/* <Guests

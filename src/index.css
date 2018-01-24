@@ -1,26 +1,29 @@
 * {
-    box-sizing: border-box;
-    outline: none;
+  box-sizing: border-box;
+  outline: none;
 }
 
 *:focus {
-    outline: rgba(72, 72, 72, 0.3) auto 5px;
+  outline: rgba(72, 72, 72, 0.3) auto 5px;
 }
 
 @font-face {
-    font-family: Circular;
-    src: url("./UI/Circular_Air-Bold.woff") format("woff"), url("./UI/Circular_Air-Bold.ttf") format("truetype");
-    font-weight: bold;
+  font-family: Circular;
+  src: url("./UI/Circular_Air-Bold.woff") format("woff"),
+    url("./UI/Circular_Air-Bold.ttf") format("truetype");
+  font-weight: bold;
 }
 
 @font-face {
-    font-family: Circular;
-    src: url("./UI/Circular_Air-Book.woff") format("woff"), url("./UI/Circular_Air-Book.ttf") format("truetype");
-    font-weight: 600;
+  font-family: Circular;
+  src: url("./UI/Circular_Air-Book.woff") format("woff"),
+    url("./UI/Circular_Air-Book.ttf") format("truetype");
+  font-weight: 600;
 }
 
 @font-face {
-    font-family: Circular;
-    src: url("./UI/Circular_Air-Light.woff") format("woff"), url("./UI/Circular_Air-Light.ttf") format("truetype");
-    font-weight: lighter;
+  font-family: Circular;
+  src: url("./UI/Circular_Air-Light.woff") format("woff"),
+    url("./UI/Circular_Air-Light.ttf") format("truetype");
+  font-weight: lighter;
 }

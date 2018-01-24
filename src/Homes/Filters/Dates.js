@@ -288,14 +288,6 @@ export default class Dates extends React.Component {
     this.setState({ startDate: null, endDate: null });
   };
 
-  saveChoice = () => {
-    this.props.saveChoice(this.state.startDate, this.state.endDate);
-
-    if (this.state.startDate && this.state.endDate) {
-      this.props.switchOpeningFilter();
-    }
-  };
-
   renderCalendarInfo = () => (
     <CalendarRow>
       {this.state.startDate && this.state.endDate ? (
@@ -303,7 +295,7 @@ export default class Dates extends React.Component {
       ) : (
         <Cancel onClick={this.props.switchOpeningFilter}>Cancel</Cancel>
       )}
-      <Apply onClick={this.saveChoice}>Apply</Apply>
+      <Apply onClick={this.props.switchOpeningFilter}>Apply</Apply>
     </CalendarRow>
   );
 
@@ -347,7 +339,7 @@ export default class Dates extends React.Component {
                 orientation={changeOrientation()}
               />
               <Bottom>
-                <Save onClick={this.saveChoice}>Save</Save>
+                <Save onClick={this.switchOpeningFilter}>Save</Save>
               </Bottom>
             </Filter>
           )}

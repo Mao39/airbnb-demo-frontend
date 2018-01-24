@@ -1,17 +1,13 @@
 {
-    "parser": "babel-eslint",
-    "env": {
-        "browser": true
-    },
-    "plugins": ["react"],
-    "extends": ["eslint:recommended", "plugin:react/recommended", "airbnb"],
-    "rules": {
-        "no-var": "error",
-        "react/jsx-filename-extension": "off",
-        "no-undef": "warn",
-        "jsx-a11y/anchor-is-valid": "off",
-        "react/prop-types": "off",
-        "react/no-unused-state": "warn",
-        "no-unused-vars": "warn"
-    }
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "mocha": true
+  },
+  "extends": "airbnb",
+  "rules": {
+    "react/jsx-filename-extension": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "react/prop-types": "off"
+  }
 }
