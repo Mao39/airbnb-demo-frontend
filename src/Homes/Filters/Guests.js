@@ -362,7 +362,11 @@ export default class Guests extends React.Component {
               />
               <Bottom>
                 <Save onClick={this.switchOpeningFilter}>Save</Save>
-                <Cancel onClick={this.onCloseFilter}>Cancel</Cancel>
+                {adults > 1 || children || infants ? (
+                  <Cancel onClick={this.resetSelection}>Reset</Cancel>
+                ) : (
+                  <Cancel onClick={this.onCloseFilter}>Cancel</Cancel>
+                )}
                 <Apply onClick={this.switchOpeningFilter}>Apply</Apply>
               </Bottom>
             </Filter>
