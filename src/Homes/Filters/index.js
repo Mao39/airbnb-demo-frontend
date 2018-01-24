@@ -70,7 +70,7 @@ export default class Filters extends React.Component {
             openedFilter={this.state.openedFilter}
             switchOpeningFilter={this.switchOpeningFilter}
           >
-            Rooms
+            Room type
           </Rooms>
           <Btn>More filters</Btn>
         </div>
