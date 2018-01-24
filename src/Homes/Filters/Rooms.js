@@ -166,16 +166,13 @@ const Checkbox = styled.button`
   cursor: pointer;
 `;
 
-const formatRoomsLabel = (isOpen, filterLabel, adults, children, infants) => {
-  const commonNumber = adults + children;
-  const formatInfants = infants > 1 ? `${infants} infants` : `${infants} infant`;
-  const formatAdults = commonNumber > 1 ? `${commonNumber} guests` : `${commonNumber} guest`;
+const formatRoomsLabel = (isOpen, filterLabel, entire, full, shared) => {
+  const commonType = entire + full + shared;
 
-  if (commonNumber + infants > 1) {
-    if (infants > 0) return `${formatAdults}, ${formatInfants}`;
-    return `${formatAdults}`;
-  }
-
+  if (commonType > 1) return `${filterLabel} · ${[entire + full + shared]}`;
+  if (entire) return 'Entire home';
+  if (full) return 'Private room';
+  if (shared) return 'Shared room';
   return filterLabel;
 };
 
@@ -215,8 +212,6 @@ export default class Rooms extends React.Component {
       full: null,
       shared: null,
     });
-
-    console.log(formatRoomsLabel());
   };
 
   switchOpeningFilter = () => {
@@ -232,7 +227,7 @@ export default class Rooms extends React.Component {
       <React.Fragment>
         <Wrap>
           <Btn isOpen={isOpen} onClick={this.switchOpeningFilter}>
-            {filterLabel}
+            {formatRoomsLabel(isOpen, filterLabel, entire, full, shared)}
           </Btn>
           {isOpen && (
             <Filter>
