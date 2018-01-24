@@ -1,16 +1,15 @@
-import React, { Component } from "react";
-import styled, { css } from "styled-components";
-import omit from "lodash/omit";
-import moment from "moment";
-import ScrollLock from "react-scrolllock";
-import "react-dates/initialize";
-import "react-dates/lib/css/_datepicker.css";
-import "./react_dates_overrides.css";
-import { DayPickerRangeController } from "react-dates";
-import { START_DATE } from "react-dates/constants";
-import { isInclusivelyAfterDay } from "./helpers";
-import cross from "../../UI/cross.svg";
-import arrow from "./arrowRight.svg";
+import React from 'react';
+import styled from 'styled-components';
+import moment from 'moment';
+import ScrollLock from 'react-scrolllock';
+import 'react-dates/initialize';
+import { DayPickerRangeController } from 'react-dates';
+import { START_DATE } from 'react-dates/constants';
+import 'react-dates/lib/css/_datepicker.css';
+import './react_dates_overrides.css';
+import isInclusivelyAfterDay from './helpers';
+import cross from '../../UI/cross.svg';
+import arrow from './arrowRight.svg';
 
 const DayPicker = styled(DayPickerRangeController)`
   position: relative;
@@ -35,8 +34,8 @@ const Btn = styled.button`
   cursor: pointer;
   transition: all 0.3s;
 
-  color: ${props => (props.isOpen ? "#fff" : "#383838")};
-  background: ${props => (props.isOpen ? "#008489" : "transparent")};
+  color: ${props => (props.isOpen ? '#fff' : '#383838')};
+  background: ${props => (props.isOpen ? '#008489' : 'transparent')};
 `;
 
 const Filter = styled.aside`
@@ -159,8 +158,8 @@ const StartDate = styled.span`
   font-size: 18px;
   line-height: 21px;
 
-  color: ${props => (props.startDate ? "#636363" : "#0f7276")};
-  border-bottom: ${props => (props.startDate ? "none" : "1px solid #008489")};
+  color: ${props => (props.startDate ? '#636363' : '#0f7276')};
+  border-bottom: ${props => (props.startDate ? 'none' : '1px solid #008489')};
 `;
 
 const EndDate = styled.span`
@@ -168,8 +167,8 @@ const EndDate = styled.span`
   font-size: 18px;
   line-height: 21px;
 
-  color: ${props => (props.startDate ? "#0f7276" : "#636363")};
-  border-bottom: ${props => (props.startDate ? "1px solid #008489" : "none")};
+  color: ${props => (props.startDate ? '#0f7276' : '#636363')};
+  border-bottom: ${props => (props.startDate ? '1px solid #008489' : 'none')};
 `;
 
 const Bottom = styled.div`
@@ -238,89 +237,67 @@ const Save = styled.button`
   }
 `;
 
-const formatStartDate = startDate => {
-  return startDate && moment(startDate).format("Do MMM");
-};
+const formatStartDate = startDate => startDate && moment(startDate).format('Do MMM');
 
-const formatEndDate = endDate => {
-  return endDate && moment(endDate).format("Do MMM");
-};
+const formatEndDate = endDate => endDate && moment(endDate).format('Do MMM');
 
-const formatButtonDate = (startDate, endDate) => {
-  return `${formatStartDate(startDate)} — ${formatEndDate(endDate)}`;
-};
+const formatButtonDate = (startDate, endDate) =>
+  `${formatStartDate(startDate)} — ${formatEndDate(endDate)}`;
 
 const formatDateLabel = (startDate, endDate, isOpen, filterLabel) => {
   if (startDate && endDate) return formatButtonDate(startDate, endDate);
-  if (isOpen) return "Check in — Check out";
+  if (isOpen) return 'Check in — Check out';
   return filterLabel;
 };
 
 const showNumberMonths = () => {
-  if (matchMedia("(min-width: 992px)").matches) return 2;
-  if (matchMedia("(min-width: 576px)").matches) return 1;
+  if (matchMedia('(min-width: 992px)').matches) return 2;
+  if (matchMedia('(min-width: 576px)').matches) return 1;
   return 12;
 };
 
-const changeOrientation = () => {
-  return matchMedia("(min-width: 576px)").matches
-    ? "horizontal"
-    : "verticalScrollable";
-};
+const changeOrientation = () =>
+  (matchMedia('(min-width: 576px)').matches ? 'horizontal' : 'verticalScrollable');
 
-const ShowOverlay = (isOpen, switchOpeningFilter) => {
-  return isOpen && <Overlay onClick={switchOpeningFilter} />;
-};
+const ShowOverlay = (isOpen, switchOpeningFilter) =>
+  isOpen && <Overlay onClick={switchOpeningFilter} />;
 
-const ShowScrollLock = isOpen => {
-  return !matchMedia("(min-width: 576px)").matches && isOpen && <ScrollLock />;
-};
+const ShowScrollLock = isOpen =>
+  !matchMedia('(min-width: 576px)').matches && isOpen && <ScrollLock />;
 
-const getUnavailableDaysReservation = day => {
-  return !isInclusivelyAfterDay(day, moment());
-};
+const getUnavailableDaysReservation = day => !isInclusivelyAfterDay(day, moment());
 
 export default class Dates extends React.Component {
   state = {
     focusedInput: START_DATE,
     startDate: this.props.initialStartDate,
-    endDate: this.props.initialEndDate
-  };
-
-  resetSelection = () => {
-    this.setState({ startDate: null, endDate: null });
+    endDate: this.props.initialEndDate,
   };
 
   onDatesChange = ({ startDate, endDate }) => {
     this.setState({ startDate, endDate });
   };
 
-  onFocusChange = focusedInput => {
+  onFocusChange = (focusedInput) => {
     this.setState({
-      focusedInput: !focusedInput ? START_DATE : focusedInput
+      focusedInput: !focusedInput ? START_DATE : focusedInput,
     });
   };
 
-  saveChoice = () => {
-    this.props.saveChoice(this.state.startDate, this.state.endDate);
-
-    this.state.startDate &&
-      this.state.endDate &&
-      this.props.switchOpeningFilter();
+  resetSelection = () => {
+    this.setState({ startDate: null, endDate: null });
   };
 
-  renderCalendarInfo = () => {
-    return (
-      <CalendarRow>
-        {this.state.startDate && this.state.endDate ? (
-          <Cancel onClick={this.resetSelection}>Reset</Cancel>
-        ) : (
-          <Cancel onClick={this.props.switchOpeningFilter}>Cancel</Cancel>
-        )}
-        <Apply onClick={this.saveChoice}>Apply</Apply>
-      </CalendarRow>
-    );
-  };
+  renderCalendarInfo = () => (
+    <CalendarRow>
+      {this.state.startDate && this.state.endDate ? (
+        <Cancel onClick={this.resetSelection}>Reset</Cancel>
+      ) : (
+        <Cancel onClick={this.props.switchOpeningFilter}>Cancel</Cancel>
+      )}
+      <Apply onClick={this.props.switchOpeningFilter}>Apply</Apply>
+    </CalendarRow>
+  );
 
   render() {
     const { startDate, endDate, focusedInput } = this.state;
@@ -342,11 +319,11 @@ export default class Dates extends React.Component {
               </Header>
               <DatesRange>
                 <StartDate startDate={startDate}>
-                  {startDate ? formatStartDate(startDate) : "Check-in"}
+                  {startDate ? formatStartDate(startDate) : 'Check-in'}
                 </StartDate>
                 <Arrow />
                 <EndDate endDate={endDate} startDate={startDate}>
-                  {endDate ? formatEndDate(endDate) : "Check-out"}
+                  {endDate ? formatEndDate(endDate) : 'Check-out'}
                 </EndDate>
               </DatesRange>
               <DayPicker
@@ -362,7 +339,7 @@ export default class Dates extends React.Component {
                 orientation={changeOrientation()}
               />
               <Bottom>
-                <Save onClick={this.saveChoice}>Save</Save>
+                <Save onClick={this.switchOpeningFilter}>Save</Save>
               </Bottom>
             </Filter>
           )}

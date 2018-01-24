@@ -1,0 +1,4 @@
+/build/*
+!build/index.js
+/node_modules/*
+/src/registerServiceWorker.js

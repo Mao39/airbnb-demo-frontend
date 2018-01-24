@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import styled, { css } from "styled-components";
-import privateRoom from "../../UI/private.svg";
-import check from "../../UI/check.svg";
-import entire from "../../UI/entire.svg";
-import shared from "../../UI/shared.svg";
+import React from 'react';
+import styled from 'styled-components';
+import privateRoom from '../../UI/private.svg';
+import check from '../../UI/check.svg';
+import entire from '../../UI/entire.svg';
+import shared from '../../UI/shared.svg';
 
 const Room = styled.aside`
   position: absolute;
@@ -19,8 +19,8 @@ const Room = styled.aside`
   box-shadow: 0 2px 4px rgba(72, 72, 72, 0.08);
 
   @media (min-width: 576px) {
-    ${"" /* display: inline-block; */};
-    ${"" /* NONE */};
+    ${''};
+    ${''};
     display: none;
   }
 `;
@@ -110,7 +110,7 @@ const Checkbox = styled.button`
   height: 24px;
   border: 1px solid rgba(72, 72, 72, 0.3);
   border-radius: 4px;
-  background: ${props => (props.activeCheck ? "#008489" : "transparent")};
+  background: ${props => (props.activeCheck ? '#008489' : 'transparent')};
   background-image: url(${check});
   background-repeat: no-repeat;
   background-position: center center;
@@ -118,43 +118,34 @@ const Checkbox = styled.button`
   cursor: pointer;
 `;
 
-const CheckRoom = props => {
-  return (
-    <RoomType imgSrc={props.imgSrc}>
-      <Checkbox activeCheck={props.activeCheck}>
-        <Input type="checkbox" />
-      </Checkbox>
-      <Type>
-        <Title>{props.type}</Title>
-        <Desc>{props.desc}</Desc>
-      </Type>
-    </RoomType>
-  );
-};
+const CheckRoom = props => (
+  <RoomType imgSrc={props.imgSrc}>
+    <Checkbox activeCheck={props.activeCheck}>
+      <Input type="checkbox" />
+    </Checkbox>
+    <Type>
+      <Title>{props.type}</Title>
+      <Desc>{props.desc}</Desc>
+    </Type>
+  </RoomType>
+);
 
-export default () => {
-  return (
-    <Room>
-      <CheckRoom
-        activeCheck
-        type="Entire home"
-        desc="Have a place to yourself"
-        imgSrc={entire}
-      />
-      <CheckRoom
-        type="Private room"
-        desc="Have your own room and share some common spaces"
-        imgSrc={privateRoom}
-      />
-      <CheckRoom
-        type="Shared room"
-        desc="Stay in a shared space, like a common room"
-        imgSrc={shared}
-      />
-      <Bottom>
-        <Cancel>Cancel</Cancel>
-        <Apply>Apply</Apply>
-      </Bottom>
-    </Room>
-  );
-};
+export default () => (
+  <Room>
+    <CheckRoom activeCheck type="Entire home" desc="Have a place to yourself" imgSrc={entire} />
+    <CheckRoom
+      type="Private room"
+      desc="Have your own room and share some common spaces"
+      imgSrc={privateRoom}
+    />
+    <CheckRoom
+      type="Shared room"
+      desc="Stay in a shared space, like a common room"
+      imgSrc={shared}
+    />
+    <Bottom>
+      <Cancel>Cancel</Cancel>
+      <Apply>Apply</Apply>
+    </Bottom>
+  </Room>
+);

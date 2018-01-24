@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import styled from "styled-components";
-import arrow from "../../UI/downArrow.svg";
+import React from 'react';
+import styled from 'styled-components';
+import arrow from '../../UI/downArrow.svg';
 
 const Select = styled.select`
   margin-bottom: 16px;
@@ -38,23 +38,21 @@ const Option = styled.option`
   color: #383838;
 `;
 
-export default () => {
-  return (
-    <div className="col-xs-12 col-md-3">
-      <div className="row">
-        <div className="col-xs-6 col-md-12">
-          <Select defaultValue="English">
-            <Option value="English">English</Option>
-            <Option value="Русский">Русский</Option>
-          </Select>
-        </div>
-        <div className="col-xs-6 col-md-12">
-          <Select defaultValue="United States dollar">
-            <Option value="United States dollar">United States dollar</Option>
-            <Option value="Российский рубль">Российский рубль</Option>
-          </Select>
-        </div>
+export default () => (
+  <div className="col-xs-12 col-md-3">
+    <div className="row">
+      <div className="col-xs-6 col-md-12">
+        <Select defaultValue="English">
+          <Option value="English">English</Option>
+          <Option value="Русский">Русский</Option>
+        </Select>
+      </div>
+      <div className="col-xs-6 col-md-12">
+        <Select defaultValue="United States dollar">
+          <Option value="United States dollar">United States dollar</Option>
+          <Option value="Российский рубль">Российский рубль</Option>
+        </Select>
       </div>
     </div>
-  );
-};
+  </div>
+);

@@ -1,4 +1,4 @@
-import moment from "moment";
+import moment from 'moment';
 
 function isBeforeDay(a, b) {
   if (!moment.isMoment(a) || !moment.isMoment(b)) return false;
@@ -17,7 +17,7 @@ function isBeforeDay(a, b) {
   return aYear < bYear;
 }
 
-export function isInclusivelyAfterDay(a, b) {
+export default function isInclusivelyAfterDay(a, b) {
   if (!moment.isMoment(a) || !moment.isMoment(b)) return false;
   return !isBeforeDay(a, b);
 }

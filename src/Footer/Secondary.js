@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import styled from "styled-components";
-import { Link as RouteLink } from "react-router-dom";
-import { Link } from "./Primary/Nav";
-import facebook from "./facebook.svg";
-import twitter from "./twitter.svg";
-import instagram from "./instagram.svg";
-import logo from "./footerLogo.svg";
+import React from 'react';
+import styled from 'styled-components';
+import { Link as RouteLink } from 'react-router-dom';
+import { Link } from './Primary/Nav';
+import facebook from './facebook.svg';
+import twitter from './twitter.svg';
+import instagram from './instagram.svg';
+import logo from './footerLogo.svg';
 
 const Bottom = styled.div`
   margin-top: 48px;
@@ -71,35 +71,33 @@ const Icon = styled.img`
   background-repeat: no-repeat;
 `;
 
-export default () => {
-  return (
-    <Bottom>
-      <div className="container">
-        <div className="row">
-          <div className="col-md-2 col-sm-3 col-xs-5">
-            <Brand to="/">
-              <Logo src={logo} alt="Logo" />
-              <Copyright>© Airbnb Inc.</Copyright>
-            </Brand>
-          </div>
-          <div className="col-md-4 col-md-offset-6 col-sm-6 col-sm-offset-3 col-xs-10">
-            <Social>
-              <Link href="#">Terms</Link>
-              <Link href="#">Privacy</Link>
-              <Link href="#">Site map</Link>
-              <Link href="#">
-                <Icon src={facebook} />
-              </Link>
-              <Link href="#">
-                <Icon src={twitter} />
-              </Link>
-              <Link href="#">
-                <Icon src={instagram} />
-              </Link>
-            </Social>
-          </div>
+export default () => (
+  <Bottom>
+    <div className="container">
+      <div className="row">
+        <div className="col-md-2 col-sm-3 col-xs-5">
+          <Brand to="/">
+            <Logo src={logo} alt="Logo" />
+            <Copyright>© Airbnb Inc.</Copyright>
+          </Brand>
+        </div>
+        <div className="col-md-4 col-md-offset-6 col-sm-6 col-sm-offset-3 col-xs-10">
+          <Social>
+            <Link href="#">Terms</Link>
+            <Link href="#">Privacy</Link>
+            <Link href="#">Site map</Link>
+            <Link href="#">
+              <Icon src={facebook} />
+            </Link>
+            <Link href="#">
+              <Icon src={twitter} />
+            </Link>
+            <Link href="#">
+              <Icon src={instagram} />
+            </Link>
+          </Social>
         </div>
       </div>
-    </Bottom>
-  );
-};
+    </div>
+  </Bottom>
+);

@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import styled from "styled-components";
-import star from "../../UI/star.svg";
+import React from 'react';
+import styled from 'styled-components';
+import star from '../../UI/star.svg';
 
 const Card = styled.a`
   display: flex;
@@ -57,24 +57,22 @@ const Reviews = styled.span`
   color: #383838;
 `;
 
-export default props => {
-  return (
-    <Card>
-      <Image src={props.imgSrc} />
-      <Title>
-        <Price>${props.price}</Price>
-        <Name> {props.children}</Name>
-      </Title>
-      <Rating>
-        <Stars>
-          <Star src={star} alt="Star" />
-          <Star src={star} alt="Star" />
-          <Star src={star} alt="Star" />
-          <Star src={star} alt="Star" />
-          <Star src={star} alt="Star" />
-        </Stars>
-        <Reviews>{props.numberReviews} reviews</Reviews>
-      </Rating>
-    </Card>
-  );
-};
+export default props => (
+  <Card>
+    <Image src={props.imgSrc} />
+    <Title>
+      <Price>${props.price}</Price>
+      <Name> {props.children}</Name>
+    </Title>
+    <Rating>
+      <Stars>
+        <Star src={star} alt="Star" />
+        <Star src={star} alt="Star" />
+        <Star src={star} alt="Star" />
+        <Star src={star} alt="Star" />
+        <Star src={star} alt="Star" />
+      </Stars>
+      <Reviews>{props.numberReviews} reviews</Reviews>
+    </Rating>
+  </Card>
+);

@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const Card = styled(Link)`
   display: flex;
@@ -57,11 +57,9 @@ const Image = styled.img`
   }
 `;
 
-export default props => {
-  return (
-    <Card to={props.to}>
-      <Image src={props.imgSrc} alt={props.children} />
-      <Name>{props.children}</Name>
-    </Card>
-  );
-};
+export default props => (
+  <Card to={props.to}>
+    <Image src={props.imgSrc} alt={props.children} />
+    <Name>{props.children}</Name>
+  </Card>
+);

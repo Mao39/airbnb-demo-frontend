@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import arrow from "../../UI/rightGreenArrow.svg";
-import iconMap from "./location.svg";
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import arrow from '../../UI/rightGreenArrow.svg';
+import iconMap from './location.svg';
 
 const Pagination = styled.div`
   position: relative;
@@ -34,8 +34,8 @@ const Page = styled(Link)`
   text-decoration: none;
   vertical-align: middle;
 
-  background: ${props => (props.active ? "#008489" : "transparent")};
-  color: ${props => (props.active ? "#fff" : "#0f7276")};
+  background: ${props => (props.active ? '#008489' : 'transparent')};
+  color: ${props => (props.active ? '#fff' : '#0f7276')};
 `;
 
 const Reduction = styled.span`
@@ -93,9 +93,7 @@ const IconMap = styled.button`
 `;
 
 export default class PaginatePages extends React.Component {
-  state = {
-    onActive: false
-  };
+  state = {};
 
   changePage = () => {};
 
@@ -117,8 +115,7 @@ export default class PaginatePages extends React.Component {
             <Total>1 – 18 of 300+ Rentals</Total>
             <div className="col-xs-12">
               <Invite>
-                Enter dates to see full pricing. Additional fees apply. Taxes
-                may be added.
+                Enter dates to see full pricing. Additional fees apply. Taxes may be added.
               </Invite>
               <IconMap />
             </div>

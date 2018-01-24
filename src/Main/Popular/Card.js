@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const Card = styled.a`
   display: flex;
@@ -74,15 +74,13 @@ const Rate = styled.span`
   }
 `;
 
-export default props => {
-  return (
-    <Card>
-      <Image src={props.imgSrc} />
-      <Place>{props.place}</Place>
-      <Title>
-        <Name>{props.children}</Name>
-      </Title>
-      <Rate>About ${props.rate} per person</Rate>
-    </Card>
-  );
-};
+export default props => (
+  <Card>
+    <Image src={props.imgSrc} />
+    <Place>{props.place}</Place>
+    <Title>
+      <Name>{props.children}</Name>
+    </Title>
+    <Rate>About ${props.rate} per person</Rate>
+  </Card>
+);
