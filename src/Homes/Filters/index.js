@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Dates from './Dates';
 import Guests from './Guests';
 import Rooms from './Rooms';
+import Prices from './Prices';
 
 const FiltersWrap = styled.div`
   position: fixed;
@@ -72,6 +73,13 @@ export default class Filters extends React.Component {
           >
             Room type
           </Rooms>
+          <Prices
+            onCloseFilter={this.onCloseFilter}
+            openedFilter={this.state.openedFilter}
+            switchOpeningFilter={this.switchOpeningFilter}
+          >
+            Prices
+          </Prices>
           <Btn>More filters</Btn>
         </div>
       </FiltersWrap>
