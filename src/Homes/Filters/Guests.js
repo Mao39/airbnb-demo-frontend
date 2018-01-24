@@ -185,12 +185,11 @@ const Bottom = styled.div`
   left: 0;
   display: flex;
   justify-content: space-between;
-  height: 64px;
   padding: 8px;
   box-shadow: 0 -1px #d5d5d5;
 
   @media (min-width: 576px) {
-    padding: 0;
+    padding: 26px;
     box-shadow: none;
   }
 `;
@@ -215,8 +214,6 @@ const Save = styled.button`
 
 const Cancel = styled.button`
   display: none;
-  width: 110px;
-  height: 64px;
   border: none;
   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 16px;
@@ -233,8 +230,6 @@ const Cancel = styled.button`
 
 const Apply = styled.button`
   display: none;
-  width: 110px;
-  height: 64px;
   border: none;
   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 16px;

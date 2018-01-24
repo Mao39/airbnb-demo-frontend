@@ -72,11 +72,17 @@ const Bottom = styled.div`
   left: 0;
   display: flex;
   justify-content: space-between;
+  padding: 8px;
+  box-shadow: 0 -1px #d5d5d5;
+
+  @media (min-width: 576px) {
+    padding: 26px;
+    box-shadow: none;
+  }
 `;
 
 const Cancel = styled.button`
-  width: 110px;
-  height: 64px;
+  display: none;
   border: none;
   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 16px;
@@ -85,11 +91,14 @@ const Cancel = styled.button`
   color: #636363;
   background: transparent;
   cursor: pointer;
+
+  @media (min-width: 576px) {
+    display: inline-block;
+  }
 `;
 
 const Apply = styled.button`
-  width: 110px;
-  height: 64px;
+  display: none;
   border: none;
   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 16px;
@@ -98,6 +107,10 @@ const Apply = styled.button`
   color: #008489;
   background: transparent;
   cursor: pointer;
+
+  @media (min-width: 576px) {
+    display: inline-block;
+  }
 `;
 
 const Type = styled.div`
