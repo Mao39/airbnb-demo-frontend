@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import Dates from './Dates';
+import Guests from './Guests';
+import Rooms from './Rooms';
 
 const FiltersWrap = styled.div`
   position: fixed;
@@ -30,26 +32,46 @@ const Btn = styled.button`
 
 export default class Filters extends React.Component {
   state = {
-    isOpen: false,
+    openedFilter: null,
   };
 
-  switchOpeningFilter = () => {
-    this.setState(prevState => ({ isOpen: !prevState.isOpen }));
+  onCloseFilter = () => {
+    this.setState({ openedFilter: null });
+  };
+
+  switchOpeningFilter = (filterLabel) => {
+    if (this.state.openedFilter === filterLabel) {
+      this.setState({ openedFilter: null });
+    } else {
+      this.setState({ openedFilter: filterLabel });
+    }
   };
 
   render() {
     return (
       <FiltersWrap>
         <div className="container">
-          <Dates isOpen={this.state.isOpen} switchOpeningFilter={this.switchOpeningFilter}>
+          <Dates
+            onCloseFilter={this.onCloseFilter}
+            openedFilter={this.state.openedFilter}
+            switchOpeningFilter={this.switchOpeningFilter}
+          >
             Dates
           </Dates>
-          {/* <Guests
-            isOpen={this.state.isOpen}
+          <Guests
+            onCloseFilter={this.onCloseFilter}
+            openedFilter={this.state.openedFilter}
             switchOpeningFilter={this.switchOpeningFilter}
           >
             Guests
-          </Guests> */}
+          </Guests>
+          <Rooms
+            onCloseFilter={this.onCloseFilter}
+            openedFilter={this.state.openedFilter}
+            switchOpeningFilter={this.switchOpeningFilter}
+          >
+            Rooms
+          </Rooms>
           <Btn>More filters</Btn>
         </div>
       </FiltersWrap>
