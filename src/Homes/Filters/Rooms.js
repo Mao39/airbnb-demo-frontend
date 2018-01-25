@@ -145,11 +145,12 @@ const Input = styled.input`
   cursor: pointer;
 `;
 
-const RoomType = styled.div`
+const RoomType = styled.label`
   display: flex;
   margin-bottom: 14px;
   background: url(${props => props.imgSrc}) no-repeat center right;
   background-size: 32px;
+  cursor: pointer;
 `;
 
 const Checkbox = styled.label`
@@ -179,7 +180,7 @@ const formatRoomsLabel = (isOpen, filterLabel, entire, full, shared) => {
 const ShowOverlay = (isOpen, onCloseFilter) => isOpen && <Overlay onClick={onCloseFilter} />;
 
 const CheckRoom = props => (
-  <RoomType imgSrc={props.imgSrc}>
+  <RoomType for={props.type} onClick={() => props.onCheck(props.type)} imgSrc={props.imgSrc}>
     <Checkbox for={props.type} onClick={() => props.onCheck(props.type)} check={props.check}>
       <Input id={props.type} type="checkbox" value={props.type} />
     </Checkbox>
