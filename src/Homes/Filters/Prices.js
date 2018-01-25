@@ -150,7 +150,12 @@ const Columns = props => (
   <React.Fragment>{props.height.map(value => <Column height={value} />)}</React.Fragment>
 );
 
-const formatPricesLabel = filterLabel => filterLabel;
+const formatPricesLabel = (filterLabel, min, max) => {
+  if (min > 10 && max < 10000) return `$${min} — $${max}`;
+  if (min > 10) return `After $${min}`;
+  if (max < 10000) return `Before $${max}`;
+  return filterLabel;
+};
 
 const formatTitle = (min, max) => `$${min} — $${max}${max >= 10000 ? '+' : ''}`;
 
@@ -160,7 +165,6 @@ export default class Prices extends React.Component {
   state = {
     min: 10,
     max: 10000,
-    isApply: false,
   };
 
   onCloseFilter = () => {
@@ -169,7 +173,7 @@ export default class Prices extends React.Component {
   };
 
   onSave = () => {
-    this.setState({ isApply: true });
+    if (this.state.min > 10 || this.state.max < 10000) this.setState({ isApply: true });
     this.switchOpeningFilter();
   };
 
@@ -231,7 +235,7 @@ export default class Prices extends React.Component {
       <React.Fragment>
         <Wrap>
           <Btn isOpen={isApply || isOpen} onClick={this.switchOpeningFilter}>
-            {formatPricesLabel(filterLabel)}
+            {formatPricesLabel(filterLabel, min, max)}
           </Btn>
           {isOpen && (
             <Filter>
