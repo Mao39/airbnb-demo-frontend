@@ -279,6 +279,7 @@ export default class Dates extends React.Component {
     focusedInput: START_DATE,
     startDate: this.props.initialStartDate,
     endDate: this.props.initialEndDate,
+    isApply: false,
   };
 
   onDatesChange = ({ startDate, endDate }) => {
@@ -296,12 +297,18 @@ export default class Dates extends React.Component {
     this.props.onCloseFilter();
   };
 
-  resetSelection = () => {
-    this.setState({ startDate: null, endDate: null });
+  onApply = () => {
+    this.setState({ isApply: true });
+    this.switchOpeningFilter();
   };
 
   switchOpeningFilter = () => {
     this.props.switchOpeningFilter(this.props.children);
+  };
+
+  resetSelection = () => {
+    this.setState({ isApply: false });
+    this.setState({ startDate: null, endDate: null });
   };
 
   renderCalendarInfo = () => (
@@ -311,19 +318,21 @@ export default class Dates extends React.Component {
       ) : (
         <Cancel onClick={this.onCloseFilter}>Cancel</Cancel>
       )}
-      <Apply onClick={this.switchOpeningFilter}>Apply</Apply>
+      <Apply onClick={this.onApply}>Apply</Apply>
     </CalendarRow>
   );
 
   render() {
-    const { startDate, endDate, focusedInput } = this.state;
+    const {
+      startDate, endDate, focusedInput, isApply,
+    } = this.state;
     const filterLabel = this.props.children;
     const isOpen = this.props.openedFilter === filterLabel;
 
     return (
       <React.Fragment>
         <Wrap>
-          <Btn isOpen={isOpen} onClick={this.switchOpeningFilter}>
+          <Btn isOpen={isApply || isOpen} onClick={this.switchOpeningFilter}>
             {formatDateLabel(startDate, endDate, isOpen, filterLabel)}
           </Btn>
           {isOpen && (
@@ -355,7 +364,7 @@ export default class Dates extends React.Component {
                 orientation={changeOrientation()}
               />
               <Bottom>
-                <Save onClick={this.switchOpeningFilter}>Save</Save>
+                <Save onClick={this.onApply}>Save</Save>
               </Bottom>
             </Filter>
           )}

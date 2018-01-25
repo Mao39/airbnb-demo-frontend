@@ -200,6 +200,7 @@ const ShowOverlay = (isOpen, onCloseFilter) => isOpen && <Overlay onClick={onClo
 export default class Prices extends React.Component {
   state = {
     instant: false,
+    isApply: false,
   };
 
   onCloseFilter = () => {
@@ -211,7 +212,13 @@ export default class Prices extends React.Component {
     this.setState(prevState => ({ instant: !prevState.instant }));
   };
 
+  onApply = () => {
+    this.setState({ isApply: true });
+    this.switchOpeningFilter();
+  };
+
   resetSelection = () => {
+    this.setState({ isApply: false });
     this.setState({ instant: false });
   };
 
@@ -220,14 +227,14 @@ export default class Prices extends React.Component {
   };
 
   render() {
-    const { instant } = this.state;
+    const { instant, isApply } = this.state;
     const filterLabel = this.props.children;
     const isOpen = this.props.openedFilter === filterLabel;
 
     return (
       <React.Fragment>
         <Wrap>
-          <Btn isOpen={isOpen} onClick={this.switchOpeningFilter}>
+          <Btn isOpen={isApply || isOpen} onClick={this.switchOpeningFilter}>
             {formatPricesLabel(filterLabel)}
           </Btn>
           {isOpen && (
@@ -246,7 +253,7 @@ export default class Prices extends React.Component {
                 ) : (
                   <Cancel onClick={this.onCloseFilter}>Cancel</Cancel>
                 )}
-                <Apply onClick={this.switchOpeningFilter}>Apply</Apply>
+                <Apply onClick={this.onApply}>Apply</Apply>
               </Bottom>
             </Filter>
           )}

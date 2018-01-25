@@ -207,11 +207,18 @@ export default class Rooms extends React.Component {
     this.setState(prevState => ({ [type]: !prevState[type] }));
   };
 
+  onApply = () => {
+    this.setState({ isApply: true });
+    this.switchOpeningFilter();
+  };
+
   resetSelection = () => {
+    this.setState({ isApply: false });
     this.setState({
       entire: null,
       full: null,
       shared: null,
+      isApply: false,
     });
   };
 
@@ -220,14 +227,16 @@ export default class Rooms extends React.Component {
   };
 
   render() {
-    const { entire, full, shared } = this.state;
+    const {
+      entire, full, shared, isApply,
+    } = this.state;
     const filterLabel = this.props.children;
     const isOpen = this.props.openedFilter === filterLabel;
 
     return (
       <React.Fragment>
         <Wrap>
-          <Btn isOpen={isOpen} onClick={this.switchOpeningFilter}>
+          <Btn isOpen={isApply || isOpen} onClick={this.switchOpeningFilter}>
             {formatRoomsLabel(isOpen, filterLabel, entire, full, shared)}
           </Btn>
           {isOpen && (
@@ -262,7 +271,7 @@ export default class Rooms extends React.Component {
                 ) : (
                   <Cancel onClick={this.onCloseFilter}>Cancel</Cancel>
                 )}
-                <Apply onClick={this.switchOpeningFilter}>Apply</Apply>
+                <Apply onClick={this.onApply}>Apply</Apply>
               </Bottom>
             </Filter>
           )}

@@ -284,6 +284,7 @@ export default class Guests extends React.Component {
     adults: 1,
     children: 0,
     infants: 0,
+    isApply: false,
   };
 
   onCloseFilter = () => {
@@ -291,7 +292,13 @@ export default class Guests extends React.Component {
     this.props.onCloseFilter();
   };
 
+  onApply = () => {
+    this.setState({ isApply: true });
+    this.switchOpeningFilter();
+  };
+
   resetSelection = () => {
+    this.setState({ isApply: false });
     this.setState({ adults: 1, children: 0, infants: 0 });
   };
 
@@ -320,14 +327,16 @@ export default class Guests extends React.Component {
   };
 
   render() {
-    const { adults, children, infants } = this.state;
+    const {
+      adults, children, infants, isApply,
+    } = this.state;
     const filterLabel = this.props.children;
     const isOpen = this.props.openedFilter === filterLabel;
 
     return (
       <React.Fragment>
         <Wrap>
-          <Btn isOpen={isOpen} onClick={this.switchOpeningFilter}>
+          <Btn isOpen={isApply || isOpen} onClick={this.switchOpeningFilter}>
             {formatGuestsLabel(filterLabel, adults, children, infants)}
           </Btn>
           {isOpen && (
@@ -361,13 +370,13 @@ export default class Guests extends React.Component {
                 switchDisableButton={this.switchDisableButton}
               />
               <Bottom>
-                <Save onClick={this.switchOpeningFilter}>Save</Save>
+                <Save onClick={this.onApply}>Save</Save>
                 {adults > 1 || children || infants ? (
                   <Cancel onClick={this.resetSelection}>Reset</Cancel>
                 ) : (
                   <Cancel onClick={this.onCloseFilter}>Cancel</Cancel>
                 )}
-                <Apply onClick={this.switchOpeningFilter}>Apply</Apply>
+                <Apply onClick={this.onApply}>Apply</Apply>
               </Bottom>
             </Filter>
           )}

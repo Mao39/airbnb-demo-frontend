@@ -160,6 +160,7 @@ export default class Prices extends React.Component {
   state = {
     min: 10,
     max: 10000,
+    isApply: false,
   };
 
   onCloseFilter = () => {
@@ -167,7 +168,13 @@ export default class Prices extends React.Component {
     this.props.onCloseFilter();
   };
 
+  onSave = () => {
+    this.setState({ isApply: true });
+    this.switchOpeningFilter();
+  };
+
   resetSelection = () => {
+    this.setState({ isApply: false });
     this.setState({
       min: 10,
       max: 10000,
@@ -187,7 +194,7 @@ export default class Prices extends React.Component {
 
   render() {
     const filterLabel = this.props.children;
-    const { min, max } = this.state;
+    const { min, max, isApply } = this.state;
     const isOpen = this.props.openedFilter === filterLabel;
     const numberRoomOffers = [
       0,
@@ -223,7 +230,7 @@ export default class Prices extends React.Component {
     return (
       <React.Fragment>
         <Wrap>
-          <Btn isOpen={isOpen} onClick={this.switchOpeningFilter}>
+          <Btn isOpen={isApply || isOpen} onClick={this.switchOpeningFilter}>
             {formatPricesLabel(filterLabel)}
           </Btn>
           {isOpen && (
@@ -245,7 +252,7 @@ export default class Prices extends React.Component {
                 ) : (
                   <Cancel onClick={this.onCloseFilter}>Cancel</Cancel>
                 )}
-                <Apply onClick={this.switchOpeningFilter}>Apply</Apply>
+                <Apply onClick={this.onSave}>Apply</Apply>
               </Bottom>
             </Filter>
           )}
