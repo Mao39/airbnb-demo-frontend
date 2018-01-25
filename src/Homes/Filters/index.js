@@ -4,6 +4,7 @@ import Dates from './Dates';
 import Guests from './Guests';
 import Rooms from './Rooms';
 import Prices from './Prices';
+import Book from './Book';
 
 const FiltersWrap = styled.div`
   position: fixed;
@@ -80,6 +81,13 @@ export default class Filters extends React.Component {
           >
             Prices
           </Prices>
+          <Book
+            onCloseFilter={this.onCloseFilter}
+            openedFilter={this.state.openedFilter}
+            switchOpeningFilter={this.switchOpeningFilter}
+          >
+            Instant book
+          </Book>
           <Btn>More filters</Btn>
         </div>
       </FiltersWrap>
