@@ -92,9 +92,9 @@ const Mark = styled.span`
     right: 0;
     bottom: 0;
     left: 0;
-    background: url(${check}) no-repeat center;
+    background: ${props => props.check && `url(${check}) no-repeat center`};
     opacity: ${props => (props.check ? '1' : '0')};
-    transition: all 0.15s ease-in-out 0.25s;
+    transition: opacity 0.15s ease-in-out 0.2s;
   }
 
   &:before {
@@ -107,7 +107,7 @@ const Mark = styled.span`
     background: url(${plus}) no-repeat center;
     transform: ${props => (props.check ? 'rotate(45deg)' : 'none')};
     opacity: ${props => (props.check ? '0' : '1')};
-    transition: all 0.2s ease-in-out 0.25s;
+    transition: all 0.2s ease-out 0.1s;
   }
 `;
 
