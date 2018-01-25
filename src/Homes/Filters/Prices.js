@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import Rheostat from 'rheostat';
 import 'rheostat/css/slider.css';
+import 'rheostat/css/slider-horizontal.css';
+import './react_rheostat_overrides.css';
 
 const Filter = styled.aside`
   display: inline-block;
@@ -17,9 +19,9 @@ const Filter = styled.aside`
     position: absolute;
     top: 40px;
     left: 0;
-    height: 290px;
     width: 326px;
-    padding: 32px 24px;
+    height: 274px;
+    padding: 24px 16px;
     border: 1px solid rgba(72, 72, 72, 0.2);
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(72, 72, 72, 0.08);
@@ -39,6 +41,39 @@ const Overlay = styled.div`
   left: 0;
   z-index: 2;
   background: rgba(255, 255, 255, 0.8);
+`;
+
+const Title = styled.p`
+  margin: 0;
+  margin-bottom: 7px;
+  font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 19px;
+  font-weight: 100;
+  color: #383838;
+`;
+
+const Description = styled.p`
+  margin: 0;
+  font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: 100;
+  color: #383838;
+`;
+
+const Histogram = styled.div`
+  position: relative;
+  margin-top: 32px;
+`;
+
+const Column = styled.span`
+  position: relative;
+  bottom: -6px;
+  display: inline-block;
+  width: 6px;
+  height: ${props => `${props.height}px`};
+  background: rgba(118, 118, 118, 0.5);
 `;
 
 const Btn = styled.button`
@@ -111,61 +146,78 @@ const Apply = styled.button`
   }
 `;
 
+const Columns = props => (
+  <React.Fragment>{props.height.map(value => <Column height={value} />)}</React.Fragment>
+);
+
 const formatPricesLabel = filterLabel => filterLabel;
+
+const formatTitle = (min, max) => `$${min} — $${max}${max >= 10000 ? '+' : ''}`;
 
 const ShowOverlay = (isOpen, onCloseFilter) => isOpen && <Overlay onClick={onCloseFilter} />;
 
 export default class Prices extends React.Component {
-  state = {};
+  state = {
+    min: 10,
+    max: 10000,
+  };
 
   onCloseFilter = () => {
     this.resetSelection();
     this.props.onCloseFilter();
   };
 
-  resetSelection = () => {};
+  resetSelection = () => {
+    this.setState({
+      min: 10,
+      max: 10000,
+    });
+  };
 
   switchOpeningFilter = () => {
     this.props.switchOpeningFilter(this.props.children);
   };
 
-  PitComponent = ({ style, children }) => (
-    <div
-      style={{
-        ...style,
-        background: '#a2a2a2',
-        width: 1,
-        height: children % 10 === 0 ? 12 : 8,
-        top: 20,
-      }}
-    />
-  );
+  updateValue = (sliderState) => {
+    this.setState({
+      min: sliderState.values[0],
+      max: sliderState.values[1],
+    });
+  };
 
   render() {
     const filterLabel = this.props.children;
+    const { min, max } = this.state;
     const isOpen = this.props.openedFilter === filterLabel;
-    const pitPoints = [
+    const numberRoomOffers = [
       0,
-      5,
-      10,
-      15,
+      0,
+      0,
+      0,
+      0,
+      3,
+      6,
+      14,
       20,
-      25,
-      30,
-      35,
-      40,
-      45,
-      50,
-      55,
+      14,
+      32,
+      42,
+      56,
+      69,
+      79,
       60,
-      65,
-      70,
-      75,
-      80,
-      85,
-      90,
-      95,
-      100,
+      60,
+      56,
+      42,
+      42,
+      35,
+      32,
+      20,
+      10,
+      14,
+      20,
+      6,
+      1,
     ];
 
     return (
@@ -176,17 +228,19 @@ export default class Prices extends React.Component {
           </Btn>
           {isOpen && (
             <Filter>
-              <Rheostat
-                pitComponent={this.PitComponent}
-                min={1}
-                max={100}
-                values={[1, 100]}
-                pitPoints={pitPoints}
-                snap
-                snapPoints={[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]}
-              />
+              <Title>{formatTitle(min, max)}</Title>
+              <Description>The average nightly price is $75.</Description>
+              <Histogram>
+                <Columns height={numberRoomOffers} />
+                <Rheostat
+                  onValuesUpdated={this.updateValue}
+                  min={10}
+                  max={10000}
+                  values={[min, max]}
+                />
+              </Histogram>
               <Bottom>
-                {isOpen ? (
+                {min > 10 || max < 10000 ? (
                   <Cancel onClick={this.resetSelection}>Reset</Cancel>
                 ) : (
                   <Cancel onClick={this.onCloseFilter}>Cancel</Cancel>
