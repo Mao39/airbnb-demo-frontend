@@ -27,3 +27,7 @@
     url("./UI/Circular_Air-Light.ttf") format("truetype");
   font-weight: lighter;
 }
+
+.responsive-component {
+  display: inline-block;
+}

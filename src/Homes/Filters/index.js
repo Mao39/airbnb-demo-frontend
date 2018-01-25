@@ -1,12 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import MediaQuery from 'react-responsive';
+import { ResponsiveComponent } from 'react-responsive-component';
 import Dates from './Dates';
 import Guests from './Guests';
 import Rooms from './Rooms';
 import Prices from './Prices';
 import Book from './Book';
-import More from './More';
 
 const FiltersWrap = styled.div`
   position: fixed;
@@ -17,21 +16,6 @@ const FiltersWrap = styled.div`
   padding: 12px 0;
   background: #fff;
   box-shadow: 0 0 0.5px rgba(72, 72, 72, 0.3);
-`;
-
-const Btn = styled.button`
-  position: relative;
-  margin-right: 8px;
-  padding: 7px 16px;
-  border: 1px solid rgba(72, 72, 72, 0.3);
-  border-radius: 4px;
-  font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 16px;
-  color: #383838;
-  background: transparent;
-  cursor: pointer;
 `;
 
 export default class Filters extends React.Component {
@@ -69,7 +53,7 @@ export default class Filters extends React.Component {
           >
             Guests
           </Guests>
-          <MediaQuery minDeviceWidth={968}>
+          <ResponsiveComponent query="only screen and (min-width: 968px)">
             <Rooms
               onCloseFilter={this.onCloseFilter}
               openedFilter={this.state.openedFilter}
@@ -91,8 +75,7 @@ export default class Filters extends React.Component {
             >
               Instant book
             </Book>
-          </MediaQuery>
-          <Btn>More filters</Btn>
+          </ResponsiveComponent>
         </div>
       </FiltersWrap>
     );
