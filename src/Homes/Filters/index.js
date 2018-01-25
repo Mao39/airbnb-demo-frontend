@@ -6,6 +6,7 @@ import Guests from './Guests';
 import Rooms from './Rooms';
 import Prices from './Prices';
 import Book from './Book';
+import More from './More';
 
 const FiltersWrap = styled.div`
   position: fixed;

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import plus from './../../UI/grayPlus.svg';
-import check from './../../UI/checkInstant.svg';
+import check from './../../UI/checkBook.svg';
 
 const Filter = styled.aside`
   position: fixed;
