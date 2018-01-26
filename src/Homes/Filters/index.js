@@ -19,35 +19,54 @@ const FiltersWrap = styled.div`
   box-shadow: 0 0 0.5px rgba(72, 72, 72, 0.3);
 `;
 
+const initialState = {
+  openedFilter: null,
+  dates: { startDate: null, endDate: null },
+};
+
 export default class Filters extends React.Component {
-  state = {
-    openedFilter: null,
-  };
+  state = initialState;
 
   onClose = () => {
+    this.resetSelection();
     this.setState({ openedFilter: null });
   };
 
-  switchOpeningFilter = (filterLabel) => {
-    if (this.state.openedFilter === filterLabel) {
+  onDatesChange = ({ startDate, endDate }) => {
+    this.setState({ dates: { startDate, endDate } });
+  };
+
+  resetSelection = (id) => {
+    this.setState({ ...this.state, [id]: initialState[id] });
+  };
+
+  switchOpeningFilter = (id) => {
+    if (this.state.openedFilter === id) {
       this.setState({ openedFilter: null });
     } else {
-      this.setState({ openedFilter: filterLabel });
+      this.setState({ openedFilter: id });
     }
   };
 
   render() {
+    const { dates } = this.state;
     return (
       <FiltersWrap>
         <div className="container">
           <Dates
+            id="dates"
+            startDate={dates.startDate}
+            endDate={dates.endDate}
             onClose={this.onClose}
+            onDatesChange={this.onDatesChange}
             openedFilter={this.state.openedFilter}
             switchOpeningFilter={this.switchOpeningFilter}
+            resetSelection={this.resetSelection}
           >
             Dates
           </Dates>
           <Guests
+            id="guests"
             onClose={this.onClose}
             openedFilter={this.state.openedFilter}
             switchOpeningFilter={this.switchOpeningFilter}
@@ -56,6 +75,7 @@ export default class Filters extends React.Component {
           </Guests>
           <ResponsiveComponent query="only screen and (min-width: 968px)">
             <Rooms
+              id="rooms"
               onClose={this.onClose}
               openedFilter={this.state.openedFilter}
               switchOpeningFilter={this.switchOpeningFilter}
@@ -63,6 +83,7 @@ export default class Filters extends React.Component {
               Room type
             </Rooms>
             <Prices
+              id="prices"
               onClose={this.onClose}
               openedFilter={this.state.openedFilter}
               switchOpeningFilter={this.switchOpeningFilter}
@@ -70,6 +91,7 @@ export default class Filters extends React.Component {
               Prices
             </Prices>
             <Book
+              id="instant"
               onClose={this.onClose}
               openedFilter={this.state.openedFilter}
               switchOpeningFilter={this.switchOpeningFilter}
@@ -77,6 +99,7 @@ export default class Filters extends React.Component {
               Instant book
             </Book>
             <More
+              id="more"
               onClose={this.onClose}
               openedFilter={this.state.openedFilter}
               switchOpeningFilter={this.switchOpeningFilter}

@@ -278,13 +278,11 @@ const getUnavailableDays = day => !isInclusivelyAfterDay(day, moment());
 export default class Dates extends React.Component {
   state = {
     focusedInput: START_DATE,
-    startDate: this.props.initialStartDate,
-    endDate: this.props.initialEndDate,
     isApply: false,
   };
 
   onDatesChange = ({ startDate, endDate }) => {
-    this.setState({ startDate, endDate });
+    this.props.onDatesChange({ startDate, endDate });
   };
 
   onFocusChange = (focusedInput) => {
@@ -293,31 +291,28 @@ export default class Dates extends React.Component {
     });
   };
 
-  onClose = () => {
-    this.resetSelection();
-    this.props.onClose();
-  };
-
   onApply = () => {
-    this.setState({ isApply: true });
+    if (this.props.startDate && this.props.endDate) {
+      this.setState({ isApply: true });
+    }
     this.switchOpeningFilter();
   };
 
   switchOpeningFilter = () => {
-    this.props.switchOpeningFilter(this.props.children);
+    this.props.switchOpeningFilter(this.props.id);
   };
 
   resetSelection = () => {
     this.setState({ isApply: false });
-    this.setState({ startDate: null, endDate: null });
+    this.props.resetSelection(this.props.id);
   };
 
   renderCalendarInfo = () => (
     <CalendarRow>
-      {this.state.startDate && this.state.endDate ? (
+      {this.props.startDate && this.props.endDate ? (
         <Cancel onClick={this.resetSelection}>Reset</Cancel>
       ) : (
-        <Cancel onClick={this.onClose}>Cancel</Cancel>
+        <Cancel onClick={this.props.onClose}>Cancel</Cancel>
       )}
       <Apply onClick={this.onApply}>Apply</Apply>
     </CalendarRow>
@@ -325,10 +320,11 @@ export default class Dates extends React.Component {
 
   render() {
     const {
-      startDate, endDate, focusedInput, isApply,
-    } = this.state;
+      startDate, endDate, openedFilter, id,
+    } = this.props;
+    const { focusedInput, isApply } = this.state;
     const filterLabel = this.props.children;
-    const isOpen = this.props.openedFilter === filterLabel;
+    const isOpen = openedFilter === id;
 
     return (
       <React.Fragment>
@@ -339,7 +335,7 @@ export default class Dates extends React.Component {
           {isOpen && (
             <Filter isOpen={isOpen}>
               <Header>
-                <Exit onClick={this.onClose} />
+                <Exit onClick={this.props.onClose} />
                 <Caption>Dates</Caption>
                 <Reset onClick={this.resetSelection}>Reset</Reset>
               </Header>
@@ -369,7 +365,7 @@ export default class Dates extends React.Component {
               </Bottom>
             </Filter>
           )}
-          {ShowOverlay(isOpen, this.onClose)}
+          {ShowOverlay(isOpen, this.props.onClose)}
           {ShowScrollLock(isOpen)}
         </Wrap>
       </React.Fragment>
