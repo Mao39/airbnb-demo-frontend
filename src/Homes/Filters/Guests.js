@@ -58,11 +58,14 @@ const Btn = styled.button`
 
   color: ${props => (props.isOpen ? '#fff' : '#383838')};
   background: ${props => (props.isOpen ? '#008489' : 'transparent')};
+<<<<<<< HEAD
 
   &:hover {
     border-color: ${props => (props.isOpen ? 'rgba(72, 72, 72, 0.3)' : '#f2f2f2')};
     background: ${props => (props.isOpen ? '#008489' : '#f2f2f2')};
   }
+=======
+>>>>>>> master
 `;
 
 const Header = styled.div`
@@ -185,11 +188,19 @@ const Bottom = styled.div`
   left: 0;
   display: flex;
   justify-content: space-between;
+<<<<<<< HEAD
+=======
+  height: 64px;
+>>>>>>> master
   padding: 8px;
   box-shadow: 0 -1px #d5d5d5;
 
   @media (min-width: 576px) {
+<<<<<<< HEAD
     padding: 26px;
+=======
+    padding: 0;
+>>>>>>> master
     box-shadow: none;
   }
 `;
@@ -214,6 +225,11 @@ const Save = styled.button`
 
 const Cancel = styled.button`
   display: none;
+<<<<<<< HEAD
+=======
+  width: 110px;
+  height: 64px;
+>>>>>>> master
   border: none;
   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 16px;
@@ -230,6 +246,11 @@ const Cancel = styled.button`
 
 const Apply = styled.button`
   display: none;
+<<<<<<< HEAD
+=======
+  width: 110px;
+  height: 64px;
+>>>>>>> master
   border: none;
   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 16px;
@@ -244,6 +265,7 @@ const Apply = styled.button`
   }
 `;
 
+<<<<<<< HEAD
 const formatGuestsLabel = (filterLabel, adults, children, infants) => {
   const commonNumber = adults + children;
   const formatInfants = infants > 1 ? `${infants} infants` : `${infants} infant`;
@@ -258,6 +280,12 @@ const formatGuestsLabel = (filterLabel, adults, children, infants) => {
 };
 
 const ShowOverlay = (isOpen, onCloseFilter) => isOpen && <Overlay onClick={onCloseFilter} />;
+=======
+const formatGuestsLabel = (isOpen, filterLabel) => filterLabel;
+
+const ShowOverlay = (isOpen, switchOpeningFilter) =>
+  isOpen && <Overlay onClick={switchOpeningFilter} />;
+>>>>>>> master
 
 const ShowScrollLock = isOpen =>
   !matchMedia('(min-width: 576px)').matches && isOpen && <ScrollLock />;
@@ -281,6 +309,7 @@ const Guest = props => (
 
 export default class Guests extends React.Component {
   state = {
+<<<<<<< HEAD
     adults: 1,
     children: 0,
     infants: 0,
@@ -304,18 +333,31 @@ export default class Guests extends React.Component {
 
   switchOpeningFilter = () => {
     this.props.switchOpeningFilter(this.props.children);
+=======
+    adult: 1,
+    children: 0,
+    infants: 0,
+>>>>>>> master
   };
 
   switchDisableButton = (type) => {
     if (this.state[type] > 1) return false;
+<<<<<<< HEAD
     if (this.state[type] > 0 && type !== 'adults') return false;
+=======
+    if (this.state[type] > 0 && type !== 'adult') return false;
+>>>>>>> master
     return true;
   };
 
   reduce = (type) => {
     if (this.state[type] > 1) {
       this.setState(prevState => ({ [type]: prevState[type] - 1 }));
+<<<<<<< HEAD
     } else if (this.state[type] > 0 && type !== 'adults') {
+=======
+    } else if (this.state[type] > 0 && type !== 'adult') {
+>>>>>>> master
       this.setState(prevState => ({ [type]: prevState[type] - 1 }));
     }
   };
@@ -327,21 +369,32 @@ export default class Guests extends React.Component {
   };
 
   render() {
+<<<<<<< HEAD
     const {
       adults, children, infants, isApply,
     } = this.state;
     const filterLabel = this.props.children;
     const isOpen = this.props.openedFilter === filterLabel;
+=======
+    const { isOpen, switchOpeningFilter } = this.props;
+    const filterLabel = this.props.children;
+>>>>>>> master
 
     return (
       <React.Fragment>
         <Wrap>
+<<<<<<< HEAD
           <Btn isOpen={isApply || isOpen} onClick={this.switchOpeningFilter}>
             {formatGuestsLabel(filterLabel, adults, children, infants)}
+=======
+          <Btn isOpen={isOpen} onClick={switchOpeningFilter}>
+            {formatGuestsLabel(isOpen, filterLabel)}
+>>>>>>> master
           </Btn>
           {isOpen && (
             <Filter>
               <Header>
+<<<<<<< HEAD
                 <Exit onClick={this.onCloseFilter} />
                 <Caption>Guests</Caption>
                 <Reset onClick={this.resetSelection}>Reset</Reset>
@@ -349,6 +402,15 @@ export default class Guests extends React.Component {
               <Guest
                 type="adults"
                 amount={adults}
+=======
+                <Exit onClick={switchOpeningFilter} />
+                <Caption>Guests</Caption>
+                <Reset>Reset</Reset>
+              </Header>
+              <Guest
+                type="adult"
+                amount={this.state.adult}
+>>>>>>> master
                 add={this.add}
                 reduce={this.reduce}
                 switchDisableButton={this.switchDisableButton}
@@ -356,7 +418,11 @@ export default class Guests extends React.Component {
               <Guest
                 type="children"
                 age="Ages 2 — 12"
+<<<<<<< HEAD
                 amount={children}
+=======
+                amount={this.state.children}
+>>>>>>> master
                 add={this.add}
                 reduce={this.reduce}
                 switchDisableButton={this.switchDisableButton}
@@ -364,12 +430,17 @@ export default class Guests extends React.Component {
               <Guest
                 type="infants"
                 age="Under 2"
+<<<<<<< HEAD
                 amount={infants}
+=======
+                amount={this.state.infants}
+>>>>>>> master
                 add={this.add}
                 reduce={this.reduce}
                 switchDisableButton={this.switchDisableButton}
               />
               <Bottom>
+<<<<<<< HEAD
                 <Save onClick={this.onApply}>Save</Save>
                 {adults > 1 || children || infants ? (
                   <Cancel onClick={this.resetSelection}>Reset</Cancel>
@@ -381,6 +452,15 @@ export default class Guests extends React.Component {
             </Filter>
           )}
           {ShowOverlay(isOpen, this.onCloseFilter)}
+=======
+                <Save>Save</Save>
+                <Cancel onClick={switchOpeningFilter}>Cancel</Cancel>
+                <Apply>Apply</Apply>
+              </Bottom>
+            </Filter>
+          )}
+          {ShowOverlay(isOpen, switchOpeningFilter)}
+>>>>>>> master
           {ShowScrollLock(isOpen)}
         </Wrap>
       </React.Fragment>
