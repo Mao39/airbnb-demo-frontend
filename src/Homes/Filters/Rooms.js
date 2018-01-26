@@ -1,46 +1,41 @@
 import React from 'react';
 import styled from 'styled-components';
+
+import check from '../../UI/check.svg';
 import fullRoom from '../../UI/private.svg';
 import entireRoom from '../../UI/entire.svg';
 import sharedRoom from '../../UI/shared.svg';
-import check from '../../UI/check.svg';
 
-const Filter = styled.aside`
-  display: inline-block;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: #fff;
-  z-index: 3;
+const Apply = styled.button`
+  display: none;
+  border: none;
+  font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 19px;
+  font-weight: 600;
+  color: #008489;
+  background: transparent;
+  cursor: pointer;
 
   @media (min-width: 576px) {
-    position: absolute;
-    top: 40px;
-    left: 0;
-    height: 290px;
-    width: 326px;
-    padding: 32px 24px;
-    border: 1px solid rgba(72, 72, 72, 0.2);
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(72, 72, 72, 0.08);
+    display: inline-block;
   }
 `;
 
-const Wrap = styled.div`
-  position: relative;
-  display: inline-block;
-`;
-
-const Overlay = styled.div`
-  position: fixed;
-  top: 137px;
+const Bottom = styled.div`
+  position: absolute;
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 2;
-  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+  box-shadow: 0 -1px #d5d5d5;
+
+  @media (min-width: 576px) {
+    padding: 26px;
+    box-shadow: none;
+  }
 `;
 
 const Btn = styled.button`
@@ -65,22 +60,6 @@ const Btn = styled.button`
   }
 `;
 
-const Bottom = styled.div`
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  justify-content: space-between;
-  padding: 8px;
-  box-shadow: 0 -1px #d5d5d5;
-
-  @media (min-width: 576px) {
-    padding: 26px;
-    box-shadow: none;
-  }
-`;
-
 const Cancel = styled.button`
   display: none;
   border: none;
@@ -97,62 +76,6 @@ const Cancel = styled.button`
   }
 `;
 
-const Apply = styled.button`
-  display: none;
-  border: none;
-  font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 19px;
-  font-weight: 600;
-  color: #008489;
-  background: transparent;
-  cursor: pointer;
-
-  @media (min-width: 576px) {
-    display: inline-block;
-  }
-`;
-
-const Type = styled.div`
-  margin-left: 12px;
-  padding-right: 56px;
-  text-align: left;
-`;
-
-const Title = styled.p`
-  margin: 0;
-  font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 19px;
-  font-weight: lighter;
-  color: #383838;
-`;
-
-const Desc = styled.p`
-  margin: 0;
-  margin-top: 4px;
-  font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 12px;
-  line-height: 14px;
-  font-weight: lighter;
-  color: #383838;
-`;
-
-const Input = styled.input`
-  width: 24px;
-  height: 24px;
-  opacity: 0;
-  cursor: pointer;
-`;
-
-const RoomType = styled.label`
-  display: flex;
-  margin-bottom: 14px;
-  background: url(${props => props.imgSrc}) no-repeat center right;
-  background-size: 32px;
-  cursor: pointer;
-`;
-
 const Checkbox = styled.label`
   width: 24px;
   height: 24px;
@@ -167,6 +90,84 @@ const Checkbox = styled.label`
   cursor: pointer;
 `;
 
+const Description = styled.p`
+  margin: 0;
+  margin-top: 4px;
+  font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: lighter;
+  color: #383838;
+`;
+
+const Filter = styled.aside`
+  display: inline-block;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  z-index: 3;
+
+  @media (min-width: 576px) {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    height: 290px;
+    width: 326px;
+    padding: 32px 24px;
+    border: 1px solid rgba(72, 72, 72, 0.2);
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(72, 72, 72, 0.08);
+  }
+`;
+
+const Input = styled.input`
+  width: 24px;
+  height: 24px;
+  opacity: 0;
+  cursor: pointer;
+`;
+
+const Overlay = styled.div`
+  position: fixed;
+  top: 137px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.8);
+`;
+
+const Premises = styled.label`
+  display: flex;
+  margin-bottom: 14px;
+  background: url(${props => props.imgSrc}) no-repeat center right;
+  background-size: 32px;
+  cursor: pointer;
+`;
+
+const Title = styled.p`
+  margin: 0;
+  font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 19px;
+  font-weight: lighter;
+  color: #383838;
+`;
+
+const Type = styled.div`
+  margin-left: 12px;
+  padding-right: 56px;
+  text-align: left;
+`;
+
+const Wrap = styled.div`
+  position: relative;
+  display: inline-block;
+`;
+
 const formatRoomsLabel = (isOpen, filterLabel, entire, full, shared) => {
   const commonType = entire + full + shared;
 
@@ -177,18 +178,18 @@ const formatRoomsLabel = (isOpen, filterLabel, entire, full, shared) => {
   return filterLabel;
 };
 
-const ShowOverlay = (isOpen, onCloseFilter) => isOpen && <Overlay onClick={onCloseFilter} />;
+const ShowOverlay = (isOpen, onClose) => isOpen && <Overlay onClick={onClose} />;
 
-const CheckRoom = props => (
-  <RoomType for={props.type} onClick={() => props.onCheck(props.type)} imgSrc={props.imgSrc}>
+const Room = props => (
+  <Premises for={props.type} onClick={() => props.onCheck(props.type)} imgSrc={props.imgSrc}>
     <Checkbox for={props.type} onClick={() => props.onCheck(props.type)} check={props.check}>
       <Input id={props.type} type="checkbox" value={props.type} />
     </Checkbox>
     <Type>
       <Title>{props.title}</Title>
-      <Desc>{props.desc}</Desc>
+      <Description>{props.desc}</Description>
     </Type>
-  </RoomType>
+  </Premises>
 );
 
 export default class Rooms extends React.Component {
@@ -198,9 +199,9 @@ export default class Rooms extends React.Component {
     shared: null,
   };
 
-  onCloseFilter = () => {
+  onClose = () => {
     this.resetSelection();
-    this.props.onCloseFilter();
+    this.props.onClose();
   };
 
   onCheck = (type) => {
@@ -241,7 +242,7 @@ export default class Rooms extends React.Component {
           </Btn>
           {isOpen && (
             <Filter>
-              <CheckRoom
+              <Room
                 check={entire}
                 onCheck={this.onCheck}
                 type="entire"
@@ -249,7 +250,7 @@ export default class Rooms extends React.Component {
                 desc="Have a place to yourself"
                 imgSrc={entireRoom}
               />
-              <CheckRoom
+              <Room
                 check={full}
                 onCheck={this.onCheck}
                 type="full"
@@ -257,7 +258,7 @@ export default class Rooms extends React.Component {
                 desc="Have your own room and share some common spaces"
                 imgSrc={fullRoom}
               />
-              <CheckRoom
+              <Room
                 check={shared}
                 onCheck={this.onCheck}
                 type="shared"
@@ -269,13 +270,13 @@ export default class Rooms extends React.Component {
                 {entire || full || shared ? (
                   <Cancel onClick={this.resetSelection}>Reset</Cancel>
                 ) : (
-                  <Cancel onClick={this.onCloseFilter}>Cancel</Cancel>
+                  <Cancel onClick={this.onClose}>Cancel</Cancel>
                 )}
                 <Apply onClick={this.onApply}>Apply</Apply>
               </Bottom>
             </Filter>
           )}
-          {ShowOverlay(isOpen, this.onCloseFilter)}
+          {ShowOverlay(isOpen, this.onClose)}
         </Wrap>
       </React.Fragment>
     );
