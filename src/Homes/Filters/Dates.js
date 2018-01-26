@@ -1,24 +1,58 @@
 import React from 'react';
-import styled from 'styled-components';
 import moment from 'moment';
-import ScrollLock from 'react-scrolllock';
 import 'react-dates/initialize';
-import { DayPickerRangeController } from 'react-dates';
-import { START_DATE } from 'react-dates/constants';
+import styled from 'styled-components';
+import ScrollLock from 'react-scrolllock';
 import 'react-dates/lib/css/_datepicker.css';
-import './react_dates_overrides.css';
-import isInclusivelyAfterDay from './helpers';
-import cross from '../../UI/cross.svg';
-import arrow from './arrowRight.svg';
+import { START_DATE } from 'react-dates/constants';
+import { DayPickerRangeController } from 'react-dates';
 
-const DayPicker = styled(DayPickerRangeController)`
-  position: relative;
-  padding-bottom: 72px;
+import './react_dates_overrides.css';
+import arrow from './arrowRight.svg';
+import cross from '../../UI/cross.svg';
+import isInclusivelyAfterDay from './helpers';
+
+const Apply = styled.button`
+  width: 110px;
+  border: none;
+  font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 19px;
+  font-weight: 600;
+  color: #008489;
+  background: transparent;
+  cursor: pointer;
 `;
 
-const Wrap = styled.div`
-  position: relative;
+const Arrow = styled.span`
   display: inline-block;
+  margin: 0 16px;
+  width: 18px;
+  height: 11px;
+  background: url(${arrow}) no-repeat center;
+  background-size: contain;
+`;
+
+const Bottom = styled.div`
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  height: 64px;
+  padding: 8px;
+  box-shadow: 0 -1px #d5d5d5;
+  z-index: 2;
+  background: #fff;
+
+  @media (min-width: 576px) {
+    display: none;
+    padding: 0;
+    box-shadow: none;
+    z-index: 1;
+    background: transparent;
+  }
 `;
 
 const Btn = styled.button`
@@ -41,6 +75,76 @@ const Btn = styled.button`
     border-color: ${props => (props.isOpen ? 'rgba(72, 72, 72, 0.3)' : '#f2f2f2')};
     background: ${props => (props.isOpen ? '#008489' : '#f2f2f2')};
   }
+`;
+
+const CalendarRow = styled.div`
+  position: relative;
+  top: -12px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: none;
+  justify-content: space-between;
+  padding-top: 40px;
+  height: 48px;
+  padding: 8px;
+
+  @media (min-width: 576px) {
+    display: flex;
+  }
+`;
+
+const Cancel = styled.button`
+  width: 110px;
+  border: none;
+  font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 19px;
+  font-weight: 600;
+  color: #636363;
+  background: transparent;
+  cursor: pointer;
+`;
+
+const Caption = styled.span`
+  font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 600;
+  color: #383838;
+`;
+
+const DatesRange = styled.div`
+  padding: 8px;
+  padding-top: 30px;
+  text-align: left;
+
+  @media (min-width: 576px) {
+    display: none;
+  }
+`;
+
+const DayPicker = styled(DayPickerRangeController)`
+  position: relative;
+  padding-bottom: 72px;
+`;
+
+const EndDate = styled.span`
+  font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  line-height: 21px;
+
+  color: ${props => (props.startDate ? '#0f7276' : '#636363')};
+  border-bottom: ${props => (props.startDate ? '1px solid #008489' : 'none')};
+`;
+
+const Exit = styled.button`
+  width: 16px;
+  height: 16px;
+  background: url(${cross}) no-repeat center;
+  background-size: contain;
+  border: none;
+  cursor: pointer;
 `;
 
 const Filter = styled.aside`
@@ -76,21 +180,14 @@ const Header = styled.div`
   }
 `;
 
-const Caption = styled.span`
-  font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  line-height: 16px;
-  font-weight: 600;
-  color: #383838;
-`;
-
-const Exit = styled.button`
-  width: 16px;
-  height: 16px;
-  background: url(${cross}) no-repeat center;
-  background-size: contain;
-  border: none;
-  cursor: pointer;
+const Overlay = styled.div`
+  position: fixed;
+  top: 137px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.8);
 `;
 
 const Reset = styled.button`
@@ -103,116 +200,6 @@ const Reset = styled.button`
   border: none;
   background: transparent;
   cursor: pointer;
-`;
-
-const Cancel = styled.button`
-  width: 110px;
-  border: none;
-  font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 19px;
-  font-weight: 600;
-  color: #636363;
-  background: transparent;
-  cursor: pointer;
-`;
-
-const Apply = styled.button`
-  width: 110px;
-  border: none;
-  font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 19px;
-  font-weight: 600;
-  color: #008489;
-  background: transparent;
-  cursor: pointer;
-`;
-
-const Overlay = styled.div`
-  position: fixed;
-  top: 137px;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 2;
-  background: rgba(255, 255, 255, 0.8);
-`;
-
-const DatesRange = styled.div`
-  padding: 8px;
-  padding-top: 30px;
-  text-align: left;
-
-  @media (min-width: 576px) {
-    display: none;
-  }
-`;
-
-const Arrow = styled.span`
-  display: inline-block;
-  margin: 0 16px;
-  width: 18px;
-  height: 11px;
-  background: url(${arrow}) no-repeat center;
-  background-size: contain;
-`;
-
-const StartDate = styled.span`
-  font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 18px;
-  line-height: 21px;
-
-  color: ${props => (props.startDate ? '#636363' : '#0f7276')};
-  border-bottom: ${props => (props.startDate ? 'none' : '1px solid #008489')};
-`;
-
-const EndDate = styled.span`
-  font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 18px;
-  line-height: 21px;
-
-  color: ${props => (props.startDate ? '#0f7276' : '#636363')};
-  border-bottom: ${props => (props.startDate ? '1px solid #008489' : 'none')};
-`;
-
-const Bottom = styled.div`
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  justify-content: space-between;
-  height: 64px;
-  padding: 8px;
-  box-shadow: 0 -1px #d5d5d5;
-  z-index: 2;
-  background: #fff;
-
-  @media (min-width: 576px) {
-    display: none;
-    padding: 0;
-    box-shadow: none;
-    z-index: 1;
-    background: transparent;
-  }
-`;
-
-const CalendarRow = styled.div`
-  position: relative;
-  top: -12px;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: none;
-  justify-content: space-between;
-  padding-top: 40px;
-  height: 48px;
-  padding: 8px;
-
-  @media (min-width: 576px) {
-    display: flex;
-  }
 `;
 
 const Save = styled.button`
@@ -240,6 +227,20 @@ const Save = styled.button`
   @media (min-width: 576px) {
     display: none;
   }
+`;
+
+const StartDate = styled.span`
+  font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  line-height: 21px;
+
+  color: ${props => (props.startDate ? '#636363' : '#0f7276')};
+  border-bottom: ${props => (props.startDate ? 'none' : '1px solid #008489')};
+`;
+
+const Wrap = styled.div`
+  position: relative;
+  display: inline-block;
 `;
 
 const formatStartDate = startDate => startDate && moment(startDate).format('Do MMM');
@@ -272,7 +273,7 @@ const ShowOverlay = (isOpen, onClose) => isOpen && <Overlay onClick={onClose} />
 const ShowScrollLock = isOpen =>
   !matchMedia('(min-width: 576px)').matches && isOpen && <ScrollLock />;
 
-const getUnavailableDaysReservation = day => !isInclusivelyAfterDay(day, moment());
+const getUnavailableDays = day => !isInclusivelyAfterDay(day, moment());
 
 export default class Dates extends React.Component {
   state = {
@@ -353,7 +354,7 @@ export default class Dates extends React.Component {
               </DatesRange>
               <DayPicker
                 numberOfMonths={showNumberMonths()}
-                isOutsideRange={getUnavailableDaysReservation}
+                isOutsideRange={getUnavailableDays}
                 hideKeyboardShortcutsPanel
                 renderCalendarInfo={this.renderCalendarInfo}
                 onDatesChange={this.onDatesChange}
