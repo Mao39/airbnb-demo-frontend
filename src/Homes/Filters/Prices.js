@@ -1,79 +1,25 @@
 import React from 'react';
-import styled from 'styled-components';
 import Rheostat from 'rheostat';
 import 'rheostat/css/slider.css';
+import styled from 'styled-components';
 import 'rheostat/css/slider-horizontal.css';
+
 import './react_rheostat_overrides.css';
 
-const Filter = styled.aside`
-  display: inline-block;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: #fff;
-  z-index: 3;
-
-  @media (min-width: 576px) {
-    position: absolute;
-    top: 40px;
-    left: 0;
-    width: 326px;
-    height: 274px;
-    padding: 24px 16px;
-    border: 1px solid rgba(72, 72, 72, 0.2);
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(72, 72, 72, 0.08);
-  }
-`;
-
-const Wrap = styled.div`
-  position: relative;
-  display: inline-block;
-`;
-
-const Overlay = styled.div`
-  position: fixed;
-  top: 137px;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 2;
-  background: rgba(255, 255, 255, 0.8);
-`;
-
-const Title = styled.p`
-  margin: 0;
-  margin-bottom: 7px;
+const Apply = styled.button`
+  display: none;
+  border: none;
   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 19px;
-  font-weight: 100;
-  color: #383838;
-`;
+  font-weight: 600;
+  color: #008489;
+  background: transparent;
+  cursor: pointer;
 
-const Description = styled.p`
-  margin: 0;
-  font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 12px;
-  line-height: 14px;
-  font-weight: 100;
-  color: #383838;
-`;
-
-const Histogram = styled.div`
-  position: relative;
-  margin-top: 32px;
-`;
-
-const Column = styled.span`
-  position: relative;
-  bottom: -6px;
-  display: inline-block;
-  width: 6px;
-  height: ${props => `${props.height}px`};
-  background: rgba(118, 118, 118, 0.5);
+  @media (min-width: 576px) {
+    display: inline-block;
+  }
 `;
 
 const Btn = styled.button`
@@ -130,50 +76,105 @@ const Cancel = styled.button`
   }
 `;
 
-const Apply = styled.button`
-  display: none;
-  border: none;
+const Column = styled.span`
+  position: relative;
+  bottom: -6px;
+  display: inline-block;
+  width: 6px;
+  height: ${props => `${props.height}px`};
+  background: rgba(118, 118, 118, 0.5);
+`;
+
+const Description = styled.p`
+  margin: 0;
+  font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: 100;
+  color: #383838;
+`;
+
+const Filter = styled.aside`
+  display: inline-block;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  z-index: 3;
+
+  @media (min-width: 576px) {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 326px;
+    height: 274px;
+    padding: 24px 16px;
+    border: 1px solid rgba(72, 72, 72, 0.2);
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(72, 72, 72, 0.08);
+  }
+`;
+
+const Histogram = styled.div`
+  position: relative;
+  margin-top: 32px;
+`;
+
+const Overlay = styled.div`
+  position: fixed;
+  top: 137px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.8);
+`;
+
+const Title = styled.p`
+  margin: 0;
+  margin-bottom: 7px;
   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 19px;
-  font-weight: 600;
-  color: #008489;
-  background: transparent;
-  cursor: pointer;
-
-  @media (min-width: 576px) {
-    display: inline-block;
-  }
+  font-weight: 100;
+  color: #383838;
 `;
+
+const Wrap = styled.div`
+  position: relative;
+  display: inline-block;
+`;
+
+const formatLabel = (filterLabel, min, max) => {
+  if (min > 10 && max < 1000) return `$${min} — $${max}`;
+  if (min > 10) return `After $${min}`;
+  if (max < 1000) return `Before $${max}`;
+  return filterLabel;
+};
+
+const formatTitle = (min, max) => `$${min} — $${max}${max >= 1000 ? '+' : ''}`;
 
 const Columns = props => (
   <React.Fragment>{props.height.map(value => <Column height={value} />)}</React.Fragment>
 );
 
-const formatPricesLabel = (filterLabel, min, max) => {
-  if (min > 10 && max < 10000) return `$${min} — $${max}`;
-  if (min > 10) return `After $${min}`;
-  if (max < 10000) return `Before $${max}`;
-  return filterLabel;
-};
-
-const formatTitle = (min, max) => `$${min} — $${max}${max >= 10000 ? '+' : ''}`;
-
-const ShowOverlay = (isOpen, onCloseFilter) => isOpen && <Overlay onClick={onCloseFilter} />;
+const ShowOverlay = (isOpen, onClose) => isOpen && <Overlay onClick={onClose} />;
 
 export default class Prices extends React.Component {
   state = {
     min: 10,
-    max: 10000,
+    max: 1000,
   };
 
-  onCloseFilter = () => {
+  onClose = () => {
     this.resetSelection();
-    this.props.onCloseFilter();
+    this.props.onClose();
   };
 
   onSave = () => {
-    if (this.state.min > 10 || this.state.max < 10000) this.setState({ isApply: true });
+    if (this.state.min > 10 || this.state.max < 1000) this.setState({ isApply: true });
     this.switchOpeningFilter();
   };
 
@@ -181,7 +182,7 @@ export default class Prices extends React.Component {
     this.setState({ isApply: false });
     this.setState({
       min: 10,
-      max: 10000,
+      max: 1000,
     });
   };
 
@@ -200,7 +201,7 @@ export default class Prices extends React.Component {
     const filterLabel = this.props.children;
     const { min, max, isApply } = this.state;
     const isOpen = this.props.openedFilter === filterLabel;
-    const numberRoomOffers = [
+    const offersRooms = [
       0,
       0,
       0,
@@ -235,32 +236,32 @@ export default class Prices extends React.Component {
       <React.Fragment>
         <Wrap>
           <Btn isOpen={isApply || isOpen} onClick={this.switchOpeningFilter}>
-            {formatPricesLabel(filterLabel, min, max)}
+            {formatLabel(filterLabel, min, max)}
           </Btn>
           {isOpen && (
             <Filter>
               <Title>{formatTitle(min, max)}</Title>
               <Description>The average nightly price is $75.</Description>
               <Histogram>
-                <Columns height={numberRoomOffers} />
+                <Columns height={offersRooms} />
                 <Rheostat
                   onValuesUpdated={this.updateValue}
                   min={10}
-                  max={10000}
+                  max={1000}
                   values={[min, max]}
                 />
               </Histogram>
               <Bottom>
-                {min > 10 || max < 10000 ? (
+                {min > 10 || max < 1000 ? (
                   <Cancel onClick={this.resetSelection}>Reset</Cancel>
                 ) : (
-                  <Cancel onClick={this.onCloseFilter}>Cancel</Cancel>
+                  <Cancel onClick={this.onClose}>Cancel</Cancel>
                 )}
                 <Apply onClick={this.onSave}>Apply</Apply>
               </Bottom>
             </Filter>
           )}
-          {ShowOverlay(isOpen, this.onCloseFilter)}
+          {ShowOverlay(isOpen, this.onClose)}
         </Wrap>
       </React.Fragment>
     );
