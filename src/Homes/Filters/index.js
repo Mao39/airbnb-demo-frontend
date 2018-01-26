@@ -32,6 +32,10 @@ const initialState = {
     full: null,
     shared: null,
   },
+  prices: {
+    min: 10,
+    max: 1000,
+  },
 };
 
 export default class Filters extends React.Component {
@@ -85,8 +89,19 @@ export default class Filters extends React.Component {
     }
   };
 
+  updateValuePrices = (sliderState) => {
+    this.setState({
+      prices: {
+        min: sliderState.values[0],
+        max: sliderState.values[1],
+      },
+    });
+  };
+
   render() {
-    const { dates, guests, rooms } = this.state;
+    const {
+      dates, guests, rooms, prices,
+    } = this.state;
     return (
       <FiltersWrap>
         <div className="container">
@@ -132,9 +147,12 @@ export default class Filters extends React.Component {
             </Rooms>
             <Prices
               id="prices"
+              min={prices.min}
+              max={prices.max}
               onClose={this.onClose}
               resetSelection={this.resetSelection}
               openedFilter={this.state.openedFilter}
+              updateValuePrices={this.updateValuePrices}
               switchOpeningFilter={this.switchOpeningFilter}
             >
               Prices

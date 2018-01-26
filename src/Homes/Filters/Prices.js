@@ -164,43 +164,34 @@ const ShowOverlay = (isOpen, onClose) => isOpen && <Overlay onClick={onClose} />
 
 export default class Prices extends React.Component {
   state = {
-    min: 10,
-    max: 1000,
+    isApply: false,
   };
 
   onClose = () => {
-    this.resetSelection();
-    this.props.onClose();
+    this.props.onClose(this.props.id);
   };
 
-  onSave = () => {
+  onApply = () => {
     if (this.state.min > 10 || this.state.max < 1000) this.setState({ isApply: true });
     this.switchOpeningFilter();
   };
 
   resetSelection = () => {
     this.setState({ isApply: false });
-    this.setState({
-      min: 10,
-      max: 1000,
-    });
+    this.props.resetSelection(this.props.id);
   };
 
   switchOpeningFilter = () => {
-    this.props.switchOpeningFilter(this.props.children);
-  };
-
-  updateValue = (sliderState) => {
-    this.setState({
-      min: sliderState.values[0],
-      max: sliderState.values[1],
-    });
+    this.props.switchOpeningFilter(this.props.id);
   };
 
   render() {
     const filterLabel = this.props.children;
-    const { min, max, isApply } = this.state;
-    const isOpen = this.props.openedFilter === filterLabel;
+    const { isApply } = this.state;
+    const {
+      min, max, id, openedFilter,
+    } = this.props;
+    const isOpen = openedFilter === id;
     const offersRooms = [
       0,
       0,
@@ -245,7 +236,7 @@ export default class Prices extends React.Component {
               <Histogram>
                 <Columns height={offersRooms} />
                 <Rheostat
-                  onValuesUpdated={this.updateValue}
+                  onValuesUpdated={this.props.updateValuePrices}
                   min={10}
                   max={1000}
                   values={[min, max]}
@@ -257,7 +248,7 @@ export default class Prices extends React.Component {
                 ) : (
                   <Cancel onClick={this.onClose}>Cancel</Cancel>
                 )}
-                <Apply onClick={this.onSave}>Apply</Apply>
+                <Apply onClick={this.onApply}>Apply</Apply>
               </Bottom>
             </Filter>
           )}
