@@ -181,8 +181,8 @@ const formatRoomsLabel = (isOpen, filterLabel, entire, full, shared) => {
 const ShowOverlay = (isOpen, onClose) => isOpen && <Overlay onClick={onClose} />;
 
 const Room = props => (
-  <Premises for={props.type} onClick={() => props.onCheck(props.type)} imgSrc={props.imgSrc}>
-    <Checkbox for={props.type} onClick={() => props.onCheck(props.type)} check={props.check}>
+  <Premises for={props.type} onClick={() => props.onCheckRoom(props.type)} imgSrc={props.imgSrc}>
+    <Checkbox for={props.type} onClick={() => props.onCheckRoom(props.type)} check={props.check}>
       <Input id={props.type} type="checkbox" value={props.type} />
     </Checkbox>
     <Type>
@@ -194,9 +194,7 @@ const Room = props => (
 
 export default class Rooms extends React.Component {
   state = {
-    entire: null,
-    full: null,
-    shared: null,
+    isApply: false,
   };
 
   onClose = () => {
@@ -204,23 +202,17 @@ export default class Rooms extends React.Component {
     this.props.onClose();
   };
 
-  onCheck = (type) => {
-    this.setState(prevState => ({ [type]: !prevState[type] }));
-  };
-
   onApply = () => {
-    this.setState({ isApply: true });
+    if (this.props.entire || this.props.full || this.props.shared) {
+      this.setState({ isApply: true });
+    }
+
     this.switchOpeningFilter();
   };
 
   resetSelection = () => {
     this.setState({ isApply: false });
-    this.setState({
-      entire: null,
-      full: null,
-      shared: null,
-      isApply: false,
-    });
+    this.props.resetSelection(this.props.id);
   };
 
   switchOpeningFilter = () => {
@@ -228,9 +220,8 @@ export default class Rooms extends React.Component {
   };
 
   render() {
-    const {
-      entire, full, shared, isApply,
-    } = this.state;
+    const { isApply } = this.state;
+    const { entire, full, shared } = this.props;
     const filterLabel = this.props.children;
     const isOpen = this.props.openedFilter === filterLabel;
 
@@ -244,7 +235,7 @@ export default class Rooms extends React.Component {
             <Filter>
               <Room
                 check={entire}
-                onCheck={this.onCheck}
+                onCheckRoom={this.props.onCheckRoom}
                 type="entire"
                 title="Entire home"
                 desc="Have a place to yourself"
@@ -252,7 +243,7 @@ export default class Rooms extends React.Component {
               />
               <Room
                 check={full}
-                onCheck={this.onCheck}
+                onCheckRoom={this.props.onCheckRoom}
                 type="full"
                 title="Private room"
                 desc="Have your own room and share some common spaces"
@@ -260,7 +251,7 @@ export default class Rooms extends React.Component {
               />
               <Room
                 check={shared}
-                onCheck={this.onCheck}
+                onCheckRoom={this.props.onCheckRoom}
                 type="shared"
                 title="Shared room"
                 desc="Stay in a shared space, like a common room"
