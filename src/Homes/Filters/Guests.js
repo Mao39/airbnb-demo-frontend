@@ -266,26 +266,30 @@ const ShowScrollLock = isOpen =>
 const Guest = props => (
   <People>
     <Characteristics>
-      <Man>{props.type}</Man>
+      <Man>{props.type === 'babies' ? 'Children' : props.type}</Man>
       <Age>{props.age}</Age>
     </Characteristics>
     <Control>
       <Reduce
-        onClick={() => props.reduce(props.type)}
+        onClick={() => props.reduceGuest(props.type)}
         disabled={props.switchDisableReduce(props.type)}
       />
       <Amount>{props.amount}</Amount>
-      <Add onClick={() => props.add(props.type)} />
+      <Add onClick={() => props.addGuest(props.type)} />
     </Control>
   </People>
 );
 
 export default class Guests extends React.Component {
   state = {
-    adults: 1,
-    children: 0,
-    infants: 0,
     isApply: false,
+  };
+
+  onApply = () => {
+    if (this.props.adults > 1 || this.props.babies || this.props.infants) {
+      this.setState({ isApply: true });
+    }
+    this.switchOpeningFilter();
   };
 
   onClose = () => {
@@ -293,52 +297,34 @@ export default class Guests extends React.Component {
     this.props.onClose();
   };
 
-  onApply = () => {
-    this.setState({ isApply: true });
-    this.switchOpeningFilter();
-  };
-
   resetSelection = () => {
     this.setState({ isApply: false });
-    this.setState({ adults: 1, children: 0, infants: 0 });
+    this.props.resetSelection(this.props.id);
   };
 
   switchOpeningFilter = () => {
-    this.props.switchOpeningFilter(this.props.children);
+    this.props.switchOpeningFilter(this.props.id);
   };
 
   switchDisableReduce = (type) => {
-    if (this.state[type] > 1) return false;
-    if (this.state[type] > 0 && type !== 'adults') return false;
+    if (this.props[type] > 1) return false;
+    if (this.props[type] > 0 && type !== 'adults') return false;
     return true;
   };
 
-  reduce = (type) => {
-    if (this.state[type] > 1) {
-      this.setState(prevState => ({ [type]: prevState[type] - 1 }));
-    } else if (this.state[type] > 0 && type !== 'adults') {
-      this.setState(prevState => ({ [type]: prevState[type] - 1 }));
-    }
-  };
-
-  add = (type) => {
-    this.setState(prevState => ({
-      [type]: prevState[type] + 1,
-    }));
-  };
-
   render() {
+    const { isApply } = this.state;
     const {
-      adults, children, infants, isApply,
-    } = this.state;
+      adults, babies, infants, id,
+    } = this.props;
     const filterLabel = this.props.children;
-    const isOpen = this.props.openedFilter === filterLabel;
+    const isOpen = this.props.openedFilter === id;
 
     return (
       <React.Fragment>
         <Wrap>
           <Btn isOpen={isApply || isOpen} onClick={this.switchOpeningFilter}>
-            {formatGuestsLabel(filterLabel, adults, children, infants)}
+            {formatGuestsLabel(filterLabel, adults, babies, infants)}
           </Btn>
           {isOpen && (
             <Filter>
@@ -350,29 +336,29 @@ export default class Guests extends React.Component {
               <Guest
                 type="adults"
                 amount={adults}
-                add={this.add}
-                reduce={this.reduce}
+                addGuest={this.props.addGuest}
+                reduceGuest={this.props.reduceGuest}
                 switchDisableReduce={this.switchDisableReduce}
               />
               <Guest
-                type="children"
+                type="babies"
                 age="Ages 2 — 12"
-                amount={children}
-                add={this.add}
-                reduce={this.reduce}
+                amount={babies}
+                addGuest={this.props.addGuest}
+                reduceGuest={this.props.reduceGuest}
                 switchDisableReduce={this.switchDisableReduce}
               />
               <Guest
                 type="infants"
                 age="Under 2"
                 amount={infants}
-                add={this.add}
-                reduce={this.reduce}
+                addGuest={this.props.addGuest}
+                reduceGuest={this.props.reduceGuest}
                 switchDisableReduce={this.switchDisableReduce}
               />
               <Bottom>
                 <Save onClick={this.onApply}>Save</Save>
-                {adults > 1 || children || infants ? (
+                {adults > 1 || babies || infants ? (
                   <Cancel onClick={this.resetSelection}>Reset</Cancel>
                 ) : (
                   <Cancel onClick={this.onClose}>Cancel</Cancel>

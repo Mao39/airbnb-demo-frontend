@@ -22,6 +22,11 @@ const FiltersWrap = styled.div`
 const initialState = {
   openedFilter: null,
   dates: { startDate: null, endDate: null },
+  guests: {
+    adults: 1,
+    babies: 0,
+    infants: 0,
+  },
 };
 
 export default class Filters extends React.Component {
@@ -48,8 +53,29 @@ export default class Filters extends React.Component {
     }
   };
 
+  addGuest = (type) => {
+    this.setState(prevState => ({
+      guests: {
+        ...this.state.guests,
+        [type]: prevState.guests[type] + 1,
+      },
+    }));
+  };
+
+  reduceGuest = (type) => {
+    if (this.state.guests[type] > 1) {
+      this.setState(prevState => ({
+        guests: { ...this.state.guests, [type]: prevState.guests[type] - 1 },
+      }));
+    } else if (this.state.guests[type] > 0 && type !== 'adults') {
+      this.setState(prevState => ({
+        guests: { ...this.state.guests, [type]: prevState.guests[type] - 1 },
+      }));
+    }
+  };
+
   render() {
-    const { dates } = this.state;
+    const { dates, guests } = this.state;
     return (
       <FiltersWrap>
         <div className="container">
@@ -67,9 +93,15 @@ export default class Filters extends React.Component {
           </Dates>
           <Guests
             id="guests"
+            adults={guests.adults}
+            babies={guests.babies}
+            infants={guests.infants}
             onClose={this.onClose}
             openedFilter={this.state.openedFilter}
             switchOpeningFilter={this.switchOpeningFilter}
+            resetSelection={this.resetSelection}
+            addGuest={this.addGuest}
+            reduceGuest={this.reduceGuest}
           >
             Guests
           </Guests>
