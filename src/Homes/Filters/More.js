@@ -396,7 +396,7 @@ const Dropout = styled.button`
   cursor: pointer;
 `;
 
-const ShowOverlay = (isOpen, onCloseFilter) => isOpen && <Overlay onClick={onCloseFilter} />;
+const ShowOverlay = (isOpen, onClose) => isOpen && <Overlay onClick={onClose} />;
 
 const ShowScrollLock = isOpen =>
   !matchMedia('(min-width: 576px)').matches && isOpen && <ScrollLock />;
@@ -448,9 +448,9 @@ export default class Guests extends React.Component {
     isApply: false,
   };
 
-  onCloseFilter = () => {
+  onClose = () => {
     this.resetSelection();
-    this.props.onCloseFilter();
+    this.props.onClose();
   };
 
   onCheckRoomType = (type) => {
@@ -555,7 +555,7 @@ export default class Guests extends React.Component {
         {isOpen && (
           <Filter>
             <Header>
-              <Exit onClick={this.onCloseFilter} />
+              <Exit onClick={this.onClose} />
               <Caption>All filters (0)</Caption>
               <Reset onClick={this.resetSelection}>Clear all</Reset>
             </Header>
@@ -663,13 +663,13 @@ export default class Guests extends React.Component {
               {isApply ? (
                 <Cancel onClick={this.resetSelection}>Reset</Cancel>
               ) : (
-                <Cancel onClick={this.onCloseFilter}>Cancel</Cancel>
+                <Cancel onClick={this.onClose}>Cancel</Cancel>
               )}
               <Apply onClick={this.onApply}>See homes</Apply>
             </Bottom>
           </Filter>
         )}
-        {ShowOverlay(isOpen, this.onCloseFilter)}
+        {ShowOverlay(isOpen, this.onClose)}
         {ShowScrollLock(isOpen)}
       </React.Fragment>
     );

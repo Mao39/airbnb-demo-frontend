@@ -6,6 +6,7 @@ import Guests from './Guests';
 import Rooms from './Rooms';
 import Prices from './Prices';
 import Book from './Book';
+import More from './More';
 
 const FiltersWrap = styled.div`
   position: fixed;
@@ -23,7 +24,7 @@ export default class Filters extends React.Component {
     openedFilter: null,
   };
 
-  onCloseFilter = () => {
+  onClose = () => {
     this.setState({ openedFilter: null });
   };
 
@@ -40,14 +41,14 @@ export default class Filters extends React.Component {
       <FiltersWrap>
         <div className="container">
           <Dates
-            onCloseFilter={this.onCloseFilter}
+            onClose={this.onClose}
             openedFilter={this.state.openedFilter}
             switchOpeningFilter={this.switchOpeningFilter}
           >
             Dates
           </Dates>
           <Guests
-            onCloseFilter={this.onCloseFilter}
+            onClose={this.onClose}
             openedFilter={this.state.openedFilter}
             switchOpeningFilter={this.switchOpeningFilter}
           >
@@ -55,26 +56,33 @@ export default class Filters extends React.Component {
           </Guests>
           <ResponsiveComponent query="only screen and (min-width: 968px)">
             <Rooms
-              onCloseFilter={this.onCloseFilter}
+              onClose={this.onClose}
               openedFilter={this.state.openedFilter}
               switchOpeningFilter={this.switchOpeningFilter}
             >
               Room type
             </Rooms>
             <Prices
-              onCloseFilter={this.onCloseFilter}
+              onClose={this.onClose}
               openedFilter={this.state.openedFilter}
               switchOpeningFilter={this.switchOpeningFilter}
             >
               Prices
             </Prices>
             <Book
-              onCloseFilter={this.onCloseFilter}
+              onClose={this.onClose}
               openedFilter={this.state.openedFilter}
               switchOpeningFilter={this.switchOpeningFilter}
             >
               Instant book
             </Book>
+            <More
+              onClose={this.onClose}
+              openedFilter={this.state.openedFilter}
+              switchOpeningFilter={this.switchOpeningFilter}
+            >
+              More filters
+            </More>
           </ResponsiveComponent>
         </div>
       </FiltersWrap>

@@ -267,7 +267,7 @@ const showNumberMonths = () => {
 const changeOrientation = () =>
   (matchMedia('(min-width: 576px)').matches ? 'horizontal' : 'verticalScrollable');
 
-const ShowOverlay = (isOpen, onCloseFilter) => isOpen && <Overlay onClick={onCloseFilter} />;
+const ShowOverlay = (isOpen, onClose) => isOpen && <Overlay onClick={onClose} />;
 
 const ShowScrollLock = isOpen =>
   !matchMedia('(min-width: 576px)').matches && isOpen && <ScrollLock />;
@@ -292,9 +292,9 @@ export default class Dates extends React.Component {
     });
   };
 
-  onCloseFilter = () => {
+  onClose = () => {
     this.resetSelection();
-    this.props.onCloseFilter();
+    this.props.onClose();
   };
 
   onApply = () => {
@@ -316,7 +316,7 @@ export default class Dates extends React.Component {
       {this.state.startDate && this.state.endDate ? (
         <Cancel onClick={this.resetSelection}>Reset</Cancel>
       ) : (
-        <Cancel onClick={this.onCloseFilter}>Cancel</Cancel>
+        <Cancel onClick={this.onClose}>Cancel</Cancel>
       )}
       <Apply onClick={this.onApply}>Apply</Apply>
     </CalendarRow>
@@ -338,7 +338,7 @@ export default class Dates extends React.Component {
           {isOpen && (
             <Filter isOpen={isOpen}>
               <Header>
-                <Exit onClick={this.onCloseFilter} />
+                <Exit onClick={this.onClose} />
                 <Caption>Dates</Caption>
                 <Reset onClick={this.resetSelection}>Reset</Reset>
               </Header>
@@ -368,7 +368,7 @@ export default class Dates extends React.Component {
               </Bottom>
             </Filter>
           )}
-          {ShowOverlay(isOpen, this.onCloseFilter)}
+          {ShowOverlay(isOpen, this.onClose)}
           {ShowScrollLock(isOpen)}
         </Wrap>
       </React.Fragment>

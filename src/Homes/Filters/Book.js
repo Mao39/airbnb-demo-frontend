@@ -195,7 +195,7 @@ const Apply = styled.button`
 
 const formatPricesLabel = filterLabel => filterLabel;
 
-const ShowOverlay = (isOpen, onCloseFilter) => isOpen && <Overlay onClick={onCloseFilter} />;
+const ShowOverlay = (isOpen, onClose) => isOpen && <Overlay onClick={onClose} />;
 
 export default class Prices extends React.Component {
   state = {
@@ -203,9 +203,9 @@ export default class Prices extends React.Component {
     isApply: false,
   };
 
-  onCloseFilter = () => {
+  onClose = () => {
     this.resetSelection();
-    this.props.onCloseFilter();
+    this.props.onClose();
   };
 
   onCheck = () => {
@@ -251,13 +251,13 @@ export default class Prices extends React.Component {
                 {instant ? (
                   <Cancel onClick={this.resetSelection}>Reset</Cancel>
                 ) : (
-                  <Cancel onClick={this.onCloseFilter}>Cancel</Cancel>
+                  <Cancel onClick={this.onClose}>Cancel</Cancel>
                 )}
                 <Apply onClick={this.onApply}>Apply</Apply>
               </Bottom>
             </Filter>
           )}
-          {ShowOverlay(isOpen, this.onCloseFilter)}
+          {ShowOverlay(isOpen, this.onClose)}
         </Wrap>
       </React.Fragment>
     );
