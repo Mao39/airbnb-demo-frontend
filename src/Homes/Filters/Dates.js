@@ -36,14 +36,11 @@ const Btn = styled.button`
 
   color: ${props => (props.isOpen ? '#fff' : '#383838')};
   background: ${props => (props.isOpen ? '#008489' : 'transparent')};
-<<<<<<< HEAD
 
   &:hover {
     border-color: ${props => (props.isOpen ? 'rgba(72, 72, 72, 0.3)' : '#f2f2f2')};
     background: ${props => (props.isOpen ? '#008489' : '#f2f2f2')};
   }
-=======
->>>>>>> master
 `;
 
 const Filter = styled.aside`
@@ -249,7 +246,6 @@ const formatStartDate = startDate => startDate && moment(startDate).format('Do M
 
 const formatEndDate = endDate => endDate && moment(endDate).format('Do MMM');
 
-<<<<<<< HEAD
 const formatButtonDate = (startDate, endDate) => {
   if (startDate && endDate) return `${formatStartDate(startDate)} — ${formatEndDate(endDate)}`;
   return `${formatStartDate(startDate)} — Check out`;
@@ -258,13 +254,6 @@ const formatButtonDate = (startDate, endDate) => {
 const formatDateLabel = (startDate, endDate, isOpen, filterLabel) => {
   if (startDate && endDate) return formatButtonDate(startDate, endDate);
   if (startDate) return formatButtonDate(startDate);
-=======
-const formatButtonDate = (startDate, endDate) =>
-  `${formatStartDate(startDate)} — ${formatEndDate(endDate)}`;
-
-const formatDateLabel = (startDate, endDate, isOpen, filterLabel) => {
-  if (startDate && endDate) return formatButtonDate(startDate, endDate);
->>>>>>> master
   if (isOpen) return 'Check in — Check out';
   return filterLabel;
 };
@@ -278,12 +267,7 @@ const showNumberMonths = () => {
 const changeOrientation = () =>
   (matchMedia('(min-width: 576px)').matches ? 'horizontal' : 'verticalScrollable');
 
-<<<<<<< HEAD
 const ShowOverlay = (isOpen, onCloseFilter) => isOpen && <Overlay onClick={onCloseFilter} />;
-=======
-const ShowOverlay = (isOpen, switchOpeningFilter) =>
-  isOpen && <Overlay onClick={switchOpeningFilter} />;
->>>>>>> master
 
 const ShowScrollLock = isOpen =>
   !matchMedia('(min-width: 576px)').matches && isOpen && <ScrollLock />;
@@ -295,10 +279,7 @@ export default class Dates extends React.Component {
     focusedInput: START_DATE,
     startDate: this.props.initialStartDate,
     endDate: this.props.initialEndDate,
-<<<<<<< HEAD
     isApply: false,
-=======
->>>>>>> master
   };
 
   onDatesChange = ({ startDate, endDate }) => {
@@ -311,7 +292,6 @@ export default class Dates extends React.Component {
     });
   };
 
-<<<<<<< HEAD
   onCloseFilter = () => {
     this.resetSelection();
     this.props.onCloseFilter();
@@ -328,9 +308,6 @@ export default class Dates extends React.Component {
 
   resetSelection = () => {
     this.setState({ isApply: false });
-=======
-  resetSelection = () => {
->>>>>>> master
     this.setState({ startDate: null, endDate: null });
   };
 
@@ -339,49 +316,29 @@ export default class Dates extends React.Component {
       {this.state.startDate && this.state.endDate ? (
         <Cancel onClick={this.resetSelection}>Reset</Cancel>
       ) : (
-<<<<<<< HEAD
         <Cancel onClick={this.onCloseFilter}>Cancel</Cancel>
       )}
       <Apply onClick={this.onApply}>Apply</Apply>
-=======
-        <Cancel onClick={this.props.switchOpeningFilter}>Cancel</Cancel>
-      )}
-      <Apply onClick={this.props.switchOpeningFilter}>Apply</Apply>
->>>>>>> master
     </CalendarRow>
   );
 
   render() {
-<<<<<<< HEAD
     const {
       startDate, endDate, focusedInput, isApply,
     } = this.state;
     const filterLabel = this.props.children;
     const isOpen = this.props.openedFilter === filterLabel;
-=======
-    const { startDate, endDate, focusedInput } = this.state;
-    const { isOpen, switchOpeningFilter } = this.props;
-    const filterLabel = this.props.children;
->>>>>>> master
 
     return (
       <React.Fragment>
         <Wrap>
-<<<<<<< HEAD
           <Btn isOpen={isApply || isOpen} onClick={this.switchOpeningFilter}>
-=======
-          <Btn isOpen={isOpen} onClick={switchOpeningFilter}>
->>>>>>> master
             {formatDateLabel(startDate, endDate, isOpen, filterLabel)}
           </Btn>
           {isOpen && (
             <Filter isOpen={isOpen}>
               <Header>
-<<<<<<< HEAD
                 <Exit onClick={this.onCloseFilter} />
-=======
-                <Exit onClick={switchOpeningFilter} />
->>>>>>> master
                 <Caption>Dates</Caption>
                 <Reset onClick={this.resetSelection}>Reset</Reset>
               </Header>
@@ -407,19 +364,11 @@ export default class Dates extends React.Component {
                 orientation={changeOrientation()}
               />
               <Bottom>
-<<<<<<< HEAD
                 <Save onClick={this.onApply}>Save</Save>
               </Bottom>
             </Filter>
           )}
           {ShowOverlay(isOpen, this.onCloseFilter)}
-=======
-                <Save onClick={this.switchOpeningFilter}>Save</Save>
-              </Bottom>
-            </Filter>
-          )}
-          {ShowOverlay(isOpen, switchOpeningFilter)}
->>>>>>> master
           {ShowScrollLock(isOpen)}
         </Wrap>
       </React.Fragment>
