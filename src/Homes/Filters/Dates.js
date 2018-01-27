@@ -13,7 +13,6 @@ import {
   Apply,
   Arrow,
   Btn,
-  Bottom,
   Cancel,
   Caption,
   CalendarRow,
@@ -27,6 +26,21 @@ import {
   StartDate,
   Wrap,
 } from './styled';
+
+const Bottom = styled.div`
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+  box-shadow: 0 -1px #d5d5d5;
+
+  @media (min-width: 576px) {
+    display: none;
+  }
+`;
 
 const DayPicker = styled(DayPickerRangeController)`
   position: relative;
