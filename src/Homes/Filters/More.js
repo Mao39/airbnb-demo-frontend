@@ -7,7 +7,6 @@ import 'rheostat/css/slider.css';
 import 'rheostat/css/slider-horizontal.css';
 import './react_rheostat_overrides.css';
 
-import arrow from './../../UI/greenArrow.svg';
 import fullRoom from '../../UI/private.svg';
 import entireRoom from '../../UI/entire.svg';
 import sharedRoom from '../../UI/shared.svg';
@@ -28,6 +27,7 @@ import {
   Header,
   Exit,
   Caption,
+  Closeout,
   Reset,
   Section,
   Topic,
@@ -114,10 +114,6 @@ const Label = styled.label`
   display: flex;
   flex-direction: column;
   cursor: pointer;
-`;
-
-const Arrow = styled.img`
-  margin: 2px 0;
 `;
 
 const Bottom = styled.div`
@@ -357,8 +353,11 @@ export default class Guests extends React.Component {
               <Wrap>
                 <Topic>Amenties</Topic>
                 <div className="hidden-sm hidden-md hidden-lg hidden-xl">
-                  <Dropout onClick={() => this.props.switchOpeningDropdown('amenties')}>
-                    See all <Arrow src={arrow} />
+                  <Dropout
+                    active={amenties.isOpen}
+                    onClick={() => this.props.switchOpeningDropdown('amenties')}
+                  >
+                    See all
                   </Dropout>
                 </div>
               </Wrap>
@@ -438,9 +437,18 @@ export default class Guests extends React.Component {
                 check={amenties.washer}
                 onCheckCheckbox={this.props.onCheckCheckbox}
               />
+              <Closeout
+                active={amenties.isOpen}
+                onClick={() => this.props.switchOpeningDropdown('amenties')}
+              >
+                Close amenties
+              </Closeout>
               <div className="hidden-xs">
-                <Dropout onClick={() => this.props.switchOpeningDropdown('amenties')}>
-                  See all amenties<Arrow src={arrow} />
+                <Dropout
+                  active={amenties.isOpen}
+                  onClick={() => this.props.switchOpeningDropdown('amenties')}
+                >
+                  See all amenties
                 </Dropout>
               </div>
             </Dropdown>
@@ -448,8 +456,11 @@ export default class Guests extends React.Component {
               <Wrap>
                 <Topic>Facilities</Topic>
                 <div className="hidden-sm hidden-md hidden-lg hidden-xl">
-                  <Dropout onClick={() => this.props.switchOpeningDropdown('facilites')}>
-                    See all <Arrow src={arrow} />
+                  <Dropout
+                    active={facilities.isOpen}
+                    onClick={() => this.props.switchOpeningDropdown('facilites')}
+                  >
+                    See all
                   </Dropout>
                 </div>
               </Wrap>
@@ -505,9 +516,18 @@ export default class Guests extends React.Component {
                 check={facilities.garden}
                 onCheckCheckbox={this.props.onCheckCheckbox}
               />
+              <Closeout
+                active={facilities.isOpen}
+                onClick={() => this.props.switchOpeningDropdown('facilities')}
+              >
+                Close facilities
+              </Closeout>
               <div className="hidden-xs">
-                <Dropout onClick={() => this.props.switchOpeningDropdown('facilities')}>
-                  See all facilities <Arrow src={arrow} />
+                <Dropout
+                  active={facilities.isOpen}
+                  onClick={() => this.props.switchOpeningDropdown('facilities')}
+                >
+                  See all facilities
                 </Dropout>
               </div>
             </Dropdown>

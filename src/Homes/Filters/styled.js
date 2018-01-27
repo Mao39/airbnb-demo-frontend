@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import arrow from './arrowRight.svg';
+import greenArrow from './../../UI/greenArrow.svg';
 import plus from '../../UI/plus.svg';
 import cross from '../../UI/cross.svg';
 import minus from '../../UI/minus.svg';
@@ -557,6 +558,8 @@ export const Option = styled.div`
 `;
 
 export const Dropout = styled.button`
+  display: ${props => (props.active ? 'none' : 'inline-block')};
+  padding: 0;
   margin-bottom: 24px;
   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 14px;
@@ -566,6 +569,49 @@ export const Dropout = styled.button`
   border: none;
   background: transparent;
   cursor: pointer;
+
+  &:after {
+    content: '';
+    display: inline-block;
+    magin-bottom: 2px;
+    margin-left: 8px;
+    width: 12px;
+    height: 7px;
+    background: url(${greenArrow}) no-repeat center;
+  }
+
+  @media (min-width: 576px) {
+    font-size: 16px;
+    line-height: 19px;
+  }
+`;
+
+export const Closeout = styled.button`
+  display: ${props => (props.active ? 'inline-block' : 'none')};
+  flex-basis: 100%;
+  margin-top: 12px;
+  margin-bottom: 24px;
+  padding: 0;
+  font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 600;
+  color: #0f7276;
+  text-align: left;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+
+  &:after {
+    content: '';
+    display: inline-block;
+    margin-bottom: 2px;
+    margin-left: 8px;
+    width: 12px;
+    height: 7px;
+    background: url(${greenArrow}) no-repeat center;
+    transform: rotate(180deg);
+  }
 
   @media (min-width: 576px) {
     font-size: 16px;
