@@ -644,3 +644,144 @@ export const Type = styled.div`
 //   position: relative;
 //   display: inline-block;
 // `;
+
+// export const Apply = styled.button`
+//   display: none;
+//   border: none;
+//   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
+//   font-size: 16px;
+//   line-height: 19px;
+//   font-weight: 600;
+//   color: #008489;
+//   background: transparent;
+//   cursor: pointer;
+
+//   @media (min-width: 576px) {
+//     display: inline-block;
+//   }
+// `;
+
+// export const Btn = styled.button`
+//   margin-right: 8px;
+//   padding: 7px 16px;
+//   border: 1px solid rgba(72, 72, 72, 0.3);
+//   border-radius: 4px;
+//   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
+//   font-weight: 600;
+//   font-size: 14px;
+//   color: #383838;
+//   background: transparent;
+//   cursor: pointer;
+//   transition: all 0.3s;
+
+//   color: ${props => (props.isOpen ? '#fff' : '#383838')};
+//   background: ${props => (props.isOpen ? '#008489' : 'transparent')};
+
+//   &:hover {
+//     border-color: ${props => (props.isOpen ? 'rgba(72, 72, 72, 0.3)' : '#f2f2f2')};
+//     background: ${props => (props.isOpen ? '#008489' : '#f2f2f2')};
+//   }
+// `;
+
+// export const Bottom = styled.div`
+//   position: absolute;
+//   right: 0;
+//   bottom: 0;
+//   left: 0;
+//   display: flex;
+//   justify-content: space-between;
+//   padding: 8px;
+//   box-shadow: 0 -1px #d5d5d5;
+
+//   @media (min-width: 576px) {
+//     padding: 26px;
+//     box-shadow: none;
+//   }
+// `;
+
+// export const Cancel = styled.button`
+//   display: none;
+//   border: none;
+//   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
+//   font-size: 16px;
+//   line-height: 19px;
+//   font-weight: 600;
+//   color: #636363;
+//   background: transparent;
+//   cursor: pointer;
+
+//   @media (min-width: 576px) {
+//     display: inline-block;
+//   }
+// `;
+
+export const Column = styled.span`
+  position: relative;
+  bottom: -6px;
+  display: inline-block;
+  width: 6px;
+  height: ${props => `${props.height}px`};
+  background: rgba(118, 118, 118, 0.5);
+`;
+
+// export const Description = styled.p`
+//   margin: 0;
+//   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
+//   font-size: 12px;
+//   line-height: 14px;
+//   font-weight: 100;
+//   color: #383838;
+// `;
+
+// export const Filter = styled.aside`
+//   display: inline-block;
+//   position: fixed;
+//   top: 0;
+//   right: 0;
+//   bottom: 0;
+//   left: 0;
+//   background-color: #fff;
+//   z-index: 3;
+
+//   @media (min-width: 576px) {
+//     position: absolute;
+//     top: 40px;
+//     left: 0;
+//     width: 326px;
+//     height: 274px;
+//     padding: 24px 16px;
+//     border: 1px solid rgba(72, 72, 72, 0.2);
+//     border-radius: 4px;
+//     box-shadow: 0 2px 4px rgba(72, 72, 72, 0.08);
+//   }
+// `;
+
+export const Histogram = styled.div`
+  position: relative;
+  margin-top: 32px;
+`;
+
+// export const Overlay = styled.div`
+//   position: fixed;
+//   top: 137px;
+//   right: 0;
+//   bottom: 0;
+//   left: 0;
+//   z-index: 2;
+//   background: rgba(255, 255, 255, 0.8);
+// `;
+
+// export const Title = styled.p`
+//   margin: 0;
+//   margin-bottom: 7px;
+//   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
+//   font-size: 16px;
+//   line-height: 19px;
+//   font-weight: 100;
+//   color: #383838;
+// `;
+
+// export const Wrap = styled.div`
+//   position: relative;
+//   display: inline-block;
+// `;
