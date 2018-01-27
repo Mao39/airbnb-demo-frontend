@@ -112,7 +112,7 @@ export const Control = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-basis: 110px;
+  width: 120px;
 `;
 
 export const Caption = styled.span`
