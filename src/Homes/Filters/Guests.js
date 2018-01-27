@@ -37,7 +37,6 @@ const Amount = styled.span`
 `;
 
 const Apply = styled.button`
-  display: none;
   border: none;
   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 16px;
@@ -362,7 +361,7 @@ export default class Guests extends React.Component {
                 ) : (
                   <Cancel onClick={this.onClose}>Cancel</Cancel>
                 )}
-                <Apply onClick={this.onApply}>See homes</Apply>
+                <Apply onClick={this.onApply}>Apply</Apply>
               </Bottom>
             </Filter>
           )}
