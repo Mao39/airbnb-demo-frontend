@@ -36,6 +36,9 @@ const initialState = {
     min: 10,
     max: 1000,
   },
+  moreOptions: {
+    instantBook: false,
+  },
 };
 
 export default class Filters extends React.Component {
@@ -49,6 +52,12 @@ export default class Filters extends React.Component {
   onCheckRoom = (type) => {
     this.setState(prevState => ({
       rooms: { ...this.state.rooms, [type]: !prevState.rooms[type] },
+    }));
+  };
+
+  onCheckOption = () => {
+    this.setState(prevState => ({
+      moreOptions: { ...this.state.moreOptions, instantBook: !prevState.instantBook },
     }));
   };
 
@@ -100,7 +109,7 @@ export default class Filters extends React.Component {
 
   render() {
     const {
-      dates, guests, rooms, prices,
+      dates, guests, rooms, prices, moreOptions,
     } = this.state;
     return (
       <FiltersWrap>
@@ -158,24 +167,26 @@ export default class Filters extends React.Component {
               Prices
             </Prices>
             <Book
-              id="instant"
+              id="moreOptions"
               onClose={this.onClose}
+              onCheckOption={this.onCheckOption}
               resetSelection={this.resetSelection}
+              instantBook={moreOptions.instantBook}
               openedFilter={this.state.openedFilter}
               switchOpeningFilter={this.switchOpeningFilter}
             >
               Instant book
             </Book>
-            <More
-              id="more"
-              onClose={this.onClose}
-              resetSelection={this.resetSelection}
-              openedFilter={this.state.openedFilter}
-              switchOpeningFilter={this.switchOpeningFilter}
-            >
-              More filters
-            </More>
           </ResponsiveComponent>
+          <More
+            id="moreFilters"
+            onClose={this.onClose}
+            resetSelection={this.resetSelection}
+            openedFilter={this.state.openedFilter}
+            switchOpeningFilter={this.switchOpeningFilter}
+          >
+            More filters
+          </More>
         </div>
       </FiltersWrap>
     );

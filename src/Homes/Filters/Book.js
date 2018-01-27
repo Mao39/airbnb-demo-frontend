@@ -196,37 +196,32 @@ const ShowOverlay = (isOpen, onClose) => isOpen && <Overlay onClick={onClose} />
 
 export default class Prices extends React.Component {
   state = {
-    instant: false,
     isApply: false,
   };
 
   onClose = () => {
-    this.resetSelection();
-    this.props.onClose();
-  };
-
-  onCheck = () => {
-    this.setState(prevState => ({ instant: !prevState.instant }));
+    this.props.onClose(this.props.id);
   };
 
   onApply = () => {
-    this.setState({ isApply: true });
+    if (this.props.instantBook) this.setState({ isApply: true });
     this.switchOpeningFilter();
   };
 
   resetSelection = () => {
     this.setState({ isApply: false });
-    this.setState({ instant: false });
+    this.props.resetSelection(this.props.id);
   };
 
   switchOpeningFilter = () => {
-    this.props.switchOpeningFilter(this.props.children);
+    this.props.switchOpeningFilter(this.props.id);
   };
 
   render() {
-    const { instant, isApply } = this.state;
+    const { isApply } = this.state;
+    const { instantBook, openedFilter, id } = this.props;
     const filterLabel = this.props.children;
-    const isOpen = this.props.openedFilter === filterLabel;
+    const isOpen = openedFilter === id;
 
     return (
       <React.Fragment>
@@ -236,15 +231,15 @@ export default class Prices extends React.Component {
           </Btn>
           {isOpen && (
             <Filter>
-              <Label onClick={this.onCheck}>
+              <Label onClick={this.props.onCheckOption}>
                 <Title>{filterLabel}</Title>
                 <Description>Listings you can book without waiting for host approval.</Description>
               </Label>
-              <Switch onClick={this.onCheck} check={instant}>
-                <Mark check={instant} />
+              <Switch onClick={this.props.onCheckOption} check={instantBook}>
+                <Mark check={instantBook} />
               </Switch>
               <Bottom>
-                {instant ? (
+                {instantBook ? (
                   <Cancel onClick={this.resetSelection}>Reset</Cancel>
                 ) : (
                   <Cancel onClick={this.onClose}>Cancel</Cancel>
