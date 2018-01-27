@@ -423,8 +423,6 @@ export const Switch = styled.button`
   }
 `;
 
-//  MORE
-
 export const Topic = styled.p`
   margin: 0;
   margin-bottom: 24px;
@@ -447,7 +445,6 @@ export const Section = styled.div`
   box-shadow: 0 0.5px 0 rgba(72, 72, 72, 0.3);
 
   @media (min-width: 968px) {
-    margin: 0 16px;
     margin-bottom: 32px;
   }
 `;
