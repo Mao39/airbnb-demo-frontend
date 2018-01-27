@@ -45,7 +45,7 @@ const ShowScrollLock = isOpen =>
 const Guest = props => (
   <People>
     <Characteristics>
-      <Man>{props.type === 'babies' ? 'Children' : props.type}</Man>
+      <Man>{props.title}</Man>
       <Age>{props.age}</Age>
     </Characteristics>
     <Control>
@@ -115,6 +115,7 @@ export default class Guests extends React.Component {
               <Guest
                 filter={id}
                 type="adults"
+                title="Adults"
                 amount={adults}
                 addNumber={this.props.addNumber}
                 reduceNumber={this.props.reduceNumber}
@@ -123,6 +124,7 @@ export default class Guests extends React.Component {
               <Guest
                 filter={id}
                 type="babies"
+                title="Children"
                 age="Ages 2 — 12"
                 amount={babies}
                 addNumber={this.props.addNumber}
@@ -132,6 +134,7 @@ export default class Guests extends React.Component {
               <Guest
                 filter={id}
                 type="infants"
+                title="Infants"
                 age="Under 2"
                 amount={infants}
                 addNumber={this.props.addNumber}

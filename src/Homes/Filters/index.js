@@ -1,5 +1,4 @@
 import React from 'react';
-// import { ResponsiveComponent } from 'react-responsive-component';
 import MediaQuery from 'react-responsive';
 import Book from './Book';
 import More from './More';
