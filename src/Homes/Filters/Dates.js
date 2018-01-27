@@ -20,7 +20,6 @@ import {
   DatesRange,
   EndDate,
   Exit,
-  Filter,
   Header,
   Overlay,
   Reset,
@@ -32,6 +31,24 @@ import {
 const DayPicker = styled(DayPickerRangeController)`
   position: relative;
   padding-bottom: 72px;
+`;
+
+const Filter = styled.aside`
+  display: inline-block;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 3;
+  font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  background-color: #fff;
+
+  @media (min-width: 576px) {
+    position: absolute;
+    top: 40px;
+  }
 `;
 
 const formatStartDate = startDate => startDate && moment(startDate).format('Do MMM');

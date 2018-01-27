@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 
 import {
   Apply,
@@ -6,14 +7,32 @@ import {
   Bottom,
   Cancel,
   Description,
-  Filter,
   Label,
   Mark,
   Overlay,
   Switch,
-  Title,
+  Topic,
   Wrap,
 } from './styled';
+
+const Filter = styled.aside`
+  position: absolute;
+  top: 40px;
+  left: 0;
+  z-index: 3;
+  display: inline-block;
+  width: 326px;
+  height: 172px;
+  padding: 32px 24px;
+  border: 1px solid rgba(72, 72, 72, 0.2);
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(72, 72, 72, 0.08);
+`;
+
+const Title = styled(Topic)`
+  margin: 0;
+`;
 
 const ShowOverlay = (isOpen, onClose) => isOpen && <Overlay onClick={onClose} />;
 

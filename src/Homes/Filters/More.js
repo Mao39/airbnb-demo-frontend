@@ -6,16 +6,43 @@ import Rheostat from 'rheostat';
 import 'rheostat/css/slider.css';
 import 'rheostat/css/slider-horizontal.css';
 import './react_rheostat_overrides.css';
-import cross from '../../UI/cross.svg';
-import check from '../../UI/check.svg';
-import checkBook from './../../UI/checkBook.svg';
+
 import arrow from './../../UI/greenArrow.svg';
-import minus from '../../UI/minus.svg';
-import plus from '../../UI/plus.svg';
-import grayPlus from './../../UI/grayPlus.svg';
 import fullRoom from '../../UI/private.svg';
 import entireRoom from '../../UI/entire.svg';
 import sharedRoom from '../../UI/shared.svg';
+import {
+  RoomType,
+  Checkbox,
+  Input,
+  Type,
+  Column,
+  Facility,
+  Control,
+  Remove,
+  Amount,
+  Add,
+  Option,
+  Link,
+  CheckboxWrap,
+  Header,
+  Exit,
+  Caption,
+  Reset,
+  Section,
+  Topic,
+  Histogram,
+  Dropdown,
+  Dropout,
+  Save,
+  Titul,
+  Btn,
+  Description,
+  Mark,
+  Overlay,
+  Switch,
+  Title,
+} from './styled';
 
 const Filter = styled.aside`
   display: inline-block;
@@ -43,245 +70,6 @@ const Wrap = styled.div`
   display: flex;
   flex-basis: 100%;
   justify-content: space-between;
-`;
-
-const Overlay = styled.div`
-  position: fixed;
-  top: 137px;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 2;
-  background: rgba(255, 255, 255, 0.8);
-`;
-
-const Btn = styled.button`
-  margin-right: 8px;
-  padding: 7px 16px;
-  border: 1px solid rgba(72, 72, 72, 0.3);
-  border-radius: 4px;
-  font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-weight: 600;
-  font-size: 14px;
-  color: #383838;
-  background: transparent;
-  cursor: pointer;
-  transition: all 0.3s;
-
-  color: ${props => (props.isOpen ? '#fff' : '#383838')};
-  background: ${props => (props.isOpen ? '#008489' : 'transparent')};
-
-  &:hover {
-    border-color: ${props => (props.isOpen ? 'rgba(72, 72, 72, 0.3)' : '#f2f2f2')};
-    background: ${props => (props.isOpen ? '#008489' : '#f2f2f2')};
-  }
-`;
-
-const Header = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 40px;
-  height: 48px;
-  padding: 0 8px;
-  box-shadow: 0 0.5px rgba(72, 72, 72, 0.3);
-
-  @media (min-width: 576px) {
-    display: none;
-  }
-`;
-
-const Caption = styled.span`
-  font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  line-height: 16px;
-  font-weight: 600;
-  color: #383838;
-`;
-
-const Exit = styled.button`
-  width: 16px;
-  height: 16px;
-  background: url(${cross}) no-repeat center;
-  background-size: contain;
-  border: none;
-  cursor: pointer;
-`;
-
-const Reset = styled.button`
-  padding: 0;
-  font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  line-height: 16px;
-  font-weight: 600;
-  color: #0f7276;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-`;
-
-const Topic = styled.p`
-  margin: 0;
-  margin-bottom: 24px;
-  font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 18px;
-  line-height: 21px;
-  font-weight: 600;
-  color: #383838;
-
-  @media (mind-width: 576px) {
-    font-size: 20px;
-    line-height: 23px;
-  }
-`;
-
-const Section = styled.div`
-  margin: 0 8px;
-  margin-bottom: 32px;
-  padding-bottom: 32px;
-  box-shadow: 0 0.5px 0 rgba(72, 72, 72, 0.3);
-
-  @media (min-width: 968px) {
-    margin: 0 16px;
-    margin-bottom: 32px;
-  }
-`;
-
-const Type = styled.div`
-  margin-left: 12px;
-  padding-right: 56px;
-  text-align: left;
-`;
-
-const Title = styled.p`
-  margin: 0;
-  font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 19px;
-  font-weight: lighter;
-  color: #383838;
-
-  @media (min-width: 576px) {
-    font-size: 16px;
-    line-height: 18px;
-  }
-`;
-
-const Titul = styled(Title)`
-  text-transform: capitalize;
-`;
-
-const Description = styled.p`
-  margin: 0;
-  margin-top: 4px;
-  font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  line-height: 16px;
-  font-weight: lighter;
-  color: #383838;
-
-  @media (min-width: 576px) {
-    font-size: 16px;
-    line-height: 19px;
-  }
-`;
-
-const Histogram = styled.div`
-  position: relative;
-  margin-top: 32px;
-`;
-
-const Column = styled.span`
-  position: relative;
-  bottom: -6px;
-  display: inline-block;
-  width: 2%;
-  height: ${props => `${props.height}px`};
-  background: rgba(118, 118, 118, 0.5);
-`;
-
-const Input = styled.input`
-  width: 24px;
-  height: 24px;
-  opacity: 0;
-  cursor: pointer;
-`;
-
-const RoomType = styled.label`
-  display: flex;
-  margin-bottom: 14px;
-  background-size: 32px;
-  cursor: pointer;
-
-  @media (min-width: 576px) {
-    background: url(${props => props.imgSrc}) no-repeat center right;
-  }
-`;
-
-const CheckboxWrap = styled.label`
-  display: ${props => (props.active ? 'flex' : 'none')};
-  flex-basis: 100%;
-  margin-bottom: 14px;
-  cursor: pointer;
-
-  @media (min-width: 576px) {
-    flex-basis: 50%;
-    display: ${props => (props.visible || props.active ? 'flex' : 'none')};
-  }
-`;
-
-const Checkbox = styled.label`
-  margin-right: 4px;
-  width: 24px;
-  height: 24px;
-  padding: 0;
-  border: 1px solid rgba(72, 72, 72, 0.3);
-  border-radius: 4px;
-  background: ${props => (props.check ? '#008489' : 'transparent')};
-  background-image: url(${check});
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: 13px 9px;
-  cursor: pointer;
-`;
-
-const Bottom = styled.div`
-  position: relative;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  justify-content: space-between;
-  padding: 8px;
-  box-shadow: 0 -1px #d5d5d5;
-
-  @media (min-width: 576px) {
-    padding: 8;
-    box-shadow: none;
-    justify-content: center;
-  }
-
-  @media (min-width: 968px) {
-    justify-content: flex-end;
-  }
-`;
-
-const Save = styled.button`
-  width: 100%;
-  padding: 12px;
-  border: none;
-  border-radius: 4px;
-  font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 18px;
-  line-height: 21px;
-  font-weight: Bold;
-  color: #fff;
-  background: #ff5a5f;
-  cursor: pointer;
-
-  @media (min-width: 576px) {
-    display: none;
-  }
 `;
 
 const Cancel = styled.button`
@@ -322,43 +110,9 @@ const Apply = styled.button`
   }
 `;
 
-const Facility = styled.div`
+const Label = styled.label`
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 30px;
-
-  @media (min-width: 576px) {
-    width: 50%;
-  }
-`;
-
-const Control = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const Remove = styled.button`
-  position: relative;
-  width: 32px;
-  height: 32px;
-  border: 1px solid #008489;
-  border-radius: 50%;
-  background: url(${minus}) no-repeat center;
-  background-size: 10px 2px;
-
-  opacity: ${props => (props.disabled ? '.5' : '1')};
-  cursor: ${props => (props.disabled ? 'default' : 'pointer')};
-`;
-
-const Add = styled.button`
-  position: relative;
-  width: 32px;
-  height: 32px;
-  border: 1px solid #008489;
-  border-radius: 50%;
-  background: url(${plus}) no-repeat center;
-  background-size: 10px 10px;
+  flex-direction: column;
   cursor: pointer;
 `;
 
@@ -366,128 +120,24 @@ const Arrow = styled.img`
   margin: 2px 0;
 `;
 
-const Amount = styled.span`
-  margin-right: 18px;
-  margin-left: 18px;
-  font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 18px;
-  line-height: 21px;
-  font-weight: lighter;
-  color: #383838;
-`;
-
-const Switch = styled.button`
+const Bottom = styled.div`
   position: relative;
-  margin-top: 14px;
-  padding: 20px 32px;
-  border: 1px solid rgba(72, 72, 72, 0.3);
-  border-radius: 24px;
-  background: ${props => (props.check ? '#008489' : 'rgba(72, 72, 72, 0.08)')};
-  transition: background-color 0.25s ease-in-out;
-  cursor: pointer;
-
-  &:focus {
-    outline: none !important;
-    box-shadow: 0 0 2px 2px #008489;
-  }
-`;
-
-const Mark = styled.span`
-  position: absolute;
-  top: -1px;
-  left: -1px;
-  padding: 20px;
-  border: 1px solid rgba(72, 72, 72, 0.3);
-  border-radius: 50%;
-  background: #fff;
-  transform: ${props => props.check && 'translateX(24px)'};
-  transition: all 0.3s ease-in-out 0.1s;
-
-  &:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: ${props => props.check && `url(${checkBook}) no-repeat center`};
-    opacity: ${props => (props.check ? '1' : '0')};
-    transition: opacity 0.15s ease-in-out 0.2s;
-  }
-
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: url(${grayPlus}) no-repeat center;
-    transform: ${props => (props.check ? 'rotate(45deg)' : 'none')};
-    opacity: ${props => (props.check ? '0' : '1')};
-    transition: all 0.2s ease-out 0.1s;
-  }
-`;
-
-const Label = styled.label`
+  right: 0;
+  bottom: 0;
+  left: 0;
   display: flex;
-  flex-direction: column;
-  cursor: pointer;
-`;
-
-const Link = styled.a`
-  margin-top: 4px;
-  font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  line-height: 16px;
-  font-weight: lighter;
-  color: #0f7276;
-
-  @media (min-width: 576px) {
-    font-size: 16px;
-    line-height: 19px;
-  }
-`;
-
-const Option = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
   justify-content: space-between;
-  margin-bottom: 30px;
+  padding: 8px;
+  box-shadow: 0 -1px #d5d5d5;
 
   @media (min-width: 576px) {
-    width: 50%;
+    padding: 8;
+    box-shadow: none;
+    justify-content: center;
   }
-`;
-
-const Dropout = styled.button`
-  margin-bottom: 24px;
-  font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  line-height: 16px;
-  font-weight: 600;
-  color: #0f7276;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-
-  @media (min-width: 576px) {
-    font-size: 16px;
-    line-height: 19px;
-  }
-`;
-
-const Dropdown = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 8px;
-  margin-bottom: 32px;
-  box-shadow: 0 0.5px 0 rgba(72, 72, 72, 0.3);
 
   @media (min-width: 968px) {
-    margin: 0 16px;
-    margin-bottom: 32px;
+    justify-content: flex-end;
   }
 `;
 
@@ -536,7 +186,7 @@ const Options = props => (
     <Label onClick={() => props.onCheckOption(props.filter)}>
       <Title>{props.title}</Title>
       <Description>{props.description}</Description>
-      <Link>Learn more</Link>
+      <Link href="#">Learn more</Link>
     </Label>
     <Switch onClick={() => props.onCheckOption(props.filter)} check={props.check}>
       <Mark check={props.check} />

@@ -39,6 +39,7 @@ export const Amount = styled.span`
 `;
 
 export const Apply = styled.button`
+  display: none;
   border: none;
   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 16px;
@@ -47,6 +48,10 @@ export const Apply = styled.button`
   color: #008489;
   background: transparent;
   cursor: pointer;
+
+  @media (min-width: 576px) {
+    display: inline-block;
+  }
 `;
 
 export const Bottom = styled.div`
@@ -106,6 +111,8 @@ export const Cancel = styled.button`
 export const Control = styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  flex-basis: 110px;
 `;
 
 export const Caption = styled.span`
@@ -259,9 +266,7 @@ export const CalendarRow = styled.div`
   left: 0;
   display: none;
   justify-content: space-between;
-  padding-top: 40px;
-  height: 48px;
-  padding: 8px;
+  padding: 26px 26px 18px 26px;
 
   @media (min-width: 576px) {
     display: flex;
@@ -321,17 +326,6 @@ export const Checkbox = styled.label`
   cursor: pointer;
 `;
 
-export const Description = styled.p`
-  flex-basis: 70%;
-  margin: 0;
-  margin-top: 4px;
-  font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 12px;
-  line-height: 14px;
-  font-weight: lighter;
-  color: #383838;
-`;
-
 export const Input = styled.input`
   width: 24px;
   height: 24px;
@@ -345,15 +339,6 @@ export const Premises = styled.label`
   background: url(${props => props.imgSrc}) no-repeat center right;
   background-size: 32px;
   cursor: pointer;
-`;
-
-export const Title = styled.p`
-  margin: 0;
-  font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 19px;
-  font-weight: lighter;
-  color: #383838;
 `;
 
 export const Type = styled.div`
@@ -380,6 +365,7 @@ export const Label = styled.label`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: space-between;
   cursor: pointer;
 `;
 
@@ -433,5 +419,169 @@ export const Switch = styled.button`
   &:focus {
     outline: none !important;
     box-shadow: 0 0 2px 2px #008489;
+  }
+`;
+
+//  MORE
+
+export const Topic = styled.p`
+  margin: 0;
+  margin-bottom: 24px;
+  font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  line-height: 21px;
+  font-weight: 600;
+  color: #383838;
+
+  @media (mind-width: 576px) {
+    font-size: 20px;
+    line-height: 23px;
+  }
+`;
+
+export const Section = styled.div`
+  margin: 0 8px;
+  margin-bottom: 32px;
+  padding-bottom: 32px;
+  box-shadow: 0 0.5px 0 rgba(72, 72, 72, 0.3);
+
+  @media (min-width: 968px) {
+    margin: 0 16px;
+    margin-bottom: 32px;
+  }
+`;
+
+export const Title = styled.p`
+  margin: 0;
+  font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 19px;
+  font-weight: lighter;
+  color: #383838;
+
+  @media (min-width: 576px) {
+    font-size: 16px;
+    line-height: 18px;
+  }
+`;
+
+export const Titul = styled(Title)`
+  text-transform: capitalize;
+`;
+
+export const Description = styled.p`
+  flex-basis: 70%;
+  margin: 0;
+  margin-top: 4px;
+  font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: lighter;
+  color: #383838;
+`;
+
+export const RoomType = styled.label`
+  display: flex;
+  margin-bottom: 14px;
+  background-size: 32px;
+  cursor: pointer;
+
+  @media (min-width: 576px) {
+    background: url(${props => props.imgSrc}) no-repeat center right;
+  }
+`;
+
+export const CheckboxWrap = styled.label`
+  display: ${props => (props.active ? 'flex' : 'none')};
+  flex-basis: 100%;
+  margin-bottom: 14px;
+  cursor: pointer;
+
+  @media (min-width: 576px) {
+    flex-basis: 50%;
+    display: ${props => (props.visible || props.active ? 'flex' : 'none')};
+  }
+`;
+
+export const Facility = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+
+  @media (min-width: 576px) {
+    width: 50%;
+  }
+`;
+
+export const Remove = styled.button`
+  position: relative;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #008489;
+  border-radius: 50%;
+  background: url(${minus}) no-repeat center;
+  background-size: 10px 2px;
+
+  opacity: ${props => (props.disabled ? '.5' : '1')};
+  cursor: ${props => (props.disabled ? 'default' : 'pointer')};
+`;
+
+export const Link = styled.a`
+  margin-top: 4px;
+  padding-bottom: 2px;
+  font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: lighter;
+  color: #0f7276;
+  cursor: pointer;
+  text-decoration: none;
+
+  @media (min-width: 576px) {
+    font-size: 16px;
+    line-height: 19px;
+  }
+`;
+
+export const Option = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 30px;
+
+  @media (min-width: 576px) {
+    width: 50%;
+  }
+`;
+
+export const Dropout = styled.button`
+  margin-bottom: 24px;
+  font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 600;
+  color: #0f7276;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+
+  @media (min-width: 576px) {
+    font-size: 16px;
+    line-height: 19px;
+  }
+`;
+
+export const Dropdown = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 8px;
+  margin-bottom: 32px;
+  box-shadow: 0 0.5px 0 rgba(72, 72, 72, 0.3);
+
+  @media (min-width: 968px) {
+    margin: 0 16px;
+    margin-bottom: 32px;
   }
 `;
