@@ -1,23 +1,13 @@
 import React from 'react';
-import styled from 'styled-components';
 import { ResponsiveComponent } from 'react-responsive-component';
-import Dates from './Dates';
-import Guests from './Guests';
-import Rooms from './Rooms';
-import Prices from './Prices';
+
 import Book from './Book';
 import More from './More';
-
-const FiltersWrap = styled.div`
-  position: fixed;
-  top: 80px;
-  right: 0;
-  left: 0;
-  z-index: 3;
-  padding: 12px 0;
-  background: #fff;
-  box-shadow: 0 0 0.5px rgba(72, 72, 72, 0.3);
-`;
+import Dates from './Dates';
+import Rooms from './Rooms';
+import Prices from './Prices';
+import Guests from './Guests';
+import { FiltersWrap } from './styled';
 
 const numberRoomOffers = [
   0,
