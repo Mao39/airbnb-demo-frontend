@@ -1,9 +1,11 @@
 import React from 'react';
 import moment from 'moment';
 import 'react-dates/initialize';
+import styled from 'styled-components';
 import ScrollLock from 'react-scrolllock';
 import 'react-dates/lib/css/_datepicker.css';
 import { START_DATE } from 'react-dates/constants';
+import { DayPickerRangeController } from 'react-dates';
 
 import './react_dates_overrides.css';
 import isInclusivelyAfterDay from './helpers';
@@ -16,7 +18,6 @@ import {
   Caption,
   CalendarRow,
   DatesRange,
-  DayPicker,
   EndDate,
   Exit,
   Filter,
@@ -27,6 +28,11 @@ import {
   StartDate,
   Wrap,
 } from './styled';
+
+const DayPicker = styled(DayPickerRangeController)`
+  position: relative;
+  padding-bottom: 72px;
+`;
 
 const formatStartDate = startDate => startDate && moment(startDate).format('Do MMM');
 
