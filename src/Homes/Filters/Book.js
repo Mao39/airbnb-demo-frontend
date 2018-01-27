@@ -42,6 +42,7 @@ export default class Prices extends React.Component {
   };
 
   onClose = () => {
+    this.setState({ isApply: false });
     this.props.onClose(this.props.id);
   };
 

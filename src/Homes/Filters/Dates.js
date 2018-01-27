@@ -120,6 +120,11 @@ export default class Dates extends React.Component {
     this.switchOpeningFilter();
   };
 
+  onClose = () => {
+    this.setState({ isApply: false });
+    this.props.onClose(this.props.id);
+  };
+
   switchOpeningFilter = () => {
     this.props.switchOpeningFilter(this.props.id);
   };
@@ -134,7 +139,7 @@ export default class Dates extends React.Component {
       {this.props.startDate && this.props.endDate ? (
         <Cancel onClick={this.resetSelection}>Reset</Cancel>
       ) : (
-        <Cancel onClick={this.props.onClose}>Cancel</Cancel>
+        <Cancel onClick={this.onClose}>Cancel</Cancel>
       )}
       <Apply onClick={this.onApply}>Apply</Apply>
     </CalendarRow>
@@ -157,7 +162,7 @@ export default class Dates extends React.Component {
           {isOpen && (
             <Filter isOpen={isOpen}>
               <Header>
-                <Exit onClick={this.props.onClose} />
+                <Exit onClick={this.onClose} />
                 <Caption>Dates</Caption>
                 <Reset onClick={this.resetSelection}>Reset</Reset>
               </Header>
@@ -187,7 +192,7 @@ export default class Dates extends React.Component {
               </Bottom>
             </Filter>
           )}
-          {ShowOverlay(isOpen, this.props.onClose)}
+          {ShowOverlay(isOpen, this.onClose)}
           {ShowScrollLock(isOpen)}
         </Wrap>
       </React.Fragment>

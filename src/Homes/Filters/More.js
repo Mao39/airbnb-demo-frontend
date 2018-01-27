@@ -206,12 +206,20 @@ export default class Guests extends React.Component {
   };
 
   onClose = () => {
-    this.resetSelection();
-    this.props.onClose();
+    this.setState({ isApply: false });
+    this.props.onClose(this.props.id);
   };
 
   onApply = () => {
-    this.setState({ isApply: true });
+    if (
+      this.props.prices !== this.props.initialState.prices ||
+      this.props.rooms !== this.props.initialState.rooms ||
+      this.props.furnishings !== this.props.initialState.furnishings ||
+      this.props.amenties !== this.props.initialState.amenties ||
+      this.props.facilities !== this.props.initialState.facilities
+    ) {
+      this.setState({ isApply: true });
+    }
     this.switchOpeningFilter();
   };
 

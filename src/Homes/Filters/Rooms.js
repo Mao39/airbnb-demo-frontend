@@ -53,8 +53,8 @@ export default class Rooms extends React.Component {
   };
 
   onClose = () => {
-    this.resetSelection();
-    this.props.onClose();
+    this.setState({ isApply: false });
+    this.props.onClose(this.props.id);
   };
 
   onApply = () => {

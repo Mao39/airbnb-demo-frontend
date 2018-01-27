@@ -39,11 +39,12 @@ export default class Prices extends React.Component {
   };
 
   onClose = () => {
+    this.setState({ isApply: false });
     this.props.onClose(this.props.id);
   };
 
   onApply = () => {
-    if (this.state.min > 10 || this.state.max < 1000) this.setState({ isApply: true });
+    if (this.props.min > 10 || this.props.max < 1000) this.setState({ isApply: true });
     this.switchOpeningFilter();
   };
 

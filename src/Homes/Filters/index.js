@@ -91,8 +91,8 @@ const initialState = {
 export default class Filters extends React.Component {
   state = initialState;
 
-  onClose = () => {
-    this.resetSelection();
+  onClose = (id) => {
+    this.resetSelection(id);
     this.setState({ openedFilter: null });
   };
 
@@ -264,6 +264,7 @@ export default class Filters extends React.Component {
             moreOptions={moreOptions}
             furnishings={furnishings}
             addNumber={this.addNumber}
+            initialState={initialState}
             reduceNumber={this.reduceNumber}
             onCheckOption={this.onCheckOption}
             numberRoomOffers={numberRoomOffers}

@@ -72,8 +72,8 @@ export default class Guests extends React.Component {
   };
 
   onClose = () => {
-    this.resetSelection();
-    this.props.onClose();
+    this.setState({ isApply: false });
+    this.props.onClose(this.props.id);
   };
 
   resetSelection = () => {
