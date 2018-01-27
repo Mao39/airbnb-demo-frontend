@@ -1,6 +1,6 @@
 import React from 'react';
-import { ResponsiveComponent } from 'react-responsive-component';
-
+// import { ResponsiveComponent } from 'react-responsive-component';
+import MediaQuery from 'react-responsive';
 import Book from './Book';
 import More from './More';
 import Dates from './Dates';
@@ -216,7 +216,7 @@ export default class Filters extends React.Component {
           >
             Guests
           </Guests>
-          <ResponsiveComponent query="only screen and (min-width: 968px)">
+          <MediaQuery minWidth={968}>
             <Rooms
               id="rooms"
               full={rooms.full}
@@ -254,7 +254,7 @@ export default class Filters extends React.Component {
             >
               Instant book
             </Book>
-          </ResponsiveComponent>
+          </MediaQuery>
           <More
             id="moreFilters"
             rooms={rooms}

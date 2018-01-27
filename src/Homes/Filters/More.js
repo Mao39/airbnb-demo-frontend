@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import ScrollLock from 'react-scrolllock';
-import { ResponsiveComponent } from 'react-responsive-component';
+import MediaQuery from 'react-responsive';
 import Rheostat from 'rheostat';
 import 'rheostat/css/slider.css';
 import 'rheostat/css/slider-horizontal.css';
@@ -257,7 +257,7 @@ export default class Guests extends React.Component {
               <Caption>All filters (0)</Caption>
               <Reset onClick={this.resetSelection}>Clear all</Reset>
             </Header>
-            <ResponsiveComponent query="only screen and (max-width: 968px)">
+            <MediaQuery maxWidth={968}>
               <Section>
                 <Topic>Room type</Topic>
                 <CheckRoom
@@ -302,7 +302,7 @@ export default class Guests extends React.Component {
                   />
                 </Histogram>
               </Section>
-            </ResponsiveComponent>
+            </MediaQuery>
             <Section>
               <Topic>Rooms and beds</Topic>
               <Facilities
@@ -332,7 +332,7 @@ export default class Guests extends React.Component {
             </Section>
             <Section>
               <Topic>More options</Topic>
-              <ResponsiveComponent query="only screen and (max-width: 968px)">
+              <MediaQuery maxWidth={968}>
                 <Options
                   filter="instantBook"
                   title="Instant Book"
@@ -340,7 +340,7 @@ export default class Guests extends React.Component {
                   onCheckOption={this.props.onCheckOption}
                   description="Secure a reservation instantly."
                 />
-              </ResponsiveComponent>
+              </MediaQuery>
               <Options
                 title="Superhost"
                 filter="superHost"
