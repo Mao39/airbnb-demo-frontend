@@ -13,6 +13,9 @@ import arrow from './../../UI/greenArrow.svg';
 import minus from '../../UI/minus.svg';
 import plus from '../../UI/plus.svg';
 import grayPlus from './../../UI/grayPlus.svg';
+import fullRoom from '../../UI/private.svg';
+import entireRoom from '../../UI/entire.svg';
+import sharedRoom from '../../UI/shared.svg';
 
 const Filter = styled.aside`
   display: inline-block;
@@ -27,6 +30,12 @@ const Filter = styled.aside`
 
   @media (min-width: 576px) {
     top: 136px;
+    padding-top: 38px;
+  }
+
+  @media (min-width: 968px) {
+    right: 34%;
+    padding-left: 64px;
   }
 `;
 
@@ -120,7 +129,7 @@ const Topic = styled.p`
   font-weight: 600;
   color: #383838;
 
-  @media(mind-width: 576px) {
+  @media (mind-width: 576px) {
     font-size: 20px;
     line-height: 23px;
   }
@@ -131,6 +140,11 @@ const Section = styled.div`
   margin-bottom: 32px;
   padding-bottom: 32px;
   box-shadow: 0 0.5px 0 rgba(72, 72, 72, 0.3);
+
+  @media (min-width: 968px) {
+    margin: 0 16px;
+    margin-bottom: 32px;
+  }
 `;
 
 const Type = styled.div`
@@ -146,6 +160,11 @@ const Title = styled.p`
   line-height: 19px;
   font-weight: lighter;
   color: #383838;
+
+  @media (min-width: 576px) {
+    font-size: 16px;
+    line-height: 18px;
+  }
 `;
 
 const Titul = styled(Title)`
@@ -160,6 +179,11 @@ const Description = styled.p`
   line-height: 16px;
   font-weight: lighter;
   color: #383838;
+
+  @media (min-width: 576px) {
+    font-size: 16px;
+    line-height: 19px;
+  }
 `;
 
 const Histogram = styled.div`
@@ -186,9 +210,12 @@ const Input = styled.input`
 const RoomType = styled.label`
   display: flex;
   margin-bottom: 14px;
-  background: url(${props => props.imgSrc}) no-repeat center right;
   background-size: 32px;
   cursor: pointer;
+
+  @media (min-width: 576px) {
+    background: url(${props => props.imgSrc}) no-repeat center right;
+  }
 `;
 
 const CheckboxWrap = styled.label`
@@ -199,10 +226,12 @@ const CheckboxWrap = styled.label`
 
   @media (min-width: 576px) {
     flex-basis: 50%;
+    display: ${props => (props.visible || props.active ? 'flex' : 'none')};
   }
 `;
 
 const Checkbox = styled.label`
+  margin-right: 4px;
   width: 24px;
   height: 24px;
   padding: 0;
@@ -227,8 +256,13 @@ const Bottom = styled.div`
   box-shadow: 0 -1px #d5d5d5;
 
   @media (min-width: 576px) {
-    padding: 26px;
+    padding: 8;
     box-shadow: none;
+    justify-content: center;
+  }
+
+  @media (min-width: 968px) {
+    justify-content: flex-end;
   }
 `;
 
@@ -257,12 +291,13 @@ const Cancel = styled.button`
   font-size: 16px;
   line-height: 19px;
   font-weight: 600;
-  color: #636363;
+  color: #383838;
   background: transparent;
   cursor: pointer;
 
   @media (min-width: 576px) {
     display: inline-block;
+    margin-right: 8px;
   }
 `;
 
@@ -279,6 +314,11 @@ const Apply = styled.button`
 
   @media (min-width: 576px) {
     display: inline-block;
+    margin-left: 8px;
+    padding: 12px 28px;
+    border-radius: 4px;
+    background-color: #008489;
+    color: #fff;
   }
 `;
 
@@ -287,6 +327,10 @@ const Facility = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 30px;
+
+  @media (min-width: 576px) {
+    width: 50%;
+  }
 `;
 
 const Control = styled.div`
@@ -398,6 +442,11 @@ const Link = styled.a`
   line-height: 16px;
   font-weight: lighter;
   color: #0f7276;
+
+  @media (min-width: 576px) {
+    font-size: 16px;
+    line-height: 19px;
+  }
 `;
 
 const Option = styled.div`
@@ -406,18 +455,27 @@ const Option = styled.div`
   align-items: flex-start;
   justify-content: space-between;
   margin-bottom: 30px;
+
+  @media (min-width: 576px) {
+    width: 50%;
+  }
 `;
 
 const Dropout = styled.button`
   margin-bottom: 24px;
   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 19px;
+  font-size: 14px;
+  line-height: 16px;
   font-weight: 600;
   color: #0f7276;
   border: none;
   background: transparent;
   cursor: pointer;
+
+  @media (min-width: 576px) {
+    font-size: 16px;
+    line-height: 19px;
+  }
 `;
 
 const Dropdown = styled.div`
@@ -426,12 +484,16 @@ const Dropdown = styled.div`
   margin: 0 8px;
   margin-bottom: 32px;
   box-shadow: 0 0.5px 0 rgba(72, 72, 72, 0.3);
+
+  @media (min-width: 968px) {
+    margin: 0 16px;
+    margin-bottom: 32px;
+  }
 `;
 
 const ShowOverlay = (isOpen, onClose) => isOpen && <Overlay onClick={onClose} />;
 
-const ShowScrollLock = isOpen =>
-  !matchMedia('(min-width: 576px)').matches && isOpen && <ScrollLock />;
+const ShowScrollLock = isOpen => isOpen && <ScrollLock />;
 
 const CheckRoom = props => (
   <RoomType for={props.type} imgSrc={props.imgSrc}>
@@ -483,7 +545,7 @@ const Options = props => (
 );
 
 const Checkboxs = props => (
-  <CheckboxWrap active={props.active} for={props.type}>
+  <CheckboxWrap for={props.type} active={props.active} visible={props.visible}>
     <Checkbox
       for={props.type}
       onClick={() => props.onCheckCheckbox(props.checkbox, props.type)}
@@ -514,6 +576,7 @@ export default class Guests extends React.Component {
 
   resetSelection = () => {
     this.setState({ isApply: false });
+    this.props.resetSelection(this.props.id);
   };
 
   switchOpeningFilter = () => {
@@ -558,6 +621,7 @@ export default class Guests extends React.Component {
                   checkbox="rooms"
                   title="Entire home"
                   desc="Have a place to yourself"
+                  imgSrc={entireRoom}
                 />
                 <CheckRoom
                   check={rooms.full}
@@ -566,6 +630,7 @@ export default class Guests extends React.Component {
                   checkbox="rooms"
                   title="Private room"
                   desc="Have your own room and share some common spaces"
+                  imgSrc={fullRoom}
                 />
                 <CheckRoom
                   check={rooms.shared}
@@ -574,6 +639,7 @@ export default class Guests extends React.Component {
                   checkbox="rooms"
                   title="Shared room"
                   desc="Stay in a shared space, like a common room"
+                  imgSrc={sharedRoom}
                 />
               </Section>
               <Section>
@@ -640,9 +706,11 @@ export default class Guests extends React.Component {
             <Dropdown>
               <Wrap>
                 <Topic>Amenties</Topic>
-                <Dropout onClick={() => this.props.switchOpeningDropdown('amenties')}>
-                  See all <Arrow src={arrow} />
-                </Dropout>
+                <div className="hidden-sm hidden-md hidden-lg hidden-xl">
+                  <Dropout onClick={() => this.props.switchOpeningDropdown('amenties')}>
+                    See all <Arrow src={arrow} />
+                  </Dropout>
+                </div>
               </Wrap>
               <Checkboxs
                 active={amenties.isOpen}
@@ -651,6 +719,7 @@ export default class Guests extends React.Component {
                 checkbox="amenties"
                 check={amenties.heating}
                 onCheckCheckbox={this.props.onCheckCheckbox}
+                visible
               />
               <Checkboxs
                 active={amenties.isOpen}
@@ -659,6 +728,7 @@ export default class Guests extends React.Component {
                 checkbox="amenties"
                 check={amenties.kitchen}
                 onCheckCheckbox={this.props.onCheckCheckbox}
+                visible
               />
               <Checkboxs
                 active={amenties.isOpen}
@@ -667,6 +737,7 @@ export default class Guests extends React.Component {
                 checkbox="amenties"
                 check={amenties.tv}
                 onCheckCheckbox={this.props.onCheckCheckbox}
+                visible
               />
               <Checkboxs
                 active={amenties.isOpen}
@@ -675,6 +746,7 @@ export default class Guests extends React.Component {
                 checkbox="amenties"
                 check={amenties.wireless}
                 onCheckCheckbox={this.props.onCheckCheckbox}
+                visible
               />
               <Checkboxs
                 active={amenties.isOpen}
@@ -716,13 +788,20 @@ export default class Guests extends React.Component {
                 check={amenties.washer}
                 onCheckCheckbox={this.props.onCheckCheckbox}
               />
+              <div className="hidden-xs">
+                <Dropout onClick={() => this.props.switchOpeningDropdown('amenties')}>
+                  See all amenties<Arrow src={arrow} />
+                </Dropout>
+              </div>
             </Dropdown>
             <Dropdown>
               <Wrap>
                 <Topic>Facilities</Topic>
-                <Dropout onClick={() => this.props.switchOpeningDropdown('facilities')}>
-                  See all <Arrow src={arrow} />
-                </Dropout>
+                <div className="hidden-sm hidden-md hidden-lg hidden-xl">
+                  <Dropout onClick={() => this.props.switchOpeningDropdown('facilites')}>
+                    See all <Arrow src={arrow} />
+                  </Dropout>
+                </div>
               </Wrap>
               <Checkboxs
                 active={facilities.isOpen}
@@ -731,6 +810,7 @@ export default class Guests extends React.Component {
                 checkbox="facilities"
                 check={facilities.elebator}
                 onCheckCheckbox={this.props.onCheckCheckbox}
+                visible
               />
               <Checkboxs
                 active={facilities.isOpen}
@@ -739,6 +819,7 @@ export default class Guests extends React.Component {
                 checkbox="facilities"
                 check={facilities.parking}
                 onCheckCheckbox={this.props.onCheckCheckbox}
+                visible
               />
               <Checkboxs
                 active={facilities.isOpen}
@@ -747,6 +828,7 @@ export default class Guests extends React.Component {
                 checkbox="facilities"
                 check={facilities.pool}
                 onCheckCheckbox={this.props.onCheckCheckbox}
+                visible
               />
               <Checkboxs
                 active={facilities.isOpen}
@@ -755,6 +837,7 @@ export default class Guests extends React.Component {
                 checkbox="facilities"
                 check={facilities.disability}
                 onCheckCheckbox={this.props.onCheckCheckbox}
+                visible
               />
               <Checkboxs
                 active={facilities.isOpen}
@@ -772,6 +855,11 @@ export default class Guests extends React.Component {
                 check={facilities.garden}
                 onCheckCheckbox={this.props.onCheckCheckbox}
               />
+              <div className="hidden-xs">
+                <Dropout onClick={() => this.props.switchOpeningDropdown('facilities')}>
+                  See all facilities <Arrow src={arrow} />
+                </Dropout>
+              </div>
             </Dropdown>
             <Bottom>
               <Save onClick={this.onApply}>See homes</Save>

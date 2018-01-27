@@ -46,10 +46,6 @@ const Apply = styled.button`
   color: #008489;
   background: transparent;
   cursor: pointer;
-
-  @media (min-width: 576px) {
-    display: inline-block;
-  }
 `;
 
 const Bottom = styled.div`
@@ -366,7 +362,7 @@ export default class Guests extends React.Component {
                 ) : (
                   <Cancel onClick={this.onClose}>Cancel</Cancel>
                 )}
-                <Apply onClick={this.onApply}>Apply</Apply>
+                <Apply onClick={this.onApply}>See homes</Apply>
               </Bottom>
             </Filter>
           )}
