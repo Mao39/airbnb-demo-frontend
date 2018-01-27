@@ -115,7 +115,7 @@ export default class Filters extends React.Component {
   resetSelection = (id) => {
     this.setState({ ...this.state, [id]: initialState[id] });
     if (id === 'moreFilters') {
-      this.setState({ ...initialState });
+      this.setState({ ...initialState, openedFilter: id });
     }
   };
 

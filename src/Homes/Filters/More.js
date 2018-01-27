@@ -537,7 +537,11 @@ export default class Guests extends React.Component {
               </Dropdown>
               <Bottom>
                 <Save onClick={this.onApply}>See homes</Save>
-                {isApply ? (
+                {this.props.prices !== this.props.initialState.prices ||
+                this.props.rooms !== this.props.initialState.rooms ||
+                this.props.furnishings !== this.props.initialState.furnishings ||
+                this.props.amenties !== this.props.initialState.amenties ||
+                this.props.facilities !== this.props.initialState.facilities ? (
                   <Cancel onClick={this.resetSelection}>Reset</Cancel>
                 ) : (
                   <Cancel onClick={this.onClose}>Cancel</Cancel>
