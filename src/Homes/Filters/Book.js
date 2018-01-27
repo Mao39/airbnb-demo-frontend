@@ -235,7 +235,7 @@ export default class Prices extends React.Component {
                 <Title>{filterLabel}</Title>
                 <Description>Listings you can book without waiting for host approval.</Description>
               </Label>
-              <Switch onClick={this.props.onCheckOption} check={instantBook}>
+              <Switch onClick={() => this.props.onCheckOption('instantBook')} check={instantBook}>
                 <Mark check={instantBook} />
               </Switch>
               <Bottom>

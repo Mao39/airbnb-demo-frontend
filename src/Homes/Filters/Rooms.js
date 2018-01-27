@@ -181,8 +181,12 @@ const formatRoomsLabel = (isOpen, filterLabel, entire, full, shared) => {
 const ShowOverlay = (isOpen, onClose) => isOpen && <Overlay onClick={onClose} />;
 
 const Room = props => (
-  <Premises for={props.type} onClick={() => props.onCheckRoom(props.type)} imgSrc={props.imgSrc}>
-    <Checkbox for={props.type} onClick={() => props.onCheckRoom(props.type)} check={props.check}>
+  <Premises for={props.type} imgSrc={props.imgSrc}>
+    <Checkbox
+      for={props.type}
+      check={props.check}
+      onClick={() => props.onCheckCheckbox(props.checkbox, props.type)}
+    >
       <Input id={props.type} type="checkbox" value={props.type} />
     </Checkbox>
     <Type>
@@ -216,14 +220,16 @@ export default class Rooms extends React.Component {
   };
 
   switchOpeningFilter = () => {
-    this.props.switchOpeningFilter(this.props.children);
+    this.props.switchOpeningFilter(this.props.id);
   };
 
   render() {
     const { isApply } = this.state;
-    const { entire, full, shared } = this.props;
+    const {
+      id, entire, full, shared, openedFilter,
+    } = this.props;
     const filterLabel = this.props.children;
-    const isOpen = this.props.openedFilter === filterLabel;
+    const isOpen = openedFilter === id;
 
     return (
       <React.Fragment>
@@ -235,25 +241,28 @@ export default class Rooms extends React.Component {
             <Filter>
               <Room
                 check={entire}
-                onCheckRoom={this.props.onCheckRoom}
+                onCheckCheckbox={this.props.onCheckCheckbox}
                 type="entire"
                 title="Entire home"
+                checkbox={id}
                 desc="Have a place to yourself"
                 imgSrc={entireRoom}
               />
               <Room
                 check={full}
-                onCheckRoom={this.props.onCheckRoom}
+                onCheckCheckbox={this.props.onCheckCheckbox}
                 type="full"
                 title="Private room"
+                checkbox={id}
                 desc="Have your own room and share some common spaces"
                 imgSrc={fullRoom}
               />
               <Room
                 check={shared}
-                onCheckRoom={this.props.onCheckRoom}
+                onCheckCheckbox={this.props.onCheckCheckbox}
                 type="shared"
                 title="Shared room"
+                checkbox={id}
                 desc="Stay in a shared space, like a common room"
                 imgSrc={sharedRoom}
               />

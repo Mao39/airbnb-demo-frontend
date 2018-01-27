@@ -19,6 +19,37 @@ const FiltersWrap = styled.div`
   box-shadow: 0 0 0.5px rgba(72, 72, 72, 0.3);
 `;
 
+const numberRoomOffers = [
+  0,
+  0,
+  0,
+  0,
+  0,
+  3,
+  6,
+  14,
+  20,
+  14,
+  32,
+  42,
+  56,
+  69,
+  79,
+  60,
+  60,
+  56,
+  42,
+  42,
+  35,
+  32,
+  20,
+  10,
+  14,
+  20,
+  6,
+  1,
+];
+
 const initialState = {
   openedFilter: null,
   dates: { startDate: null, endDate: null },
@@ -38,6 +69,33 @@ const initialState = {
   },
   moreOptions: {
     instantBook: false,
+    superHost: false,
+  },
+  furnishings: {
+    bedrooms: 0,
+    beds: 0,
+    bathrooms: 0,
+  },
+  amenties: {
+    heating: false,
+    tv: false,
+    kitchen: false,
+    wireless: false,
+    fireplace: false,
+    shampoo: false,
+    iron: false,
+    intercom: false,
+    washer: false,
+    isOpen: false,
+  },
+  facilities: {
+    elebator: false,
+    pool: false,
+    parking: false,
+    disability: false,
+    bathhouse: false,
+    garden: false,
+    isOpen: false,
   },
 };
 
@@ -49,15 +107,15 @@ export default class Filters extends React.Component {
     this.setState({ openedFilter: null });
   };
 
-  onCheckRoom = (type) => {
+  onCheckCheckbox = (checkbox, type) => {
     this.setState(prevState => ({
-      rooms: { ...this.state.rooms, [type]: !prevState.rooms[type] },
+      [checkbox]: { ...this.state[checkbox], [type]: !prevState[checkbox][type] },
     }));
   };
 
-  onCheckOption = () => {
+  onCheckOption = (filter) => {
     this.setState(prevState => ({
-      moreOptions: { ...this.state.moreOptions, instantBook: !prevState.instantBook },
+      moreOptions: { ...this.state.moreOptions, [filter]: !prevState.moreOptions[filter] },
     }));
   };
 
@@ -77,23 +135,41 @@ export default class Filters extends React.Component {
     }
   };
 
-  addGuest = (type) => {
+  switchDisableReduce = (filter, type) => {
+    if (this.state[filter][type] > 1) return false;
+    if (this.state[filter][type] > 0) return false;
+    return true;
+  };
+
+  switchOpeningDropdown = (dropdown) => {
+    if (dropdown === 'amenties') {
+      this.setState(prevState => ({
+        amenties: { ...this.state.amenties, isOpen: !prevState.amenties.isOpen },
+      }));
+    } else {
+      this.setState(prevState => ({
+        facilities: { ...this.state.facilities, isOpen: !prevState.facilities.isOpen },
+      }));
+    }
+  };
+
+  addNumber = (filter, type) => {
     this.setState(prevState => ({
-      guests: {
-        ...this.state.guests,
-        [type]: prevState.guests[type] + 1,
+      [filter]: {
+        ...this.state[filter],
+        [type]: prevState[filter][type] + 1,
       },
     }));
   };
 
-  reduceGuest = (type) => {
-    if (this.state.guests[type] > 1) {
+  reduceNumber = (filter, type) => {
+    if (this.state[filter][type] > 1) {
       this.setState(prevState => ({
-        guests: { ...this.state.guests, [type]: prevState.guests[type] - 1 },
+        [filter]: { ...this.state[filter], [type]: prevState[filter][type] - 1 },
       }));
-    } else if (this.state.guests[type] > 0 && type !== 'adults') {
+    } else if (this.state[filter][type] > 0 && type !== 'adults') {
       this.setState(prevState => ({
-        guests: { ...this.state.guests, [type]: prevState.guests[type] - 1 },
+        [filter]: { ...this.state[filter], [type]: prevState[filter][type] - 1 },
       }));
     }
   };
@@ -109,7 +185,14 @@ export default class Filters extends React.Component {
 
   render() {
     const {
-      dates, guests, rooms, prices, moreOptions,
+      dates,
+      guests,
+      rooms,
+      prices,
+      moreOptions,
+      furnishings,
+      amenties,
+      facilities,
     } = this.state;
     return (
       <FiltersWrap>
@@ -132,8 +215,8 @@ export default class Filters extends React.Component {
             babies={guests.babies}
             onClose={this.onClose}
             infants={guests.infants}
-            addGuest={this.addGuest}
-            reduceGuest={this.reduceGuest}
+            addNumber={this.addNumber}
+            reduceNumber={this.reduceNumber}
             resetSelection={this.resetSelection}
             openedFilter={this.state.openedFilter}
             switchOpeningFilter={this.switchOpeningFilter}
@@ -147,8 +230,8 @@ export default class Filters extends React.Component {
               entire={rooms.entire}
               shared={rooms.shared}
               onClose={this.onClose}
-              onCheckRoom={this.onCheckRoom}
               resetSelection={this.resetSelection}
+              onCheckCheckbox={this.onCheckCheckbox}
               openedFilter={this.state.openedFilter}
               switchOpeningFilter={this.switchOpeningFilter}
             >
@@ -159,6 +242,7 @@ export default class Filters extends React.Component {
               min={prices.min}
               max={prices.max}
               onClose={this.onClose}
+              numberRoomOffers={numberRoomOffers}
               resetSelection={this.resetSelection}
               openedFilter={this.state.openedFilter}
               updateValuePrices={this.updateValuePrices}
@@ -180,10 +264,24 @@ export default class Filters extends React.Component {
           </ResponsiveComponent>
           <More
             id="moreFilters"
+            rooms={rooms}
+            prices={prices}
+            amenties={amenties}
             onClose={this.onClose}
+            facilities={facilities}
+            moreOptions={moreOptions}
+            furnishings={furnishings}
+            addNumber={this.addNumber}
+            reduceNumber={this.reduceNumber}
+            onCheckOption={this.onCheckOption}
+            numberRoomOffers={numberRoomOffers}
             resetSelection={this.resetSelection}
+            onCheckCheckbox={this.onCheckCheckbox}
             openedFilter={this.state.openedFilter}
+            updateValuePrices={this.updateValuePrices}
+            switchDisableReduce={this.switchDisableReduce}
             switchOpeningFilter={this.switchOpeningFilter}
+            switchOpeningDropdown={this.switchOpeningDropdown}
           >
             More filters
           </More>

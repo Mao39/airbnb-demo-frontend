@@ -271,11 +271,11 @@ const Guest = props => (
     </Characteristics>
     <Control>
       <Reduce
-        onClick={() => props.reduceGuest(props.type)}
+        onClick={() => props.reduceNumber(props.filter, props.type)}
         disabled={props.switchDisableReduce(props.type)}
       />
       <Amount>{props.amount}</Amount>
-      <Add onClick={() => props.addGuest(props.type)} />
+      <Add onClick={() => props.addNumber(props.filter, props.type)} />
     </Control>
   </People>
 );
@@ -334,26 +334,29 @@ export default class Guests extends React.Component {
                 <Reset onClick={this.resetSelection}>Reset</Reset>
               </Header>
               <Guest
+                filter={id}
                 type="adults"
                 amount={adults}
-                addGuest={this.props.addGuest}
-                reduceGuest={this.props.reduceGuest}
+                addNumber={this.props.addNumber}
+                reduceNumber={this.props.reduceNumber}
                 switchDisableReduce={this.switchDisableReduce}
               />
               <Guest
+                filter={id}
                 type="babies"
                 age="Ages 2 — 12"
                 amount={babies}
-                addGuest={this.props.addGuest}
-                reduceGuest={this.props.reduceGuest}
+                addNumber={this.props.addNumber}
+                reduceNumber={this.props.reduceNumber}
                 switchDisableReduce={this.switchDisableReduce}
               />
               <Guest
+                filter={id}
                 type="infants"
                 age="Under 2"
                 amount={infants}
-                addGuest={this.props.addGuest}
-                reduceGuest={this.props.reduceGuest}
+                addNumber={this.props.addNumber}
+                reduceNumber={this.props.reduceNumber}
                 switchDisableReduce={this.switchDisableReduce}
               />
               <Bottom>

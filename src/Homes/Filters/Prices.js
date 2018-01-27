@@ -189,39 +189,9 @@ export default class Prices extends React.Component {
     const filterLabel = this.props.children;
     const { isApply } = this.state;
     const {
-      min, max, id, openedFilter,
+      id, min, max, openedFilter, numberRoomOffers,
     } = this.props;
     const isOpen = openedFilter === id;
-    const offersRooms = [
-      0,
-      0,
-      0,
-      0,
-      0,
-      3,
-      6,
-      14,
-      20,
-      14,
-      32,
-      42,
-      56,
-      69,
-      79,
-      60,
-      60,
-      56,
-      42,
-      42,
-      35,
-      32,
-      20,
-      10,
-      14,
-      20,
-      6,
-      1,
-    ];
 
     return (
       <React.Fragment>
@@ -234,7 +204,7 @@ export default class Prices extends React.Component {
               <Title>{formatTitle(min, max)}</Title>
               <Description>The average nightly price is $75.</Description>
               <Histogram>
-                <Columns height={offersRooms} />
+                <Columns height={numberRoomOffers} />
                 <Rheostat
                   onValuesUpdated={this.props.updateValuePrices}
                   min={10}
