@@ -137,8 +137,6 @@ const Bottom = styled.div`
   }
 `;
 
-const ShowOverlay = (isOpen, onClose) => isOpen && <Overlay onClick={onClose} />;
-
 const ShowScrollLock = isOpen => isOpen && <ScrollLock />;
 
 const CheckRoom = props => (
@@ -556,7 +554,6 @@ export default class Guests extends React.Component {
             </div>
           </Filter>
         )}
-        {ShowOverlay(isOpen, this.onClose)}
         {ShowScrollLock(isOpen)}
       </React.Fragment>
     );
