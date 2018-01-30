@@ -439,10 +439,13 @@ export const Topic = styled.p`
 `;
 
 export const Section = styled.div`
-  margin: 0 8px;
   margin-bottom: 32px;
   padding-bottom: 32px;
   box-shadow: 0 0.5px 0 rgba(72, 72, 72, 0.3);
+
+  @media (min-width: 576px) {
+    margin: 0 8px;
+  }
 
   @media (min-width: 968px) {
     margin-bottom: 32px;
@@ -619,9 +622,12 @@ export const Closeout = styled.button`
 export const Dropdown = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin: 0 8px;
   margin-bottom: 32px;
   box-shadow: 0 0.5px 0 rgba(72, 72, 72, 0.3);
+
+  @media (min-width: 576px) {
+    margin: 0 8px;
+  }
 
   @media (min-width: 968px) {
     margin: 0 16px;
