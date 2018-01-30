@@ -59,11 +59,6 @@ const Filter = styled.aside`
     top: 136px;
     padding-top: 38px;
   }
-
-  ${'' /* @media (min-width: 968px) {
-    right: 34%;
-    padding-left: 66px;
-  } */};
 `;
 
 const Wrap = styled.div`
