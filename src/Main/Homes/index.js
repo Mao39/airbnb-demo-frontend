@@ -30,36 +30,36 @@ export default () => (
         <div className="row">
           <div className="col-xs-8 col-sm-5 col-md-4">
             <Card
-              imgSrc={salentina}
+              picture={salentina}
               price={82}
               homeType="Entire house"
-              numberBeds={9}
-              reviews={97}
-              hostType="Superhost"
+              bedsCount={9}
+              reviewsCount={97}
+              isSuperhost
             >
               La Salentina, see, nature & relax
             </Card>
           </div>
           <div className="col-xs-8 col-sm-5 col-md-4">
             <Card
-              imgSrc={privateBed}
+              picture={privateBed}
               price={82}
               homeType="Entire house"
-              numberBeds={5}
-              reviews={161}
-              hostType="Superhost"
+              bedsCount={5}
+              reviewsCount={161}
+              isSuperhost
             >
               Your private 3 bedr. riad and exclusi...
             </Card>
           </div>
           <div className="col-xs-8 col-sm-5 col-md-4">
             <Card
-              imgSrc={dreamyTropical}
+              picture={dreamyTropical}
               price={200}
               homeType="Entire treehouse"
-              numberBeds={1}
-              reviews={364}
-              hostType="Superhost"
+              bedsCount={1}
+              reviewsCount={364}
+              isSuperhost
             >
               Dreamy Tropical Tree House
             </Card>

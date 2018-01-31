@@ -77,7 +77,7 @@ const Beds = styled.span`
 
 export default props => (
   <Card>
-    <Image src={props.imgSrc} />
+    <Image src={props.picture} />
     <Title>
       <Price>${props.price}</Price>
       <Description>{props.children}</Description>
@@ -86,7 +86,7 @@ export default props => (
       <Type>{props.homeType}</Type>
       <span> · </span>
       <Beds>
-        {props.numberBeds} {props.numberBeds > 1 ? 'beds' : 'bed'}
+        {props.bedsCount} {props.bedsCount > 1 ? 'beds' : 'bed'}
       </Beds>
     </Places>
     <Rating>
@@ -98,7 +98,8 @@ export default props => (
         <Star src={star} alt="Star" />
       </Stars>
       <Reviews>
-        {props.reviews} · {props.hostType}
+        {props.reviewsCount}
+        {props.isSuperhost && '  ·  Superhost'}
       </Reviews>
     </Rating>
   </Card>
