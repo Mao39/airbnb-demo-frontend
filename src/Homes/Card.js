@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import times from 'lodash/times';
 import star from '../UI/star.svg';
 
 const Card = styled.a`
@@ -59,8 +60,15 @@ const Places = styled.div`
   margin-top: 2px;
 `;
 
-const Description = Name.extend`
+const Caption = Name.extend`
+  display: inline-block;
+  width: 75%;
+  overflow: hidden;
+  vertical-align: top;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   font-weight: bold;
+}
 `;
 
 const Type = styled.span`
@@ -75,31 +83,31 @@ const Beds = styled.span`
   font-weight: lighter;
 `;
 
+const formatTypeLabel = (kind) => {
+  if (kind === 'entire_home') return 'Entire home';
+  if (kind === 'private_room') return 'Private room';
+  return 'Shared room';
+};
+
 export default props => (
   <Card>
     <Image src={props.picture} />
     <Title>
       <Price>${props.price}</Price>
-      <Description>{props.children}</Description>
+      <Caption>{props.children}</Caption>
     </Title>
     <Places>
-      <Type>{props.homeType}</Type>
+      <Type>{formatTypeLabel(props.kind)}</Type>
       <span> · </span>
       <Beds>
         {props.bedsCount} {props.bedsCount > 1 ? 'beds' : 'bed'}
       </Beds>
     </Places>
     <Rating>
-      <Stars>
-        <Star src={star} alt="Star" />
-        <Star src={star} alt="Star" />
-        <Star src={star} alt="Star" />
-        <Star src={star} alt="Star" />
-        <Star src={star} alt="Star" />
-      </Stars>
+      <Stars>{times(Number(props.rating), () => <Star src={star} alt="Star" />)}</Stars>
       <Reviews>
         {props.reviewsCount}
-        {props.isSuperhost && '  ·  Superhost'}
+        {props.isSuperhost && ' · Superhost'}
       </Reviews>
     </Rating>
   </Card>

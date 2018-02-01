@@ -1,22 +1,15 @@
 import React from 'react';
-import styled from 'styled-components';
-import { Slider, SliderBtn } from '../Slider';
 import Card from './Card';
+import { Slider, Section } from '../Slider';
 import { Head, Caption, More } from '../Head';
 import forestTherapy from '../../UI/forestTherapy.png';
 import whaleWatching from '../../UI/whaleWatching.png';
 import tableMountain from '../../UI/tableMountain.png';
 import salsaNight from '../../UI/salsaNight.png';
 
-const Experiences = styled.section``;
-
-const Arrow = SliderBtn.extend`
-  margin-top: 15%;
-`;
-
 export default () => (
-  <Experiences>
-    <div className="container">
+  <div className="container">
+    <Section>
       <Head>
         <div className="row">
           <div className="col-xs-9 col-sm-10">
@@ -49,9 +42,8 @@ export default () => (
               Salsa Night
             </Card>
           </div>
-          <Arrow />
         </div>
       </Slider>
-    </div>
-  </Experiences>
+    </Section>
+  </div>
 );

@@ -8,7 +8,7 @@ const Main = styled.main`
   padding-top: 137px;
 `;
 
-const requestURL = 'https://airbnb-demo-api.now.sh/v1/homes';
+const requestURL = 'https://airbnb-demo-api.now.sh/v1/homes?limit=18';
 
 const getPolicyQuery = () => {
   if (matchMedia('(min-width: 968px)').matches) return 'x_medium';
@@ -46,7 +46,8 @@ export default class Cards extends React.Component {
                       picture={`${data.images[0].picture}?aki_policy=${getPolicyQuery()}`}
                       price={data.price}
                       bedsCount={data.bedsCount}
-                      homeType="Entrie house"
+                      kind={data.kind}
+                      rating={data.rating}
                       reviewsCount={data.reviewsCount}
                       isSuperhost={data.isSuperhost}
                     >
