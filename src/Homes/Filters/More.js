@@ -261,293 +261,297 @@ export default class Guests extends React.Component {
               <Reset onClick={this.resetSelection}>Clear all</Reset>
             </Header>
             <div className="container">
-              <MediaQuery maxWidth={968}>
-                <Section>
-                  <Topic>Room type</Topic>
-                  <CheckRoom
-                    check={rooms.entire}
-                    onCheckCheckbox={this.props.onCheckCheckbox}
-                    type="entire"
-                    checkbox="rooms"
-                    title="Entire home"
-                    desc="Have a place to yourself"
-                    imgSrc={entireRoom}
-                  />
-                  <CheckRoom
-                    check={rooms.full}
-                    onCheckCheckbox={this.props.onCheckCheckbox}
-                    type="full"
-                    checkbox="rooms"
-                    title="Private room"
-                    desc="Have your own room and share some common spaces"
-                    imgSrc={fullRoom}
-                  />
-                  <CheckRoom
-                    check={rooms.shared}
-                    onCheckCheckbox={this.props.onCheckCheckbox}
-                    type="shared"
-                    checkbox="rooms"
-                    title="Shared room"
-                    desc="Stay in a shared space, like a common room"
-                    imgSrc={sharedRoom}
-                  />
-                </Section>
-                <Section>
-                  <Topic>Price range</Topic>
-                  <Title>{formatPricesTitle(prices.min, prices.max)}</Title>
-                  <Description>The average nightly price is $75.</Description>
-                  <Histogram>
-                    <Columns height={numberRoomOffers} />
-                    <Rheostat
-                      onValuesUpdated={this.props.updateValuePrices}
-                      min={10}
-                      max={1000}
-                      values={[prices.min, prices.max]}
+              <div className="row">
+                <div className="col-xs-12 col-md-8">
+                  <MediaQuery maxWidth={968}>
+                    <Section>
+                      <Topic>Room type</Topic>
+                      <CheckRoom
+                        check={rooms.entire}
+                        onCheckCheckbox={this.props.onCheckCheckbox}
+                        type="entire"
+                        checkbox="rooms"
+                        title="Entire home"
+                        desc="Have a place to yourself"
+                        imgSrc={entireRoom}
+                      />
+                      <CheckRoom
+                        check={rooms.full}
+                        onCheckCheckbox={this.props.onCheckCheckbox}
+                        type="full"
+                        checkbox="rooms"
+                        title="Private room"
+                        desc="Have your own room and share some common spaces"
+                        imgSrc={fullRoom}
+                      />
+                      <CheckRoom
+                        check={rooms.shared}
+                        onCheckCheckbox={this.props.onCheckCheckbox}
+                        type="shared"
+                        checkbox="rooms"
+                        title="Shared room"
+                        desc="Stay in a shared space, like a common room"
+                        imgSrc={sharedRoom}
+                      />
+                    </Section>
+                    <Section>
+                      <Topic>Price range</Topic>
+                      <Title>{formatPricesTitle(prices.min, prices.max)}</Title>
+                      <Description>The average nightly price is $75.</Description>
+                      <Histogram>
+                        <Columns height={numberRoomOffers} />
+                        <Rheostat
+                          onValuesUpdated={this.props.updateValuePrices}
+                          min={10}
+                          max={1000}
+                          values={[prices.min, prices.max]}
+                        />
+                      </Histogram>
+                    </Section>
+                  </MediaQuery>
+                  <Section>
+                    <Topic>Rooms and beds</Topic>
+                    <Facilities
+                      type="bedrooms"
+                      filter="furnishings"
+                      amount={furnishings.bedrooms}
+                      addNumber={this.props.addNumber}
+                      reduceNumber={this.props.reduceNumber}
+                      switchDisableReduce={this.props.switchDisableReduce}
                     />
-                  </Histogram>
-                </Section>
-              </MediaQuery>
-              <Section>
-                <Topic>Rooms and beds</Topic>
-                <Facilities
-                  type="bedrooms"
-                  filter="furnishings"
-                  amount={furnishings.bedrooms}
-                  addNumber={this.props.addNumber}
-                  reduceNumber={this.props.reduceNumber}
-                  switchDisableReduce={this.props.switchDisableReduce}
-                />
-                <Facilities
-                  type="beds"
-                  filter="furnishings"
-                  amount={furnishings.beds}
-                  addNumber={this.props.addNumber}
-                  reduceNumber={this.props.reduceNumber}
-                  switchDisableReduce={this.props.switchDisableReduce}
-                />
-                <Facilities
-                  type="bathrooms"
-                  filter="furnishings"
-                  amount={furnishings.bathrooms}
-                  addNumber={this.props.addNumber}
-                  reduceNumber={this.props.reduceNumber}
-                  switchDisableReduce={this.props.switchDisableReduce}
-                />
-              </Section>
-              <Section>
-                <Topic>More options</Topic>
-                <MediaQuery maxWidth={968}>
-                  <Options
-                    filter="instantBook"
-                    title="Instant Book"
-                    check={moreOptions.instantBook}
-                    onCheckOption={this.props.onCheckOption}
-                    description="Secure a reservation instantly."
-                  />
-                </MediaQuery>
-                <Options
-                  title="Superhost"
-                  filter="superHost"
-                  check={moreOptions.superHost}
-                  onCheckOption={this.props.onCheckOption}
-                  description="Stay with recognized hosts."
-                />
-              </Section>
-              <Dropdown>
-                <Wrap>
-                  <Topic>Amenties</Topic>
-                  <div className="hidden-sm hidden-md hidden-lg hidden-xl">
-                    <Dropout
+                    <Facilities
+                      type="beds"
+                      filter="furnishings"
+                      amount={furnishings.beds}
+                      addNumber={this.props.addNumber}
+                      reduceNumber={this.props.reduceNumber}
+                      switchDisableReduce={this.props.switchDisableReduce}
+                    />
+                    <Facilities
+                      type="bathrooms"
+                      filter="furnishings"
+                      amount={furnishings.bathrooms}
+                      addNumber={this.props.addNumber}
+                      reduceNumber={this.props.reduceNumber}
+                      switchDisableReduce={this.props.switchDisableReduce}
+                    />
+                  </Section>
+                  <Section>
+                    <Topic>More options</Topic>
+                    <MediaQuery maxWidth={968}>
+                      <Options
+                        filter="instantBook"
+                        title="Instant Book"
+                        check={moreOptions.instantBook}
+                        onCheckOption={this.props.onCheckOption}
+                        description="Secure a reservation instantly."
+                      />
+                    </MediaQuery>
+                    <Options
+                      title="Superhost"
+                      filter="superHost"
+                      check={moreOptions.superHost}
+                      onCheckOption={this.props.onCheckOption}
+                      description="Stay with recognized hosts."
+                    />
+                  </Section>
+                  <Dropdown>
+                    <Wrap>
+                      <Topic>Amenties</Topic>
+                      <div className="hidden-sm hidden-md hidden-lg hidden-xl">
+                        <Dropout
+                          active={amenties.isOpen}
+                          onClick={() => this.props.switchOpeningDropdown('amenties')}
+                        >
+                          See all
+                        </Dropout>
+                      </div>
+                    </Wrap>
+                    <Checkboxs
+                      active={amenties.isOpen}
+                      title="Heating"
+                      type="heating"
+                      checkbox="amenties"
+                      check={amenties.heating}
+                      onCheckCheckbox={this.props.onCheckCheckbox}
+                      visible
+                    />
+                    <Checkboxs
+                      active={amenties.isOpen}
+                      title="Kitchen"
+                      type="kitchen"
+                      checkbox="amenties"
+                      check={amenties.kitchen}
+                      onCheckCheckbox={this.props.onCheckCheckbox}
+                      visible
+                    />
+                    <Checkboxs
+                      active={amenties.isOpen}
+                      title="TV"
+                      type="tv"
+                      checkbox="amenties"
+                      check={amenties.tv}
+                      onCheckCheckbox={this.props.onCheckCheckbox}
+                      visible
+                    />
+                    <Checkboxs
+                      active={amenties.isOpen}
+                      title="Wireless Internet"
+                      type="wireless"
+                      checkbox="amenties"
+                      check={amenties.wireless}
+                      onCheckCheckbox={this.props.onCheckCheckbox}
+                      visible
+                    />
+                    <Checkboxs
+                      active={amenties.isOpen}
+                      title="Fireplace"
+                      type="fireplace"
+                      checkbox="amenties"
+                      check={amenties.fireplace}
+                      onCheckCheckbox={this.props.onCheckCheckbox}
+                    />
+                    <Checkboxs
+                      active={amenties.isOpen}
+                      title="Shampoo"
+                      type="shampoo"
+                      checkbox="amenties"
+                      check={amenties.shampoo}
+                      onCheckCheckbox={this.props.onCheckCheckbox}
+                    />
+                    <Checkboxs
+                      active={amenties.isOpen}
+                      title="Iron"
+                      type="iron"
+                      checkbox="amenties"
+                      check={amenties.iron}
+                      onCheckCheckbox={this.props.onCheckCheckbox}
+                    />
+                    <Checkboxs
+                      active={amenties.isOpen}
+                      title="Intercom"
+                      type="intercom"
+                      checkbox="amenties"
+                      check={amenties.intercom}
+                      onCheckCheckbox={this.props.onCheckCheckbox}
+                    />
+                    <Checkboxs
+                      active={amenties.isOpen}
+                      title="Washer"
+                      type="washer"
+                      checkbox="amenties"
+                      check={amenties.washer}
+                      onCheckCheckbox={this.props.onCheckCheckbox}
+                    />
+                    <Closeout
                       active={amenties.isOpen}
                       onClick={() => this.props.switchOpeningDropdown('amenties')}
                     >
-                      See all
-                    </Dropout>
-                  </div>
-                </Wrap>
-                <Checkboxs
-                  active={amenties.isOpen}
-                  title="Heating"
-                  type="heating"
-                  checkbox="amenties"
-                  check={amenties.heating}
-                  onCheckCheckbox={this.props.onCheckCheckbox}
-                  visible
-                />
-                <Checkboxs
-                  active={amenties.isOpen}
-                  title="Kitchen"
-                  type="kitchen"
-                  checkbox="amenties"
-                  check={amenties.kitchen}
-                  onCheckCheckbox={this.props.onCheckCheckbox}
-                  visible
-                />
-                <Checkboxs
-                  active={amenties.isOpen}
-                  title="TV"
-                  type="tv"
-                  checkbox="amenties"
-                  check={amenties.tv}
-                  onCheckCheckbox={this.props.onCheckCheckbox}
-                  visible
-                />
-                <Checkboxs
-                  active={amenties.isOpen}
-                  title="Wireless Internet"
-                  type="wireless"
-                  checkbox="amenties"
-                  check={amenties.wireless}
-                  onCheckCheckbox={this.props.onCheckCheckbox}
-                  visible
-                />
-                <Checkboxs
-                  active={amenties.isOpen}
-                  title="Fireplace"
-                  type="fireplace"
-                  checkbox="amenties"
-                  check={amenties.fireplace}
-                  onCheckCheckbox={this.props.onCheckCheckbox}
-                />
-                <Checkboxs
-                  active={amenties.isOpen}
-                  title="Shampoo"
-                  type="shampoo"
-                  checkbox="amenties"
-                  check={amenties.shampoo}
-                  onCheckCheckbox={this.props.onCheckCheckbox}
-                />
-                <Checkboxs
-                  active={amenties.isOpen}
-                  title="Iron"
-                  type="iron"
-                  checkbox="amenties"
-                  check={amenties.iron}
-                  onCheckCheckbox={this.props.onCheckCheckbox}
-                />
-                <Checkboxs
-                  active={amenties.isOpen}
-                  title="Intercom"
-                  type="intercom"
-                  checkbox="amenties"
-                  check={amenties.intercom}
-                  onCheckCheckbox={this.props.onCheckCheckbox}
-                />
-                <Checkboxs
-                  active={amenties.isOpen}
-                  title="Washer"
-                  type="washer"
-                  checkbox="amenties"
-                  check={amenties.washer}
-                  onCheckCheckbox={this.props.onCheckCheckbox}
-                />
-                <Closeout
-                  active={amenties.isOpen}
-                  onClick={() => this.props.switchOpeningDropdown('amenties')}
-                >
-                  Close amenties
-                </Closeout>
-                <div className="hidden-xs">
-                  <Dropout
-                    active={amenties.isOpen}
-                    onClick={() => this.props.switchOpeningDropdown('amenties')}
-                  >
-                    See all amenties
-                  </Dropout>
-                </div>
-              </Dropdown>
-              <Dropdown>
-                <Wrap>
-                  <Topic>Facilities</Topic>
-                  <div className="hidden-sm hidden-md hidden-lg hidden-xl">
-                    <Dropout
+                      Close amenties
+                    </Closeout>
+                    <div className="hidden-xs">
+                      <Dropout
+                        active={amenties.isOpen}
+                        onClick={() => this.props.switchOpeningDropdown('amenties')}
+                      >
+                        See all amenties
+                      </Dropout>
+                    </div>
+                  </Dropdown>
+                  <Dropdown>
+                    <Wrap>
+                      <Topic>Facilities</Topic>
+                      <div className="hidden-sm hidden-md hidden-lg hidden-xl">
+                        <Dropout
+                          active={facilities.isOpen}
+                          onClick={() => this.props.switchOpeningDropdown('facilites')}
+                        >
+                          See all
+                        </Dropout>
+                      </div>
+                    </Wrap>
+                    <Checkboxs
                       active={facilities.isOpen}
-                      onClick={() => this.props.switchOpeningDropdown('facilites')}
+                      title="Elebator"
+                      type="elebator"
+                      checkbox="facilities"
+                      check={facilities.elebator}
+                      onCheckCheckbox={this.props.onCheckCheckbox}
+                      visible
+                    />
+                    <Checkboxs
+                      active={facilities.isOpen}
+                      title="Free parking on premises"
+                      type="parking"
+                      checkbox="facilities"
+                      check={facilities.parking}
+                      onCheckCheckbox={this.props.onCheckCheckbox}
+                      visible
+                    />
+                    <Checkboxs
+                      active={facilities.isOpen}
+                      type="pool"
+                      title="Pool"
+                      checkbox="facilities"
+                      check={facilities.pool}
+                      onCheckCheckbox={this.props.onCheckCheckbox}
+                      visible
+                    />
+                    <Checkboxs
+                      active={facilities.isOpen}
+                      title="Wheelchair accessible"
+                      type="disability"
+                      checkbox="facilities"
+                      check={facilities.disability}
+                      onCheckCheckbox={this.props.onCheckCheckbox}
+                      visible
+                    />
+                    <Checkboxs
+                      active={facilities.isOpen}
+                      title="Bathhouse"
+                      type="bathhouse"
+                      checkbox="facilities"
+                      check={facilities.bathhouse}
+                      onCheckCheckbox={this.props.onCheckCheckbox}
+                    />
+                    <Checkboxs
+                      active={facilities.isOpen}
+                      title="Garden"
+                      type="garden"
+                      checkbox="facilities"
+                      check={facilities.garden}
+                      onCheckCheckbox={this.props.onCheckCheckbox}
+                    />
+                    <Closeout
+                      active={facilities.isOpen}
+                      onClick={() => this.props.switchOpeningDropdown('facilities')}
                     >
-                      See all
-                    </Dropout>
-                  </div>
-                </Wrap>
-                <Checkboxs
-                  active={facilities.isOpen}
-                  title="Elebator"
-                  type="elebator"
-                  checkbox="facilities"
-                  check={facilities.elebator}
-                  onCheckCheckbox={this.props.onCheckCheckbox}
-                  visible
-                />
-                <Checkboxs
-                  active={facilities.isOpen}
-                  title="Free parking on premises"
-                  type="parking"
-                  checkbox="facilities"
-                  check={facilities.parking}
-                  onCheckCheckbox={this.props.onCheckCheckbox}
-                  visible
-                />
-                <Checkboxs
-                  active={facilities.isOpen}
-                  type="pool"
-                  title="Pool"
-                  checkbox="facilities"
-                  check={facilities.pool}
-                  onCheckCheckbox={this.props.onCheckCheckbox}
-                  visible
-                />
-                <Checkboxs
-                  active={facilities.isOpen}
-                  title="Wheelchair accessible"
-                  type="disability"
-                  checkbox="facilities"
-                  check={facilities.disability}
-                  onCheckCheckbox={this.props.onCheckCheckbox}
-                  visible
-                />
-                <Checkboxs
-                  active={facilities.isOpen}
-                  title="Bathhouse"
-                  type="bathhouse"
-                  checkbox="facilities"
-                  check={facilities.bathhouse}
-                  onCheckCheckbox={this.props.onCheckCheckbox}
-                />
-                <Checkboxs
-                  active={facilities.isOpen}
-                  title="Garden"
-                  type="garden"
-                  checkbox="facilities"
-                  check={facilities.garden}
-                  onCheckCheckbox={this.props.onCheckCheckbox}
-                />
-                <Closeout
-                  active={facilities.isOpen}
-                  onClick={() => this.props.switchOpeningDropdown('facilities')}
-                >
-                  Close facilities
-                </Closeout>
-                <div className="hidden-xs">
-                  <Dropout
-                    active={facilities.isOpen}
-                    onClick={() => this.props.switchOpeningDropdown('facilities')}
-                  >
-                    See all facilities
-                  </Dropout>
+                      Close facilities
+                    </Closeout>
+                    <div className="hidden-xs">
+                      <Dropout
+                        active={facilities.isOpen}
+                        onClick={() => this.props.switchOpeningDropdown('facilities')}
+                      >
+                        See all facilities
+                      </Dropout>
+                    </div>
+                  </Dropdown>
+                  <Bottom>
+                    <Save onClick={this.onApply}>See homes</Save>
+                    {this.props.prices !== this.props.initialState.prices ||
+                    this.props.rooms !== this.props.initialState.rooms ||
+                    this.props.furnishings !== this.props.initialState.furnishings ||
+                    this.props.amenties !== this.props.initialState.amenties ||
+                    this.props.facilities !== this.props.initialState.facilities ? (
+                      <Cancel onClick={this.resetSelection}>Reset</Cancel>
+                    ) : (
+                      <Cancel onClick={this.onClose}>Cancel</Cancel>
+                    )}
+                    <Apply onClick={this.onApply}>See homes</Apply>
+                  </Bottom>
                 </div>
-              </Dropdown>
-              <Bottom>
-                <Save onClick={this.onApply}>See homes</Save>
-                {this.props.prices !== this.props.initialState.prices ||
-                this.props.rooms !== this.props.initialState.rooms ||
-                this.props.furnishings !== this.props.initialState.furnishings ||
-                this.props.amenties !== this.props.initialState.amenties ||
-                this.props.facilities !== this.props.initialState.facilities ? (
-                  <Cancel onClick={this.resetSelection}>Reset</Cancel>
-                ) : (
-                  <Cancel onClick={this.onClose}>Cancel</Cancel>
-                )}
-                <Apply onClick={this.onApply}>See homes</Apply>
-              </Bottom>
+              </div>
             </div>
           </Filter>
         )}

@@ -10,6 +10,7 @@ const Location = styled.div`
   bottom: 0;
 
   @media (min-width: 768px) {
+    z-index: 5;
     display: block;
     width: 34%;
   }
