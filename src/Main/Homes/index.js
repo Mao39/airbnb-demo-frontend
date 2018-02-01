@@ -18,14 +18,14 @@ const getPolicyQuery = () => {
 const requestURL = 'https://airbnb-demo-api.now.sh/v1/homes?limit=6';
 
 export default class Cards extends React.Component {
-  state = { items: [] };
+  state = { homes: [] };
 
   componentWillMount() {
     fetch(requestURL)
       .then(response => response.json())
       .then((data) => {
         console.log('parsing ok', data);
-        this.setState({ items: data.items });
+        this.setState({ homes: data.items });
       })
       .catch((ex) => {
         console.log('parsing failed', ex);
@@ -50,7 +50,7 @@ export default class Cards extends React.Component {
           </Head>
           <Slider>
             <div className="row">
-              {responseData.items.map(data => (
+              {responseData.homes.map(data => (
                 <div className="col-xs-8 col-sm-5 col-md-4">
                   <Card
                     picture={`${data.images[0].picture}?aki_policy=${getPolicyQuery()}`}
