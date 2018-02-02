@@ -83,10 +83,10 @@ const Beds = styled.span`
   font-weight: lighter;
 `;
 
-const formatTypeLabel = (kind) => {
-  if (kind === 'entire_home') return 'Entire home';
-  if (kind === 'private_room') return 'Private room';
-  return 'Shared room';
+const roomType = {
+  entire_home: 'Entire home',
+  private_room: 'Private room',
+  shared_room: 'Shared room',
 };
 
 export default props => (
@@ -97,7 +97,7 @@ export default props => (
       <Caption>{props.children}</Caption>
     </Title>
     <Places>
-      <Type>{formatTypeLabel(props.kind)}</Type>
+      <Type>{roomType[props.kind]}</Type>
       <span> · </span>
       <Beds>
         {props.bedsCount} {props.bedsCount > 1 ? 'beds' : 'bed'}
