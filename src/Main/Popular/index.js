@@ -1,22 +1,15 @@
 import React from 'react';
-import styled from 'styled-components';
 import { Head, Caption, More } from '../Head';
-import { Slider, SliderBtn } from '../Slider';
+import { Slider, Section } from '../Slider';
 import Card from './Card';
 import chumley from '../../UI/chumley.png';
 import hanjan from '../../UI/hanjan.png';
 import primeMeats from '../../UI/primeMeats.png';
 import seaprice from '../../UI/seaprice.png';
 
-const Popular = styled.section``;
-
-const Arrow = SliderBtn.extend`
-  margin-top: 8.5%;
-`;
-
 export default () => (
-  <Popular>
-    <div className="container">
+  <div className="container">
+    <Section>
       <Head>
         <div className="row">
           <div className="col-xs-9 col-sm-10">
@@ -49,9 +42,8 @@ export default () => (
               Seaprice
             </Card>
           </div>
-          <Arrow />
         </div>
       </Slider>
-    </div>
-  </Popular>
+    </Section>
+  </div>
 );

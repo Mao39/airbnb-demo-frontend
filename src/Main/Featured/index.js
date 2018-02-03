@@ -1,7 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
 import { Head, Caption } from '../Head';
-import { Slider, SliderBtn } from '../Slider';
+import { Slider, Section } from '../Slider';
 import Card from './Card';
 import paris from '../../UI/paris.png';
 import seoul from '../../UI/seoul.png';
@@ -10,15 +9,15 @@ import miami from '../../UI/miami.png';
 import losAngeles from '../../UI/losAngeles.png';
 import capeTown from '../../UI/capeTown.png';
 
-const Featured = styled.section``;
-
-const Arrow = SliderBtn.extend`
-  margin-top: 12.5%;
+const Featured = Section.extend`
+  &::after {
+    transform: translateY(0);
+  }
 `;
 
 export default () => (
-  <Featured>
-    <div className="container">
+  <div className="container">
+    <Featured>
       <Head>
         <Caption>Featured destinations</Caption>
       </Head>
@@ -42,9 +41,8 @@ export default () => (
           <div className="col-xs-4 col-sm-3 col-md-2">
             <Card imgSrc={losAngeles}>Los Angeles</Card>
           </div>
-          <Arrow />
         </div>
       </Slider>
-    </div>
-  </Featured>
+    </Featured>
+  </div>
 );
